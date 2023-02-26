@@ -1,5 +1,4 @@
 <div align="center">
-  <h1>Papyrus</h1>
   <img src="https://i.ibb.co/bPKp1wb/osiris.png" height="100" width="100">
   <br />
   <a href="https://github.com/kasarlabs/osiris/issues/new?assignees=&labels=bug&template=01_BUG_REPORT.md&title=bug%3A+">Report a Bug</a>
