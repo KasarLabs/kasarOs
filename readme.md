@@ -36,24 +36,16 @@ data schema
 * [X] System monitoring
     * [X] CPU tracker (high/low/mid)
     * [X] Memory tracker (high/low/mid)
-    * [X] W
+    * [X] test
 * [ ] Client mintoring
     * [ ] State Update
     * [ ] Blocks
     * [ ] Transactions
     * [ ] class
-
-### Phase 2
-
-* [X] System monitoring
-    * [X] CPU tracker (high/low/mid)
-    * [X] Memory tracker (high/low/mid)
-    * [X] W
-* [ ] Client mintoring
-    * [ ] State Update
-    * [ ] Blocks
-    * [ ] Transactions
-    * [ ] class
+* [ ] API
+    * [ ] Endpoint
+    * [ ] Shared DB
+* [ ] Hosted dashboard
 
 ## 🌐 Contact us
 
