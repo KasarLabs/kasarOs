@@ -23,23 +23,56 @@ This repo contains an easy to use Starknet full node tracker/monitoring script s
 
 ## 💻 Installation
 
-installation process
+This plug-in works independently from your full node, you can install it anywhere by running :
+```bash
+curl -L https://raw.githubusercontent.com/KasarLabs/osiris/main/tracker/install/install.sh | bash
+```
+Or if you want it to be installed to a different path:
+```bash
+curl -L https://raw.githubusercontent.com/KasarLabs/osiris/main/tracker/install/install.sh | bash -s mypath/
+```
 
 ## 📊 Data
 
-data schema
+The available data provided by the tracker :
+
+* [X] System monitoring
+    * [X] CPU tracker
+      * [X] `cpu.now` Actual CPU usage
+      * [X] `cpu.max` Max CPU usage
+      * [X] `cpu.min` Min CPU usage
+      * [X] `cpu.avg` Average CPU usage
+    * [X] Memory tracker
+      * [X] `ram.now` Actual memory usage
+      * [X] `ram.max` Max memory usage
+      * [X] `ram.min` Min memory usage
+      * [X] `ram.avg` Average memory usage
+    * [X] Storage tracker
+      * [X] `storage.now` Actual storage usage
+      * [X] `storage.max` Max storage usage
+      * [X] `storage.min` Min storage usage
+      * [X] `storage.avg` Average memory usage
+* [ ] Client mintoring
+    * [ ] Block tracker
+      * [ ] `block.synced` Last block synced
+      * [ ] `block.size_now` Last block size
+      * [ ] `block.size_max` Max block size
+      * [ ] `block.size_min` Min block size
+      * [ ] `block.size_avg` Average block size
+      * [ ] `block.syncTime_now` Last block sync time
+      * [ ] `block.syncTime_max` Max block sync time
+      * [ ] `block.syncTime_avg` Min block sync time
+      * [ ] `block.size_avg` Average block sync time
 
 ## 📍 Roadmap
 
-### Phase 1
-
 * [X] System monitoring
-    * [X] CPU tracker (high/low/mid)
-    * [X] Memory tracker (high/low/mid)
-    * [X] test
+    * [X] CPU tracking
+    * [X] Memory tracking
+    * [X] Memoire lu ecrite
 * [ ] Client mintoring
-    * [ ] State Update
-    * [ ] Blocks
+    * [ ] Blocks tracking
+    * [ ] 
     * [ ] Transactions
     * [ ] class
 * [ ] API
