@@ -52,6 +52,15 @@ The available data provided by the tracker :
       * [X] `storage.max` Max storage usage
       * [X] `storage.min` Min storage usage
       * [X] `storage.avg` Average memory usage
+    * [X] Network tracker
+      * [X] `network.read_now` Actual network reading usage
+      * [X] `network.read_max` Max network reading usage
+      * [X] `network.read_min` Min netowrk reading usage
+      * [X] `network.read_avg` Average netork usage
+      * [X] `network.write_now` Actual network write usage
+      * [X] `network.write_max` Max network write usage
+      * [X] `network.write_min` Min netowrk write usage
+      * [X] `network.write_avg` Average write usage
 * [ ] Client mintoring
     * [ ] Block tracker
       * [ ] `block.synced` Last block synced
