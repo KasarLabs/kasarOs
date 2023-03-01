@@ -78,17 +78,16 @@ The available data provided by the tracker :
 * [X] System monitoring
     * [X] CPU tracking
     * [X] Memory tracking
-    * [X] Memoire lu ecrite
+    * [X] Storage tracking
+    * [X] Network tracking
 * [ ] Client mintoring
     * [ ] Blocks tracking
-    * [ ] 
-    * [ ] Transactions
-    * [ ] class
 * [ ] API
-    * [ ] Endpoint
-    * [ ] Shared DB
+    * [ ] Local API
+    * [ ] Shared DB + Remote API
 * [ ] Hosted dashboard
-
+    * [ ] User auth
+    * [ ] Dashboard
 ## 🌐 Contact us
 
 This is a [KasarLabs](https://twitter.com/kasarlabs) project If you need any help about Osiris or anything else related to Starknet please feel free to open an issue or contact us via telegram [here](https://t.me/antiyro).
