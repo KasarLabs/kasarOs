@@ -1,0 +1,29 @@
+reload_interval = "30s"
+chain_name = "mainnet"
+server_address = "http://localhost:8545"
+infura_key = ""
+infura_endpoint = "https://mainnet.infura.io/v3/<your-infura-project-id>"
+alchemy_key = ""
+alchemy_endpoint = "https://eth-mainnet.alchemyapi.io/v2/<your-alchemy-api-key>"
+etherscan_key = ""
+etherscan_endpoint = "https://api.etherscan.io/api"
+
+[[clients]]
+url = "http://localhost:8000"
+name = "client1"
+kind = "geth"
+ratelimit = 100
+
+[[clients]]
+url = "http://localhost:8001"
+name = "client2"
+kind = "parity"
+ratelimit = 200
+
+[metrics]
+enabled = false
+endpoint = "http://localhost:9090"
+username = ""
+password = ""
+database = "prometheus"
+namespace = "eth"
