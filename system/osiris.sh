@@ -90,7 +90,7 @@ MAXIMUM_RAM=$(cat /var/log/tracker_log.log | tail -n +2 | cut -d"," -f3 | sort -
 
 helpFunction()
 {
-	echo -e "Usage:\n  osiris [options]\n"
+	echo -e "Usage:\n  myOsiris [options]\n"
 	echo "Track performances of available clients on Starknet."
 	echo "Options are:"
 	echo -e "  -j, --json\t\t\tPrint and generate .json file."
