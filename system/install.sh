@@ -17,7 +17,17 @@ main() {
 	else
 		print_menu "Welcome to myOsiris! 👋" "Please chose the client you'd like to install" "${options[@]}"
 	fi
-
 }
 
-main
+juno() {
+	# installTools
+	git clone https://github.com/NethermindEth/juno ../client/
+	cd ../client/
+	# bash go.sh
+	make juno
+	go build
+	go ./build/juno
+}
+
+juno
+
