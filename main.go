@@ -1,73 +1,122 @@
 package main
 
 import (
+	"bufio"
+	"database/sql"
 	"fmt"
 	"os"
+	"time"
+	"strings"
+	"strconv"
 
-	"github.com/eiannone/keyboard"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
-type MenuItem struct {
-	Text string
-	Func func()
+func parseTimestamp(timestampStr string) (time.Time, error) {
+    layout := "15:04:05.000 02/01/2006 -07:00"
+    return time.Parse(layout, timestampStr)
+}
+
+func extractNumber(input string) (string) {
+    // Find the index of "number:" in the input string
+    index := strings.Index(input, "number:")
+    substr := input[index+len("number:"):]
+    number := strings.Split(substr, ",")
+	tes := strings.ReplaceAll(number[0], "\t", "")
+    return tes
+}
+
+func removeBraces(input string) string {
+    output := strings.ReplaceAll(input, "{", "")
+    output = strings.ReplaceAll(output, "}", "")
+    output = strings.ReplaceAll(output, "\"", "")
+
+    return output
+}
+
+
+const (
+	logsFile           = "client/logs.txt"
+	dbConnectionString = "root:tokenApi!@tcp(localhost:3306)/juno"
+)
+
+type Block struct {
+	number    int64
+	syncTime  int64
+	hash      string
 }
 
 func main() {
-	menu := []MenuItem{
-		{"Install package A", func() { fmt.Println("Installing package A...") }},
-		{"Install package B", func() { fmt.Println("Installing package B...") }},
-		{"Quit", func() { os.Exit(0) }},
-	}
-
-	fmt.Println("Welcome to the installation menu!")
-	fmt.Println("Please choose an option using the arrow keys:")
-	for i, item := range menu {
-		fmt.Printf("%s %s\n", getArrow(i == 0), item.Text)
-	}
-
-	var selectedIndex int
-	err := keyboard.Open()
+	db, err := sql.Open("mysql", dbConnectionString)
 	if err != nil {
 		panic(err)
 	}
-	defer func() {
-		_ = keyboard.Close()
-	}()
+	defer db.Close()
 
+	err = db.Ping()
+	if err != nil {
+		panic(err)
+	}
+
+	// Loop continuously to read new lines from the file
 	for {
-		char, key, err := keyboard.GetKey()
+		file, err := os.Open(logsFile)
 		if err != nil {
 			panic(err)
 		}
-
-		if key == keyboard.KeyArrowUp {
-			if selectedIndex > 0 {
-				selectedIndex--
+		scanner := bufio.NewScanner(file)
+		for scanner.Scan() {
+			line := scanner.Text()
+			if len(line) > 0 {
+				liner := strings.ReplaceAll(removeBraces(line), " ", "\t")
+				lineParsed := strings.Split(liner, "\t")
+				timestamp, err := parseTimestamp(lineParsed[0] + " " + lineParsed[1] + " " + lineParsed[2])
+				if err != nil {
+					fmt.Println(err)
+				}
+				syncTime := timestamp.Unix()
+				number, _ := strconv.ParseInt(extractNumber(liner), 10, 64)
+				block := Block{
+					number:   number,
+					syncTime: syncTime,
+				}
+				fmt.Println("block", block)
+				// storeBlock(db, block)
 			}
-		} else if key == keyboard.KeyArrowDown {
-			if selectedIndex < len(menu)-1 {
-				selectedIndex++
-			}
-		} else if key == keyboard.KeyEnter {
-			menu[selectedIndex].Func()
 		}
-
-		fmt.Print("\033[H\033[2J") // clear screen
-		fmt.Println("Please choose an option using the arrow keys:")
-		for i, item := range menu {
-			fmt.Printf("%s %s\n", getArrow(i == selectedIndex), item.Text)
+		if err := scanner.Err(); err != nil {
+			fmt.Println("Error scanning file:", err)
 		}
-
-		if char == 'q' || key == keyboard.KeyCtrlC {
-			break
-		}
+		file.Close()
+		time.Sleep(1 * time.Second) // wait for 1 second before checking the file again
 	}
 }
 
-func getArrow(selected bool) string {
-	if selected {
-		return ">"
+func storeBlock(db *sql.DB, block Block) {
+	_, err := db.Exec(`INSERT INTO block (number, sync_time) VALUES (?, ?, ?, ?)`,
+		block.number, block.syncTime, block.hash)
+
+	if err != nil {
+		fmt.Println("Error inserting block:", err)
 	} else {
-		return " "
+		fmt.Println("Inserted block number", block.number)
+	}
+
+	updateBlockSyncStats(db)
+}
+
+func updateBlockSyncStats(db *sql.DB) {
+	_, err := db.Exec(`UPDATE block_stats
+	SET synced = (SELECT MAX(number) FROM block),
+		sync_time_now = (SELECT sync_time FROM block ORDER BY sync_time DESC LIMIT 1),
+		sync_time_max = (SELECT MAX(sync_time) FROM block),
+		sync_time_min = (SELECT MIN(sync_time) FROM block),
+		sync_time_avg = (SELECT AVG(EXTRACT(EPOCH FROM sync_time)) FROM block)`)
+
+	if err != nil {
+		fmt.Println("Error updating block sync stats:", err)
+	} else {
+		fmt.Println("Updated block sync stats")
 	}
 }

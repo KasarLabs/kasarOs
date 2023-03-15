@@ -1,0 +1,12 @@
+.DS_Store
+.idea/
+.vscode/
+.dist
+build/
+coverage/*
+courtney/
+__pycache__/
+config/
+
+# pyenv
+.python-version

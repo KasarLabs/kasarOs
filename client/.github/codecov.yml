@@ -1,0 +1,15 @@
+coverage:
+  range: 70..90
+  status:
+    project:
+      default:
+        target: 75%
+        threshold: 0%
+    patch:
+      default:
+        target: 80%
+        threshold: 1%
+        branches: 
+          - main
+ignore:
+  - "node"
