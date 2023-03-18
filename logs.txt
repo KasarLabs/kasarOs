@@ -1,1 +1,5 @@
 zsh: aucun fichier ou dossier de ce type: ./build/juno
+error: could not find `Cargo.toml` in `/home/antiyro/Documents/PROJECTS/KASAR/myOsiris` or any parent directory
+error: could not find `Cargo.toml` in `/home/antiyro/Documents/PROJECTS/KASAR/myOsiris` or any parent directory
+error: could not find `Cargo.toml` in `/home/antiyro/Documents/PROJECTS/KASAR/myOsiris` or any parent directory
+error: could not find `Cargo.toml` in `/home/antiyro/Documents/PROJECTS/KASAR/myOsiris` or any parent directory

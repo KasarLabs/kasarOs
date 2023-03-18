@@ -1,42 +1,1040 @@
-
-       _                    
-      | |                   
-      | |_   _ _ __   ___   
-  _   | | | | | '_ \ / _ \  
- | |__| | |_| | | | | (_) |  
-  \____/ \__,_|_| |_|\___/  
-
-Juno is a Go implementation of a Starknet full node client created by Nethermind.
-
-16:50:11.122 16/03/2023 +01:00	[34mINFO[0m	node/node.go:136	Starting Juno...	{"config": "{Verbosity:info RpcPort:6060 Metrics:false DatabasePath:/home/antiyro/.local/share/juno/mainnet Network:mainnet EthNode: Pprof:false}"}
-16:50:12.687 16/03/2023 +01:00	[34mINFO[0m	node/node.go:178	Shutting down Juno...
-
-       _                    
-      | |                   
-      | |_   _ _ __   ___   
-  _   | | | | | '_ \ / _ \  
- | |__| | |_| | | | | (_) |  
-  \____/ \__,_|_| |_|\___/  
-
-Juno is a Go implementation of a Starknet full node client created by Nethermind.
-
-16:50:20.129 16/03/2023 +01:00	[34mINFO[0m	node/node.go:136	Starting Juno...	{"config": "{Verbosity:info RpcPort:6060 Metrics:false DatabasePath:/home/antiyro/.local/share/juno/mainnet Network:mainnet EthNode: Pprof:false}"}
-16:50:33.485 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7503, "hash": "0x25fe...89e8", "root": "0x4f1a...5475"}
-16:50:41.224 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7504, "hash": "0x72fb...425b", "root": "0x5c44...8c9d"}
-16:50:45.281 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7505, "hash": "0x327c...7ddc", "root": "0x6cae...d279"}
-16:50:49.079 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7506, "hash": "0x7826...f6c7", "root": "0x6879...4332"}
-16:50:52.059 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7507, "hash": "0x489e...de92", "root": "0x2813...f4d7"}
-16:50:55.514 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7508, "hash": "0x16a8...33f5", "root": "0x38ed...83e7"}
-16:50:59.729 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7509, "hash": "0x324c...b293", "root": "0x8237...2f96"}
-16:51:04.592 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7510, "hash": "0x2b24...f38c", "root": "0x475f...a33a"}
-16:51:08.498 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7511, "hash": "0x17a8...275e", "root": "0x31f0...fc25"}
-16:51:12.342 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7512, "hash": "0x6c6b...99ba", "root": "0x7e10...b73c"}
-16:51:15.281 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7513, "hash": "0x1317...d14b", "root": "0x3345...d896"}
-16:51:17.736 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7514, "hash": "0x148e...23ee", "root": "0x298b...f866"}
-16:51:20.262 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7515, "hash": "0x3707...d824", "root": "0x41dd...3905"}
-16:51:22.832 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7516, "hash": "0x658b...0439", "root": "0x615a...276f"}
-16:51:26.286 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7517, "hash": "0x5e69...e78a", "root": "0x4546...ed9b"}
-16:51:29.327 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7518, "hash": "0x47b4...a674", "root": "0x62ae...a314"}
-16:51:32.755 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7519, "hash": "0x1a67...d7c3", "root": "0x3fe2...eead"}
-16:51:33.695 16/03/2023 +01:00	[34mINFO[0m	node/node.go:178	Shutting down Juno...
-16:51:35.778 16/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 7520, "hash": "0x304b...abbb", "root": "0x4242...4cc9"}
+    Updating crates.io index
+    Updating git repository `https://github.com/starkware-libs/starknet-api`
+ Downloading crates ...
+  Downloaded thiserror v1.0.40
+  Downloaded thiserror-impl v1.0.40
+  Downloaded serde v1.0.157
+  Downloaded async-trait v0.1.67
+  Downloaded anyhow v1.0.70
+  Downloaded syn v2.0.0
+  Downloaded serde_derive v1.0.157
+  Downloaded bstr v1.4.0
+   Compiling proc-macro2 v1.0.52
+   Compiling unicode-ident v1.0.8
+   Compiling quote v1.0.26
+   Compiling autocfg v1.1.0
+   Compiling syn v1.0.109
+   Compiling cfg-if v1.0.0
+   Compiling libc v0.2.140
+   Compiling version_check v0.9.4
+   Compiling typenum v1.16.0
+   Compiling serde_derive v1.0.157
+   Compiling serde v1.0.157
+   Compiling log v0.4.17
+   Compiling bytes v1.4.0
+   Compiling cc v1.0.79
+   Compiling memchr v2.5.0
+   Compiling thiserror v1.0.40
+   Compiling pin-project-lite v0.2.9
+   Compiling once_cell v1.17.1
+   Compiling futures-core v0.3.27
+   Compiling itoa v1.0.6
+   Compiling smallvec v1.10.0
+   Compiling parking_lot_core v0.9.7
+   Compiling scopeguard v1.1.0
+   Compiling futures-sink v0.3.27
+   Compiling ppv-lite86 v0.2.17
+   Compiling futures-channel v0.3.27
+   Compiling wasm-bindgen-shared v0.2.84
+   Compiling futures-io v0.3.27
+   Compiling lock_api v0.4.9
+   Compiling tokio v1.26.0
+   Compiling num-traits v0.2.15
+   Compiling slab v0.4.8
+   Compiling futures-task v0.3.27
+   Compiling generic-array v0.14.6
+   Compiling bumpalo v3.12.0
+   Compiling futures-util v0.3.27
+   Compiling indexmap v1.9.2
+   Compiling tracing-core v0.1.30
+   Compiling pin-utils v0.1.0
+   Compiling fnv v1.0.7
+   Compiling wasm-bindgen v0.2.84
+   Compiling hashbrown v0.12.3
+   Compiling ryu v1.0.13
+   Compiling http v0.2.9
+   Compiling num-integer v0.1.45
+   Compiling serde_json v1.0.94
+   Compiling getrandom v0.2.8
+   Compiling syn v2.0.0
+   Compiling socket2 v0.4.9
+   Compiling num_cpus v1.15.0
+   Compiling signal-hook-registry v1.4.1
+   Compiling mio v0.8.6
+   Compiling rand_core v0.6.4
+   Compiling block-padding v0.2.1
+   Compiling httparse v1.8.0
+   Compiling rand_chacha v0.3.1
+   Compiling parking_lot v0.12.1
+   Compiling num-bigint v0.4.3
+   Compiling opaque-debug v0.3.0
+   Compiling rand v0.8.5
+   Compiling ucd-trie v0.1.5
+   Compiling cpufeatures v0.2.5
+   Compiling unicode-xid v0.2.4
+   Compiling try-lock v0.2.4
+   Compiling httpdate v1.0.2
+   Compiling arrayvec v0.7.2
+   Compiling want v0.3.0
+   Compiling http-body v0.4.5
+   Compiling openssl-probe v0.1.5
+   Compiling tower-service v0.3.2
+   Compiling digest v0.9.0
+   Compiling block-buffer v0.9.0
+   Compiling pkg-config v0.3.26
+   Compiling toml_datetime v0.6.1
+   Compiling winnow v0.3.6
+   Compiling base64 v0.13.1
+   Compiling sha-1 v0.9.8
+   Compiling ring v0.16.20
+   Compiling base64 v0.21.0
+   Compiling bitflags v1.3.2
+   Compiling paste v1.0.12
+   Compiling send_wrapper v0.4.0
+   Compiling crunchy v0.2.2
+   Compiling radium v0.6.2
+   Compiling async-trait v0.1.67
+   Compiling openssl v0.10.46
+   Compiling openssl-sys v0.9.81
+   Compiling tinyvec_macros v0.1.1
+   Compiling foreign-types-shared v0.1.1
+   Compiling rustc-hex v2.1.0
+   Compiling spin v0.5.2
+   Compiling hex v0.4.3
+   Compiling untrusted v0.7.1
+   Compiling byteorder v1.4.3
+   Compiling foreign-types v0.3.2
+   Compiling tinyvec v1.6.0
+   Compiling subtle v2.4.1
+   Compiling wyz v0.2.0
+   Compiling native-tls v0.2.11
+   Compiling tap v1.0.1
+   Compiling anyhow v1.0.70
+   Compiling glob v0.3.1
+   Compiling funty v1.1.0
+   Compiling static_assertions v1.1.0
+   Compiling rlp v0.5.2
+   Compiling percent-encoding v2.2.0
+   Compiling byte-slice-cast v1.2.2
+   Compiling unicode-bidi v0.3.12
+   Compiling ark-std v0.3.0
+   Compiling tiny-keccak v2.0.2
+   Compiling bitvec v0.20.4
+   Compiling clang-sys v1.6.0
+   Compiling ark-serialize v0.3.0
+   Compiling impl-rlp v0.3.0
+   Compiling form_urlencoded v1.1.0
+   Compiling fixed-hash v0.7.0
+   Compiling unicode-normalization v0.1.22
+   Compiling minimal-lexical v0.2.1
+   Compiling event-listener v2.5.3
+   Compiling rustls v0.20.8
+   Compiling toml_edit v0.19.7
+   Compiling nom v7.1.3
+   Compiling crypto-bigint v0.3.2
+   Compiling async-lock v2.7.0
+   Compiling bigdecimal v0.3.0
+   Compiling uint v0.9.5
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.6
+   Compiling secp256k1-sys v0.4.2
+   Compiling idna v0.3.0
+   Compiling libloading v0.7.4
+   Compiling bindgen v0.60.1
+   Compiling rustc-hash v1.1.0
+   Compiling regex-syntax v0.6.28
+   Compiling digest v0.10.6
+   Compiling crypto-mac v0.11.1
+   Compiling rustls-pemfile v1.0.2
+   Compiling convert_case v0.4.0
+   Compiling url v2.3.1
+   Compiling shlex v1.1.0
+   Compiling wasm-bindgen-backend v0.2.84
+   Compiling synstructure v0.12.6
+   Compiling lazy_static v1.4.0
+   Compiling lazycell v1.3.0
+   Compiling keccak v0.1.3
+   Compiling mime v0.3.16
+   Compiling thiserror-impl v1.0.40
+   Compiling wasm-bindgen-macro-support v0.2.84
+   Compiling proc-macro-crate v1.3.1
+   Compiling cexpr v0.6.0
+   Compiling peeking_take_while v0.1.2
+   Compiling sha3 v0.9.1
+   Compiling sha1 v0.10.5
+   Compiling regex v1.7.1
+   Compiling rustls-native-certs v0.6.2
+   Compiling hmac v0.11.0
+   Compiling headers-core v0.2.0
+   Compiling encoding_rs v0.8.32
+   Compiling matches v0.1.10
+   Compiling ipnet v2.7.1
+   Compiling headers v0.3.8
+   Compiling idna v0.2.3
+   Compiling sha2 v0.9.9
+   Compiling aho-corasick v0.7.20
+   Compiling crc32fast v1.3.2
+   Compiling unicase v2.6.0
+   Compiling pest v2.5.6
+   Compiling adler v1.0.2
+   Compiling bstr v1.4.0
+   Compiling webpki v0.22.0
+   Compiling tokio-macros v1.8.2
+   Compiling futures-macro v0.3.27
+   Compiling tracing-attributes v0.1.23
+   Compiling wasm-bindgen-macro v0.2.84
+   Compiling zeroize_derive v1.3.3
+   Compiling pin-project-internal v1.0.12
+   Compiling ark-ff-macros v0.3.0
+   Compiling ark-ff-asm v0.3.0
+   Compiling semver-parser v0.10.2
+   Compiling derivative v2.2.0
+   Compiling openssl-macros v0.1.0
+   Compiling impl-trait-for-tuples v0.2.2
+   Compiling zeroize v1.5.7
+   Compiling js-sys v0.3.61
+   Compiling semver v0.11.0
+   Compiling parity-scale-codec-derive v2.3.1
+   Compiling rustc_version v0.3.3
+   Compiling sct v0.7.0
+   Compiling webpki-roots v0.22.6
+   Compiling derive_more v0.99.17
+   Compiling tracing v0.1.37
+   Compiling ark-ff v0.3.0
+   Compiling secp256k1 v0.21.3
+   Compiling pin-project v1.0.12
+   Compiling rfc6979 v0.1.0
+   Compiling miniz_oxide v0.6.2
+   Compiling lifetimed-bytes v0.1.0
+   Compiling futures-executor v0.3.27
+   Compiling tokio-util v0.7.7
+   Compiling futures v0.3.27
+   Compiling soketto v0.7.1
+   Compiling impl-serde v0.3.2
+   Compiling beef v0.5.2
+   Compiling gloo-timers v0.2.6
+   Compiling wasm-bindgen-futures v0.4.34
+   Compiling futures-timer v3.0.2
+   Compiling jsonrpsee-types v0.13.1
+   Compiling tokio-native-tls v0.3.1
+   Compiling ethbloom v0.11.1
+   Compiling web-sys v0.3.61
+   Compiling tokio-rustls v0.23.4
+   Compiling serde_urlencoded v0.7.1
+   Compiling web3-async-native-tls v0.4.0
+   Compiling jsonrpc-core v18.0.0
+   Compiling mdbx-sys v0.11.9-0
+   Compiling tokio-util v0.6.10
+   Compiling tokio-stream v0.1.12
+   Compiling parity-scale-codec v2.3.1
+   Compiling h2 v0.3.16
+   Compiling proc-macro-error-attr v1.0.4
+   Compiling flate2 v1.0.25
+   Compiling globset v0.4.10
+   Compiling bincode v1.3.3
+   Compiling impl-codec v0.5.1
+   Compiling primitive-types v0.10.1
+   Compiling proc-macro-error v1.0.4
+   Compiling gloo-utils v0.1.6
+   Compiling integer-encoding v3.0.4
+   Compiling gloo-net v0.2.6
+   Compiling jsonrpsee-proc-macros v0.13.1
+   Compiling tokio-retry v0.3.0
+   Compiling async-stream-impl v0.3.4
+   Compiling regex-automata v0.1.10
+   Compiling os_str_bytes v6.4.1
+   Compiling overload v0.1.1
+   Compiling ethereum-types v0.12.1
+   Compiling heck v0.4.1
+   Compiling unsafe-libyaml v0.2.7
+   Compiling async-stream v0.3.4
+   Compiling matchers v0.1.0
+   Compiling nu-ansi-term v0.46.0
+   Compiling ethabi v16.0.0
+   Compiling clap_derive v3.2.18
+   Compiling clap_lex v0.2.4
+   Compiling hyper v0.14.25
+   Compiling sharded-slab v0.1.4
+   Compiling tracing-log v0.1.3
+   Compiling starknet-ff v0.2.0
+   Compiling starknet-curve v0.1.0
+   Compiling atty v0.2.14
+   Compiling serde_yaml v0.9.19
+   Compiling thread_local v1.1.7
+   Compiling strsim v0.10.0
+   Compiling termcolor v1.1.3
+   Compiling textwrap v0.16.0
+   Compiling tracing-subscriber v0.3.16
+   Compiling clap v3.2.23
+   Compiling jsonrpsee-core v0.13.1
+   Compiling hyper-tls v0.5.0
+   Compiling jsonrpsee-client-transport v0.13.1
+   Compiling hyper-rustls v0.23.2
+   Compiling reqwest v0.11.14
+   Compiling jsonrpsee-http-client v0.13.1
+   Compiling jsonrpsee-ws-client v0.13.1
+   Compiling jsonrpsee-wasm-client v0.13.1
+   Compiling jsonrpsee-http-server v0.13.1
+   Compiling jsonrpsee-ws-server v0.13.1
+   Compiling starknet-crypto-codegen v0.1.0
+   Compiling jsonrpsee v0.13.1
+   Compiling web3 v0.18.0
+   Compiling starknet-crypto v0.2.0
+   Compiling starknet_api v0.1.0 (https://github.com/starkware-libs/starknet-api?rev=9a1fca8#9a1fca86)
+   Compiling libmdbx v0.1.7
+   Compiling papyrus_storage v0.1.0 (/home/antiyro/Documents/PROJECTS/KASAR/myOsiris/client/crates/papyrus_storage)
+   Compiling starknet_client v0.1.0 (/home/antiyro/Documents/PROJECTS/KASAR/myOsiris/client/crates/starknet_client)
+   Compiling papyrus_gateway v0.1.0 (/home/antiyro/Documents/PROJECTS/KASAR/myOsiris/client/crates/papyrus_gateway)
+   Compiling papyrus_monitoring_gateway v0.1.0 (/home/antiyro/Documents/PROJECTS/KASAR/myOsiris/client/crates/papyrus_monitoring_gateway)
+   Compiling papyrus_sync v0.1.0 (/home/antiyro/Documents/PROJECTS/KASAR/myOsiris/client/crates/papyrus_sync)
+   Compiling papyrus_node v0.1.0 (/home/antiyro/Documents/PROJECTS/KASAR/myOsiris/client/crates/papyrus_node)
+    Finished release [optimized] target(s) in 1m 17s
+     Running `target/release/papyrus_node`
+[2m2023-03-18T12:09:27.500415Z[0m [32m INFO[0m Booting up.
+[2m2023-03-18T12:09:27.527689Z[0m [32m INFO[0m Gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8080
+[2m2023-03-18T12:09:27.527771Z[0m [32m INFO[0m Monitoring gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8081
+[2m2023-03-18T12:09:27.599889Z[0m [32m INFO[0m State sync started.
+[2m2023-03-18T12:09:39.381259Z[0m [32m INFO[0m Added block 0 with hash 0x047c3637b57c2b079b93c61539950c17e868a28f46cdef28f88521067f21e943.
+[2m2023-03-18T12:09:39.404538Z[0m [32m INFO[0m Added block 1 with hash 0x02a70fb03fe363a2d6be843343a1d81ce6abeda1e9bd5cc6ad8fa9f45e30fdeb.
+[2m2023-03-18T12:09:46.353948Z[0m [32m INFO[0m Added block 2 with hash 0x04e1f77f39545afe866ac151ac908bd1a347a2a8a7d58bef1276db4f06fdf2f6.
+[2m2023-03-18T12:09:47.411411Z[0m [32m INFO[0m Added block 3 with hash 0x03dc0a914e03f075189841f7e41ffcac0ec2c6d6b06c22def89149a51de39a74.
+[2m2023-03-18T12:09:47.625341Z[0m [32m INFO[0m Added block 4 with hash 0x02ab4d8425b4c8ddb5ee208869a86251c24808c22d0e3a8c1374c6451e4d5848.
+[2m2023-03-18T12:09:47.641691Z[0m [32m INFO[0m Added block 5 with hash 0x00dcbd2a4b597d051073f40a0329e585bb94b26d73df69f8d72798924fd097d3.
+[2m2023-03-18T12:09:47.644360Z[0m [32m INFO[0m Added block 6 with hash 0x0680d9d26db71a48cfe2bc2a4754687bfa0849b8fcc90b58294eb84ce223f899.
+[2m2023-03-18T12:09:47.651956Z[0m [32m INFO[0m Added block 7 with hash 0x0204dd82ca1f7b7a8e93db388599bfccc343adf0b15f6165e9787c74000bc28e.
+[2m2023-03-18T12:09:48.190470Z[0m [32m INFO[0m Added block 8 with hash 0x07644422a0e4974388bade973906fb2e87b5ff573f7198a788a6f9cbe68421ee.
+[2m2023-03-18T12:09:48.192305Z[0m [32m INFO[0m Added block 9 with hash 0x031e5a5851e1a492827ba33180acb98263d1ace0f46fd4000bd4216d2119d480.
+[2m2023-03-18T12:09:48.225862Z[0m [32m INFO[0m Added block 10 with hash 0x005cecfe2656599580b6e45252e3ca085e9ab63eeaf50a1b5bab618c943ed70d.
+[2m2023-03-18T12:09:49.919013Z[0m [32m INFO[0m Added block 11 with hash 0x0302ec28ee37155f79d5fbc6f60c9e75180847c5ccd804165c8c0fb652861056.
+[2m2023-03-18T12:09:50.023733Z[0m [32m INFO[0m Added block 12 with hash 0x0785b4aa83ed9ad6fadaf9a4ac445b7d05d170a5807bed2acf97ea0a934c2c14.
+[2m2023-03-18T12:09:53.458770Z[0m [32m INFO[0m Added block 13 with hash 0x014b05305c69bcfa91945cd2a1a0cd4d9e8879b96e57a1688843a0719afce7c2.
+[2m2023-03-18T12:09:53.494124Z[0m [32m INFO[0m Added block 14 with hash 0x048b2cbcd33b91c7582ff19814c31f1a236382611f17b9a46f60ee69fe914334.
+[2m2023-03-18T12:09:53.495307Z[0m [32m INFO[0m Added block 15 with hash 0x0547cee2dd0dbd8e28dcda928770f39486f16949ae8fe9184e06b5569c0267e1.
+[2m2023-03-18T12:09:53.502114Z[0m [32m INFO[0m Added block 16 with hash 0x0336be875d490365fbdba73704094a81103d7e93abe11a4b8835215a8fcef8f5.
+[2m2023-03-18T12:09:53.508021Z[0m [32m INFO[0m Added block 17 with hash 0x01fff458e61db1ca174db8a4348d5c2dee91b85bc0bc7eae231f7702580e5434.
+[2m2023-03-18T12:09:53.514006Z[0m [32m INFO[0m Added block 18 with hash 0x0355c0deb4e884c9fe3fa1f63c0879b19bb63df73d7a3202924148d6d41c377f.
+[2m2023-03-18T12:09:54.009127Z[0m [32m INFO[0m Added block 19 with hash 0x0271bdb9f3ac4ab9ca977b0446e010478fa2d07211de14f86b1a8e8296cd20bd.
+[2m2023-03-18T12:09:54.722224Z[0m [32m INFO[0m Added block 20 with hash 0x034465d42d06cfa283530474f3cad4c06997352ecf36de6dbcdd315e2340fefe.
+[2m2023-03-18T12:09:57.079533Z[0m [32m INFO[0m Added block 21 with hash 0x000d4e53f27bb9be0e506cc635a60f761f46e836008b71c3485369b1be4ad644.
+[2m2023-03-18T12:09:57.081766Z[0m [32m INFO[0m Added block 22 with hash 0x04450ebc532d3ffe7a033a28642f2a9e8791e62cde85d0d6ed74d310b2ad4779.
+[2m2023-03-18T12:09:57.090290Z[0m [32m INFO[0m Added block 23 with hash 0x042c641ee52b3475fd255e082213de807e90f0209662cbeb83cf7a2c7bca45bd.
+[2m2023-03-18T12:09:57.092149Z[0m [32m INFO[0m Added block 24 with hash 0x06a18324d73d6557b4ac5315d00c65fb73ab3d9021ff6d68813bc6250d24a012.
+[2m2023-03-18T12:10:01.735765Z[0m [32m INFO[0m Added block 25 with hash 0x006bfa7e47d88b852096be8845916e5053f4222826c20f04279b0636365c969c.
+[2m2023-03-18T12:10:01.737984Z[0m [32m INFO[0m Added block 26 with hash 0x02bfa169952cb5f4f7dddbca0614dc2c3a2e90fc0902d55e83e7f964f2e0afa3.
+[2m2023-03-18T12:10:01.739551Z[0m [32m INFO[0m Added block 27 with hash 0x06960088f345d66877815473d214c9ac4de3a955323e2fea8347bd0a26e4a55c.
+[2m2023-03-18T12:10:01.747240Z[0m [32m INFO[0m Added block 28 with hash 0x05da0bb55db0cc5f554f5bb98e9ae59797baa01e194b7cba5c7878627acb507e.
+[2m2023-03-18T12:10:01.754972Z[0m [32m INFO[0m Added block 29 with hash 0x022733d65c84f2c7de9af374e3bfcc897facb5179b713f416bb457199657d103.
+[2m2023-03-18T12:10:02.618631Z[0m [32m INFO[0m Added block 30 with hash 0x07b1e7ab86010d263cf2aac9f857cd3b1d0ead72e553b690b86b23ddf7d44485.
+[2m2023-03-18T12:10:02.627382Z[0m [32m INFO[0m Added block 31 with hash 0x00c17a232248f4ba7eb41a3dc9fe788795dbae4d3cf8a72a1f12860ebc2d3ad1.
+[2m2023-03-18T12:10:02.628727Z[0m [32m INFO[0m Added block 32 with hash 0x067a243a20bc79bea5bca493fd95a43cfbb2cf5f51d39012e9df38cab04d9447.
+[2m2023-03-18T12:10:02.792222Z[0m [32m INFO[0m Added block 33 with hash 0x034cde1d41693d2cddd255acdd404b5447048de6a024f5a3c28ee885490de80a.
+[2m2023-03-18T12:10:02.793901Z[0m [32m INFO[0m Added block 34 with hash 0x036f4425c5710a0ba217f2f9cef9d7773d765cec7ae804720a62682f70aa47b2.
+[2m2023-03-18T12:10:02.800350Z[0m [32m INFO[0m Added block 35 with hash 0x06b4c6922899d81fda6f91327bcbd4edc2b9a7106e4b4ec9e37ca346bab0864f.
+[2m2023-03-18T12:10:04.471691Z[0m [32m INFO[0m Added block 36 with hash 0x025c8604aae8e73ac40d529fefe1e4707360c0f3b0258a2f48c198389a852241.
+[2m2023-03-18T12:10:04.481090Z[0m [32m INFO[0m Added block 37 with hash 0x068e1f762d4b0ff81e5e8ef6b94d9fec87571c411ee38478798b5d97e6df073c.
+[2m2023-03-18T12:10:09.875124Z[0m [32m INFO[0m Added block 38 with hash 0x03b6581f3222ff1f79c0e9959462aef03bd464999e998292772a0c51da53f9b1.
+[2m2023-03-18T12:10:12.049134Z[0m [32m INFO[0m Added block 39 with hash 0x065c40dc12aa855fbe5090e7166a936935725ca047cfe2fc619fd8a7a6107bab.
+[2m2023-03-18T12:10:12.059159Z[0m [32m INFO[0m Added block 40 with hash 0x06305463f959f6cefc30c0bc51392c0cbb08e6380b2b361c3cd8dbcb6c8caa26.
+[2m2023-03-18T12:10:12.066193Z[0m [32m INFO[0m Added block 41 with hash 0x07819b7b6ceef1a99fb39fa8e1af232842f2933ac3693a435c4e7e749b49f42e.
+[2m2023-03-18T12:10:12.067543Z[0m [32m INFO[0m Added block 42 with hash 0x072b05682b76b7f74a95ce4a487d7283d3466d18d38ddb021bea998f6b212ea2.
+[2m2023-03-18T12:10:12.074941Z[0m [32m INFO[0m Added block 43 with hash 0x075622a6ad08a89ee67feb7517e046252f83db2df329750115f98a3140af252a.
+[2m2023-03-18T12:10:12.076117Z[0m [32m INFO[0m Added block 44 with hash 0x07496945cdde1c393b7bb8a2a7713e34fe000938aa3ae1fccbd5b1c060c576dd.
+[2m2023-03-18T12:10:12.084221Z[0m [32m INFO[0m Added block 45 with hash 0x02669e344163114e5172d0fd8988da242db56d306adfcaaf1234421aada79b8c.
+[2m2023-03-18T12:10:14.536911Z[0m [32m INFO[0m Added block 46 with hash 0x058666fd9ce442e663d00c0fe1d217914be970fa102e24e0e5bf4c466f7da8fb.
+[2m2023-03-18T12:10:15.622497Z[0m [32m INFO[0m Added block 47 with hash 0x008db316c83a8c1e4074e8d5c1a6f3e103e7c1a64042a1c4d5abf072546371fd.
+[2m2023-03-18T12:10:15.624181Z[0m [32m INFO[0m Added block 48 with hash 0x055774c4dbcc576fda2e6726c8c6039e0e4208f72d6f7787b29825c5d50bb029.
+[2m2023-03-18T12:10:22.265157Z[0m [32m INFO[0m Added block 49 with hash 0x04341d6f1d9ebe0a9d923a69e5c6fe600fc2df964d8eba06c95ac30f2fcb290b.
+[2m2023-03-18T12:10:38.413852Z[0m [32m INFO[0m Added block 50 with hash 0x0117e0cfa1e0658ca0e91521df887a9e91d0ecab833df7b76fcabdae88dffcac.
+[2m2023-03-18T12:10:38.426307Z[0m [32m INFO[0m Added block 51 with hash 0x01f63dfc01841e9b9d15437a8abbe1ed92b92161fdc1477b849785dc6b5adfff.
+[2m2023-03-18T12:10:38.428825Z[0m [32m INFO[0m Added block 52 with hash 0x0118bf216707c26056cfa66edd11e65532e7d3120da6036ce99086c980727012.
+[2m2023-03-18T12:10:38.437301Z[0m [32m INFO[0m Added block 53 with hash 0x0407ca6e5cc691a017864f58d27e2ccb19f30429ee9400d78370d783de946fef.
+[2m2023-03-18T12:10:38.459448Z[0m [32m INFO[0m Added block 54 with hash 0x01ab2ebeb5998e173ff435e7d8f73f952adc86ca0a49cb05e5dca65f4828235c.
+[2m2023-03-18T12:10:39.467138Z[0m [32m INFO[0m Added block 55 with hash 0x001dd8896092bf4f28052a3301598e8ced247593ff5c95b6b48891411bfe0605.
+[2m2023-03-18T12:10:39.497269Z[0m [32m INFO[0m Added block 56 with hash 0x02e84d605fc317f385306b22509363507f985abe1288d8a6c001f65dd24aa105.
+[2m2023-03-18T12:10:39.507781Z[0m [32m INFO[0m Added block 57 with hash 0x0454f9d1bdbdddcd8b92442d4cdfdaa2b9a0352b6f4c4ecf0f870e2d904f700e.
+[2m2023-03-18T12:10:39.516582Z[0m [32m INFO[0m Added block 58 with hash 0x076ae7e605e24ac1166cb18bc880e0a64d0254e2657749dfdd34252f0f56a3f7.
+[2m2023-03-18T12:10:39.525345Z[0m [32m INFO[0m Added block 59 with hash 0x0014d842c6e4f596bb02c138b51111ac3a0010672d32e32bfffac0bd0ce7ee1a.
+[2m2023-03-18T12:10:39.526788Z[0m [32m INFO[0m Added block 60 with hash 0x0650486b97b3d212eae78c1955645fef1856457515cce08ac1d3ac2bc035db10.
+[2m2023-03-18T12:10:39.527847Z[0m [32m INFO[0m Added block 61 with hash 0x00211c3a21f1949b81369be019355854ca79294f6d896f283365ae0ec1d1345f.
+[2m2023-03-18T12:10:40.503760Z[0m [32m INFO[0m Added block 62 with hash 0x054bcc794f4affa70563a81d3997c6b03b31488f8becc67284bae99b8231521a.
+[2m2023-03-18T12:10:40.512057Z[0m [32m INFO[0m Added block 63 with hash 0x047d1be05da556b547e05163fa6f08db05f992e3488f7777458c1baa8faf9af4.
+[2m2023-03-18T12:10:40.762083Z[0m [32m INFO[0m Added block 64 with hash 0x0023ce27a1250e70d3d3129efdfc7ad1ac6530456434a2a09c33d77bfcbd93ff.
+[2m2023-03-18T12:10:40.766085Z[0m [32m INFO[0m Added block 65 with hash 0x067678f75b5a33d12837bf1c315b2408275f3817480d142b6cf02adbb04498df.
+[2m2023-03-18T12:10:40.901418Z[0m [32m INFO[0m Added block 66 with hash 0x00f6ef2a3a1268a0d1ea5421ac83958934255e170f60b36bf7615b18efec0a97.
+[2m2023-03-18T12:10:42.074390Z[0m [32m INFO[0m Added block 67 with hash 0x05783823e04d3c8810642a5c55382b602f90faa6907f3b46187e005d31cef579.
+[2m2023-03-18T12:10:43.218830Z[0m [32m INFO[0m Added block 68 with hash 0x01c777db5d98620f2845dcbbcdcdecac717c115dd0d8208f8132ed3e9801a804.
+[2m2023-03-18T12:10:43.227066Z[0m [32m INFO[0m Added block 69 with hash 0x01358b7b75406d71321ddcf3b899ba2a48cc3961a01a51db9aaf40c2db856463.
+[2m2023-03-18T12:10:48.877017Z[0m [32m INFO[0m Added block 70 with hash 0x01c206ec8176bcf7969e9c631280d849b4393b199419a0b025143da540667549.
+[2m2023-03-18T12:10:48.886624Z[0m [32m INFO[0m Added block 71 with hash 0x00c6196e7256ad229a394f3dad92b03be341ffd098bd87542fce3a62ae2fb4c2.
+[2m2023-03-18T12:10:48.893766Z[0m [32m INFO[0m Added block 72 with hash 0x0684b619ff4c37b0a0f238168d75399fa7b63bfde0e5ec7c3939ca16afcc1016.
+[2m2023-03-18T12:10:48.901672Z[0m [32m INFO[0m Added block 73 with hash 0x0274ebffa3fb6b9686c04e0f4f2df1576c991fdc3a722f30eb50064f6c58cdb6.
+[2m2023-03-18T12:10:48.902877Z[0m [32m INFO[0m Added block 74 with hash 0x07bfde061d8ca602622cbaf264745882c7b150a131d9945ae538315f17d2cbc4.
+[2m2023-03-18T12:10:50.969236Z[0m [32m INFO[0m Added block 75 with hash 0x02c3814d181aaa15d135e684f9cf50627d4fbd7e373da4f0c151b41eae717dc1.
+[2m2023-03-18T12:10:52.148490Z[0m [32m INFO[0m Added block 76 with hash 0x020541c8c2de18f48128b7344bc69dacbfbb5c0b7f25f9b83acedf4cf9ed8870.
+[2m2023-03-18T12:10:52.156581Z[0m [32m INFO[0m Added block 77 with hash 0x04067997c22303498101f457607da238c0eada0a6b18a4e0c69db24f2942f394.
+[2m2023-03-18T12:10:52.164870Z[0m [32m INFO[0m Added block 78 with hash 0x06cb6624d35fcb1f5da71c5c9344e66182805483c62a8a947fcf4b62d70cb2ff.
+[2m2023-03-18T12:10:52.166349Z[0m [32m INFO[0m Added block 79 with hash 0x07ca2a8540b7022d3204c07fd160cd893d2f11450293524eeb111d72ee5f6938.
+[2m2023-03-18T12:10:52.172715Z[0m [32m INFO[0m Added block 80 with hash 0x07826d4735cbc035d941b6ae687c444861a73705988d7595cd28376c6c3585d1.
+[2m2023-03-18T12:10:52.174514Z[0m [32m INFO[0m Added block 81 with hash 0x0453ec78c73f3e422dc9f094d5544964fc1f1856545082fd45f97a3aced91883.
+[2m2023-03-18T12:10:52.175560Z[0m [32m INFO[0m Added block 82 with hash 0x03b2c4d2c42888220a8487ff7217029d49b616211e0f19bb62c6353588e24c54.
+[2m2023-03-18T12:10:52.181769Z[0m [32m INFO[0m Added block 83 with hash 0x07b7dfa18a97c6d269bafae524294c782281d4e6de59173a3ba44033e6896559.
+[2m2023-03-18T12:10:52.189798Z[0m [32m INFO[0m Added block 84 with hash 0x0298764dcb9f32739b3f29ef5bbc4fe5430ad96008dc04ae1570658e76f8def9.
+[2m2023-03-18T12:10:52.198194Z[0m [32m INFO[0m Added block 85 with hash 0x073456cb0479e14ed408f5b2107b66d783c72321585ef3266f9aba6c57120b38.
+[2m2023-03-18T12:10:52.200569Z[0m [32m INFO[0m Added block 86 with hash 0x07160dd1271e7d7dcc46e5916ef4e85b936c2419bf85740b61d09d7a697acd1b.
+[2m2023-03-18T12:10:52.207380Z[0m [32m INFO[0m Added block 87 with hash 0x0227c2a957376839899fe985a2041f45ed6bd8b669961ab639b68a99ba790f6f.
+[2m2023-03-18T12:10:54.047764Z[0m [32m INFO[0m Added block 88 with hash 0x0039c6a58588d3296d9b0a943108541efc73d5b27ac770b6a5e079651b41af3f.
+[2m2023-03-18T12:10:54.060510Z[0m [32m INFO[0m Added block 89 with hash 0x034459653f10274afdbeb23b737f8605264f502f85775607dc5ae8af088a7468.
+[2m2023-03-18T12:10:54.068020Z[0m [32m INFO[0m Added block 90 with hash 0x05e2832691d9f303f5b1f7197d665701b85f57f1aa0794b70e4f7ded01423aef.
+[2m2023-03-18T12:10:55.202401Z[0m [32m INFO[0m Added block 91 with hash 0x00dfe184e25f9b98013f7e0fba15fc6b5ca437b982b8e3532ed4185f5c3631b7.
+[2m2023-03-18T12:10:55.206159Z[0m [32m INFO[0m Added block 92 with hash 0x040b963e59294501b54e7be5843346189b896b0be610fc578ce507b903be14ec.
+[2m2023-03-18T12:10:57.093015Z[0m [32m INFO[0m Added block 93 with hash 0x0771122cdc7ea86b3e30ffabaf0bc4d117e558ba5a84590f5324555718aad066.
+[2m2023-03-18T12:11:00.069793Z[0m [32m INFO[0m Added block 94 with hash 0x01f50121b5776062319f560290210a05163320a057d6af28b3ff9a518be86af8.
+[2m2023-03-18T12:11:00.079984Z[0m [32m INFO[0m Added block 95 with hash 0x07b73010b2c27bac862aa7e219f7ac1979d2333eb76efaaa17cc5b8c8c1dda56.
+[2m2023-03-18T12:11:06.062464Z[0m [32m INFO[0m Added block 96 with hash 0x02200fec543039ee38536c341812637f56ad11d5d0629810218cb539ab1d341f.
+[2m2023-03-18T12:11:06.084503Z[0m [32m INFO[0m Added block 97 with hash 0x026a3289665aab482b72336e1043ba98f7be095a208b2851f364c669bdf9ffec.
+[2m2023-03-18T12:11:11.995223Z[0m [32m INFO[0m Added block 98 with hash 0x045f9f1b734669d93e1f08f7f70084de5e3784619fcbbccea93cbcf2af30c35c.
+[2m2023-03-18T12:11:13.077683Z[0m [32m INFO[0m Added block 99 with hash 0x01d3a97f8bee454679f7d14e4dd4578268294419782a6c4914a0de21e1225c57.
+[2m2023-03-18T12:11:18.080313Z[0m [32m INFO[0m Added block 100 with hash 0x04223f3e4f2d1e6c9753b04974acdf045e602ccfe784ea6d3722697bda0fc4d2.
+[2m2023-03-18T12:11:18.092441Z[0m [32m INFO[0m Added block 101 with hash 0x002ddc93a863d3a65d154c1ef969cf7acc9f932eddc715f6045d70cc4d4aaa1f.
+[2m2023-03-18T12:11:24.533579Z[0m [32m INFO[0m Added block 102 with hash 0x05e42f7fc29e6a9587d78d150bd03e2fbf4523814fa49df72a05805f0d36c2d1.
+[2m2023-03-18T12:11:24.547956Z[0m [32m INFO[0m Added block 103 with hash 0x0681dff742087ddb2b0106e6a2b297b3070cfba99210a2988ac029d72657db14.
+[2m2023-03-18T12:11:30.666661Z[0m [32m INFO[0m Added block 104 with hash 0x020217c09c4d31cd1714d8f519695f62843a0ae17ebde86e5236f46af5c547c3.
+[2m2023-03-18T12:11:30.678871Z[0m [32m INFO[0m Added block 105 with hash 0x03f29d23e0061a543340ce0f4744b53fcd329f0168a2cb4e699cc1921161aa4f.
+[2m2023-03-18T12:11:34.518299Z[0m [32m INFO[0m Added block 106 with hash 0x07ec88fa625b915e24b1a16eaba1285eeae0219805b7d3613b4c1396ad1dd481.
+[2m2023-03-18T12:11:41.081442Z[0m [32m INFO[0m Added block 107 with hash 0x038f2420b881ef19bb8dc5d4036a791422cf6342cac4afbe61b2fef61bce1689.
+[2m2023-03-18T12:11:44.160991Z[0m [32m INFO[0m Added block 108 with hash 0x05aaf48c9418a4a8c5a7c90dba1453e5c8be5fe5063356b31397395d9221c433.
+[2m2023-03-18T12:11:49.662508Z[0m [32m INFO[0m Added block 109 with hash 0x0553139fe22c6151729c246f6b6d1154f9058da7cb9a820288949bdec3ba399a.
+[2m2023-03-18T12:11:54.225168Z[0m [32m INFO[0m Added block 110 with hash 0x0067a8e0f8da477c3a771ad3c6be0f0d230a21c79713c53b36809bb7b90ba157.
+[2m2023-03-18T12:11:59.629556Z[0m [32m INFO[0m Added block 111 with hash 0x031c037fe9d3a70571d6203572b4a93c5a3cf79253e5f5e6e314a34abdb6254a.
+[2m2023-03-18T12:12:08.742902Z[0m [32m INFO[0m Added block 112 with hash 0x053d0d23e2d1c69395d307263916f20ee2458fb9e15947bb983fcee5f4c7d3f9.
+[2m2023-03-18T12:12:16.846137Z[0m [32m INFO[0m Added block 113 with hash 0x00baf54fb95e0c58198c289f323607959359f5f17304428974b68dbe151c17d2.
+[2m2023-03-18T12:12:20.383526Z[0m [32m INFO[0m Added block 114 with hash 0x03592c4cd5dacc129f0b31975780836c89b8685939198e125b728faf72eaee8e.
+[2m2023-03-18T12:12:26.366931Z[0m [32m INFO[0m Added block 115 with hash 0x06fdcd7565a1a222193eb07fdc226de9627b50605ac72d2dd9c08bb1900a0883.
+[2m2023-03-18T12:12:31.225812Z[0m [32m INFO[0m Added block 116 with hash 0x0244b5ed175c48be0bb9a38c63380f123de7d282d43d18d907017704784548bc.
+[2m2023-03-18T12:12:36.803219Z[0m [32m INFO[0m Added block 117 with hash 0x00125715ee07786d8b035b95d863c6668d28db3d65e549acc09e02f2d0815ad6.
+[2m2023-03-18T12:12:41.774626Z[0m [32m INFO[0m Added block 118 with hash 0x033b96480f786d4d60c5b7bae1938f113ce27f9d4535a430ea82e3dbe13abc4c.
+[2m2023-03-18T12:12:41.783136Z[0m [32m INFO[0m Added block 119 with hash 0x012627e1cf38c4e47fd5b436e1b9be6913d193555fb8e023e9b25eed325c9044.
+[2m2023-03-18T12:12:43.668336Z[0m [32m INFO[0m Added block 120 with hash 0x010be8bf72c16b04fe38091ca62597a49c25007f71f6e26fbce9cfcddccb110a.
+[2m2023-03-18T12:12:43.670053Z[0m [32m INFO[0m Added block 121 with hash 0x00d02eac21fade90e6fdfc316bda5924ba57469eebd1a18275d6ef8deaa19aa9.
+[2m2023-03-18T12:12:44.107646Z[0m [32m INFO[0m Added block 122 with hash 0x04021517e7dc998f20c44e1eaf25a93081dfac3e0e3774eddf388299c16342c8.
+[2m2023-03-18T12:12:44.114896Z[0m [32m INFO[0m Added block 123 with hash 0x01d997fd79d81bb4c30c78d7cb32fb8a59112eeb86347446235cead6194aed07.
+[2m2023-03-18T12:12:44.121645Z[0m [32m INFO[0m Added block 124 with hash 0x07d494c1537a05fbc9a6ea34511f7ed1c298b83c3cdc7832a25077e11fa8081a.
+[2m2023-03-18T12:12:44.129340Z[0m [32m INFO[0m Added block 125 with hash 0x06a2435da12dea3176f3f566bf4e1a1aa2c3737c54a69d020809566c1463f1df.
+[2m2023-03-18T12:12:47.033270Z[0m [32m INFO[0m Added block 126 with hash 0x03b3887ef3449922c2ace05faa39e37d98e5133f595a9fa9c377b53db75af365.
+[2m2023-03-18T12:12:47.042277Z[0m [32m INFO[0m Added block 127 with hash 0x076a9053358a76bec27fd88e41642c5c567de5139a6578ba47aa3ee329f905f8.
+[2m2023-03-18T12:12:47.050118Z[0m [32m INFO[0m Added block 128 with hash 0x04bcc8a54173a4c5793de249a0a02ef1670e7320a1f1f4b7cea9969c6d2667cf.
+[2m2023-03-18T12:12:47.057709Z[0m [32m INFO[0m Added block 129 with hash 0x067013ccff66c8675adb3d27cf0459e42449b97d51fd032e883f1825f02beed0.
+[2m2023-03-18T12:12:47.058949Z[0m [32m INFO[0m Added block 130 with hash 0x013663d37426d8b07ec3750f547a408711a41001a2ae7e159745b571e8e27ec2.
+[2m2023-03-18T12:12:47.060004Z[0m [32m INFO[0m Added block 131 with hash 0x0583012419eb246ac7e0d999e6af2fa5245f5be25c6898464b210b7de9b9a176.
+[2m2023-03-18T12:12:47.068349Z[0m [32m INFO[0m Added block 132 with hash 0x044132ad6a4feb940e9925e98a85909aefde860d7179fc232cc6a2b328b0b240.
+[2m2023-03-18T12:12:47.521711Z[0m [32m INFO[0m Added block 133 with hash 0x0053c267a1fc6edec34eddd98beacc3b87d55cf2d8e9a6e22b5fb7f27d386435.
+[2m2023-03-18T12:12:47.524666Z[0m [32m INFO[0m Added block 134 with hash 0x0681ffd060a8759386ecdab8a953c17e33083e16f5ef0a08f361a9cfaeca2214.
+[2m2023-03-18T12:12:50.131804Z[0m [32m INFO[0m Added block 135 with hash 0x030c70daf76a935b51e6851afa3b03334d551758037713e882cdfd7239f1a180.
+[2m2023-03-18T12:12:50.133587Z[0m [32m INFO[0m Added block 136 with hash 0x036da64d8d2f266e896b15274658499cbc16064b59d3943f6090b20866818f62.
+[2m2023-03-18T12:12:50.140997Z[0m [32m INFO[0m Added block 137 with hash 0x05c62f48a30d9b392ef1d0eaaa04e7b5ab3869869614bbcaaec4e5802a5d3e3f.
+[2m2023-03-18T12:12:50.147660Z[0m [32m INFO[0m Added block 138 with hash 0x03180dd03b2979e2342d16c7411a3181fc3ac0a7b3f6f5c0fdb9b78c9c30f9c2.
+[2m2023-03-18T12:12:50.149758Z[0m [32m INFO[0m Added block 139 with hash 0x02b43f0ddc26b7de0f3dcf90edf056d73191ddd8d6c586eb1dda34049ebabee3.
+[2m2023-03-18T12:12:57.785258Z[0m [32m INFO[0m Added block 140 with hash 0x02c1afe7dd29991c33d5d911bcd88ff91059949dfb19218b7035946cd24017cf.
+[2m2023-03-18T12:12:57.791930Z[0m [32m INFO[0m Added block 141 with hash 0x0742e7872321548ec7ff7d9df9e7a05045f6f19cbca044c49eb4732334c83bc4.
+[2m2023-03-18T12:12:57.798894Z[0m [32m INFO[0m Added block 142 with hash 0x02c8e218420add6151841875fcc5cbbc72183fee46eebdbf0d5591377437fde1.
+[2m2023-03-18T12:12:57.800049Z[0m [32m INFO[0m Added block 143 with hash 0x06f89f80e42eb01ae1cc2271079352d961c2ddf55be39624785c283bb9d2b941.
+[2m2023-03-18T12:12:57.807803Z[0m [32m INFO[0m Added block 144 with hash 0x02add5bc4d3efe4543f5007c85687779bae6ba1bd839e8d9b1037747e7c4ea58.
+[2m2023-03-18T12:12:57.913072Z[0m [32m INFO[0m Added block 145 with hash 0x05396835f2725a3a8606aa47aa3d7983ea60d5d333a4538ae7a7ad264d98f771.
+[2m2023-03-18T12:13:04.951786Z[0m [32m INFO[0m Added block 146 with hash 0x041ae02296ebdc99745d5d3799c38079f9f6507ecfb1258ba97e61313abf956c.
+[2m2023-03-18T12:13:04.960179Z[0m [32m INFO[0m Added block 147 with hash 0x077ca928108515f7a7770d27f37a5c1b86b84a7f74cc15bc47c2a2a320c712d4.
+[2m2023-03-18T12:13:04.972961Z[0m [32m INFO[0m Added block 148 with hash 0x0428ce1959c743f40c0bc023138fb2fb4bdc0ed8ba5af689acb2bbc491ba60d5.
+[2m2023-03-18T12:13:04.985657Z[0m [32m INFO[0m Added block 149 with hash 0x065a671a3760ddcbb30a64b5a536d231a9ae7b175daae2b0e1d6fad6fbb3a2d9.
+[2m2023-03-18T12:13:11.195769Z[0m [32m INFO[0m Added block 150 with hash 0x04078897bf308c3212fba061bd08c3e7472e434ed366646a5f462c508dabcb39.
+[2m2023-03-18T12:13:11.203678Z[0m [32m INFO[0m Added block 151 with hash 0x06e3a12ac95c1e12aff3b7b1e653c20c5fdb2151386bb7e717e24bacef8880db.
+[2m2023-03-18T12:13:11.205065Z[0m [32m INFO[0m Added block 152 with hash 0x07a5d7ba09765ddbca7a514f3a61abd20269b107627ef9221b032c3612a47191.
+[2m2023-03-18T12:13:11.206241Z[0m [32m INFO[0m Added block 153 with hash 0x06a168e88792525ab5fee156ad7d65cf0cee60d4ec8ee004b5b9ad1ccc5708c7.
+[2m2023-03-18T12:13:11.213581Z[0m [32m INFO[0m Added block 154 with hash 0x06ee272956d9771e8431461c721ae6231e5307510cbbe696bf9af6d3e1106395.
+[2m2023-03-18T12:13:11.220307Z[0m [32m INFO[0m Added block 155 with hash 0x06c794a2dc8438ff8d17bc4dea2696160c548509679fb924fc57019c3ab80037.
+[2m2023-03-18T12:13:11.228127Z[0m [32m INFO[0m Added block 156 with hash 0x018bd9f07587f25c997edaa14e9a9e9fbb6b1c52548e5c131a3b11b6ffbc25b5.
+[2m2023-03-18T12:13:11.235184Z[0m [32m INFO[0m Added block 157 with hash 0x0717de0fcd78cb1863135464cf1e371132091b8349c0a410c5833c83469deb93.
+[2m2023-03-18T12:13:11.236456Z[0m [32m INFO[0m Added block 158 with hash 0x02cec9c9873dff4956cebc9c17c7aab099037edb2f91f9f3d1d4e7ca1e5848d2.
+[2m2023-03-18T12:13:11.248003Z[0m [32m INFO[0m Added block 159 with hash 0x038414bd6eb6cc7f0d368a26ea20ecc81dbb40a50041f2fc9b9435571594a745.
+[2m2023-03-18T12:13:11.249916Z[0m [32m INFO[0m Added block 160 with hash 0x044ee974068068cb8d0e00e6d7f4c6722187e353a292281c7c053a02e842b4be.
+[2m2023-03-18T12:13:11.251152Z[0m [32m INFO[0m Added block 161 with hash 0x03491782e02aafa4d73db06a63a857bb087e89e094a7a63dc04a467c43dd995b.
+[2m2023-03-18T12:13:11.252880Z[0m [32m INFO[0m Added block 162 with hash 0x00c1b8c6849fa7ae04441fac2eb9733e1404da83a6412601e4425941fad2b259.
+[2m2023-03-18T12:13:12.648444Z[0m [32m INFO[0m Added block 163 with hash 0x0708b9c4ea5e000000580caa14b22d9a7fd458a740867cd891d03552cd9f26d3.
+[2m2023-03-18T12:13:12.650296Z[0m [32m INFO[0m Added block 164 with hash 0x006315ce2495906ca9208a4c420ed540139a0595c57e7150e8f4731aadb75307.
+[2m2023-03-18T12:13:12.656924Z[0m [32m INFO[0m Added block 165 with hash 0x01367d070c6649195dfc8a73672a515fb95c940fe96d8442c3c659339acb6697.
+[2m2023-03-18T12:13:12.664333Z[0m [32m INFO[0m Added block 166 with hash 0x00c26c78bdf99b822f85852127b75c37e6a161e14baeeb52f4f84c82d3e66a9e.
+[2m2023-03-18T12:13:12.666140Z[0m [32m INFO[0m Added block 167 with hash 0x061f8e1aa7b5c775e517754930df9de03fd4dae69aad116f9a42173d079edbac.
+[2m2023-03-18T12:13:14.570394Z[0m [32m INFO[0m Added block 168 with hash 0x01de868c2ddd00800a3bd7ab6b23e1cf5b7b28678af8e460a298e6ff5e4a127b.
+[2m2023-03-18T12:13:14.578360Z[0m [32m INFO[0m Added block 169 with hash 0x060f15f9dc3e0dda528ca681e9509ba7d589108ac86c6c6e5455ac46ee4593c5.
+[2m2023-03-18T12:13:17.583611Z[0m [32m INFO[0m Added block 170 with hash 0x01196c067cfb21c3890a9219e0595fd8a6740f389ee46b3bc575826d6f488d61.
+[2m2023-03-18T12:13:17.585274Z[0m [32m INFO[0m Added block 171 with hash 0x03c152ba5b3cc19d26119f9bf5003e3aa1ea91adeab5345b83c5baa6b375500c.
+[2m2023-03-18T12:13:20.505713Z[0m [32m INFO[0m Added block 172 with hash 0x0349497d4ef3272907aeb358c139491a68f69c3ca524d537b547ce5408e6291c.
+[2m2023-03-18T12:13:20.512997Z[0m [32m INFO[0m Added block 173 with hash 0x03c970747ac4487d4a8ee7226107787e0552188aec0e9b42306d1651e4e8bde4.
+[2m2023-03-18T12:13:20.521068Z[0m [32m INFO[0m Added block 174 with hash 0x06d06a276d08a468ead585ecabbb34ad590c2d9346dbd741d8ec0beffde83b1f.
+[2m2023-03-18T12:13:20.886078Z[0m [32m INFO[0m Added block 175 with hash 0x04be071f78afb51c123e71e41ae4e5dd44c353616d494f69be2fb5bf2e8b75b5.
+[2m2023-03-18T12:13:26.391198Z[0m [32m INFO[0m Added block 176 with hash 0x04ac3867c5e5d607e130a638d9eff6388e0df74fe0c9869696acdaf2c6919a8a.
+[2m2023-03-18T12:13:26.400428Z[0m [32m INFO[0m Added block 177 with hash 0x00040b0f9945cf22f44c1fe9335c2fce0b9019bb4b8409901219c44e6bda4fcc.
+[2m2023-03-18T12:13:26.408290Z[0m [32m INFO[0m Added block 178 with hash 0x02128cf9bb968b19eafc315ba5935fa1690907b7cd1824aa464155f8710c6b1d.
+[2m2023-03-18T12:13:26.409769Z[0m [32m INFO[0m Added block 179 with hash 0x0296c64395670e9182151695e05bb868afe7d5bfc197710092d9d904f5ae094f.
+[2m2023-03-18T12:13:26.418885Z[0m [32m INFO[0m Added block 180 with hash 0x0705df6b5da8650d892283dc27386d7e08d9ca6bd95267c2856ffdbe1aa2feb8.
+[2m2023-03-18T12:13:26.420143Z[0m [32m INFO[0m Added block 181 with hash 0x0733f039c101cebf5bafc1cae4f2184141df13a528a17b4bb33d00de625048da.
+[2m2023-03-18T12:13:26.428426Z[0m [32m INFO[0m Added block 182 with hash 0x056906c86e02441602da0d35163318aa06e0b272dc8f351e7ba2139a8662bb94.
+[2m2023-03-18T12:13:28.218796Z[0m [32m INFO[0m Added block 183 with hash 0x0274bc008cd1416bafa6a559554e099ef4d6e5ebab6467dd7e0bdc939a01eeb5.
+[2m2023-03-18T12:13:28.552900Z[0m [32m INFO[0m Added block 184 with hash 0x069e3d6efb308a9a97d80fab52f7773284a48d61c87b4322b8c203876f951e49.
+[2m2023-03-18T12:13:28.565399Z[0m [32m INFO[0m Added block 185 with hash 0x053f9150e644d303cf88c8ec731500573dc02e7b2978b02e009ccf4dcf605586.
+[2m2023-03-18T12:13:28.567489Z[0m [32m INFO[0m Added block 186 with hash 0x02490ce9a4695ad655ab5f96ebd19c379409c675213eee522075fda756601243.
+[2m2023-03-18T12:13:32.116756Z[0m [32m INFO[0m Added block 187 with hash 0x04d9826eed549c000efac8a025aa385e215dcaff98b07648762b2723ec47ff05.
+[2m2023-03-18T12:13:34.379533Z[0m [32m INFO[0m Added block 188 with hash 0x06cebda1b6897c5bcb47d34d34d1f1a1ea2101c603566fe016560601c752ffd7.
+[2m2023-03-18T12:13:34.380676Z[0m [32m INFO[0m Added block 189 with hash 0x0046a7adf2037eb17b47628ab53aa7a027b7c71e8ed9491d098bcc313a37c0b5.
+[2m2023-03-18T12:13:34.387480Z[0m [32m INFO[0m Added block 190 with hash 0x07f761af71d64657fd3ac9acee6fe2b6162ec73aa773c4e0948f2ee36bb360d0.
+[2m2023-03-18T12:13:34.400992Z[0m [32m INFO[0m Added block 191 with hash 0x016b00cd0ed871bccdfed41fac05ef64c025f6df61a8369d62db777bc0872f62.
+[2m2023-03-18T12:13:38.560394Z[0m [32m INFO[0m Added block 192 with hash 0x027d1e625a4293d2ed162eb2a1ad031cf71eaa2bab3a3d10fe9bddc51b877ccd.
+[2m2023-03-18T12:13:38.570855Z[0m [32m INFO[0m Added block 193 with hash 0x0321bd4d42adf7f7791808407dac14119319871ad4db7bd5b09e2edfce483971.
+[2m2023-03-18T12:13:38.578827Z[0m [32m INFO[0m Added block 194 with hash 0x03a83d51664a35f30db78b40ab8765dba9fef04f0542d82f16115a53d3385e7c.
+[2m2023-03-18T12:13:38.591080Z[0m [32m INFO[0m Added block 195 with hash 0x01a5816f11aae6aefbf3999097c1e9e4e537bab3b243623dfdf8ea61d6e4023b.
+[2m2023-03-18T12:13:42.731898Z[0m [32m INFO[0m Added block 196 with hash 0x06ec1e858e3be6f7316c36a26bba7de7db13292ed7893ced74771bfae7776bec.
+[2m2023-03-18T12:13:42.744850Z[0m [32m INFO[0m Added block 197 with hash 0x0038edccec30a5339a9be7d164df189607bf1af7c5246512dd7cb0f075564b11.
+[2m2023-03-18T12:13:53.116313Z[0m [32m INFO[0m Added block 198 with hash 0x035442375a37fe19361bf6a1eaa3bb1adaca288c2d61389d7731fb95982d546c.
+[2m2023-03-18T12:13:53.453517Z[0m [32m INFO[0m Added block 199 with hash 0x05977880363d522779418c1790fd23d51e093a005f24e80b7ecfc4ff985ab9cd.
+[2m2023-03-18T12:13:53.454586Z[0m [32m INFO[0m Added block 200 with hash 0x04e9d705d6b47d8e4ddbb401216b2755f1e6983e241d9968f91084e0a4a02854.
+[2m2023-03-18T12:13:53.455566Z[0m [32m INFO[0m Added block 201 with hash 0x06124a28dc9b852da9836b52663f10f7e85c2fd323a9db94ce3b86f30837fd15.
+[2m2023-03-18T12:13:55.466073Z[0m [32m INFO[0m Added block 202 with hash 0x069c08e804fb89fd8da1c45be16cdc48b49b0ffa6bbe506dfc0d2e5f03d3affe.
+[2m2023-03-18T12:13:55.473358Z[0m [32m INFO[0m Added block 203 with hash 0x03e1bbc8a6eed350d46593c9e6ed32b420823c2aa8e99238587a2be421028665.
+[2m2023-03-18T12:13:55.482734Z[0m [32m INFO[0m Added block 204 with hash 0x0290aa529a5e84590d2d1c1d60419d45b4df26270a2a3602659efbf410571873.
+[2m2023-03-18T12:14:05.288977Z[0m [32m INFO[0m Added block 205 with hash 0x0132f96afec156df6e55ae0c10caa2bc82b8c6976c7f4aab89213ebf916ec90c.
+[2m2023-03-18T12:14:06.141972Z[0m [32m INFO[0m Added block 206 with hash 0x069bdddda94658157c7e63b75a1081b593d15f8219f55ab0cf08743dfa5533d1.
+[2m2023-03-18T12:14:06.948020Z[0m [32m INFO[0m Added block 207 with hash 0x024c425d080db69b086cf9e5e52b03d58e0be66a2ccd6c2078ae67343967eb04.
+[2m2023-03-18T12:14:06.954878Z[0m [32m INFO[0m Added block 208 with hash 0x030240146d9932bf6e9906db4819dff255d5968b418fed85450ecff0420ed48f.
+[2m2023-03-18T12:14:06.962382Z[0m [32m INFO[0m Added block 209 with hash 0x03f71d2ab1ad41f4e96c251fe1f23c21edc75e8d4f45eb5a8258c86d73d23bb0.
+[2m2023-03-18T12:14:06.969378Z[0m [32m INFO[0m Added block 210 with hash 0x004d9bf604d71181346ed65cb6cde087de0e2d8affe3c62539c46ea9b8ffeecc.
+[2m2023-03-18T12:14:06.970447Z[0m [32m INFO[0m Added block 211 with hash 0x0169948b3c79905e6fe52f50a31d646da58b5157edb9669a80e73ab2bd5c84c6.
+[2m2023-03-18T12:14:06.971668Z[0m [32m INFO[0m Added block 212 with hash 0x0528fa11f2dd0c520d44f769e1de25a3308881fe49238fab1bca1eb1c58a6fb1.
+[2m2023-03-18T12:14:06.977694Z[0m [32m INFO[0m Added block 213 with hash 0x01b63f30b5393c2be4219f9940c067705718a39a029d8a7609cb8c3f99ed89bd.
+[2m2023-03-18T12:14:06.984956Z[0m [32m INFO[0m Added block 214 with hash 0x025ac27585c3d65b2ef2ab0075562ea59085f1f997635cfbb5125468d1469441.
+[2m2023-03-18T12:14:06.991734Z[0m [32m INFO[0m Added block 215 with hash 0x0243f82164b0296b46ca0c6574b7b157c4575d68da909b623263da3e857496ca.
+[2m2023-03-18T12:14:06.992875Z[0m [32m INFO[0m Added block 216 with hash 0x0649cb93983c34875ed7e8d5f6ce0294f83ccc4f4bf2b0284d2238e51a66973d.
+[2m2023-03-18T12:14:06.994080Z[0m [32m INFO[0m Added block 217 with hash 0x00325a488ea0f8f19033a068236f7be85f6407898cf86b8453d9b7e58dac2b93.
+[2m2023-03-18T12:14:06.995184Z[0m [32m INFO[0m Added block 218 with hash 0x035b6ffb30f8e1c795cfd28cbb12bf9fa1a6a2a02cfc7dafed11f2cf6bb5064c.
+[2m2023-03-18T12:14:07.900859Z[0m [32m INFO[0m Added block 219 with hash 0x00026dff189e8c1a4d572ca8a4495b6d6780bbe7fad6bdef0116d76100747acd.
+[2m2023-03-18T12:14:09.772926Z[0m [32m INFO[0m Added block 220 with hash 0x0262097c300b3f6161c2dd08c0953e1fb51a3ba15ffc68187c3fcae9efed9604.
+[2m2023-03-18T12:14:09.775298Z[0m [32m INFO[0m Added block 221 with hash 0x0679ec631ddb6769314caedb9e8276991dd39a7aa2a0883a80592d67e42a623c.
+[2m2023-03-18T12:14:10.242822Z[0m [32m INFO[0m Added block 222 with hash 0x01806d32fdd2737995fcd8ac193b003e8f266122f7935f19888ad72d6a91ccf4.
+[2m2023-03-18T12:14:10.249578Z[0m [32m INFO[0m Added block 223 with hash 0x03d6257a6ef8241475efece084354013d794e54ff54a37b65123f508d74b6087.
+[2m2023-03-18T12:14:12.474419Z[0m [32m INFO[0m Added block 224 with hash 0x02be2a301f298aa92b30ef0cb635f1ecd53801dd4f41621c57f6e13b035fd9c1.
+[2m2023-03-18T12:14:12.482208Z[0m [32m INFO[0m Added block 225 with hash 0x06b8c738be99ba5a09198ddadfb3f56a8bed388aae880055efc619f4be231c1a.
+[2m2023-03-18T12:14:12.489495Z[0m [32m INFO[0m Added block 226 with hash 0x04d0b8ec59db05b83f420710d73c033410d34d5852b5f5910a301c39caf242ca.
+[2m2023-03-18T12:14:12.490603Z[0m [32m INFO[0m Added block 227 with hash 0x050b5ff0bb9d8dd3493467e3dd9a178dee83a70cf45545bd0f7aa6450060c68d.
+[2m2023-03-18T12:14:14.038115Z[0m [32m INFO[0m Added block 228 with hash 0x06393813b802e296dc5aefbf9896aa934250d768524f428eca461bbb1ede8087.
+[2m2023-03-18T12:14:17.980417Z[0m [32m INFO[0m Added block 229 with hash 0x07224078446d98f196b80cac3d2df135dc4d33b16430ff6c79e0ad4a4f7a51ff.
+[2m2023-03-18T12:14:17.993952Z[0m [32m INFO[0m Added block 230 with hash 0x05de8bb2b32a02695cdf6bf90d65c30f80b3426a995245053b79206141bdb436.
+[2m2023-03-18T12:14:17.999993Z[0m [32m INFO[0m Added block 231 with hash 0x04d7de4d783f11b2c117d2cd894742227d1a81b51bb47a5b7f84fd87728b0218.
+[2m2023-03-18T12:14:18.007429Z[0m [32m INFO[0m Added block 232 with hash 0x0300f5022e79697678aa4ec809bfac1eda1b2991cc0d144934874a5b1bd68bb3.
+[2m2023-03-18T12:14:18.015898Z[0m [32m INFO[0m Added block 233 with hash 0x0761eaef5c475be771ce0a4a26c343149af009b9a2ab669ceeb73a744e00755d.
+[2m2023-03-18T12:14:22.670110Z[0m [32m INFO[0m Added block 234 with hash 0x02ac2dcc19ebed085b6fa28da0d88319ab62b89b2f079db81fb00121b039924f.
+[2m2023-03-18T12:14:22.677941Z[0m [32m INFO[0m Added block 235 with hash 0x03761edcb7e211a097752faa7cce199804c7b7029384b8cc843b0f9459cf2e53.
+[2m2023-03-18T12:14:22.686067Z[0m [32m INFO[0m Added block 236 with hash 0x073ee53485e9ee18a1212ada8da597ce2edcd909b3a5803a34a5eeb13767c6d3.
+[2m2023-03-18T12:14:22.693344Z[0m [32m INFO[0m Added block 237 with hash 0x00a53ebc1f268548027945944858a6e4fc39c087ac938f079391364f7eddc36a.
+[2m2023-03-18T12:14:22.705408Z[0m [32m INFO[0m Added block 238 with hash 0x07ebac3662e7ff3a1c12556dcf9431d61c7c0737c7a47f00c6366f2c505aefc4.
+[2m2023-03-18T12:14:22.713596Z[0m [32m INFO[0m Added block 239 with hash 0x06bb97db83f388bae9dfbf4330456747563b8c079dfb45f60cd6053fb80d16d6.
+[2m2023-03-18T12:14:22.714881Z[0m [32m INFO[0m Added block 240 with hash 0x017294dba50db6a7f71ff8b8d3c48c8bf052fe7ed5a796e073a11a466e4d3be6.
+[2m2023-03-18T12:14:26.148978Z[0m [32m INFO[0m Added block 241 with hash 0x06da8c7713a2946f259b30ee6b0cbc4d4d2c212b295f04961668ea39db52f49e.
+[2m2023-03-18T12:14:26.151420Z[0m [32m INFO[0m Added block 242 with hash 0x00dbbe28a134f68a3f117cd6bf504016d8e134aa02b384c7d313f51665155f1d.
+[2m2023-03-18T12:14:26.152941Z[0m [32m INFO[0m Added block 243 with hash 0x064eaa2bc69418c51220e99eaba05cc825f226ff046d566d2a6d3cc967821063.
+[2m2023-03-18T12:14:26.166458Z[0m [32m INFO[0m Added block 244 with hash 0x0295ad31545099f8696fb54d3a618ecc497611e9800a09d7b4a4f34e04a5ecc0.
+[2m2023-03-18T12:14:26.167855Z[0m [32m INFO[0m Added block 245 with hash 0x07d12cfd9358af61069254ebfdc98cebc80480061104d0a43a8dfa8c7a950f76.
+[2m2023-03-18T12:14:26.173962Z[0m [32m INFO[0m Added block 246 with hash 0x049c2dfd47a1fc935ab29afa63b371e5e2ec4844422535cda927d747dce01dd9.
+[2m2023-03-18T12:14:30.055885Z[0m [32m INFO[0m Added block 247 with hash 0x00eb25d0d3c2458a1de306e37c52b4ba481ef32310bf479d5b4023b4ba999cb6.
+[2m2023-03-18T12:14:30.062823Z[0m [32m INFO[0m Added block 248 with hash 0x05eafc29a1997e1e11548275b9efecdc4498d20f1d1de212af387348b7245ff4.
+[2m2023-03-18T12:14:30.078842Z[0m [32m INFO[0m Added block 249 with hash 0x03c02b94d5326616aaa283d2ae340525359a78611c4963c58df5cb3118cb429c.
+[2m2023-03-18T12:14:30.080058Z[0m [32m INFO[0m Added block 250 with hash 0x020e0d813e9e90cdc6269e1cd3611fbb3083e825693f1af4c92f9f40857c32a3.
+[2m2023-03-18T12:14:34.349814Z[0m [32m INFO[0m Added block 251 with hash 0x04046b3eaf72de7008541831b19401dff6730265b7b5e554cd14586767a0705d.
+[2m2023-03-18T12:14:38.565031Z[0m [32m INFO[0m Added block 252 with hash 0x0311da9594f41ea73b0ace9bfffbe8bcdc27f0826cfaf5ecdbec8368b96279f1.
+[2m2023-03-18T12:14:57.268067Z[0m [32m INFO[0m Added block 253 with hash 0x029815df0ddd2554f0cbc96bd337d364a7f6064156818ece965c5cb9b5929ba6.
+[2m2023-03-18T12:15:24.242876Z[0m [32m INFO[0m Added block 254 with hash 0x05e92bdd1ed2a0aa1d16b4333876423a29df19b139f1795506a2e184142a8a7d.
+[2m2023-03-18T12:15:59.573360Z[0m [32m INFO[0m Added block 255 with hash 0x02485616c10d8336607e541fce93f1427c7aa9cff9a41226dbb0f2a0a47cee00.
+[2m2023-03-18T12:16:23.011853Z[0m [32m INFO[0m Added block 256 with hash 0x015b67a1cf38410e365427d661407f1ef3574fd7a50ad1ff1693d9ddfff86d7b.
+[2m2023-03-18T12:16:49.358045Z[0m [32m INFO[0m Added block 257 with hash 0x05610d350d73ac251b06982f315c5a70993a51ed29bc087a11fe15fa7d2e12ef.
+[2m2023-03-18T12:17:25.937746Z[0m [32m INFO[0m Added block 258 with hash 0x0699494579c3b197bc4de58ccf34ad7751e96981d2fbd2a2e77daf5d470f8c27.
+[2m2023-03-18T12:17:39.856911Z[0m [32m INFO[0m Added block 259 with hash 0x012831323daed97ee220da33575c1e9d051b8531a909af9e78637e79edefc280.
+[2m2023-03-18T12:17:49.890418Z[0m [32m INFO[0m Added block 260 with hash 0x0468c5496e8b7a194ef8e51ccafc457d2aa6aca1c04a91d52881e4aad7f72400.
+[2m2023-03-18T12:17:59.651066Z[0m [32m INFO[0m Added block 261 with hash 0x043e2d39f483e233724fd508cde703b218c3b016590ae2091cc928cacc418483.
+[2m2023-03-18T12:18:05.039006Z[0m [32m INFO[0m Added block 262 with hash 0x03e0b0b0233ac62f388efc67f1874ae9cb8832e3d26c86c9cb22c45134ca578f.
+[2m2023-03-18T12:18:25.486390Z[0m [32m INFO[0m Added block 263 with hash 0x01fc1dee57a9dc6713e91512a2dbe9dd3218333a9015c43e908f978eabef1295.
+[2m2023-03-18T12:18:57.677251Z[0m [32m INFO[0m Added block 264 with hash 0x04e58b51a991de90605cdcf7cf8ea018ed7e8c46467280b0a1d79207ac68c449.
+[2m2023-03-18T12:19:23.763667Z[0m [32m INFO[0m Added block 265 with hash 0x02ea6aad370108f1d349607c6de26c3da1fa2f7926b60b6be83f696f86d8d1a3.
+[2m2023-03-18T12:19:42.913157Z[0m [32m INFO[0m Added block 266 with hash 0x036e669d4f8ee87ed706a26c6552f7b8427c97cfb6e791168977fec001648c9f.
+[2m2023-03-18T12:19:52.971127Z[0m [32m INFO[0m Added block 267 with hash 0x05106cab1fda7fa376609e7439cace1e8f6acc30652c243e9e711542a0882e66.
+[2m2023-03-18T12:20:02.878041Z[0m [32m INFO[0m Added block 268 with hash 0x07007052d27291bc30391f935d91dd496fbfe19ce787a0e9f230bd43af4eafdf.
+[2m2023-03-18T12:20:15.200870Z[0m [32m INFO[0m Added block 269 with hash 0x075020d587ccc67e784d068130a9ea534a90184aa22eb13c64cabf1be128cdc9.
+[2m2023-03-18T12:20:21.889117Z[0m [32m INFO[0m Added block 270 with hash 0x05e8070ae14e9cbe65fef07e7b73c419b0b406010b0fc5320849ab1533ec75f7.
+[2m2023-03-18T12:20:25.707392Z[0m [32m INFO[0m Added block 271 with hash 0x006976133ac331b936ec2ea83e01ad2940108a935859f8b18fef6a7b42b2e75d.
+[2m2023-03-18T12:20:30.658834Z[0m [32m INFO[0m Added block 272 with hash 0x040afb86bd00e92c2d783713fa64c0c157dc2e855cf581840ac16ebdc5605c77.
+[2m2023-03-18T12:20:33.530792Z[0m [32m INFO[0m Added block 273 with hash 0x011d262c89cfcc8feb7d20264421372cec9dec22e578aaf01e91a6943ab63954.
+[2m2023-03-18T12:20:40.979975Z[0m [32m INFO[0m Added block 274 with hash 0x05967f8f8491e22be2d977ea9506b4e41e0339686391e456f93d6496edc580eb.
+[2m2023-03-18T12:20:56.090128Z[0m [32m INFO[0m Added block 275 with hash 0x07213936127ef60ebc1d2e2ebd730a6a3697e2c7e3ffd000dde3377d92480383.
+[2m2023-03-18T12:21:17.040087Z[0m [32m INFO[0m Added block 276 with hash 0x02fb260475334b5858e967bfde694dbcc2fe03f12741c6a6229149a0df1cabce.
+[2m2023-03-18T12:21:22.674309Z[0m [32m INFO[0m Added block 277 with hash 0x059827b6e11d1f4ee1c8fb10c572e60129c12bd0016cc74e42a249a2a7a7476c.
+[2m2023-03-18T12:21:35.400432Z[0m [32m INFO[0m Added block 278 with hash 0x050a1b67fc24ee2c4f98e54f7260d45fc2a6215c6e889026b9ce43037ef6b702.
+[2m2023-03-18T12:21:43.805787Z[0m [32m INFO[0m Added block 279 with hash 0x06aeb2f122389ce0656c483973d5d5d8eb19a2e4aa360833e6fa43331ffda910.
+[2m2023-03-18T12:21:59.845849Z[0m [32m INFO[0m Added block 280 with hash 0x035e6458194ee5c920f330743fcb7ee6596aec41c0fb5994e78cb21b6b526ce8.
+[2m2023-03-18T12:22:07.873362Z[0m [32m INFO[0m Added block 281 with hash 0x03939702a838a91bae3d37af9882e2f41806ad4b4dd89247cc92341340fae3a0.
+[2m2023-03-18T12:22:07.891255Z[0m [32m INFO[0m Added block 282 with hash 0x04846fbbb4ad6e82b6725216d48b5bed4998524d5d3793ba55d408b884532f3a.
+[2m2023-03-18T12:22:10.759658Z[0m [32m INFO[0m Added block 283 with hash 0x07ec356cc39f51d1e761d4563ed485447e28ba24920d06caafd63e074cac19e3.
+[2m2023-03-18T12:22:11.149508Z[0m [32m INFO[0m Added block 284 with hash 0x01e1b98f9fbb0008a1371e7b1fa84b5ec0e355549173d60454c2b16973d707ea.
+[2m2023-03-18T12:22:16.198846Z[0m [32m INFO[0m Added block 285 with hash 0x043f93b38d246562081ddb6eb9362f7bce9fce3e25773c7e50a638c2f3765eb0.
+[2m2023-03-18T12:22:20.918948Z[0m [32m INFO[0m Added block 286 with hash 0x06e8e12188ef8945d4a7462236f82dae1d9390afacaa7aa05504d3d670c7e1fc.
+[2m2023-03-18T12:22:30.405598Z[0m [32m INFO[0m Added block 287 with hash 0x05e4629e9d43e6409fb35f62f91a9a5b58dad0d1de7977cedfc8552c02a61860.
+[2m2023-03-18T12:22:35.930511Z[0m [32m INFO[0m Added block 288 with hash 0x0700d8b23eb1ecd980bfb654b25716ad5219108c848812c41378422d0ea5a6c4.
+[2m2023-03-18T12:22:41.448015Z[0m [32m INFO[0m Added block 289 with hash 0x024dbf5ac500248776b69f2a5e03c7c78fc6bf0b98228c04c9caa097ba7b391e.
+[2m2023-03-18T12:22:45.831578Z[0m [32m INFO[0m Added block 290 with hash 0x05b312b1d67369814f9044973b42cf436cc781dd349e47f291067a7b83234c67.
+[2m2023-03-18T12:22:50.720501Z[0m [32m INFO[0m Added block 291 with hash 0x0680424a7d164354ae30fa9d27a724b7d6f59229c99d4b16d4ad212b168ab662.
+[2m2023-03-18T12:23:03.437119Z[0m [32m INFO[0m Added block 292 with hash 0x01aae1b855af62c9859cd705c09cce166f2e81c443fc506aefde5f8d2007c5b1.
+[2m2023-03-18T12:23:03.461653Z[0m [32m INFO[0m Added block 293 with hash 0x01ad967604278c85fe2cf93de4f04eb80e968ef9448c51058e298553cf13b3ff.
+[2m2023-03-18T12:23:09.501693Z[0m [32m INFO[0m Added block 294 with hash 0x07eb4fdf9857144ddf2bee073afde90a63cbea8ebbc7ce3b791b7c17acf9a4fb.
+[2m2023-03-18T12:23:09.520156Z[0m [32m INFO[0m Added block 295 with hash 0x00633656c64d201ef3c8b9188d0d75569e3ed2d98ff9d01b1a3782713623df81.
+[2m2023-03-18T12:23:12.489484Z[0m [32m INFO[0m Added block 296 with hash 0x07b0e32bdd6127e699c6e9065372d2a4d5aa3376d0b23d6a1df3ce10c41c9d07.
+[2m2023-03-18T12:23:15.102023Z[0m [32m INFO[0m Added block 297 with hash 0x0520e61983d3f78d1d0bc63008b50d4f70316d3101e70cb86d15804052205fa5.
+[2m2023-03-18T12:23:22.164788Z[0m [32m INFO[0m Added block 298 with hash 0x01afc4750315d794ad6aa1b73d202e0e646f9a2a9cc873c78c6cf0c6268283ee.
+[2m2023-03-18T12:23:29.605013Z[0m [32m INFO[0m Added block 299 with hash 0x069890194cc5167b40ce67ff828056dd0a2bf792c2eced577362052af7039d4a.
+[2m2023-03-18T12:23:39.426331Z[0m [32m INFO[0m Added block 300 with hash 0x065f2adbd7bce1726191ce8985fab57b74ccb2d23e3d35b67aea254b305dcb55.
+[2m2023-03-18T12:23:47.510076Z[0m [32m INFO[0m Added block 301 with hash 0x02fe12f424ab759c0169314ee7f2b4575ccde4b2c90c9c59b0015c6823baade0.
+[2m2023-03-18T12:24:00.400008Z[0m [32m INFO[0m Added block 302 with hash 0x04dcfc490a893ca3ba5974a06edd09cd847ce4de4b74094d29c0e6852fbe1316.
+[2m2023-03-18T12:24:05.080975Z[0m [32m INFO[0m Added block 303 with hash 0x010886a220122849fd0a66bba98041fa73712d42d8267f4d62b77f1e4334dc72.
+[2m2023-03-18T12:24:08.566511Z[0m [32m INFO[0m Added block 304 with hash 0x0560003abad2d19caf484ff708c3d8f3c14bf05ac072025380dafed9530ce962.
+[2m2023-03-18T12:24:08.577697Z[0m [32m INFO[0m Added block 305 with hash 0x024d26bff03fb56bc05014f96e8ed4882f1956236734511a45e98b869d11727a.
+[2m2023-03-18T12:24:11.857631Z[0m [32m INFO[0m Added block 306 with hash 0x01a4561941bd357f5ea2913e69fb4c690dfe674d30a70f26aef4239709093a73.
+[2m2023-03-18T12:24:11.871211Z[0m [32m INFO[0m Added block 307 with hash 0x03281bcc8912280d4ee7ff083a45452ecc07d12e1bce6c04b5a21df86bd7c4e9.
+[2m2023-03-18T12:24:15.909511Z[0m [32m INFO[0m Added block 308 with hash 0x01130d52bf71dc567ab2626f503d7a0cee2c33d331a8fb4ada82b2bf33a46fbc.
+    Finished release [optimized] target(s) in 0.12s
+     Running `target/release/papyrus_node`
+[2m2023-03-18T12:25:55.059918Z[0m [32m INFO[0m Booting up.
+[2m2023-03-18T12:25:55.060611Z[0m [32m INFO[0m Gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8080
+[2m2023-03-18T12:25:55.060648Z[0m [32m INFO[0m Monitoring gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8081
+[2m2023-03-18T12:25:55.096041Z[0m [32m INFO[0m State sync started.
+[2m2023-03-18T12:26:01.322788Z[0m [32m INFO[0m Added block 309 with hash 0x054420961dc55b96b554a89408e36952e9b1c081b5c7de9eaed610feaadb5bb0.
+[2m2023-03-18T12:26:04.789462Z[0m [32m INFO[0m Added block 310 with hash 0x003bec637314646f8fb4e4e7358ca7c99adae415ddd9a82834074ff91d955162.
+[2m2023-03-18T12:26:05.534320Z[0m [32m INFO[0m Added block 311 with hash 0x031a30a073acbbab3524b8b880f52266b1d0a026cd25dce3af825661f59b18d3.
+[2m2023-03-18T12:26:09.491819Z[0m [32m INFO[0m Added block 312 with hash 0x00c222fe312d8f3eaeb42b983f8dd1215f0acec15575a5d8c8b42cabe5f5cf71.
+[2m2023-03-18T12:26:13.305512Z[0m [32m INFO[0m Added block 313 with hash 0x0150ae37d55a1fab5fdfb0c8c962b2c58ef2ec2c11a992e712b33508c67a4356.
+[2m2023-03-18T12:26:13.320483Z[0m [32m INFO[0m Added block 314 with hash 0x03d8d8bb5716cd3f16e54e3a6ff1a50542461d9022e5f4dec7a4b064041ab8d7.
+[2m2023-03-18T12:26:18.574386Z[0m [32m INFO[0m Added block 315 with hash 0x06627c194027d663298351a9b32ed922c5166d27dda88b4729f7875551af761e.
+[2m2023-03-18T12:26:28.136430Z[0m [32m INFO[0m Added block 316 with hash 0x06c9164555ec1ac08e3f675c2e8ea0ee7c0f368485efcf2fae06c9f0b68fb8b3.
+[2m2023-03-18T12:26:33.365328Z[0m [32m INFO[0m Added block 317 with hash 0x04e422b8e95ef6ac4c514bd908683792113ad79f254c5a5477a5994f093fa81e.
+[2m2023-03-18T12:26:33.386081Z[0m [32m INFO[0m Added block 318 with hash 0x01d9b1e783d45ce44794f083a48258caa167bc56b382e383f268778822f5d2ce.
+[2m2023-03-18T12:26:37.855740Z[0m [32m INFO[0m Added block 319 with hash 0x02a071941696358c068824833339b2d5d9521c86c9b3f8e06ed02d76e5881bbe.
+[2m2023-03-18T12:26:37.872206Z[0m [32m INFO[0m Added block 320 with hash 0x06b4bdc9ba0e418362b8e45637edad12c56dc1f8617267a7f9afd31773e89b3f.
+[2m2023-03-18T12:26:44.011590Z[0m [32m INFO[0m Added block 321 with hash 0x013c2526fe9f193642f2541807f8318677d06685e9390d1b7eb263e2af96a6cd.
+[2m2023-03-18T12:26:44.028487Z[0m [32m INFO[0m Added block 322 with hash 0x0378986d65111bc1f6364ba3345c5babb7fce1c1a4d65417b5ef97417d93501f.
+[2m2023-03-18T12:26:56.298278Z[0m [32m INFO[0m Added block 323 with hash 0x02783ef259166545953fbc71455988e12097304e389990b5d36a68fc0ee9a6c1.
+[2m2023-03-18T12:26:56.320432Z[0m [32m INFO[0m Added block 324 with hash 0x07e9881ce39fac374f923acaeb301f1fd72c4543be5f3946110a005d4c8c67e9.
+[2m2023-03-18T12:27:15.810212Z[0m [32m INFO[0m Added block 325 with hash 0x0526ce54c241b6edf212051508e3f2a0672e2573c9e3e23a450a35ce2485c8ce.
+[2m2023-03-18T12:27:23.100977Z[0m [32m INFO[0m Added block 326 with hash 0x074797194ddf5f5bfcdc1e8505b4adc2727ee752d096227bf8c23851f7fbf065.
+[2m2023-03-18T12:27:33.528509Z[0m [32m INFO[0m Added block 327 with hash 0x01b1c83396426408f63ac269a4d13fd327fe3e2ff94a0a298f8c813794c381d9.
+[2m2023-03-18T12:27:39.748144Z[0m [32m INFO[0m Added block 328 with hash 0x00ee75521afe453cd85ad8d632c057cf019a30ed557cb2e60a57731b02072303.
+[2m2023-03-18T12:27:48.522347Z[0m [32m INFO[0m Added block 329 with hash 0x02596d910cb3fdcc45c999eb189956b5d42651150fe9e664724939e7612e4ad8.
+[2m2023-03-18T12:27:59.287247Z[0m [32m INFO[0m Added block 330 with hash 0x0345e8d21d51f1828ce12a6ec511f175b2e4882eb3608b757105f9d805fe14f1.
+[2m2023-03-18T12:28:02.180599Z[0m [32m INFO[0m Added block 331 with hash 0x0673d62d4b3775b2122290c17aaac8a56a9173659e6197e1d6d0a4467646fbf2.
+[2m2023-03-18T12:28:04.214010Z[0m [32m INFO[0m Added block 332 with hash 0x04c84e6898c53a4fbcefa4b649b5aef90c1af450b2952a3e141621ed46c29f30.
+[2m2023-03-18T12:28:13.248552Z[0m [32m INFO[0m Added block 333 with hash 0x0780a870d472bebfdbcf88340c2c913b284dc4e7f5c4ec087c1058b79b3943c1.
+[2m2023-03-18T12:28:18.962699Z[0m [32m INFO[0m Added block 334 with hash 0x01bce822a61a4c83684e81c29284ec3140a609bebae67b623970c4caa67979d8.
+[2m2023-03-18T12:28:26.418256Z[0m [32m INFO[0m Added block 335 with hash 0x0680a685be5b9b94d29701c727509e5a32d3d2a21e689adf52d55bc000e203ab.
+[2m2023-03-18T12:28:41.300810Z[0m [32m INFO[0m Added block 336 with hash 0x03de74f1cdcf2fb9f1027caabcc0778cf5a614b22dd373aba9903c0c13696de1.
+[2m2023-03-18T12:28:55.555491Z[0m [32m INFO[0m Added block 337 with hash 0x037900c113d88f503746961c47def42a3ccb7cb9ca6439ec812e19b79a70d6d4.
+[2m2023-03-18T12:29:13.870234Z[0m [32m INFO[0m Added block 338 with hash 0x020700a0fbefa2c1592ac8c64e35aa103ea3d048550ffcc81e2278c35b255b20.
+[2m2023-03-18T12:29:23.611104Z[0m [32m INFO[0m Added block 339 with hash 0x03bf45fb939acc28240592e02bf6b1b02afe9dad467d2d9cd3ab4d1406746111.
+[2m2023-03-18T12:29:34.533847Z[0m [32m INFO[0m Added block 340 with hash 0x04ed5e6c740b7c5c41e4aa875ffafe54c9a4e80340b07dbeb3fff74687321256.
+[2m2023-03-18T12:29:40.235053Z[0m [32m INFO[0m Added block 341 with hash 0x0697d5b3c100f0eb90f775aa1d41d7cde33a11aad4be6532ab5db24b54ab0b4c.
+[2m2023-03-18T12:29:40.254927Z[0m [32m INFO[0m Added block 342 with hash 0x02a2ba4036364a701514cea92200f43cd885ae6fba6a0b446b308fa0b6da0c00.
+[2m2023-03-18T12:29:42.452686Z[0m [32m INFO[0m Added block 343 with hash 0x06af97d3f6e6a949310bf4a19f8dc748b67e71710e6cd184b54cd060b7e501b8.
+[2m2023-03-18T12:29:42.469018Z[0m [32m INFO[0m Added block 344 with hash 0x07a99e1fabeed9eebef23c579d6afebc05e967c1f61dae0e7ce5034a2677fd77.
+[2m2023-03-18T12:29:44.962219Z[0m [32m INFO[0m Added block 345 with hash 0x07635a6e6e26c3f34616a2e80b1ca6f6d531f405c7c72f66b545025768109e7a.
+[2m2023-03-18T12:29:44.975554Z[0m [32m INFO[0m Added block 346 with hash 0x0157fce9557c255c610130eb6658af537ddcfbe4a00188ee0ea7862a80338f67.
+[2m2023-03-18T12:29:49.163052Z[0m [32m INFO[0m Added block 347 with hash 0x0127f8f9a5934b104a084376c0c66d0ced989c8a8f89b49af97dbb387c85258e.
+[2m2023-03-18T12:29:51.296171Z[0m [32m INFO[0m Added block 348 with hash 0x010453d3dc0ee02fec71efa7909d0b5bdad037dde64697eab874fc41db353d06.
+[2m2023-03-18T12:29:55.822282Z[0m [32m INFO[0m Added block 349 with hash 0x038b1f31137292cb3a15348562eb004b002125deef5b99043b857a501a7966b0.
+[2m2023-03-18T12:30:06.749690Z[0m [32m INFO[0m Added block 350 with hash 0x00ee9a9fa5cfd99e9f6b96806bb6466ae2715717aa7bb36c74e69f0a78a731ab.
+[2m2023-03-18T12:30:10.770653Z[0m [32m INFO[0m Added block 351 with hash 0x005739c78fb0f4994a6f23201e01be1c185204eda3b7f56eae49641dcd03aa31.
+[2m2023-03-18T12:30:12.097943Z[0m [32m INFO[0m Added block 352 with hash 0x01ad203da2f09b0e7e97e3b2c6b3fe1055c36b8ca11153c183e960b7b348ff27.
+[2m2023-03-18T12:30:14.903028Z[0m [32m INFO[0m Added block 353 with hash 0x0609af579578fd1a8995676d69b2cad5299e44ce5ffce377fd2070bd1a3c4ea3.
+[2m2023-03-18T12:30:19.289034Z[0m [32m INFO[0m Added block 354 with hash 0x01fd1ffbeb82e15803a69105611a3477352448636013eae33856c720a32f17de.
+[2m2023-03-18T12:30:23.712962Z[0m [32m INFO[0m Added block 355 with hash 0x0438271b55cfe75a6bb310b0d16b3460de449097893e824d664164fcea560ebb.
+[2m2023-03-18T12:30:31.507295Z[0m [32m INFO[0m Added block 356 with hash 0x00b8363bf664941f57faf8a96aca95429d365624036040b990467b37eb46220b.
+[2m2023-03-18T12:30:36.057561Z[0m [32m INFO[0m Added block 357 with hash 0x01945da6963382cec7500d8f72a6f2ef511dcb3a6154cbc21e4bb096d238d2f7.
+[2m2023-03-18T12:31:12.403431Z[0m [32m INFO[0m Added block 358 with hash 0x02441d19fa2f18b0d12d37512d4c8fd964984e7a1b0b18ca641cb5c3811ed3a2.
+[2m2023-03-18T12:31:23.142020Z[0m [32m INFO[0m Added block 359 with hash 0x0561a70e32c5c4790922fd8949186501a5d3abce22fc3d7a62fbc5a8579e21e4.
+[2m2023-03-18T12:31:58.587650Z[0m [32m INFO[0m Added block 360 with hash 0x063ddd63e3092dc7f721200384d70e9398c88e1e77f1403d255e2c3aa85d6295.
+[2m2023-03-18T12:32:31.401814Z[0m [32m INFO[0m Added block 361 with hash 0x04c86e995e6bdffc86219eb16402f3067c2ca2a740f207a5cc3d5cad470c53a2.
+[2m2023-03-18T12:32:47.380572Z[0m [32m INFO[0m Added block 362 with hash 0x00def116b6ae0b0d7d7a6d24f27e7a0ec5acda16134b126c1d1ec34896c51065.
+[2m2023-03-18T12:33:02.559240Z[0m [32m INFO[0m Added block 363 with hash 0x02eec6d232e972e92482a0dd4a2a67b64aefeaa8a9c825e540616d9b1d7f633b.
+[2m2023-03-18T12:33:18.378671Z[0m [32m INFO[0m Added block 364 with hash 0x03f1efabf96cd7888f85953376535e43fb819402758df3e6eae41fd58dd08df1.
+[2m2023-03-18T12:33:33.322350Z[0m [32m INFO[0m Added block 365 with hash 0x04e7b70fbaecb42547edfbab64b3aa050d2c2c617ab5c3d8a829faab3aeffe5f.
+[2m2023-03-18T12:33:33.342938Z[0m [32m INFO[0m Added block 366 with hash 0x05ea101db8a859bc39663245cf9d7a461c6506eea674fadd33c69b64ad0aa024.
+[2m2023-03-18T12:33:39.554277Z[0m [32m INFO[0m Added block 367 with hash 0x0702613ae460ab337fc7f60430fcb294e448ad67337dd12beb645e7e87f765bf.
+[2m2023-03-18T12:33:39.570597Z[0m [32m INFO[0m Added block 368 with hash 0x00f0b3bc3d442c6554454987c57ca04cd83c4a547812e282c742bfdc92c937bf.
+[2m2023-03-18T12:33:49.823945Z[0m [32m INFO[0m Added block 369 with hash 0x01c3d4275fdd0db34edde046cf189052cc1beea7cd3effb9c28afc674b1b8a4b.
+[2m2023-03-18T12:34:11.446298Z[0m [32m INFO[0m Added block 370 with hash 0x01291dc704d1d6ee670b545606fda9713fabae0a879c2211f5adbc945ab05645.
+[2m2023-03-18T12:34:35.578105Z[0m [32m INFO[0m Added block 371 with hash 0x07111f7d7d19a23117588644d3e4daa31722726cca3689191546d2c9cbcd9865.
+[2m2023-03-18T12:34:35.593310Z[0m [32m INFO[0m Added block 372 with hash 0x07a2e9c3f1d7d88a08745a7a23ada89d9fc4213341169a21d248bbaa20864a40.
+[2m2023-03-18T12:34:54.331337Z[0m [32m INFO[0m Added block 373 with hash 0x053b37b1b67554272c7ef7495d907e2437322f8e8c421223008d14ab46f65285.
+[2m2023-03-18T12:35:08.873511Z[0m [32m INFO[0m Added block 374 with hash 0x07b8646bea8768b01dd4dc03d42405b4127202a8e34c6ee170ba3852537ff21b.
+[2m2023-03-18T12:35:21.592765Z[0m [32m INFO[0m Added block 375 with hash 0x030483eb5e8dffac89d111c0d619a3efcc5ccb2a50e94d1301df90d57d76a87f.
+[2m2023-03-18T12:35:21.607970Z[0m [32m INFO[0m Added block 376 with hash 0x04d9b419b4a047985c4ae1aca5b36b40288be0ceb3305cda80dce7c55b26a85d.
+[2m2023-03-18T12:35:21.623828Z[0m [32m INFO[0m Added block 377 with hash 0x0085e47082f7591f8dfdfee635ba9ba4fe415277119e05ea85820c867e346cbf.
+[2m2023-03-18T12:35:35.366310Z[0m [32m INFO[0m Added block 378 with hash 0x0023bb16f00767b959f0f1924fa5d75674af836ecea20f954d2e4ca29ddde718.
+[2m2023-03-18T12:35:35.382574Z[0m [32m INFO[0m Added block 379 with hash 0x00c15d72489114e2e0ffe446cde24e1951d9c2060b522a5101bf92d313844f0d.
+[2m2023-03-18T12:35:35.389879Z[0m [32m INFO[0m Added block 380 with hash 0x00c4c4ad2b8b63e9287d0f552b12d67b641281fdb08d649d13e712c3946a5c41.
+[2m2023-03-18T12:35:55.936067Z[0m [32m INFO[0m Added block 381 with hash 0x0628c5c0f7f8e02335f9ce624e8125a6f3fa1aa29146290e777b9c17275877f0.
+[2m2023-03-18T12:36:03.792304Z[0m [32m INFO[0m Added block 382 with hash 0x03cfee426a7a75401cdeba130b8c59daf25852dac3f3a92570cb0351d4f4f6b6.
+[2m2023-03-18T12:36:03.808480Z[0m [32m INFO[0m Added block 383 with hash 0x0762ee1198d425f435a2a93e516042db085fda4ea36414b91d61be78d88e9c8e.
+[2m2023-03-18T12:36:11.021529Z[0m [32m INFO[0m Added block 384 with hash 0x07ef86c397f55e5a916c78c705e0e3967c20ee59c3ed1b158b28c06d1e48a15b.
+[2m2023-03-18T12:36:19.026067Z[0m [32m INFO[0m Added block 385 with hash 0x06fb43bb3467417422eb2028de591e9d75d1bb1e3772b84dbc16c5624fd00fe2.
+[2m2023-03-18T12:36:21.918525Z[0m [32m INFO[0m Added block 386 with hash 0x01f79fcb89ef9b76ec38a6ab7190a4312f59050414e800fc7e1f1ebdc0f50f52.
+[2m2023-03-18T12:36:37.900765Z[0m [32m INFO[0m Added block 387 with hash 0x06d8c3aaeb13d90a84569019a3e5b616173d7d7e36352aa75c6cc97cacaee935.
+[2m2023-03-18T12:36:49.138557Z[0m [32m INFO[0m Added block 388 with hash 0x01f0f4a1ff77ea0f24cb262bcffd271f48ebd21aed1881bb96a87148610884c9.
+[2m2023-03-18T12:37:04.343411Z[0m [32m INFO[0m Added block 389 with hash 0x0278ae4014218b0e912f35e9ca42460e2a1077b5060f651a18def8be7b00bebb.
+[2m2023-03-18T12:37:16.242824Z[0m [32m INFO[0m Added block 390 with hash 0x07e26a79855ff74ae66df10210562ea42347b0a22c29712944584bec88c57c00.
+[2m2023-03-18T12:37:16.259479Z[0m [32m INFO[0m Added block 391 with hash 0x06bf29112e597540dfc916195965854f49ed05247afb8512cd34002b58d3c002.
+[2m2023-03-18T12:37:32.516091Z[0m [32m INFO[0m Added block 392 with hash 0x03933e32fd49be7930f1c17333dcba0f0beddde9576eddd4b0f43c2f6f95d18d.
+[2m2023-03-18T12:37:44.155400Z[0m [32m INFO[0m Added block 393 with hash 0x03cb96c407ae203a4eef6eeee69d8da12a0859e52e76bb671d25f703628211bf.
+[2m2023-03-18T12:37:44.175070Z[0m [32m INFO[0m Added block 394 with hash 0x07e34da33d568e7b627625569df2c218eab1f2e302f3119eece3cf45a4e67a0f.
+[2m2023-03-18T12:37:52.666746Z[0m [32m INFO[0m Added block 395 with hash 0x00d30aa0ec6f83bf70b55ff1d4d0fcc4d0fb1329ffdc9f1d8a8db86b8d083698.
+[2m2023-03-18T12:37:52.683250Z[0m [32m INFO[0m Added block 396 with hash 0x068f63eaacbd5b798e68e1caecdd5dcf021dac0304679cccd0952878970071cb.
+[2m2023-03-18T12:37:58.400748Z[0m [32m INFO[0m Added block 397 with hash 0x01efa0a0db034b6bd2f2ab12caebd0481e5ce416b8e86e3ad21c1019d7dc5786.
+[2m2023-03-18T12:37:59.382717Z[0m [32m INFO[0m Added block 398 with hash 0x03de21f413a5da6184ce3fdfb067dca7f05bd73da454923a190362c224d67664.
+[2m2023-03-18T12:38:04.436376Z[0m [32m INFO[0m Added block 399 with hash 0x06b6e104123a4d8e00448137d69b5da69b4bbccf4b700edd5f54ed4091adbbd7.
+[2m2023-03-18T12:38:04.600552Z[0m [32m INFO[0m Added block 400 with hash 0x00ac0efa2433048c7f2b6f1b81692f0af57ea0ab82ae71db97954e7c8a9d138b.
+[2m2023-03-18T12:38:11.450168Z[0m [32m INFO[0m Added block 401 with hash 0x01626188f50d0d0b95a25782e150e097f7506dcd64ff985dda185926ff9b54a9.
+[2m2023-03-18T12:38:11.461699Z[0m [32m INFO[0m Added block 402 with hash 0x0442ca35e23f012273022a605fce34e599bf15ef1680baca72afd36cc0e451b7.
+[2m2023-03-18T12:38:14.878895Z[0m [32m INFO[0m Added block 403 with hash 0x0090626decf9dfebd584ab282e6203b3f2afb18f2d19c23afc999dad2571ec4b.
+[2m2023-03-18T12:38:17.454456Z[0m [32m INFO[0m Added block 404 with hash 0x022a3845698b9ed76387adbfcbf898ee91f635be96532e195f64c44722de9917.
+[2m2023-03-18T12:38:27.231358Z[0m [32m INFO[0m Added block 405 with hash 0x07f8436b99eb0f593e366e86cbf152924cc30d1281c1e2922ae4b90cedbcd5bd.
+[2m2023-03-18T12:38:30.553522Z[0m [32m INFO[0m Added block 406 with hash 0x07924ec5acae57eb148d3184ab897156a2900f2a7ab78667e715056ed7d4135f.
+[2m2023-03-18T12:38:30.570336Z[0m [32m INFO[0m Added block 407 with hash 0x030ab7d293f4964988ec8799703beb714ea51e28d2b4b26e034dbb32eecb2931.
+[2m2023-03-18T12:38:37.377045Z[0m [32m INFO[0m Added block 408 with hash 0x057971526c860cdcd6c2b30a1fb67b6da5a51552f5bd4a162128c1686e6333ad.
+[2m2023-03-18T12:38:47.439435Z[0m [32m INFO[0m Added block 409 with hash 0x0047cbfffe01c8e778318d130ead9e3020c63cc3cfa38085c3ee7d15398e283a.
+[2m2023-03-18T12:38:52.402475Z[0m [32m INFO[0m Added block 410 with hash 0x01f21fa487f8813ca9073c0a40bb03b1e164c430c7f5e3cfbf36ddc48ca8accf.
+[2m2023-03-18T12:38:56.035885Z[0m [32m INFO[0m Added block 411 with hash 0x029756f3fa92e1c7f9de7c6a90512c601d8601f3208de7c1938345a4e4f823b8.
+[2m2023-03-18T12:39:02.675513Z[0m [32m INFO[0m Added block 412 with hash 0x0036a3788ecbb84790c1234b9efa9d719e043feeba91450c8f093d184ab5bdbe.
+[2m2023-03-18T12:39:07.084759Z[0m [32m INFO[0m Added block 413 with hash 0x0211c190c48e69d97282cb692f0e1e28de1e5ba79cd942cdf1c77b0c676c534e.
+[2m2023-03-18T12:39:07.102186Z[0m [32m INFO[0m Added block 414 with hash 0x05a646dd396e6dfb8792b7bbb0898eb8ffcad66bb2ba32eb7190eeaad018d3d9.
+[2m2023-03-18T12:39:07.110284Z[0m [32m INFO[0m Added block 415 with hash 0x012e28c499a8a4bb49e0feb29f918786082abc7f3aec9082ac12c9746ce38f46.
+[2m2023-03-18T12:39:10.746833Z[0m [32m INFO[0m Added block 416 with hash 0x07a7760e27803abf8efacdc7c21afdb77598ff8434a525db6a29eb382bb065ff.
+[2m2023-03-18T12:39:14.346899Z[0m [32m INFO[0m Added block 417 with hash 0x06c11ed4c48632d09f75674981cbfe350e61d9585b16128f16ab0b4e3f44c728.
+[2m2023-03-18T12:39:14.360921Z[0m [32m INFO[0m Added block 418 with hash 0x0297a37922c8cde157bf00e1f402ff825d638e0e1c65e3d7ebcc04c801112899.
+[2m2023-03-18T12:39:17.717574Z[0m [32m INFO[0m Added block 419 with hash 0x0252446b69c4a37e545aa6acb90c9121a056ee0ed8e83520d4fbec09bd8b2155.
+[2m2023-03-18T12:39:21.872558Z[0m [32m INFO[0m Added block 420 with hash 0x03595eb90d2281a1597e32bf2a20d8e62e73e58d7cc29299792dc3c00e84d74c.
+[2m2023-03-18T12:39:21.898346Z[0m [32m INFO[0m Added block 421 with hash 0x046ed708b869344c68f0768f0d2d3181b562e6c4361880e96c63c2519ae1cbc1.
+[2m2023-03-18T12:39:26.133883Z[0m [32m INFO[0m Added block 422 with hash 0x079fd3697c03567889759d6632e27cc0334dc2b8001fd6075573b996dd9bfb69.
+[2m2023-03-18T12:39:26.159414Z[0m [32m INFO[0m Added block 423 with hash 0x05c68614e3087b709ecdc96e5283e73d0bff9ffc5e2e865ccb2db69abc56e4b7.
+[2m2023-03-18T12:39:30.267633Z[0m [32m INFO[0m Added block 424 with hash 0x030b8a2e9bdd569d6cdab6af5689bdeb1eb99fe9a6830ab428a179afce1a9c2e.
+[2m2023-03-18T12:39:32.555106Z[0m [32m INFO[0m Added block 425 with hash 0x051c9a7b9b76c9375c5ba6cb3e0498416b00b5d2218d7e31b9a96bd1d8f3ae73.
+[2m2023-03-18T12:39:34.517795Z[0m [32m INFO[0m Added block 426 with hash 0x022500fe165157c91e9e744f510fca3f4c83c01d5a69ab39ea27c291d95d0fb9.
+[2m2023-03-18T12:39:34.536700Z[0m [32m INFO[0m Added block 427 with hash 0x07abbbb0de9bf0692e211b7b7c1184714616ffc6849656f32e6a01008a794b14.
+[2m2023-03-18T12:39:34.554047Z[0m [32m INFO[0m Added block 428 with hash 0x007be882ca5f4b0ef1a808c124fce1591286b529b8e1c2bc9e4174e1b09541a0.
+[2m2023-03-18T12:39:43.615791Z[0m [32m INFO[0m Added block 429 with hash 0x02696ae80abc8a9710a27ac1a42df5a01c04eb2fd5582023afeca09eae11bac6.
+[2m2023-03-18T12:39:50.527070Z[0m [32m INFO[0m Added block 430 with hash 0x02741478659e2644385a9ffcedbbbf4852cecc06efd1a14ff7c454d9e46e4f28.
+[2m2023-03-18T12:39:50.544348Z[0m [32m INFO[0m Added block 431 with hash 0x034dc86e57b4c60c4b064afcf93b7b0aa84d066610d37746e6dae0087272b936.
+[2m2023-03-18T12:40:04.174245Z[0m [32m INFO[0m Added block 432 with hash 0x07b8bff558079090001e4f93e24b8defb05b1a119052a8f5337617d5042a3a70.
+[2m2023-03-18T12:40:16.019912Z[0m [32m INFO[0m Added block 433 with hash 0x070155ab202b0002daf9aef7870f2424959d9dd9a8a16c862026d6366771f057.
+[2m2023-03-18T12:40:26.318787Z[0m [32m INFO[0m Added block 434 with hash 0x0396f7798178d165bf035f6133569379cf266a27ccf06961acaa4caa1d41685f.
+[2m2023-03-18T12:40:41.273040Z[0m [32m INFO[0m Added block 435 with hash 0x037f653d491b2ba6d546104d2dd8cdcb4c0e03c0a20a42296eadb6c491d41edd.
+[2m2023-03-18T12:41:56.769877Z[0m [32m INFO[0m Added block 436 with hash 0x047e44361db12827e275706bf7d0100218f5587ebae50e9e9f1f590d21b1a305.
+[2m2023-03-18T12:42:59.440499Z[0m [32m INFO[0m Added block 437 with hash 0x03834f94448f7abb36381722400f6fb7b43e0c22709d69d8c8944135c46ea90a.
+    Finished release [optimized] target(s) in 0.12s
+     Running `target/release/papyrus_node`
+[2m2023-03-18T12:48:00.081774Z[0m [32m INFO[0m Booting up.
+[2m2023-03-18T12:48:00.082490Z[0m [32m INFO[0m Gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8080
+[2m2023-03-18T12:48:00.082525Z[0m [32m INFO[0m Monitoring gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8081
+[2m2023-03-18T12:48:00.118394Z[0m [32m INFO[0m State sync started.
+[2m2023-03-18T12:49:08.894308Z[0m [32m INFO[0m Added block 438 with hash 0x051e2a5b5b7be3f27a762db173cfc82087fae5c53aefb1ae4f13544c4883d972.
+[2m2023-03-18T12:50:24.346138Z[0m [32m INFO[0m Added block 439 with hash 0x03f6a6e05d3cb94bba65b667463e8c537469aa0bca8385c7a6de914d38541ba0.
+[2m2023-03-18T12:51:10.312838Z[0m [32m INFO[0m Added block 440 with hash 0x026427f33a92152e510ebc91aad7b1c3469000f58c6b86fc4632235f275015f7.
+[2m2023-03-18T12:51:56.348689Z[0m [32m INFO[0m Added block 441 with hash 0x0200009fc9e055a7c87d3079ddfd7929eaed646342f51892218618adb707d2f3.
+    Finished release [optimized] target(s) in 0.12s
+     Running `target/release/papyrus_node`
+[2m2023-03-18T12:52:34.685571Z[0m [32m INFO[0m Booting up.
+[2m2023-03-18T12:52:34.686316Z[0m [32m INFO[0m Gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8080
+[2m2023-03-18T12:52:34.686355Z[0m [32m INFO[0m Monitoring gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8081
+[2m2023-03-18T12:52:34.721679Z[0m [32m INFO[0m State sync started.
+[2m2023-03-18T12:53:11.741374Z[0m [32m INFO[0m Added block 442 with hash 0x07362d9f96485b89c32a55509ecdcf3ebd553c5680ecd4de51abc73942c43fb7.
+[2m2023-03-18T12:53:11.875239Z[0m [32m INFO[0m Added block 443 with hash 0x06a8e5a6d6703beefb474f939dadb5264d7aab21ae97ddcd3091c73f7d733bfc.
+[2m2023-03-18T12:53:31.847973Z[0m [32m INFO[0m Added block 444 with hash 0x02ca715bee41aa73675887f3632ccf51e4c192892b38aa26e5893540069ad338.
+[2m2023-03-18T12:53:50.637664Z[0m [32m INFO[0m Added block 445 with hash 0x052ce571425a574fb4d99b93ad90b8e19fc918f5e4bb113ee7627b5666722b94.
+    Finished release [optimized] target(s) in 0.12s
+     Running `target/release/papyrus_node`
+[2m2023-03-18T12:56:14.660793Z[0m [32m INFO[0m Booting up.
+[2m2023-03-18T12:56:14.661903Z[0m [32m INFO[0m Gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8080
+[2m2023-03-18T12:56:14.661934Z[0m [32m INFO[0m Monitoring gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8081
+[2m2023-03-18T12:56:14.704557Z[0m [32m INFO[0m State sync started.
+    Finished release [optimized] target(s) in 0.13s
+     Running `target/release/papyrus_node`
+[2m2023-03-18T12:57:34.727502Z[0m [32m INFO[0m Booting up.
+[2m2023-03-18T12:57:34.728190Z[0m [32m INFO[0m Gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8080
+[2m2023-03-18T12:57:34.728251Z[0m [32m INFO[0m Monitoring gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8081
+[2m2023-03-18T12:57:34.765657Z[0m [32m INFO[0m State sync started.
+[2m2023-03-18T12:57:39.765141Z[0m [32m INFO[0m Added block 446 with hash 0x059ba02e0c7aff67470962d3d629a62b484e09b671705a0d532881678b75ca92.
+[2m2023-03-18T12:57:41.556397Z[0m [32m INFO[0m Added block 447 with hash 0x0133bb0c820be5e423c032bfb18406782123cdd4ab31f50b10452154bd22dfcb.
+[2m2023-03-18T12:57:42.843740Z[0m [32m INFO[0m Added block 448 with hash 0x077be92362ed4ba00a1a88b1e67e24a3bbc771f6095fbd444ef892beeab4746f.
+[2m2023-03-18T12:57:44.229527Z[0m [32m INFO[0m Added block 449 with hash 0x00be60b24e0dd5dff835bba47a116b2c563ff15b3ee08324bcefec16acf400d5.
+[2m2023-03-18T12:57:45.364818Z[0m [32m INFO[0m Added block 450 with hash 0x04f53c7106edf104347783cef03f84aee71b51b1909afaf4922eab7add582dc3.
+[2m2023-03-18T12:57:47.484876Z[0m [32m INFO[0m Added block 451 with hash 0x012cb9ce15e88ea3cf71eac2887cba48f558225ba10f5e59c60d18a4b60e6139.
+[2m2023-03-18T12:57:49.460990Z[0m [32m INFO[0m Added block 452 with hash 0x00329fb246d4c60658332f6d2638772cd8acbecc6a23474c7f100a55e37f3a8a.
+[2m2023-03-18T12:57:49.475308Z[0m [32m INFO[0m Added block 453 with hash 0x061fd7bdd955fd5d6f2f976e8571139b83f6e5c69c4cc75e815d8e8457a42f9e.
+[2m2023-03-18T12:57:49.476758Z[0m [32m INFO[0m Added block 454 with hash 0x003101e4a12b80c1e31a059d15ca3ba2d940f3d854924626eef5b33c6b795993.
+[2m2023-03-18T12:57:49.490290Z[0m [32m INFO[0m Added block 455 with hash 0x061ad3d4a3dddb6f9f15840d1147833e288902479ed6d13bab25ae8c4e09b9d4.
+[2m2023-03-18T12:57:50.526461Z[0m [32m INFO[0m Added block 456 with hash 0x035ae82b856813e0f8768adbcf55e8fcf138232fc3770521922d37ae516e8931.
+[2m2023-03-18T12:57:51.749906Z[0m [32m INFO[0m Added block 457 with hash 0x069525ec901828b11540f372ae2496362405287b22bf70a5a6e8efa47d7a1a68.
+[2m2023-03-18T12:57:52.764151Z[0m [32m INFO[0m Added block 458 with hash 0x03de82c73af7bde1083245b23f78082ad257e78045cc41a87192fdcb95e95414.
+[2m2023-03-18T12:57:53.688426Z[0m [32m INFO[0m Added block 459 with hash 0x017fe6dbc62ddcd03af4675811b2ebb0ddda4464772dc63c70fcf0ff927a7d19.
+[2m2023-03-18T12:57:55.299251Z[0m [32m INFO[0m Added block 460 with hash 0x0116512c2df2978dca4b865b40fc277fd873e173fbc26468e1ce274deb5c630f.
+[2m2023-03-18T12:57:55.962658Z[0m [32m INFO[0m Added block 461 with hash 0x0112ece6a6890a525ec32cd7298f879bc28d35a18f53865786b3aac0e6704f71.
+[2m2023-03-18T12:57:57.879554Z[0m [32m INFO[0m Added block 462 with hash 0x041c086729ade767e912c5a5094d1077b2f5897ac9fd49faf70f985cbb42ade7.
+[2m2023-03-18T12:58:57.325675Z[0m [32m INFO[0m Added block 463 with hash 0x0637deab68e8896dee4edfb783463f026df1f302d5d81924993fded9310706af.
+[2m2023-03-18T12:58:58.091682Z[0m [32m INFO[0m Added block 464 with hash 0x04b3fe4d04dd94abae90e3b09f41c3c780a2b911d709dd81fce6796c04b0dfdb.
+[2m2023-03-18T12:58:58.102484Z[0m [32m INFO[0m Added block 465 with hash 0x04bd64c43da2de80f34ba5399ab10581ca3b9c9223504d28c49070345b3426fe.
+[2m2023-03-18T12:58:58.706421Z[0m [32m INFO[0m Added block 466 with hash 0x07ef0b9a1ad3811abe39198803657d13521c8e90189dad447b9fe65914c08cbb.
+[2m2023-03-18T12:58:58.738614Z[0m [32m INFO[0m Added block 467 with hash 0x00bf8d44a4696f4d473c8b9da604c6b6b7e541cd76212ce88057577bb527886c.
+[2m2023-03-18T12:58:59.653961Z[0m [32m INFO[0m Added block 468 with hash 0x0756acaa67f4ebc9e5aca5e61645314345dcdc7fa70c604de6bfa5a7408e8a65.
+[2m2023-03-18T12:58:59.685607Z[0m [32m INFO[0m Added block 469 with hash 0x03298ac32c7d88bf347247309b06fe80474bfb6dbced9dc472ceb1f1139f54c3.
+[2m2023-03-18T12:59:01.415173Z[0m [32m INFO[0m Added block 470 with hash 0x0250e3dcb9aeeef2eccb747e4a9a1801f84f006ae7b9480f36eda56688bd7f02.
+[2m2023-03-18T12:59:02.445811Z[0m [32m INFO[0m Added block 471 with hash 0x031ef92d7ac920fed23ea00d9985e780d5685fe60fb3402be2894f5f0706b49e.
+[2m2023-03-18T12:59:03.255927Z[0m [32m INFO[0m Added block 472 with hash 0x05f92a9d2fe95bbec90d95ba709acbfcbb37c38f40941301354b133b5715e975.
+[2m2023-03-18T12:59:03.687081Z[0m [32m INFO[0m Added block 473 with hash 0x07d421dbdf5f4946284f7f4c22a9c4a82d131f3af0c100b901e939beb945fbe6.
+[2m2023-03-18T12:59:05.027080Z[0m [32m INFO[0m Added block 474 with hash 0x01a0926d9693a342d10edaaa90aaa194a145a127b5305d8f0b128c3784aa4dac.
+[2m2023-03-18T12:59:07.479530Z[0m [32m INFO[0m Added block 475 with hash 0x05382191f6eb2bcb556fc4eb55b94be4209e520bd2b67c9cecd9887e28881c79.
+[2m2023-03-18T12:59:08.569260Z[0m [32m INFO[0m Added block 476 with hash 0x0013ee14b206daada8414d32f3bd6d3551c50e872f22a8a80e6e43f99963c3f0.
+[2m2023-03-18T12:59:08.586203Z[0m [32m INFO[0m Added block 477 with hash 0x00e3eb78570035f4f0ba0d0b1d840b47f752aafdad9cb3e445cb320d5aaec18d.
+[2m2023-03-18T12:59:09.901348Z[0m [32m INFO[0m Added block 478 with hash 0x052d75feff88dff861a93b7aca604c74d6efccf287286adbad37e3c92347fee6.
+[2m2023-03-18T12:59:09.902897Z[0m [32m INFO[0m Added block 479 with hash 0x0082fdb5591ecc15a168a612aaca34484726d3913b4cbbe89402011eda256a7b.
+[2m2023-03-18T12:59:11.193793Z[0m [32m INFO[0m Added block 480 with hash 0x0085cca806fa5f3330d99b560d47114d2f127d9a9c55edf3051ee27998d32abb.
+[2m2023-03-18T12:59:12.825471Z[0m [32m INFO[0m Added block 481 with hash 0x006b50bb654d22e3c601bb894a8bcd29fcb3c3b7e2dd173591a7f21913598bd7.
+[2m2023-03-18T12:59:14.150111Z[0m [32m INFO[0m Added block 482 with hash 0x059b4b80b7cefe759a6172faeba3bcf981440f6ef9a0d45a917f06852ae97396.
+[2m2023-03-18T12:59:17.583437Z[0m [32m INFO[0m Added block 483 with hash 0x06fddd56241ce1238f1d88a0691c220f60053ae0e9e004869a3286c98f2032e3.
+[2m2023-03-18T12:59:23.423453Z[0m [32m INFO[0m Added block 484 with hash 0x06709e57340a569206aeca8c47b1185f13c2a8e79e48008950ed5e1ba55d9faf.
+[2m2023-03-18T12:59:25.852297Z[0m [32m INFO[0m Added block 485 with hash 0x0531a714a8d334b26a3a8cd7a305c6a13aee28fe49d597b94bdae6ae0902cc82.
+[2m2023-03-18T13:00:04.851153Z[0m [32m INFO[0m Added block 486 with hash 0x02d81a1cbcee0f9fdd06ddef22bcce3764de22c74858a431b2d1a5914928df4c.
+[2m2023-03-18T13:00:09.640584Z[0m [32m INFO[0m Added block 487 with hash 0x021ddb2259242554ebae0a184b3e908613a9a1f390c42ae92dfe237d3d1853fb.
+[2m2023-03-18T13:00:10.285941Z[0m [32m INFO[0m Added block 488 with hash 0x06aea1b4c6d8b9ac1d3a304b370edd08f333c61617369f704eac43b0063eaf4a.
+[2m2023-03-18T13:00:15.278425Z[0m [32m INFO[0m Added block 489 with hash 0x050cc7487c659bb461eecbcce444e16d0a63949f10ab707c01739348d357eb3b.
+[2m2023-03-18T13:00:19.804347Z[0m [32m INFO[0m Added block 490 with hash 0x03894e4c06060905106cd7c4691cd4e0d70025e118041d77130b6ae0719bd58a.
+[2m2023-03-18T13:00:19.805799Z[0m [32m INFO[0m Added block 491 with hash 0x019abb57f70f20815297d23372a69068bbbf0f6e56dd760fec8ea57696a6877d.
+[2m2023-03-18T13:00:28.198698Z[0m [32m INFO[0m Added block 492 with hash 0x0036df6a5b5897ef2b9cb2569a4bfdad6dc348a5f66ba9877689a0a502738699.
+[2m2023-03-18T13:00:33.238940Z[0m [32m INFO[0m Added block 493 with hash 0x02c05ff5b1b1b634ed49e37327e02e22135a01e7702596e2e99a3386a2040c10.
+[2m2023-03-18T13:00:33.249993Z[0m [32m INFO[0m Added block 494 with hash 0x0584b30e69e2ce001c2a79321f0d876f67236b0b1dede83c12c7d59c33b72e77.
+[2m2023-03-18T13:00:33.266966Z[0m [32m INFO[0m Added block 495 with hash 0x05f2751b96684f1a454bc046fee04de123cf3815328a5c9885322a6dcb393cb3.
+[2m2023-03-18T13:00:39.965814Z[0m [32m INFO[0m Added block 496 with hash 0x0218c43b2e43d7d1f2d042e16cef97896eda1b7774fc01bc33ed2312df66e8c2.
+[2m2023-03-18T13:00:50.961521Z[0m [32m INFO[0m Added block 497 with hash 0x02cdab1e817ad5a9078770e1a9a56830ac5b1e388ea3dcb246ced402b3ebfcc8.
+[2m2023-03-18T13:00:57.397627Z[0m [32m INFO[0m Added block 498 with hash 0x075ff80bf73e0c9450e642369f926a1919a4b75cbd572ab306d51be005cac95b.
+    Finished release [optimized] target(s) in 0.12s
+     Running `target/release/papyrus_node`
+[2m2023-03-18T13:01:46.510296Z[0m [32m INFO[0m Booting up.
+[2m2023-03-18T13:01:46.510912Z[0m [32m INFO[0m Gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8080
+[2m2023-03-18T13:01:46.510943Z[0m [32m INFO[0m Monitoring gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8081
+[2m2023-03-18T13:01:46.546354Z[0m [32m INFO[0m State sync started.
+[2m2023-03-18T13:02:02.262391Z[0m [32m INFO[0m Added block 499 with hash 0x02cff71576f656a3d3a0e42ccfa93966699be4bf7839c9a775657ed9c381be74.
+[2m2023-03-18T13:02:13.739710Z[0m [32m INFO[0m Added block 500 with hash 0x06d741ffa6247621cb4c0bfb812506dffa921259bff27d1fce4f5a29c3d630f1.
+[2m2023-03-18T13:02:51.174388Z[0m [32m INFO[0m Added block 501 with hash 0x000488ad3d64d8f0a677c26ad8332cea0e2de60d20b31dea9dba065f775ee207.
+[2m2023-03-18T13:03:01.904110Z[0m [32m INFO[0m Added block 502 with hash 0x06ee30ac7b9f7d8d854263c3d1c135305639ee725023b50d33b3bae6b719f114.
+[2m2023-03-18T13:03:07.261860Z[0m [32m INFO[0m Added block 503 with hash 0x04b73ec0ae2e5d158c5a326b76999c67ee5ed6e15378f6b20d0f0b5993e32251.
+[2m2023-03-18T13:03:43.365228Z[0m [32m INFO[0m Added block 504 with hash 0x03f9bea76cceafe8e6c08eedb85f5cc8001a143cf5fc17705528c0f1e922a9a5.
+[2m2023-03-18T13:03:50.775292Z[0m [32m INFO[0m Added block 505 with hash 0x027a6e8208abee37875e97a03e7d7297ea2acc63050826dae746c910cb37c8b1.
+[2m2023-03-18T13:03:51.680022Z[0m [32m INFO[0m Added block 506 with hash 0x007698d02ec93f2b3f6cfdb1768f6d8dbc99a3b6d27a9e5e54bc7056fd6b1384.
+[2m2023-03-18T13:04:00.619542Z[0m [32m INFO[0m Added block 507 with hash 0x03d41303cac3643850575152fd3a54ab49052f8bcad8b74f9eccc4000e2f5524.
+[2m2023-03-18T13:04:02.955482Z[0m [32m INFO[0m Added block 508 with hash 0x0409727ce0c371354f8215828579b9766403152631decfde281d70cec1b9124f.
+[2m2023-03-18T13:05:06.133090Z[0m [32m INFO[0m Added block 509 with hash 0x0537c33c9035da0c4bfbb99f27079fd3a9a40532650bbff71f989365a3a8ff3c.
+[2m2023-03-18T13:05:08.502768Z[0m [32m INFO[0m Added block 510 with hash 0x06efaca7e6321c5cab161c608895e170f53a72d9a15f5b857751c46d27957ff7.
+[2m2023-03-18T13:05:11.761186Z[0m [32m INFO[0m Added block 511 with hash 0x006ccc577b1c885a5607a2216fc821555c0e9f71db80b49ca9debaa714adc7d6.
+[2m2023-03-18T13:05:11.786568Z[0m [32m INFO[0m Added block 512 with hash 0x059511d1aaaca4cff25be642f51b12f68a4575e87987206f80e0f7731fe3d0d8.
+[2m2023-03-18T13:05:13.350026Z[0m [32m INFO[0m Added block 513 with hash 0x045a382224232c8ac3a4f9b71c589ea0ac79d3f8dbf71107266ccb97fc97c50d.
+[2m2023-03-18T13:05:16.121320Z[0m [32m INFO[0m Added block 514 with hash 0x07c91bfd645ceb02d4ee28658c562663cc1206e9b40ae3982a7a0dcc24776866.
+[2m2023-03-18T13:05:19.965058Z[0m [32m INFO[0m Added block 515 with hash 0x0224bf7d2e366a3ef420b0b8627dfdd401747b11d1c9ad03c0911245c0b2ac69.
+[2m2023-03-18T13:05:22.265047Z[0m [32m INFO[0m Added block 516 with hash 0x07d3ab4406b03b1980f6e47b9cce88d1d52e390566506c4333bf6ce9c7157841.
+[2m2023-03-18T13:05:25.157277Z[0m [32m INFO[0m Added block 517 with hash 0x0121b6c679ad4f163387fca6b5bf897520a0dab09b5467b6a69cc18bba4e6bb8.
+[2m2023-03-18T13:05:55.265446Z[0m [32m INFO[0m Added block 518 with hash 0x0036b2b19722292e98bff454ce228a938343f5a3f9d7ba3ec4b9c00d9e7b88c5.
+[2m2023-03-18T13:05:58.689060Z[0m [32m INFO[0m Added block 519 with hash 0x05d29c6f3f7497e0da44dc5ccadf5f3e9430ca82e75029bb65f76ccccc195900.
+[2m2023-03-18T13:06:03.429264Z[0m [32m INFO[0m Added block 520 with hash 0x006aff4e885d22cdf2369ca9408aaad9c970c1f66d045d6c4962e46679b14557.
+[2m2023-03-18T13:06:05.861440Z[0m [32m INFO[0m Added block 521 with hash 0x02223b577dfc9962739c6437641a2e2df8f25fd42ece82264990c70251b5b6d9.
+[2m2023-03-18T13:06:09.217467Z[0m [32m INFO[0m Added block 522 with hash 0x05c32bf411d73d30c733ce37f536781203fb3e0d8f37089c4bc0d2d372f79c46.
+[2m2023-03-18T13:06:09.219083Z[0m [32m INFO[0m Added block 523 with hash 0x02378a50b5400eeb201281bb754672a9405d121203a71b135914bbadf0d317fa.
+[2m2023-03-18T13:06:10.852986Z[0m [32m INFO[0m Added block 524 with hash 0x074bcc51a7e38026753e46507bef16c7d22f1c6354bec19cd316c86f1b988bfd.
+[2m2023-03-18T13:06:11.704633Z[0m [32m INFO[0m Added block 525 with hash 0x000b3d9ae21937914549a0bc16770dab07e7094da0c008d26b9fb507fedd3a19.
+[2m2023-03-18T13:06:11.721072Z[0m [32m INFO[0m Added block 526 with hash 0x0235a3572b380e45d9794d8fa12232e7062dc80fce75e03d4b46be2b5019fd57.
+[2m2023-03-18T13:06:12.403144Z[0m [32m INFO[0m Added block 527 with hash 0x05859bf27099011228c0954d9ca54f9798130b05f03ecdf5de0f1156afb27f3e.
+[2m2023-03-18T13:06:12.878079Z[0m [32m INFO[0m Added block 528 with hash 0x0395418b8b9d85070183228645f2c5f6a304d4a23e537a2cfe66548c93942630.
+[2m2023-03-18T13:06:13.758817Z[0m [32m INFO[0m Added block 529 with hash 0x014f5c93c4c8103786620a776e0303cd96ba936aaf4a2ac56e19f7a43c0f54c7.
+[2m2023-03-18T13:06:53.037388Z[0m [32m INFO[0m Added block 530 with hash 0x002d180d79246a452d97175ffbcb1a4396d9336d9c5b7cd36383939c9a477c1b.
+[2m2023-03-18T13:07:07.219091Z[0m [32m INFO[0m Added block 531 with hash 0x04ead611122f66ca8510fc0560ac2c39be0b0f2e04168ad3d7e0fc93f8b7d06b.
+[2m2023-03-18T13:07:49.383189Z[0m [32m INFO[0m Added block 532 with hash 0x00986a76ad1091d1d26f2e85ceea74e821d57293895fadccc12c2b3d3ba6f581.
+[2m2023-03-18T13:08:55.000205Z[0m [32m INFO[0m Added block 533 with hash 0x01316efe8a1b08b108e5a4bef3f8ff11efe54d7569f976c4064374bfeb7bc43e.
+[2m2023-03-18T13:08:57.997149Z[0m [32m INFO[0m Added block 534 with hash 0x023f607675f8c0c2da975ac938880ce51e1395f4e1d941a7f3b7fe85d22c995c.
+[2m2023-03-18T13:08:58.872026Z[0m [32m INFO[0m Added block 535 with hash 0x07342edf7aac1e02ebdc3c6befc2a219327493539d074eca366c401a01319483.
+[2m2023-03-18T13:08:59.571522Z[0m [32m INFO[0m Added block 536 with hash 0x020f7d4399ad9dc8f10913cf0d31fa30461870e9de488782182bcec4ee823901.
+[2m2023-03-18T13:09:00.353869Z[0m [32m INFO[0m Added block 537 with hash 0x0385229024e13f7c4d08bb8c545d79feaa2cf6c6c735cf2780d48b56d82d638e.
+[2m2023-03-18T13:09:00.436764Z[0m [32m INFO[0m Added block 538 with hash 0x00999a4a72ccf05b4ba1c83c209cb8681e00a29c8812370c73b7f49a06e8281c.
+[2m2023-03-18T13:09:01.078525Z[0m [32m INFO[0m Added block 539 with hash 0x01a082c8015d2049c60cff7e98e0071794889df54dc7814e4f9d09e4468a73d8.
+[2m2023-03-18T13:09:05.027345Z[0m [32m INFO[0m Added block 540 with hash 0x059d310f0b6ee9a6a0c1ae69a4abffc18451146a1dda251d6ec0f2ae5d614f50.
+[2m2023-03-18T13:09:05.201466Z[0m [32m INFO[0m Added block 541 with hash 0x0763240d32c88520fa5e17d9c98147e6ed53811e4b5c1123d8504dd35cbaabdc.
+[2m2023-03-18T13:09:39.254914Z[0m [32m INFO[0m Added block 542 with hash 0x06f761220a4877c503aca2b5cb35c891ff3af814fdc34108af66ddbb99371c9e.
+[2m2023-03-18T13:09:50.078995Z[0m [32m INFO[0m Added block 543 with hash 0x021168f65213396ce548d74f27a6545d41a65ee98290c9740ec539c16c413853.
+[2m2023-03-18T13:10:56.449746Z[0m [32m INFO[0m Added block 544 with hash 0x0728a03125df3a9c096f32b444c8575a7d8a2ae13e50bea8169a25d8f83afc62.
+[2m2023-03-18T13:10:56.477071Z[0m [32m INFO[0m Added block 545 with hash 0x0056478ed46a46bbab54d33dc73f830080d7625fd23f7234c2dd522bbd4f2baa.
+[2m2023-03-18T13:10:57.239188Z[0m [32m INFO[0m Added block 546 with hash 0x05b118f93c11702d4c2d7c2293ad3052ac7d84cbbf65b390cbe3028085eaab74.
+[2m2023-03-18T13:10:57.766482Z[0m [32m INFO[0m Added block 547 with hash 0x07ed9936155e122ff0a923e8bd90e5bb430b36736aa476e41d66daf6c65a3f67.
+[2m2023-03-18T13:10:58.966788Z[0m [32m INFO[0m Added block 548 with hash 0x0130fb2bc158d512c58ce5ab121bccfc0c12a46bce18f9527f0f456ccebf77ed.
+[2m2023-03-18T13:11:04.264635Z[0m [32m INFO[0m Added block 549 with hash 0x024da1e82411b757ea8904c2e29e47a3fe6639f4fd9629179e885870b98cd881.
+[2m2023-03-18T13:11:05.428610Z[0m [32m INFO[0m Added block 550 with hash 0x025907bdd7944ae8d56b185a09b469befe259f1eefe99b2e5e9efa11e93bb12a.
+[2m2023-03-18T13:11:06.382098Z[0m [32m INFO[0m Added block 551 with hash 0x0515812f10ef4212e5b6b704fd71f61122a881be3cb5b670778ee3fc2453b9d0.
+[2m2023-03-18T13:11:07.410891Z[0m [32m INFO[0m Added block 552 with hash 0x05477a7d498d9e0e9363672879c5cd63f198dee44fe59921c69890e5ed5fa423.
+[2m2023-03-18T13:11:46.335531Z[0m [32m INFO[0m Added block 553 with hash 0x05a1dfca32b3f031fc307e4d1bd6edd50d3942b69a54c9663d7f4f70ef2ee6bd.
+[2m2023-03-18T13:11:55.450091Z[0m [32m INFO[0m Added block 554 with hash 0x03568f1b14420a4a344f5a0045e4602db7d5dbc56ba074d5d8e83dece094661c.
+[2m2023-03-18T13:11:59.282132Z[0m [32m INFO[0m Added block 555 with hash 0x056d58e97d04febdd4560b0859f21fea8e1b34deee6e7a3b8b3c41ff1f214e31.
+[2m2023-03-18T13:12:58.997995Z[0m [32m INFO[0m Added block 556 with hash 0x01b266eb9a7fba09f76f26e18b900abf871ade013246f9efc4ffebce873b044e.
+[2m2023-03-18T13:12:59.779509Z[0m [32m INFO[0m Added block 557 with hash 0x05b0cb0f3d09b597ebb5924adea579e2d17122049e80a2c920ab66445ea58e10.
+[2m2023-03-18T13:13:00.446367Z[0m [32m INFO[0m Added block 558 with hash 0x0294528e6c1f2c3ca9ce5031439e78eaedc078fa328ad6ab0c3b73705a1bda8d.
+[2m2023-03-18T13:13:05.052460Z[0m [32m INFO[0m Added block 559 with hash 0x071e8ff6dc163d7499b36a9eb0c8dbd2734c3150e7d98646ecc636c7d26a5b3f.
+[2m2023-03-18T13:13:06.066158Z[0m [32m INFO[0m Added block 560 with hash 0x071291d4c74b03f6f7ab26f0538118571895d73ce5d82c5c3e2d8ed0d4868692.
+[2m2023-03-18T13:13:06.098417Z[0m [32m INFO[0m Added block 561 with hash 0x02e33c4f7980b79dfbca86d8aff0b0775de65572d771461f65372c8625e70b6b.
+[2m2023-03-18T13:13:14.545572Z[0m [32m INFO[0m Added block 562 with hash 0x04e45b508e02a5e5fbc482f7064fced91e648bf6187d6e3b2d2cef86aab135c9.
+[2m2023-03-18T13:13:55.218187Z[0m [32m INFO[0m Added block 563 with hash 0x06e0f27e8ddeca39eaaf3285da965ac2c6f7aa4b1e6932788927516a52fbd987.
+[2m2023-03-18T13:13:59.194523Z[0m [32m INFO[0m Added block 564 with hash 0x03173ccc8101aab02955f3482ab67180d14164409d42203b8e41ff75ec9922d0.
+[2m2023-03-18T13:14:00.170065Z[0m [32m INFO[0m Added block 565 with hash 0x06a4e4649ef6cebf5a8036ce191723b1aaaf26df164c764b9f2f2086d9f12818.
+[2m2023-03-18T13:15:04.853035Z[0m [32m INFO[0m Added block 566 with hash 0x00f69c0d62033d2bedcef05b5596fb98bb7fed5585af7950775319faf8f2d46b.
+[2m2023-03-18T13:15:15.597405Z[0m [32m INFO[0m Added block 567 with hash 0x01bac70954d71d97dd30c2a612baee99e6d4e97a0c8fe19da1ce3e9a8982b3c4.
+[2m2023-03-18T13:15:16.878825Z[0m [32m INFO[0m Added block 568 with hash 0x025eea701bdcecd6b696e9e4b3f9d2913e4d4b4dd2c281d0a67be1c90157b5d4.
+[2m2023-03-18T13:15:17.991572Z[0m [32m INFO[0m Added block 569 with hash 0x04812a77a4091492a6aaf8dd407539b5375827bed81d2160d9c50c5baeb9d006.
+[2m2023-03-18T13:15:18.002888Z[0m [32m INFO[0m Added block 570 with hash 0x02496863450e8d008c842336f63d7e9c996ebc84cb62f5e8f69a7e39add8cd07.
+[2m2023-03-18T13:15:18.957027Z[0m [32m INFO[0m Added block 571 with hash 0x03c85a69453e63fd475424ecc70438bd855cd76e6f0d5dec0d0dd56e0f7a771c.
+[2m2023-03-18T13:15:19.655153Z[0m [32m INFO[0m Added block 572 with hash 0x02aaf0202746ad3b83e24f025e02acb9223307e9e5d897f8cba6aa288f40004f.
+[2m2023-03-18T13:15:19.685855Z[0m [32m INFO[0m Added block 573 with hash 0x035c3918f8c502bbd2bae8b6e3ec9918c2faf1a4e6b5ced86f953748f889b75c.
+[2m2023-03-18T13:15:21.570106Z[0m [32m INFO[0m Added block 574 with hash 0x07faa95219ae3a770076ee856ea93c15bb5a55fe349f72a89644f5098ccccc4e.
+[2m2023-03-18T13:15:22.289534Z[0m [32m INFO[0m Added block 575 with hash 0x0408e8f5afe25eedf88544dae1636df648374301df17f6029a06a6e4cb0c509f.
+[2m2023-03-18T13:15:51.047716Z[0m [32m INFO[0m Added block 576 with hash 0x05fd641363d7414df3ba840b78db81994d3b98585d3abb9f08b073337988a42f.
+[2m2023-03-18T13:15:51.699037Z[0m [32m INFO[0m Added block 577 with hash 0x04f9f05145c4d6ac77ab54c794110d0105e1fff997cc55936183032170d57ef8.
+[2m2023-03-18T13:15:54.741291Z[0m [32m INFO[0m Added block 578 with hash 0x028978399799cb886a194b8045a044a32f6651f57a54125d1fb5c4e2bcbd53c1.
+[2m2023-03-18T13:15:56.608343Z[0m [32m INFO[0m Added block 579 with hash 0x05568360ac88dc3bace905c54f219abc1d46284df5c9ef52fb1d1c1c1960c296.
+[2m2023-03-18T13:15:56.632116Z[0m [32m INFO[0m Added block 580 with hash 0x0786f801382e2ae8bdb60e47281f47eedc0570707449ca92adb6e7e51423771e.
+[2m2023-03-18T13:15:58.618907Z[0m [32m INFO[0m Added block 581 with hash 0x070c4383dd6dbb4be2e0b2141f5cb59cc0e3cf8848a01d6dc85e65b1f0547a46.
+[2m2023-03-18T13:15:59.745414Z[0m [32m INFO[0m Added block 582 with hash 0x0182d83f0ed972e97fa529be0088e20b5a7cb32e3bba0d164d668147713e79f9.
+[2m2023-03-18T13:16:02.966424Z[0m [32m INFO[0m Added block 583 with hash 0x04ecc7132efd2b43f20d3243b0d8145eb4971662527115e583f5e7544eeda3e2.
+[2m2023-03-18T13:16:02.979433Z[0m [32m INFO[0m Added block 584 with hash 0x05c910d9b2bd987732c8ebc489c8d2f0936b5e529e96971aa5dbcff7fd716fb7.
+[2m2023-03-18T13:16:05.186564Z[0m [32m INFO[0m Added block 585 with hash 0x0738537bdf043003f52598c6bacfd4df2026f834d94756e3555d7ddcb9746371.
+[2m2023-03-18T13:16:06.569586Z[0m [32m INFO[0m Added block 586 with hash 0x0349b55d6ab8a6c70b9b09c82ad4de2fed8907a7db4f7f7e1d1aed9ce1d1bb47.
+[2m2023-03-18T13:16:07.386786Z[0m [32m INFO[0m Added block 587 with hash 0x04232bd23077057ddad15b1e6ec74cbc8fb933a728753c7271fc1bc9f3de9a3a.
+[2m2023-03-18T13:16:40.780959Z[0m [32m INFO[0m Added block 588 with hash 0x0252d28849eb15d04fe5d6550ecc09d4e85f190d1955ac75792658955a5301f5.
+[2m2023-03-18T13:16:48.181831Z[0m [32m INFO[0m Added block 589 with hash 0x037b17380c8425a73057d060a3ecb69e67503652e27d8d5f390773f10d1048c0.
+[2m2023-03-18T13:16:49.036458Z[0m [32m INFO[0m Added block 590 with hash 0x043ed49486244dbdfc15a3ae5b7b934b09bb3ad5c0d7ef3293102cc935d6d984.
+[2m2023-03-18T13:16:49.054987Z[0m [32m INFO[0m Added block 591 with hash 0x00ab4c5eaeb408f539b4e03901969b514aca574989d3b44d5d64a5c94253351c.
+[2m2023-03-18T13:16:49.953484Z[0m [32m INFO[0m Added block 592 with hash 0x0409655ffc7d2ec4b83f24a47094b359bb0a973d21a75f391141b7b5f53039e6.
+[2m2023-03-18T13:16:51.943161Z[0m [32m INFO[0m Added block 593 with hash 0x01d89f27f9fa2abbe591d4380259e2e3d1c136e9f795edef666b2e7d4a3954f6.
+[2m2023-03-18T13:16:54.565638Z[0m [32m INFO[0m Added block 594 with hash 0x02ec0f5999974e94c308a606a0605b15ee1508a77d02d0a87086ef39485df81c.
+[2m2023-03-18T13:16:56.315013Z[0m [32m INFO[0m Added block 595 with hash 0x00634c7d6d91c0dbef49e157560feb982fbb59b657da4a28c00a428b02a73581.
+[2m2023-03-18T13:16:59.926036Z[0m [32m INFO[0m Added block 596 with hash 0x01c5360953cba66f42af455705e17f248b8c6c0cf0e657014355c9995895d60e.
+[2m2023-03-18T13:17:00.710862Z[0m [32m INFO[0m Added block 597 with hash 0x06c1446d49e34ec61a3ec5016cc39a08194f0c2e351680f7e4ee0102d3ead7b9.
+[2m2023-03-18T13:17:02.648483Z[0m [32m INFO[0m Added block 598 with hash 0x037244279b6018749d9a10d559bfc11171ba889102db0f94f0e9e8a61fd043b8.
+[2m2023-03-18T13:17:02.655952Z[0m [32m INFO[0m Added block 599 with hash 0x02eccce8f93aa535f6648443909274ea04173b0bcf2ce808b2fd11bc4d9d58a4.
+[2m2023-03-18T13:17:04.423546Z[0m [32m INFO[0m Added block 600 with hash 0x025370f9c0cb7908e17d441dcafc702a87e47cf3017a4b73ad724c2512813077.
+[2m2023-03-18T13:17:06.420898Z[0m [32m INFO[0m Added block 601 with hash 0x03015fdae6a563fa8f1bdc2d75450cc77e90d11d45fad1c3c6f769e285e10a36.
+[2m2023-03-18T13:17:06.604194Z[0m [32m INFO[0m Added block 602 with hash 0x0642b76e1214d3aabde2c9614fb0c7d2920911fa2a4a3a0d8712b9abde94e867.
+[2m2023-03-18T13:17:11.073963Z[0m [32m INFO[0m Added block 603 with hash 0x06777f14c132e0187c1e9959a7df965bf8068d92e9dc6b1fe2f6154d3e93b71d.
+[2m2023-03-18T13:17:41.394923Z[0m [32m INFO[0m Added block 604 with hash 0x06da784f40898f3ef934529f887974d85c52358d99f99e66d3aed0c1c5d7b31d.
+[2m2023-03-18T13:17:42.547039Z[0m [32m INFO[0m Added block 605 with hash 0x03a99245d5dc5ecb4d71bbb4c8ef91b70b64311ed462209ebe825e4855387953.
+[2m2023-03-18T13:17:47.262420Z[0m [32m INFO[0m Added block 606 with hash 0x017e42d8430905f67123ae13c8ec928f4893bf55cc6213052008c830f2d1ac36.
+[2m2023-03-18T13:17:50.668735Z[0m [32m INFO[0m Added block 607 with hash 0x04a5b920e3c80c615bebb31863b67e67a2aab4069ed62f96738526acec85209c.
+[2m2023-03-18T13:17:52.462920Z[0m [32m INFO[0m Added block 608 with hash 0x06ec3eaf1ad34995cde047f22a7c346fb23d15e53253b6b1349b6198b7d9eb1b.
+[2m2023-03-18T13:17:55.328704Z[0m [32m INFO[0m Added block 609 with hash 0x072b256012f4d0e96d03010b4aa3cb2e35e81f6b61a4847e8b7e83c58c4dfacd.
+[2m2023-03-18T13:17:55.528580Z[0m [32m INFO[0m Added block 610 with hash 0x02826932ce25452f9784708e79b984ff71727cffe720203aeab3d1e53952629b.
+[2m2023-03-18T13:17:59.806438Z[0m [32m INFO[0m Added block 611 with hash 0x0054585904b5230cc9c46557ec302d24e952a644bf87cd98a5e68d5d4743ef0f.
+[2m2023-03-18T13:18:01.345822Z[0m [32m INFO[0m Added block 612 with hash 0x0558d6ceba4a0be7782d0a53e0ded3de340500f5ce9f1a66fa1f6db9cae9716f.
+[2m2023-03-18T13:18:01.355296Z[0m [32m INFO[0m Added block 613 with hash 0x07c494b62ffdfa7e3546724cd1297ec51b744bca64d79169e6b9936762a7fbb8.
+[2m2023-03-18T13:18:06.928671Z[0m [32m INFO[0m Added block 614 with hash 0x01d15f41b473a8a72b2e2aebe5c8731c89450e5eaf886ec8b502416dd06e3dbc.
+[2m2023-03-18T13:18:09.771688Z[0m [32m INFO[0m Added block 615 with hash 0x078a400e2becd91233e5e31c74089b777c549f1e1753385cf77a311da2f5c94a.
+[2m2023-03-18T13:18:12.765726Z[0m [32m INFO[0m Added block 616 with hash 0x0648e89a0d2a3901fad4c8c530889654aa92f9c20be65b13d0ac81ece60d345f.
+[2m2023-03-18T13:18:14.590952Z[0m [32m INFO[0m Added block 617 with hash 0x04b0aca0925d1f462ddbb8dd4ce1a547c4990b129f60a04a40ebba89d98fe9f4.
+[2m2023-03-18T13:18:18.559972Z[0m [32m INFO[0m Added block 618 with hash 0x06b1cd832eeac737e483274e4115cb20a119e9be9aeff07142fb5b42806ce181.
+[2m2023-03-18T13:18:18.571654Z[0m [32m INFO[0m Added block 619 with hash 0x01d92f06b4d20a4482b61c955716f083b5f2c993a6783a66cf57bef1a986b810.
+[2m2023-03-18T13:18:20.521090Z[0m [32m INFO[0m Added block 620 with hash 0x0212d187e2ceea0e0c232a8d244515df6830b31fcdad2641db866f2d968343b2.
+[2m2023-03-18T13:18:21.166508Z[0m [32m INFO[0m Added block 621 with hash 0x019e2836b29af87dd858683ec551aa384b5dc98729e526f70bb2ca8a259b5da1.
+[2m2023-03-18T13:18:21.444148Z[0m [32m INFO[0m Added block 622 with hash 0x0366a5e713bd89b0695ddf75db3d0d0fddf6859396b9526c6ddc02de78e1804a.
+[2m2023-03-18T13:18:21.595776Z[0m [32m INFO[0m Added block 623 with hash 0x0113b702b531b8b15b3f5a2bfe49e0948fb42f6813697f752f40eafef0c9f336.
+[2m2023-03-18T13:18:22.024541Z[0m [32m INFO[0m Added block 624 with hash 0x07400983bce6b2d145288f4f4d063a97eaeb74a4e66df37b0a914be04ae82533.
+[2m2023-03-18T13:18:22.313762Z[0m [32m INFO[0m Added block 625 with hash 0x007a64671d060c76921286b9fac6899e50c73b1a4527551c64a78ed09a903896.
+[2m2023-03-18T13:18:23.041595Z[0m [32m INFO[0m Added block 626 with hash 0x07db640522e82a576be5afc0d1a0421b653f36a1a3959bcb6f257d266710920d.
+[2m2023-03-18T13:18:23.249053Z[0m [32m INFO[0m Added block 627 with hash 0x05b5171481eb73a39fdac4ea429b430dfb644bd2e77416fbf943a8e6cd499e92.
+[2m2023-03-18T13:18:25.239082Z[0m [32m INFO[0m Added block 628 with hash 0x01e7ac8b8f30abb305f4d379165aea8d3e38746e91c5f7af4abac019ef557849.
+[2m2023-03-18T13:18:25.444167Z[0m [32m INFO[0m Added block 629 with hash 0x066e2c0d5dd813b571518f892232d84830bd81f82e43e7284e9042cfbc95ff1d.
+[2m2023-03-18T13:18:26.865600Z[0m [32m INFO[0m Added block 630 with hash 0x02f493b2b6cfccab2068afdbb4b20abeaab8b78ae74987cd62e53f2c7bf65af1.
+[2m2023-03-18T13:18:57.081892Z[0m [32m INFO[0m Added block 631 with hash 0x0509e0591f35f8200131955685fb871473b991dd4af710676c0460933ba7caf5.
+[2m2023-03-18T13:18:58.005219Z[0m [32m INFO[0m Added block 632 with hash 0x0267b07fe051553332d8c33289e5b3957298a34e45cc33a5c7261bcf28ef31f2.
+[2m2023-03-18T13:18:58.538152Z[0m [32m INFO[0m Added block 633 with hash 0x02d62afb13e9ab0a0d7c779a1c6d3d1d9e4ef36c84ba3dc6776b2fe58c525527.
+[2m2023-03-18T13:18:59.214985Z[0m [32m INFO[0m Added block 634 with hash 0x0167bb6142610fcc822c0e7a65d6a670465b686754d51879e7a27095124356db.
+[2m2023-03-18T13:18:59.232382Z[0m [32m INFO[0m Added block 635 with hash 0x000baeaffa02b3cf5913912776d677ed5b8728e107fc6e727321245fee42ce8b.
+[2m2023-03-18T13:19:00.324688Z[0m [32m INFO[0m Added block 636 with hash 0x0360b87c08bc64d59b3fd8d32003075575d30589bc46e73975816f2a0a3a79a6.
+[2m2023-03-18T13:19:01.576610Z[0m [32m INFO[0m Added block 637 with hash 0x06d2961fd38a61d1580a6d673475455eae6d49bd327034891876d4efc848217b.
+[2m2023-03-18T13:19:04.640971Z[0m [32m INFO[0m Added block 638 with hash 0x00c96bcc45626ac960aceb4bb5805530e82b8c74b0a63ae33cb560db3aa15f0b.
+[2m2023-03-18T13:19:06.127096Z[0m [32m INFO[0m Added block 639 with hash 0x0770fbc9d9129be2fc03f6217bdac47a17205b544cad7b17ea146fda51a5a8c0.
+[2m2023-03-18T13:19:09.201641Z[0m [32m INFO[0m Added block 640 with hash 0x03ee6eca2d1dac5505865a63f28337e16fe05505e3efa0d9059ff6548771f3eb.
+[2m2023-03-18T13:19:10.484091Z[0m [32m INFO[0m Added block 641 with hash 0x04212026a185ca05b6938d45f273606047b1e961eaa72a2eedb254f0dc037e17.
+[2m2023-03-18T13:19:10.499971Z[0m [32m INFO[0m Added block 642 with hash 0x0419a73e040c0366daa98aab1e45cf5ee6b6e58cf7be9152656f840586119443.
+[2m2023-03-18T13:19:11.341044Z[0m [32m INFO[0m Added block 643 with hash 0x0657fa067cf0904080300efe4a8a0c3dfbac39e85f72c4f78dae64eeffa2bdb7.
+[2m2023-03-18T13:19:12.985858Z[0m [32m INFO[0m Added block 644 with hash 0x048fde3d8865d94f8bc3a2251b164e4120d99b79e230dfda635dd54d61539b05.
+[2m2023-03-18T13:19:13.190859Z[0m [32m INFO[0m Added block 645 with hash 0x000bd971063527bc92fe08be7b7ccf9c408d78a8ab3ce28f76d73695d154e91c.
+[2m2023-03-18T13:19:14.163119Z[0m [32m INFO[0m Added block 646 with hash 0x00254a13b99447221e9e01ef7d2fb3ef13be1941b2ea94ad182671f5b6aedd82.
+[2m2023-03-18T13:19:14.172930Z[0m [32m INFO[0m Added block 647 with hash 0x02cc20c40f22167f3b6f6e0bdc8ca641cdf7ce653e1abf093ac15c24bfe50eee.
+[2m2023-03-18T13:19:15.523260Z[0m [32m INFO[0m Added block 648 with hash 0x078c3ad87bdca994aff9b1e6776c431ce1c45e7be91785c7a84f017a0549e72d.
+[2m2023-03-18T13:19:15.816278Z[0m [32m INFO[0m Added block 649 with hash 0x05c48a600c4c6c858ee2525983c116e1ca697331c46a1fc433c1f06d4991e1fb.
+[2m2023-03-18T13:19:16.593160Z[0m [32m INFO[0m Added block 650 with hash 0x022030357f9a703f32ee0a4eb2ddcfb9f4bc067b7b8343f54c110c0b027d5826.
+[2m2023-03-18T13:19:48.169309Z[0m [32m INFO[0m Added block 651 with hash 0x05dd4029a467717513a85938d0a1ed53bd2d37e04abc03a5456c49d563064bf3.
+[2m2023-03-18T13:19:50.833677Z[0m [32m INFO[0m Added block 652 with hash 0x0441c837961fce4d3c79dc566097d5c868b2eb09cc29d6ce007841cef3463386.
+[2m2023-03-18T13:19:52.262617Z[0m [32m INFO[0m Added block 653 with hash 0x03de7739640b5af70ef6dd199e60bbdeb0c4862c21471e124fa5f8d165e2e494.
+[2m2023-03-18T13:19:52.273679Z[0m [32m INFO[0m Added block 654 with hash 0x068243735eae6f8309ca68b51e56b7faf2d147f1b66dde3fa6c15489aff5aded.
+[2m2023-03-18T13:19:53.217964Z[0m [32m INFO[0m Added block 655 with hash 0x0351f41b625ce05607e41435102e3874cd9a838148d1e67091aa5bde04634f7f.
+[2m2023-03-18T13:20:01.198923Z[0m [32m INFO[0m Added block 656 with hash 0x05acc639be7638ea3ea3e7b040c8e4649cf70fcad13ef23b914d708e33f225e8.
+[2m2023-03-18T13:20:01.550785Z[0m [32m INFO[0m Added block 657 with hash 0x037c0e50b0be8fdad75681e38c9891917cec3913979a9a4cd567ab82828c400e.
+[2m2023-03-18T13:20:02.079316Z[0m [32m INFO[0m Added block 658 with hash 0x048295fde86ad87c2d272b509f72cbaea2403c2485c0216f9eca0b2e8d8ed2ad.
+[2m2023-03-18T13:20:02.533197Z[0m [32m INFO[0m Added block 659 with hash 0x00a49d1c7c90ba81e1de7474ea12e8a6a362c368a972f78710333dcf634cf14c.
+[2m2023-03-18T13:20:03.612635Z[0m [32m INFO[0m Added block 660 with hash 0x000b67abf8ceb02f7d28bfd41fe87a581d7db5559de7587ef767379b3c17b3eb.
+[2m2023-03-18T13:20:04.154094Z[0m [32m INFO[0m Added block 661 with hash 0x056b4c55ff463ba0f40f6f29a5826f4b0365c2591796873b10b0774b32cbf6aa.
+[2m2023-03-18T13:20:04.308092Z[0m [32m INFO[0m Added block 662 with hash 0x028033d5c98699f5ba68c04a03db97745f42cf5a99268f19e0138d2da3c1af3b.
+[2m2023-03-18T13:20:06.243756Z[0m [32m INFO[0m Added block 663 with hash 0x035699fb6a8630a0000f726ae9f25112ea0a7f2c2933d2a244b254154cb4f24b.
+[2m2023-03-18T13:20:07.248114Z[0m [32m INFO[0m Added block 664 with hash 0x0145efc9c5962a39f82c8280ee972157d89dcef1402ee69abfed59b84139726d.
+[2m2023-03-18T13:20:08.490872Z[0m [32m INFO[0m Added block 665 with hash 0x01ddd5f9b5ccb5d36359fe402354feb113619f9524c5bd009ecadf7c22fbc0a2.
+[2m2023-03-18T13:20:10.186771Z[0m [32m INFO[0m Added block 666 with hash 0x0681200883ef4d75189db873b7ed190eb82fd04e16b236090b66ca399462dca8.
+[2m2023-03-18T13:20:38.928021Z[0m [32m INFO[0m Added block 667 with hash 0x00a5dc5a9a11916059ecb322b9b6c99fc788a096591dd5ef21f9fcf7ae162cb1.
+[2m2023-03-18T13:20:40.193351Z[0m [32m INFO[0m Added block 668 with hash 0x057b0f577286237f6fd67de300b2050a166cbd31fea09af37677987ee8da6f9a.
+[2m2023-03-18T13:20:40.474383Z[0m [32m INFO[0m Added block 669 with hash 0x05387d646dfb0b7ded2f14f6d9f01417d3e047d77394336798ce2f397c3748ff.
+[2m2023-03-18T13:20:41.130111Z[0m [32m INFO[0m Added block 670 with hash 0x044529f2c44d9113e0ba4e53cb6e84f425ec186cda27545827b5a72d5540bfdc.
+[2m2023-03-18T13:20:41.194669Z[0m [32m INFO[0m Added block 671 with hash 0x03e80cd6a45f28f49e004dfc89993da9270a0824911fbc700575ec58541743ca.
+[2m2023-03-18T13:20:41.223283Z[0m [32m INFO[0m Added block 672 with hash 0x011134ff33d2d5add2d84810df5019c1c4cb6a096d16d1ca8967f246f1a2eb3f.
+[2m2023-03-18T13:20:42.395800Z[0m [32m INFO[0m Added block 673 with hash 0x07d45cbb797f35da4f26025dca4c17aecb21fc1a082a2df071f0e3559e444569.
+[2m2023-03-18T13:20:43.170314Z[0m [32m INFO[0m Added block 674 with hash 0x011437d992cbf7e43db8cb3c3009868936b4be1a47f71fe77dd70fd6536e138b.
+[2m2023-03-18T13:20:44.548751Z[0m [32m INFO[0m Added block 675 with hash 0x00c2158ba446450bc0df8b004f5cd84a698bdf320b4257a2ecbf6cc72df92a22.
+[2m2023-03-18T13:20:45.522315Z[0m [32m INFO[0m Added block 676 with hash 0x05753120d90073e99e752b00d95f3a66c11db0a52e863ebff3b05266696c71ad.
+[2m2023-03-18T13:20:47.501948Z[0m [32m INFO[0m Added block 677 with hash 0x0612b214df4ff5c30b7c7b57f30ab91a636dc790ac8ed9c352fb41fea7951de4.
+[2m2023-03-18T13:20:49.229528Z[0m [32m INFO[0m Added block 678 with hash 0x05076fc0db5a3b4c453936a6904b57818e55569e5a34992723327c630df96feb.
+[2m2023-03-18T13:22:06.410361Z[0m [32m INFO[0m Added block 679 with hash 0x071a39bb7af1c9c6b587b52c360b2b8ba035dc2ca113942ed5ea2e804eeef8aa.
+[2m2023-03-18T13:22:37.673148Z[0m [32m INFO[0m Added block 680 with hash 0x07527e0b78442b4f7fd13736e0ff9d9cec67f4d6363b9b2e9f3a1ac715ae82d2.
+[2m2023-03-18T13:22:39.227149Z[0m [32m INFO[0m Added block 681 with hash 0x032fa3d4412b916510332a5609f2f15b05c30ac66c7f585af4e6de5e41d2f0d4.
+[2m2023-03-18T13:22:39.243583Z[0m [32m INFO[0m Added block 682 with hash 0x07a6d788f2a715f8193687a371ec1c09cb33e695808c0dc3366535b57bf81674.
+[2m2023-03-18T13:22:40.426763Z[0m [32m INFO[0m Added block 683 with hash 0x03b168ecd347f4e2ab30a772a37b92e3fc251525e47383df8c10003cb00e52c8.
+[2m2023-03-18T13:22:40.640189Z[0m [32m INFO[0m Added block 684 with hash 0x001287175bd9d1d31c96d3bac5dfbeaf9683c46de9e61d95f3adfcdb6346e37f.
+[2m2023-03-18T13:22:43.157514Z[0m [32m INFO[0m Added block 685 with hash 0x06eea0b90e534ad21e93fb3d50d65a661300cd3aad99a90552085dd0835c0d15.
+[2m2023-03-18T13:22:44.944501Z[0m [32m INFO[0m Added block 686 with hash 0x058e4e513daeb9ebbacb5e6c5c3e5ea25b6b1e5299ba0a81b4806cefb2f8429b.
+[2m2023-03-18T13:22:48.522762Z[0m [32m INFO[0m Added block 687 with hash 0x0094ad0c8ba9bc3d3452532a62a13e98c5a2b922cb5cd7027dd2e80d3e63cd23.
+[2m2023-03-18T13:22:48.702819Z[0m [32m INFO[0m Added block 688 with hash 0x02bcfb66a5e5dda3152145758537bcd27e9399fb7abeaa2a000cac5dc56b99d6.
+[2m2023-03-18T13:22:53.217684Z[0m [32m INFO[0m Added block 689 with hash 0x04ee1fbe6b1f8e554e440ca39fbc5831a7da9b51e670d3020095a0c531ceb24b.
+[2m2023-03-18T13:22:56.115129Z[0m [32m INFO[0m Added block 690 with hash 0x00533f75fbd804a969e29068199fae7eefc35649fc8c817a8b515ed1cc4fec3f.
+[2m2023-03-18T13:23:00.004232Z[0m [32m INFO[0m Added block 691 with hash 0x06a73f71061e396413defbd0bbbc9558635c945639b061be88bfae1336e43088.
+[2m2023-03-18T13:23:02.677430Z[0m [32m INFO[0m Added block 692 with hash 0x00e3cccafcabaeaaea0f5f2d4ed9c9447a5636f88e36f5b56f101e6ce4e355ff.
+[2m2023-03-18T13:23:04.066031Z[0m [32m INFO[0m Added block 693 with hash 0x04df6029a9e74d3807b5e5570fa64f1cce35aa2932e9a3b85f45dac88101b127.
+    Finished release [optimized] target(s) in 0.12s
+     Running `target/release/papyrus_node`
+[2m2023-03-18T13:23:40.179368Z[0m [32m INFO[0m Booting up.
+[2m2023-03-18T13:23:40.180063Z[0m [32m INFO[0m Gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8080
+[2m2023-03-18T13:23:40.180097Z[0m [32m INFO[0m Monitoring gateway is running. [3mlocal_address[0m[2m=[0m0.0.0.0:8081
+[2m2023-03-18T13:23:40.215831Z[0m [32m INFO[0m State sync started.
+[2m2023-03-18T13:23:48.267335Z[0m [32m INFO[0m Added block 694 with hash 0x061e460cb77ba3ebf9b6e6659a7c47f50ad8d2a4c86bd59e1f7407d2aaa2f5e7.
+[2m2023-03-18T13:23:51.571508Z[0m [32m INFO[0m Added block 695 with hash 0x01875654b91ce636054fcfa7e18a459434e0d6bb694e0c41d04efffea87f1631.
+[2m2023-03-18T13:23:52.659416Z[0m [32m INFO[0m Added block 696 with hash 0x008e77a652b3e9e2ae7f1ccb039638b2e236ce487ececfbd99a8bc2fb15ac407.
+[2m2023-03-18T13:23:56.813608Z[0m [32m INFO[0m Added block 697 with hash 0x063ad8cf321a899ea82ae418a06cbdffbeabe42cd40737332e01abb5e5311e6f.
+[2m2023-03-18T13:23:56.828262Z[0m [32m INFO[0m Added block 698 with hash 0x0114d94e5d105a0c4c4a3810739874853648b28a810a72c2ebc8083938db5f66.
+[2m2023-03-18T13:23:58.264172Z[0m [32m INFO[0m Added block 699 with hash 0x0528f00a452d8a37cc062acab1855b1b519eb99787fd7d2568c27b5c4156e7ca.
+[2m2023-03-18T13:23:59.674063Z[0m [32m INFO[0m Added block 700 with hash 0x02c40ace24fe50418998c171b1260b8a0a82a684ae18d70d7398cc29db47368d.
+[2m2023-03-18T13:24:05.988166Z[0m [32m INFO[0m Added block 701 with hash 0x03bb42e91101313fa5fabdc5a129faaf21e6a318fdffdd98e6ee9fc8898903e5.

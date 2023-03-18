@@ -1,153 +1,179 @@
-<p align="center">
-  <a href="https://github.com/NethermindEth/juno">
-    <img alt="Juno Logo" height="125" src="./.github/juno_icon_light.png">
-  </a>
-  <br>
-</p>
+<div align="center">
+  <h1>Papyrus</h1>
+  <img src="./resources/img/papyrus-logo-square.png" height="200" width="200">
+  <br />
+  <a href="https://github.com/starkware-libs/papyrus/issues/new?assignees=&labels=bug&template=01_BUG_REPORT.md&title=bug%3A+">Report a Bug</a>
+  ·
+  <a href="https://github.com/starkware-libs/papyrus/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a>
+  ·
+  <a href="https://github.com/starkware-libs/papyrus/discussions">Ask a Question</a>
+</div>
 
-<h1 align="center">Juno</h1>
+<div align="center">
+<br />
 
-<p align="center">
-  <a href="https://pkg.go.dev/github.com/NethermindEth/juno">
-    <img src="https://pkg.go.dev/badge/github.com/NethermindEth/juno.svg">
-  </a>
-  <a href="https://goreportcard.com/report/github.com/NethermindEth/juno">
-    <img src="https://goreportcard.com/badge/github.com/NethermindEth/juno">
-  </a>
-  <a href="https://github.com/NethermindEth/juno/actions">
-    <img src="https://github.com/NethermindEth/juno/actions/workflows/juno-build.yml/badge.svg">
-  </a>
-  <a href="https://codecov.io/gh/NethermindEth/juno">
-    <img src="https://codecov.io/gh/NethermindEth/juno/branch/main/graph/badge.svg">
-  </a>
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/starkware-libs/papyrus/ci.yml?branch=main)
+[![Project license](https://img.shields.io/github/license/starkware-libs/papyrus.svg?style=flat-square)](LICENSE)
+[![Pull Requests welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](https://github.com/starkware-libs/papyrus/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
 
-</p>
-<p align="center">
-  <a href="https://discord.gg/TcHbSZ9ATd">
-    <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
-  </a>
-  <a href="https://twitter.com/nethermindeth?s=20&t=xLC_xrid_f17DJqdJ2EZnA">
-    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white">
-  </a>
-</p>
+</div>
 
+<details open="open">
+<summary>Table of Contents</summary>
 
-<p align="center">
-  <b>Juno</b> is a golang <a href="https://starknet.io/">Starknet</a> node implementation by <a href="https://nethermind.io/">Nethermind</a> with the aim of decentralising Starknet.
-</p>
-
-## ⚙️ Installation
-
-### Prerequisites
-
-- Golang 1.19 or higher is required to build and run the project. You can find the installer on
-  the official Golang [download](https://go.dev/doc/install) page.
-- A C compiler: `gcc` or `clang`.
-
-### Build and Run
-
-```shell
-make juno
-./build/juno
-```
-
-### Run with Docker
-
-```shell
-docker run -it \
-  -p 6060:6060 \
-  -v /home/juno:/var/lib/juno \
-  nethermindeth/juno \
-  --rpc-port 6060 \
-  --db-path /var/lib/juno \
-  --verbosity 0 \
-  --network 0
-```
-
-Before running the docker run command, please ensure that the directory `/home/juno` exists on your local machine.
-
-## ✔ Supported Features
-
-- Starknet state construction and storage using a path-based Merkle Patricia trie. 
-- Pedersen and `starknet_keccak` hash implementation over starknet field.
-- Feeder gateway synchronisation of Blocks, Transactions, Receipts, State Updates and Classes.
-- Block and Transaction hash verification.
-- JSON-RPC Endpoints:
-  - `starknet_chainId`
-  - `starknet_blockNumber`
-  - `starknet_blockHashAndNumber`
-  - `starknet_getBlockWithTxHashes`
-  - `starknet_getBlockWithTxs`
-  - `starknet_getTransactionByHash`
-  - `starknet_getTransactionReceipt`
-  - `starknet_getBlockTransactionCount`
-  - `starknet_getTransactionByBlockIdAndIndex`
-  - `starknet_getStateUpdate`
-
-## 🛣 Roadmap
-
-### Phase 1
-
-<details>
-<summary></summary>
-
-* [X] Flat DB implementation of trie
-* [X] Go implementation of crypto primitives
-  * [X] Pedersen hash
-  * [X] Starknet_Keccak
-  * [X] Felt
-* [X] Feeder gateway synchronisation
-  * [X] State Update
-  * [X] Blocks
-  * [X] Transactions
-  * [X] Class
-* [X] Implement the following core data structures, and their Hash calculations
-  * [X] Blocks
-  * [X] Transactions and Transaction Receipts
-  * [X] Contracts and Classes
-* [X] Storing blocks, transactions and State updates in a local DB
-* [X] Basic RPC (in progress)
-  * [X] `starknet_chainId`
-  * [X] `starknet_blockNumber`
-  * [X] `starknet_blockHashAndNumber`
-  * [X] `starknet_getBlockWithTxHashes`
-  * [X] `starknet_getBlockWithTxs`
-  * [X] `starknet_getTransactionByHash`
-  * [X] `starknet_getTransactionReceipt`
-  * [X] `starknet_getBlockTransactionCount`
-  * [X] `starknet_getTransactionByBlockIdAndIndex`
-  * [X] `starknet_getStateUpdate`
+- [:warning: Disclaimer](#warning-disclaimer)
+- [About](#about)
+- [Getting Started](#getting-started)
+  - [Compiling and running `papyrus`](#compiling-and-running-papyrus)
+  - [Configuration](#configuration)
+- [Running `papyrus` with Docker](#running-papyrus-with-docker)
+- [Endpoints](#endpoints)
+- [Roadmap](#roadmap)
+- [Support](#support)
+- [Project assistance](#project-assistance)
+- [Contributing](#contributing)
+- [Authors \& contributors](#authors--contributors)
+- [Security](#security)
+- [License](#license)
 
 </details>
 
-### Phase 2
+---
 
-* [ ] Integrate cairo vm
-* [ ] Verification
-    * [ ] L1 verification
-    * [ ] Execution of all transactions from feeder gateway
-* [ ] Full RPC (according to 0.11.0)
-* [ ] Start p2p discussions
-* [ ] Infura and Alchemy integrations
+## :warning: Disclaimer
 
-## 👍 Contribute
+:warning: :construction: `Papyrus` is still being built therefore breaking changes might happen often so use it at your own risks.:construction: :warning:
 
-We welcome PRs from external contributors and would love to help you get up to speed.
-Let us know you're interested in the [Discord server](https://discord.gg/TcHbSZ9ATd) and we can discuss good first issues.
-There are also many other ways to contribute. Here are some ideas:
+## About
 
-* Run a node.
-* Add a [GitHub Star](https://github.com/NethermindEth/juno/stargazers) to the project.
-* [Tweet](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2FNethermindEth%2Fjuno&via=nethermindeth&text=Juno%20is%20Awesome%2C%20they%20are%20working%20hard%20to%20bring%20decentralization%20to%20StarkNet&hashtags=StarkNet%2CJuno%2CEthereum) about Juno.
-* Add a Github issue if you find a [bug](https://github.com/NethermindEth/juno/issues/new?assignees=&labels=&template=bug_report.md&title=), or you need or want a new [feature](https://github.com/NethermindEth/juno/issues/new?assignees=&labels=&template=feature_request.md&title=).
+`Papyrus` is a StarkNet full node written in Rust.
 
-## 🤝 Partnerships
+## Getting Started
 
-To establish a partnership with the Juno team, or if you have any suggestion or special request, feel free to reach us
-via [email](mailto:juno@nethermind.io).
+### Compiling and running `papyrus`
 
-## ⚠️ License
+Prerequisites
 
-Copyright (c) 2022-present, with the following [contributors](https://github.com/NethermindEth/juno/graphs/contributors).
+- [Rust](https://www.rust-lang.org/tools/install)
 
-Juno is open-source software licensed under the [Apache-2.0 License](https://github.com/NethermindEth/juno/blob/main/LICENSE).
+You can build and run a `papyrus` node with the default configuration by running:
+
+```bash
+mkdir data
+cargo run --release --package papyrus_node --bin papyrus_node
+```
+
+### Configuration
+
+`Papyrus` supports configuration from command-line arguments and a configuration yaml file.
+In case both are provided, the command-line arguments take precedence.
+The default path for the configuration file is `config/config.yaml`. You can override this path
+using the `--config_file` command-line argument.
+See the default [configuration file](config/config.yaml) for available options.
+Note that the configuration file can be partial or even empty.
+You can check the available command-line arguments by running:
+
+```bash
+cargo run --release --package papyrus_node --bin papyrus_node -- --help
+```
+
+## Running `papyrus` with Docker
+
+Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/)
+
+You can run a `papyrus` node with the default configuration by running:
+
+```bash
+docker run --rm --name papyrus\
+  -p 8080-8081:8080-8081 \
+  -v <local-host-data-path>:/app/data \
+  ghcr.io/starkware-libs/papyrus:dev
+```
+
+Note:
+
+- The container must have write access to `<local-host-data-path>`.
+A possible way to assure this is to create the `<local-host-data-path>` directory (only the first
+time you run `papyrus`) and add `--user "$(id -u):$(id -g)"` to the docker run command.
+- You must include the `dev` tag which keeps track of our development branch and contains the most
+up-to-date code. Once we have official releases we will add a `latest` tag for the latest release.
+- Currently, there is no automatic upgrade mechanism.
+Make sure to periodically pull the latest image and re-run the node.
+
+## Endpoints
+
+| Endpoint                                   | Supported          |
+| :----------------------------------------- | :----------------- |
+| `starknet_addDeclareTransaction`           | :x:                |
+| `starknet_addDeployAccountTransaction`     | :x:                |
+| `starknet_addInvokeTransaction`            | :x:                |
+| `starknet_blockHashAndNumber`              | :heavy_check_mark: |
+| `starknet_blockNumber`                     | :heavy_check_mark: |
+| `starknet_call`                            | :x:                |
+| `starknet_chainId`                         | :heavy_check_mark: |
+| `starknet_estimateFee`                     | :x:                |
+| `starknet_getBlockTransactionCount`        | :heavy_check_mark: |
+| `starknet_getBlockWithTxHashes`            | :heavy_check_mark: |
+| `starknet_getBlockWithTxs`                 | :heavy_check_mark: |
+| `starknet_getClass`                        | :heavy_check_mark: |
+| `starknet_getClassAt`                      | :heavy_check_mark: |
+| `starknet_getClassHashAt`                  | :heavy_check_mark: |
+| `starknet_getEvents`                       | :heavy_check_mark: |
+| `starknet_getNonce`                        | :heavy_check_mark: |
+| `starknet_getStateUpdate`                  | :heavy_check_mark: |
+| `starknet_getStorageAt`                    | :heavy_check_mark: |
+| `starknet_getTransactionByBlockIdAndIndex` | :heavy_check_mark: |
+| `starknet_getTransactionByHash`            | :heavy_check_mark: |
+| `starknet_getTransactionReceipt`           | :heavy_check_mark: |
+| `starknet_pendingTransactions`             | :x:                |
+| `starknet_syncing`                         | :x:                |
+
+## Roadmap
+
+See the [open issues](https://github.com/starkware-libs/papyrus/issues) for a list of proposed features (and known issues).
+
+- [Top Feature Requests](https://github.com/starkware-libs/papyrus/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
+- [Top Bugs](https://github.com/starkware-libs/papyrus/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
+- [Newest Bugs](https://github.com/starkware-libs/papyrus/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
+
+## Support
+
+Reach out to the maintainer at one of the following places:
+
+- [GitHub Discussions](https://github.com/starkware-libs/papyrus/discussions)
+- Contact options listed on [this GitHub profile](https://github.com/starkware-libs)
+
+## Project assistance
+
+If you want to say **thank you** or/and support active development of Papyrus:
+
+- Add a [GitHub Star](https://github.com/starkware-libs/papyrus) to the project.
+- Tweet about the Papyrus.
+- Write interesting articles about the project on [Dev.to](https://dev.to/), [Medium](https://medium.com/) or your personal blog.
+
+Together, we can make Papyrus **better**!
+
+## Contributing
+
+First off, thanks for taking the time to contribute! Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make will benefit everybody else and are **greatly appreciated**.
+
+Please read [our contribution guidelines](docs/CONTRIBUTING.md), and thank you for being involved!
+
+## Authors & contributors
+
+For a full list of all authors and contributors, see [the contributors page](https://github.com/starkware-libs/papyrus/contributors).
+
+## Security
+
+Papyrus follows good practices of security, but 100% security cannot be assured.
+Papyrus is provided **"as is"** without any **warranty**. Use at your own risk.
+
+_For more information and to report security issues, please refer to our [security documentation](docs/SECURITY.md)._
+
+## License
+
+This project is licensed under the **Apache 2.0 license**.
+
+See [LICENSE](LICENSE) for more information.

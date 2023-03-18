@@ -1,0 +1,18 @@
+[package]
+name = "test_utils"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+
+[dependencies]
+indexmap = { version = "1.9.2", features = ["serde"] }
+rand = { version = "0.8.5" }
+rand_chacha = { version = "0.3.1" }
+serde = { version = "1.0.130", features = ["derive"] }
+serde_json = { version = "1.0.81" }
+starknet_api = { git = "https://github.com/starkware-libs/starknet-api", rev = "9a1fca8" }
+tracing = { version = "0.1.37", features = ["log"] }
+reqwest = { version = "0.11", features = ["json"] }
+
+[dev-dependencies]
