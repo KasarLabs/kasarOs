@@ -1,84 +1,124 @@
-# We split the Dockerfile into two stages:
-# Stage 1: We copy all the Cargo.toml files and create empty lib.rs files.
-# Stage 2:
-#   * We copy the files from the first stage
-#   * We compile all the crates.
-#   * We copy the rest of the files and compile again.
-# The reason we compile twice is to allow caching for the first compilation (that compiles all the
-# dependency crates) if no Cargo.toml files were changed.
-# The reason we split it into two stages is to first copy all the files and then erase all
-# non-Cargo.toml files. This way, non-Cargo.toml files won't affect the cache of the second stage
-# (For more on docker stages, read https://docs.docker.com/build/building/multi-stage/).
-FROM rust:1.67 AS copy_toml
+# Our Dockerfile relies on the PATHFINDER_FORCE_VERSION build-time variable being set.
+# This is required so that we don't have to copy the .git directory into the layer which
+# might cause caches to be invalidated even if that's unnecessary.
 
-COPY crates/ /app/crates/
-COPY Cargo.toml /app/
+########################################
+# Stage 1: Build the pathfinder binary #
+########################################
+# Note that we're explicitly using the Debian bullseye image to make sure we're
+# compatible with the Python container we'll be copying the pathfinder
+# executable to.
+FROM --platform=$BUILDPLATFORM lukemathwalker/cargo-chef:0.1.50-rust-1.66-bullseye AS cargo-chef
+WORKDIR /usr/src/pathfinder
 
-WORKDIR /app/
+# refresh indices, do it with cli git for much better ram usage
+RUN CARGO_NET_GIT_FETCH_WITH_CLI=true cargo search --limit 0
 
-# Erase all non-Cargo.toml files.
-RUN find /app \! -name "Cargo.toml" -type f -delete ; \
-    find /app -empty -type d -delete; \
-    # Create empty lib.rs files.
-    # In order for cargo init to work, we need to not have a Cargo.toml file. In each crate, we rename
-    # Cargo.toml to another name and after running `cargo init` we override the auto-generated
-    # Cargo.toml with the original.
-    mv Cargo.toml _Cargo.toml && for dir in crates/*; do \
-    mv $dir/Cargo.toml $dir/_Cargo.toml \
-    && cargo init --lib --vcs none $dir \
-    && mv -f $dir/_Cargo.toml $dir/Cargo.toml; \
-    done && mv _Cargo.toml Cargo.toml
+FROM --platform=$BUILDPLATFORM cargo-chef AS rust-planner
+COPY . .
+# carg-chef prepare examines your project and builds a recipe that captures
+# the set of information required to build your dependencies.
+RUN cargo chef prepare --recipe-path recipe.json
 
-# Starting a new stage so that the first build layer will be cached if a non-Cargo.toml file was
-# changed.
-# Use this image to compile the project to an alpine compatible binary.
-FROM clux/muslrust:1.67.0-stable AS builder
-WORKDIR /app/
+FROM --platform=$BUILDPLATFORM cargo-chef AS rust-builder
+ARG TARGETARCH
+COPY ./build/prepare.sh prepare.sh
+RUN TARGETARCH=${TARGETARCH} ./prepare.sh
 
-RUN apt update && apt install -y clang
+# The recipe.json is the equivalent of the Python requirements.txt file - it is the only
+# input required for cargo chef cook, the command that will build out our dependencies.
+COPY --from=rust-planner /usr/src/pathfinder/recipe.json recipe.json
+COPY ./build/cargo-chef-cook.sh ./cargo-chef-cook.sh
+RUN TARGETARCH=${TARGETARCH} ./cargo-chef-cook.sh --release --recipe-path recipe.json
 
-# Copy all the files from the previous stage (which are Cargo.toml and empty lib.rs files).
-COPY --from=copy_toml /app .
+# Compile the actual libraries and binary now
+COPY . .
+ARG PATHFINDER_FORCE_VERSION
+COPY ./build/cargo-build.sh ./cargo-build.sh
+RUN TARGETARCH=${TARGETARCH} \
+    PATHFINDER_FORCE_VERSION=${PATHFINDER_FORCE_VERSION} \
+    ./cargo-build.sh --locked --release -p pathfinder --bin pathfinder \
+    && cp target/*-unknown-linux-gnu/release/pathfinder pathfinder-${TARGETARCH}
 
-RUN rustup target add x86_64-unknown-linux-musl && \
-    CARGO_INCREMENTAL=0 cargo build  --target x86_64-unknown-linux-musl --release --package papyrus_node && \
-    # TODO: Consider seperating the load test for CI to a different image.
-    CARGO_INCREMENTAL=0 cargo build   --target x86_64-unknown-linux-musl --release --package papyrus_load_test
 
-# Copy the rest of the files.
-COPY crates/ /app/crates
+#############################################
+# Stage 1.5: Build the Python Pedersen hash #
+#############################################
+FROM --platform=$BUILDPLATFORM cargo-chef AS rust-python-starkhash-planner
+COPY crates/stark_curve crates/stark_curve
+COPY crates/stark_hash crates/stark_hash
+COPY crates/stark_hash_python crates/stark_hash_python
+RUN cd crates/stark_hash_python && \
+    cargo chef prepare --recipe-path recipe.json
 
-# Touching the lib.rs files to mark them for re-compilation. Then re-compile now that all the source
-# code is available
-RUN touch crates/*/src/lib.rs; \
-    CARGO_INCREMENTAL=0 cargo build --release --package papyrus_node --bin papyrus_node; \
-    CARGO_INCREMENTAL=0 cargo build --release --package papyrus_load_test --bin papyrus_load_test
 
-# Starting a new stage so that the final image will contain only the executable.
-FROM alpine:3.17.0
-ENV ID=1000
+FROM --platform=$BUILDPLATFORM cargo-chef AS rust-python-starkhash-builder
+ARG TARGETARCH
+COPY ./build/prepare-stark_hash_python.sh prepare-stark_hash_python.sh
+RUN TARGETARCH=${TARGETARCH} ./prepare-stark_hash_python.sh
+COPY --from=rust-python-starkhash-planner /usr/src/pathfinder/crates/stark_hash_python/recipe.json /usr/src/pathfinder/crates/stark_hash_python/recipe.json
+COPY crates/stark_curve crates/stark_curve
+COPY crates/stark_hash crates/stark_hash
+COPY ./build/cargo-chef-cook.sh ./crates/stark_hash_python/cargo-chef-cook.sh
+RUN cd crates/stark_hash_python && TARGETARCH=${TARGETARCH} ./cargo-chef-cook.sh --release --recipe-path recipe.json
 
-WORKDIR /app
-# Copy the node executable and its config.
-COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/papyrus_node /app/target/release/papyrus_node
-COPY config/ /app/config
+COPY crates/stark_hash_python crates/stark_hash_python
+COPY ./build/cargo-build.sh ./crates/stark_hash_python/cargo-build.sh
+RUN cd crates/stark_hash_python \
+    && TARGETARCH=${TARGETARCH} ./cargo-build.sh --locked --release \
+    && cp target/*-unknown-linux-gnu/release/libstark_hash_rust.so stark_hash_rust.so-${TARGETARCH}
 
-# Copy the load test executable and its resources.
-COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/papyrus_load_test /app/target/release/papyrus_load_test
-COPY crates/papyrus_load_test/src/resources/ /app/crates/papyrus_load_test/src/resources
+#######################################
+# Stage 2: Build the Python libraries #
+#######################################
+FROM python:3.9-slim-bullseye AS python-builder
+ARG TARGETARCH
 
-RUN set -ex; \
-    apk update; \
-    apk add --no-cache tini; \
-    mkdir data
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y libgmp-dev gcc && rm -rf /var/lib/apt/lists/*
 
-RUN set -ex; \
-    addgroup --gid ${ID} papyrus; \
-    adduser --ingroup $(getent group ${ID} | cut -d: -f1) --uid ${ID} --gecos "" --disabled-password --home /app papyrus; \
-    chown -R papyrus:papyrus /app
+WORKDIR /usr/share/pathfinder
+COPY py py
+RUN --mount=type=cache,target=/root/.cache/pip python3 -m pip --disable-pip-version-check install py/.
+COPY --from=rust-python-starkhash-builder /usr/src/pathfinder/crates/stark_hash_python/stark_hash_rust.so-${TARGETARCH} /usr/local/lib/python3.9/site-packages/stark_hash_rust.so
 
-EXPOSE 8080 8081
+# This reduces the size of the python libs by about 50%
+ENV PY_PATH=/usr/local/lib/python3.9/
+RUN find ${PY_PATH} -type d -a -name test -exec rm -rf '{}' + \
+    && find ${PY_PATH} -type d -a -name tests  -exec rm -rf '{}' + \
+    && find ${PY_PATH} -type f -a -name '*.pyc' -exec rm -rf '{}' + \
+    && find ${PY_PATH} -type f -a -name '*.pyo' -exec rm -rf '{}' +
 
-USER ${ID}
+#######################
+# Final Stage: Runner #
+#######################
+# Note that we're explicitly using the Debian bullseye image to make sure we're
+# compatible with the Rust builder we've built the pathfinder executable in.
+FROM python:3.9-slim-bullseye AS runner
+ARG TARGETARCH
 
-ENTRYPOINT ["/sbin/tini", "--", "/app/target/release/papyrus_node"]
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y libgmp10 tini && rm -rf /var/lib/apt/lists/*
+RUN groupadd --gid 1000 pathfinder && useradd --no-log-init --uid 1000 --gid pathfinder --no-create-home pathfinder
+
+COPY --from=rust-builder /usr/src/pathfinder/pathfinder-${TARGETARCH} /usr/local/bin/pathfinder
+COPY --from=python-builder /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
+COPY --from=python-builder /usr/local/bin/pathfinder_python_worker /usr/local/bin
+
+# Create directory and volume for persistent data
+RUN install --owner 1000 --group 1000 --mode 0755 -d /usr/share/pathfinder/data
+VOLUME /usr/share/pathfinder/data
+
+USER 1000:1000
+EXPOSE 9545
+WORKDIR /usr/share/pathfinder/data
+
+# this is required to have exposing ports work from docker, the default is not this.
+ENV PATHFINDER_HTTP_RPC_ADDRESS="0.0.0.0:9545"
+
+# this has been changed in #335 to follow docker best practices example; every
+# time it is changed it will be a breaking change. this allows `docker run
+# eqlabs/pathfinder --help` to give an introductory path to configuration.
+ENTRYPOINT ["/usr/bin/tini", "--", "/usr/local/bin/pathfinder"]
+
+# empty CMD is needed and cannot be --help because otherwise configuring from
+# environment variables only would be impossible and require a workaround.
+CMD []

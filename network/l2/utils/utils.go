@@ -9,7 +9,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-var client = "papyrus"
+var client = "pathfinder"
 
 func ExtractTimestamp(line string) (int64, error) {
     var timestampStr string
@@ -20,6 +20,11 @@ func ExtractTimestamp(line string) (int64, error) {
         date := parts[0] + " " + parts[1] + " " + parts[2]
         timestampStr = date
     } else if (client == "papyrus") {
+        layout = "2006-01-02T15:04:05.999999Z"
+        parts := strings.Split(line, "\t")
+        ansiRegex := regexp.MustCompile(`\x1b\[[0-9;]*m`)
+        timestampStr = ansiRegex.ReplaceAllString(parts[0], "")
+    } else if (client == "pathfinder") {
         layout = "2006-01-02T15:04:05.999999Z"
         parts := strings.Split(line, "\t")
         ansiRegex := regexp.MustCompile(`\x1b\[[0-9;]*m`)
@@ -43,6 +48,17 @@ func ExtractNumber(input string) (string) {
         res := strings.ReplaceAll(number[0], "\t", "")
         return res
     } else if (client == "papyrus") {
+        words := strings.Fields(input)
+        for i, word := range words {
+            if word == "block" && i < len(words)-1 {
+                blockNumber := words[i+1]
+                return blockNumber
+            }
+        }
+    } else if (client == "pathfinder") {
+        if strings.Contains(input, "Updated StarkNet") {
+            return "0";
+        }
         words := strings.Fields(input)
         for i, word := range words {
             if word == "block" && i < len(words)-1 {

@@ -1,15 +1,36 @@
+[profile.stripdebuginfo]
+# Used by CI to lower binary size for test artifacts.
+inherits = "test"
+strip = "debuginfo"
+
 [workspace]
-# Using version 2 to avoid unifying features. For more info, read:
-#   https://doc.rust-lang.org/cargo/reference/resolver.html#feature-resolver-version-2
+members = [
+    "crates/common",
+    "crates/ethereum",
+    "crates/gateway-client",
+    "crates/gateway-test-fixtures",
+    "crates/gateway-types",
+    "crates/merkle-tree",
+    "crates/p2p",
+    "crates/p2p_bootstrap",
+    "crates/p2p_proto",
+    "crates/p2p_proto_derive",
+    "crates/pathfinder",
+    "crates/retry",
+    "crates/rpc",
+    "crates/serde",
+    "crates/stark_curve",
+    "crates/stark_hash",
+    "crates/stark_poseidon",
+    "crates/storage",
+]
+exclude = [
+    "crates/load-test",
+    "crates/stark_hash_python",
+]
 resolver = "2"
 
-members = [
-    "crates/papyrus_gateway",
-    "crates/papyrus_load_test",
-    "crates/papyrus_monitoring_gateway",
-    "crates/papyrus_node",
-    "crates/papyrus_storage",
-    "crates/papyrus_sync",
-    "crates/starknet_client",
-    "crates/test_utils",
-]
+[workspace.dependencies]
+fake = { version = "2.5.0", features = ["derive"] }
+rand = "0.8.5"
+tokio = "1.24.2"

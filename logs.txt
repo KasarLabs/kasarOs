@@ -3,3 +3,5 @@ error: could not find `Cargo.toml` in `/home/antiyro/Documents/PROJECTS/KASAR/my
 error: could not find `Cargo.toml` in `/home/antiyro/Documents/PROJECTS/KASAR/myOsiris` or any parent directory
 error: could not find `Cargo.toml` in `/home/antiyro/Documents/PROJECTS/KASAR/myOsiris` or any parent directory
 error: could not find `Cargo.toml` in `/home/antiyro/Documents/PROJECTS/KASAR/myOsiris` or any parent directory
+error: could not find `Cargo.toml` in `/home/antiyro/Documents/PROJECTS/KASAR/myOsiris` or any parent directory
+error: could not find `Cargo.toml` in `/home/antiyro/Documents/PROJECTS/KASAR/myOsiris` or any parent directory

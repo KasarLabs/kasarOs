@@ -1,0 +1,1214 @@
+error: Found argument '--ethereum-api-url' which wasn't expected, or isn't valid in this context
+
+  If you tried to supply '--ethereum-api-url' as a value rather than a flag, use '-- --ethereum-api-url'
+
+Usage: cargo run --release --package [<SPEC>] --bin [<NAME>] [args]...
+
+For more information try '--help'
+[2m2023-03-18T17:37:12.695696Z[0m [32m INFO[0m 🏁 Starting node. [3mversion[0m[2m=[0m"v0.4.5"
+[2m2023-03-18T17:37:13.052462Z[0m [32m INFO[0m Re-created the starknet_events table and copied data
+[2m2023-03-18T17:37:13.052638Z[0m [32m INFO[0m Re-created the indexes for starknet_events
+[2m2023-03-18T17:37:13.054284Z[0m [32m INFO[0m Re-created the full-text index for starknet_events
+[2m2023-03-18T17:37:13.068151Z[0m [32m INFO[0m Adding composite index to starknet_events table
+[2m2023-03-18T17:37:13.069775Z[0m [32m INFO[0m Database migrated. [3mlocation[0m[2m=[0m"/usr/share/pathfinder/data/mainnet.sqlite"
+[2m2023-03-18T17:37:15.595101Z[0m [32m INFO[0m [1mext_py[0m:[1msubproc[0m: Subprocess launched [2m[3mcount[0m[2m=[0m2[0m [2m[3mpid[0m[2m=[0m32[0m
+[2m2023-03-18T17:37:15.596655Z[0m [32m INFO[0m 📡 HTTP-RPC server started on: 0.0.0.0:9545
+[2m2023-03-18T17:37:15.773464Z[0m [32m INFO[0m L1 sync updated with blocks 0 - 12
+[2m2023-03-18T17:37:15.962525Z[0m [32m INFO[0m L1 sync updated with blocks 13 - 32
+[2m2023-03-18T17:37:16.148477Z[0m [32m INFO[0m L1 sync updated with blocks 33 - 49
+[2m2023-03-18T17:37:16.554779Z[0m [32m INFO[0m L1 sync updated with blocks 50 - 67
+[2m2023-03-18T17:37:16.736061Z[0m [32m INFO[0m L1 sync updated with blocks 68 - 86
+[2m2023-03-18T17:37:16.912141Z[0m [32m INFO[0m L1 sync updated with blocks 87 - 103
+[2m2023-03-18T17:37:17.081608Z[0m [32m INFO[0m L1 sync updated with blocks 104 - 114
+[2m2023-03-18T17:37:17.257405Z[0m [32m INFO[0m L1 sync updated with blocks 115 - 139
+[2m2023-03-18T17:37:17.441607Z[0m [32m INFO[0m L1 sync updated with blocks 140 - 157
+[2m2023-03-18T17:37:17.622728Z[0m [32m INFO[0m L1 sync updated with blocks 158 - 175
+[2m2023-03-18T17:37:17.811805Z[0m [32m INFO[0m L1 sync updated with blocks 176 - 193
+[2m2023-03-18T17:37:17.989877Z[0m [32m INFO[0m L1 sync updated with blocks 194 - 210
+[2m2023-03-18T17:37:18.172851Z[0m [32m INFO[0m L1 sync updated with blocks 211 - 226
+[2m2023-03-18T17:37:18.351671Z[0m [32m INFO[0m L1 sync updated with blocks 227 - 242
+[2m2023-03-18T17:37:18.538769Z[0m [32m INFO[0m L1 sync updated with blocks 243 - 259
+[2m2023-03-18T17:37:18.751263Z[0m [32m INFO[0m L1 sync updated with blocks 260 - 275
+[2m2023-03-18T17:37:18.936996Z[0m [32m INFO[0m L1 sync updated with blocks 276 - 292
+[2m2023-03-18T17:37:19.043142Z[0m [32m INFO[0m [1mext_py[0m:[1msubproc[0m: Subprocess launched [2m[3mcount[0m[2m=[0m2[0m [2m[3mpid[0m[2m=[0m36[0m
+[2m2023-03-18T17:37:19.121788Z[0m [32m INFO[0m L1 sync updated with blocks 293 - 308
+[2m2023-03-18T17:37:19.302104Z[0m [32m INFO[0m L1 sync updated with blocks 309 - 324
+[2m2023-03-18T17:37:19.480738Z[0m [32m INFO[0m L1 sync updated with blocks 325 - 337
+[2m2023-03-18T17:37:19.663554Z[0m [32m INFO[0m L1 sync updated with blocks 338 - 357
+[2m2023-03-18T17:37:19.851592Z[0m [32m INFO[0m L1 sync updated with blocks 358 - 373
+[2m2023-03-18T17:37:20.037768Z[0m [32m INFO[0m L1 sync updated with blocks 374 - 390
+[2m2023-03-18T17:37:20.214088Z[0m [32m INFO[0m L1 sync updated with blocks 391 - 406
+[2m2023-03-18T17:37:20.352318Z[0m [32m INFO[0m Updated StarkNet state with block 0
+[2m2023-03-18T17:37:20.384774Z[0m [32m INFO[0m L1 sync updated with blocks 407 - 422
+[2m2023-03-18T17:37:20.607428Z[0m [32m INFO[0m L1 sync updated with blocks 423 - 441
+[2m2023-03-18T17:37:20.787281Z[0m [32m INFO[0m L1 sync updated with blocks 442 - 457
+[2m2023-03-18T17:37:21.019455Z[0m [32m INFO[0m L1 sync updated with blocks 458 - 474
+[2m2023-03-18T17:37:21.200262Z[0m [32m INFO[0m Updated StarkNet state with block 1
+[2m2023-03-18T17:37:21.205784Z[0m [32m INFO[0m L1 sync updated with blocks 475 - 490
+[2m2023-03-18T17:37:21.418653Z[0m [32m INFO[0m L1 sync updated with blocks 491 - 504
+[2m2023-03-18T17:37:21.550553Z[0m [32m INFO[0m Updated StarkNet state with block 2
+[2m2023-03-18T17:37:21.593369Z[0m [32m INFO[0m L1 sync updated with blocks 505 - 518
+[2m2023-03-18T17:37:21.838128Z[0m [32m INFO[0m L1 sync updated with blocks 519 - 532
+[2m2023-03-18T17:37:22.009824Z[0m [32m INFO[0m L1 sync updated with blocks 533 - 547
+[2m2023-03-18T17:37:22.192567Z[0m [32m INFO[0m L1 sync updated with blocks 548 - 559
+[2m2023-03-18T17:37:22.364598Z[0m [32m INFO[0m L1 sync updated with blocks 560 - 575
+[2m2023-03-18T17:37:22.534365Z[0m [32m INFO[0m L1 sync updated with blocks 576 - 590
+[2m2023-03-18T17:37:22.711661Z[0m [32m INFO[0m L1 sync updated with blocks 591 - 606
+[2m2023-03-18T17:37:22.877101Z[0m [32m INFO[0m L1 sync updated with blocks 607 - 624
+[2m2023-03-18T17:37:23.087079Z[0m [32m INFO[0m L1 sync updated with blocks 625 - 640
+[2m2023-03-18T17:37:23.252066Z[0m [32m INFO[0m L1 sync updated with blocks 641 - 659
+[2m2023-03-18T17:37:23.440184Z[0m [32m INFO[0m L1 sync updated with blocks 660 - 679
+[2m2023-03-18T17:37:23.606028Z[0m [32m INFO[0m L1 sync updated with blocks 680 - 692
+[2m2023-03-18T17:37:23.781829Z[0m [32m INFO[0m L1 sync updated with blocks 693 - 708
+[2m2023-03-18T17:37:23.803362Z[0m [32m INFO[0m Updated StarkNet state with block 3
+[2m2023-03-18T17:37:23.954134Z[0m [32m INFO[0m L1 sync updated with blocks 709 - 726
+[2m2023-03-18T17:37:24.147076Z[0m [32m INFO[0m L1 sync updated with blocks 727 - 744
+[2m2023-03-18T17:37:24.319230Z[0m [32m INFO[0m L1 sync updated with blocks 745 - 760
+[2m2023-03-18T17:37:24.503574Z[0m [32m INFO[0m L1 sync updated with blocks 761 - 779
+[2m2023-03-18T17:37:24.690044Z[0m [32m INFO[0m L1 sync updated with blocks 780 - 793
+[2m2023-03-18T17:37:24.868871Z[0m [32m INFO[0m L1 sync updated with blocks 794 - 807
+[2m2023-03-18T17:37:25.025688Z[0m [32m INFO[0m L1 sync updated with blocks 808 - 823
+[2m2023-03-18T17:37:25.192959Z[0m [32m INFO[0m L1 sync updated with blocks 824 - 835
+[2m2023-03-18T17:37:25.387805Z[0m [32m INFO[0m L1 sync updated with blocks 836 - 846
+[2m2023-03-18T17:37:25.416129Z[0m [32m INFO[0m Updated StarkNet state with block 4
+[2m2023-03-18T17:37:25.564433Z[0m [32m INFO[0m L1 sync updated with blocks 847 - 861
+[2m2023-03-18T17:37:25.731955Z[0m [32m INFO[0m L1 sync updated with blocks 862 - 876
+[2m2023-03-18T17:37:25.911036Z[0m [32m INFO[0m L1 sync updated with blocks 877 - 894
+[2m2023-03-18T17:37:26.087437Z[0m [32m INFO[0m L1 sync updated with blocks 895 - 909
+[2m2023-03-18T17:37:26.255639Z[0m [32m INFO[0m L1 sync updated with blocks 910 - 925
+[2m2023-03-18T17:37:26.449971Z[0m [32m INFO[0m L1 sync updated with blocks 926 - 941
+[2m2023-03-18T17:37:26.603814Z[0m [32m INFO[0m L1 sync updated with blocks 942 - 959
+[2m2023-03-18T17:37:26.786929Z[0m [32m INFO[0m L1 sync updated with blocks 960 - 974
+[2m2023-03-18T17:37:27.050522Z[0m [32m INFO[0m L1 sync updated with blocks 975 - 990
+[2m2023-03-18T17:37:27.239222Z[0m [32m INFO[0m L1 sync updated with blocks 991 - 1006
+[2m2023-03-18T17:37:27.444856Z[0m [32m INFO[0m L1 sync updated with blocks 1007 - 1022
+[2m2023-03-18T17:37:27.672359Z[0m [32m INFO[0m L1 sync updated with blocks 1023 - 1042
+[2m2023-03-18T17:37:27.862802Z[0m [32m INFO[0m L1 sync updated with blocks 1043 - 1058
+[2m2023-03-18T17:37:28.046459Z[0m [32m INFO[0m L1 sync updated with blocks 1059 - 1073
+[2m2023-03-18T17:37:28.249933Z[0m [32m INFO[0m L1 sync updated with blocks 1074 - 1089
+[2m2023-03-18T17:37:28.473729Z[0m [32m INFO[0m L1 sync updated with blocks 1090 - 1107
+[2m2023-03-18T17:37:28.742076Z[0m [32m INFO[0m L1 sync updated with blocks 1108 - 1123
+[2m2023-03-18T17:37:28.925708Z[0m [32m INFO[0m L1 sync updated with blocks 1124 - 1139
+[2m2023-03-18T17:37:29.119252Z[0m [32m INFO[0m L1 sync updated with blocks 1140 - 1151
+[2m2023-03-18T17:37:29.292593Z[0m [32m INFO[0m L1 sync updated with blocks 1152 - 1167
+[2m2023-03-18T17:37:29.486239Z[0m [32m INFO[0m L1 sync updated with blocks 1168 - 1183
+[2m2023-03-18T17:37:29.536070Z[0m [32m INFO[0m Updated StarkNet state with block 5
+[2m2023-03-18T17:37:29.662238Z[0m [32m INFO[0m L1 sync updated with blocks 1184 - 1199
+[2m2023-03-18T17:37:29.844892Z[0m [32m INFO[0m L1 sync updated with blocks 1200 - 1215
+[2m2023-03-18T17:37:29.850891Z[0m [32m INFO[0m Updated StarkNet state with block 6
+[2m2023-03-18T17:37:30.053594Z[0m [32m INFO[0m L1 sync updated with blocks 1216 - 1235
+[2m2023-03-18T17:37:30.212353Z[0m [32m INFO[0m Updated StarkNet state with block 7
+[2m2023-03-18T17:37:30.221180Z[0m [32m INFO[0m L1 sync updated with blocks 1236 - 1251
+[2m2023-03-18T17:37:30.389150Z[0m [32m INFO[0m L1 sync updated with blocks 1252 - 1269
+[2m2023-03-18T17:37:30.562226Z[0m [32m INFO[0m L1 sync updated with blocks 1270 - 1285
+[2m2023-03-18T17:37:30.747828Z[0m [32m INFO[0m L1 sync updated with blocks 1286 - 1301
+[2m2023-03-18T17:37:30.946757Z[0m [32m INFO[0m L1 sync updated with blocks 1302 - 1317
+[2m2023-03-18T17:37:31.169594Z[0m [32m INFO[0m L1 sync updated with blocks 1318 - 1333
+[2m2023-03-18T17:37:31.356053Z[0m [32m INFO[0m L1 sync updated with blocks 1334 - 1351
+[2m2023-03-18T17:37:31.553032Z[0m [32m INFO[0m L1 sync updated with blocks 1352 - 1370
+[2m2023-03-18T17:37:31.720698Z[0m [32m INFO[0m L1 sync updated with blocks 1371 - 1383
+[2m2023-03-18T17:37:31.902367Z[0m [32m INFO[0m L1 sync updated with blocks 1384 - 1399
+[2m2023-03-18T17:37:32.118113Z[0m [32m INFO[0m L1 sync updated with blocks 1400 - 1415
+[2m2023-03-18T17:37:32.279606Z[0m [32m INFO[0m L1 sync updated with blocks 1416 - 1430
+[2m2023-03-18T17:37:32.582251Z[0m [32m INFO[0m L1 sync updated with blocks 1431 - 1446
+[2m2023-03-18T17:37:32.768301Z[0m [32m INFO[0m L1 sync updated with blocks 1447 - 1462
+[2m2023-03-18T17:37:32.954301Z[0m [32m INFO[0m L1 sync updated with blocks 1463 - 1473
+[2m2023-03-18T17:37:33.138774Z[0m [32m INFO[0m L1 sync updated with blocks 1474 - 1489
+[2m2023-03-18T17:37:33.327491Z[0m [32m INFO[0m L1 sync updated with blocks 1490 - 1504
+[2m2023-03-18T17:37:33.604733Z[0m [32m INFO[0m L1 sync updated with blocks 1505 - 1516
+[2m2023-03-18T17:37:33.787600Z[0m [32m INFO[0m L1 sync updated with blocks 1517 - 1532
+[2m2023-03-18T17:37:34.014726Z[0m [32m INFO[0m L1 sync updated with blocks 1533 - 1552
+[2m2023-03-18T17:37:34.202816Z[0m [32m INFO[0m L1 sync updated with blocks 1553 - 1568
+[2m2023-03-18T17:37:34.424320Z[0m [32m INFO[0m L1 sync updated with blocks 1569 - 1584
+[2m2023-03-18T17:37:34.614320Z[0m [32m INFO[0m L1 sync updated with blocks 1585 - 1599
+[2m2023-03-18T17:37:34.782492Z[0m [32m INFO[0m L1 sync updated with blocks 1600 - 1615
+[2m2023-03-18T17:37:35.028225Z[0m [32m INFO[0m L1 sync updated with blocks 1616 - 1635
+[2m2023-03-18T17:37:35.202176Z[0m [32m INFO[0m L1 sync updated with blocks 1636 - 1651
+[2m2023-03-18T17:37:35.400949Z[0m [32m INFO[0m L1 sync updated with blocks 1652 - 1667
+[2m2023-03-18T17:37:35.611980Z[0m [32m INFO[0m L1 sync updated with blocks 1668 - 1683
+[2m2023-03-18T17:37:35.775605Z[0m [32m INFO[0m L1 sync updated with blocks 1684 - 1699
+[2m2023-03-18T17:37:35.952767Z[0m [32m INFO[0m L1 sync updated with blocks 1700 - 1715
+[2m2023-03-18T17:37:36.117158Z[0m [32m INFO[0m L1 sync updated with blocks 1716 - 1731
+[2m2023-03-18T17:37:36.283121Z[0m [32m INFO[0m L1 sync updated with blocks 1732 - 1738
+[2m2023-03-18T17:37:36.462540Z[0m [32m INFO[0m L1 sync updated with blocks 1739 - 1758
+[2m2023-03-18T17:37:36.653557Z[0m [32m INFO[0m L1 sync updated with blocks 1759 - 1774
+[2m2023-03-18T17:37:36.821097Z[0m [32m INFO[0m L1 sync updated with blocks 1775 - 1790
+[2m2023-03-18T17:37:37.013520Z[0m [32m INFO[0m L1 sync updated with blocks 1791 - 1806
+[2m2023-03-18T17:37:37.197763Z[0m [32m INFO[0m L1 sync updated with blocks 1807 - 1824
+[2m2023-03-18T17:37:37.372587Z[0m [32m INFO[0m L1 sync updated with blocks 1825 - 1840
+[2m2023-03-18T17:37:37.551541Z[0m [32m INFO[0m L1 sync updated with blocks 1841 - 1856
+[2m2023-03-18T17:37:37.721789Z[0m [32m INFO[0m L1 sync updated with blocks 1857 - 1871
+[2m2023-03-18T17:37:37.912818Z[0m [32m INFO[0m L1 sync updated with blocks 1872 - 1887
+[2m2023-03-18T17:37:38.079910Z[0m [32m INFO[0m L1 sync updated with blocks 1888 - 1903
+[2m2023-03-18T17:37:38.255375Z[0m [32m INFO[0m L1 sync updated with blocks 1904 - 1919
+[2m2023-03-18T17:37:38.434528Z[0m [32m INFO[0m L1 sync updated with blocks 1920 - 1938
+[2m2023-03-18T17:37:38.605335Z[0m [32m INFO[0m L1 sync updated with blocks 1939 - 1953
+[2m2023-03-18T17:37:38.818767Z[0m [32m INFO[0m L1 sync updated with blocks 1954 - 1969
+[2m2023-03-18T17:37:39.005090Z[0m [32m INFO[0m L1 sync updated with blocks 1970 - 1985
+[2m2023-03-18T17:37:39.191416Z[0m [32m INFO[0m L1 sync updated with blocks 1986 - 2001
+[2m2023-03-18T17:37:39.372037Z[0m [32m INFO[0m L1 sync updated with blocks 2002 - 2020
+[2m2023-03-18T17:37:39.554018Z[0m [32m INFO[0m L1 sync updated with blocks 2021 - 2035
+[2m2023-03-18T17:37:39.740477Z[0m [32m INFO[0m L1 sync updated with blocks 2036 - 2053
+[2m2023-03-18T17:37:39.815569Z[0m [32m INFO[0m Updated StarkNet state with block 8
+[2m2023-03-18T17:37:39.917825Z[0m [32m INFO[0m L1 sync updated with blocks 2054 - 2091
+[2m2023-03-18T17:37:40.094261Z[0m [32m INFO[0m L1 sync updated with blocks 2092 - 2143
+[2m2023-03-18T17:37:40.137408Z[0m [32m INFO[0m Updated StarkNet state with block 9
+[2m2023-03-18T17:37:40.271518Z[0m [32m INFO[0m L1 sync updated with blocks 2144 - 2186
+[2m2023-03-18T17:37:40.444266Z[0m [32m INFO[0m L1 sync updated with blocks 2187 - 2227
+[2m2023-03-18T17:37:40.624328Z[0m [32m INFO[0m L1 sync updated with blocks 2228 - 2268
+[2m2023-03-18T17:37:40.789922Z[0m [32m INFO[0m L1 sync updated with blocks 2269 - 2287
+[2m2023-03-18T17:37:40.951212Z[0m [32m INFO[0m L1 sync updated with blocks 2288 - 2312
+[2m2023-03-18T17:37:41.134992Z[0m [32m INFO[0m L1 sync updated with blocks 2313 - 2335
+[2m2023-03-18T17:37:41.300761Z[0m [32m INFO[0m L1 sync updated with blocks 2336 - 2356
+[2m2023-03-18T17:37:41.502720Z[0m [32m INFO[0m L1 sync updated with blocks 2357 - 2380
+[2m2023-03-18T17:37:41.668802Z[0m [32m INFO[0m L1 sync updated with blocks 2381 - 2409
+[2m2023-03-18T17:37:41.837568Z[0m [32m INFO[0m L1 sync updated with blocks 2410 - 2427
+[2m2023-03-18T17:37:41.851051Z[0m [32m INFO[0m Updated StarkNet state with block 10
+[2m2023-03-18T17:37:41.998865Z[0m [32m INFO[0m L1 sync updated with blocks 2428 - 2450
+[2m2023-03-18T17:37:42.175899Z[0m [32m INFO[0m L1 sync updated with blocks 2451 - 2469
+[2m2023-03-18T17:37:42.362313Z[0m [32m INFO[0m L1 sync updated with blocks 2470 - 2498
+[2m2023-03-18T17:37:42.542427Z[0m [32m INFO[0m L1 sync updated with blocks 2499 - 2517
+[2m2023-03-18T17:37:42.713198Z[0m [32m INFO[0m L1 sync updated with blocks 2518 - 2542
+[2m2023-03-18T17:37:42.917812Z[0m [32m INFO[0m L1 sync updated with blocks 2543 - 2562
+[2m2023-03-18T17:37:43.081640Z[0m [32m INFO[0m L1 sync updated with blocks 2563 - 2584
+[2m2023-03-18T17:37:43.242323Z[0m [32m INFO[0m L1 sync updated with blocks 2585 - 2606
+[2m2023-03-18T17:37:43.399649Z[0m [32m INFO[0m L1 sync updated with blocks 2607 - 2625
+[2m2023-03-18T17:37:43.596073Z[0m [32m INFO[0m L1 sync updated with blocks 2626 - 2647
+[2m2023-03-18T17:37:43.772047Z[0m [32m INFO[0m L1 sync updated with blocks 2648 - 2669
+[2m2023-03-18T17:37:43.975991Z[0m [32m INFO[0m L1 sync updated with blocks 2670 - 2698
+[2m2023-03-18T17:37:44.157880Z[0m [32m INFO[0m L1 sync updated with blocks 2699 - 2713
+[2m2023-03-18T17:37:44.400351Z[0m [32m INFO[0m L1 sync updated with blocks 2714 - 2741
+[2m2023-03-18T17:37:44.607910Z[0m [32m INFO[0m L1 sync updated with blocks 2742 - 2762
+[2m2023-03-18T17:37:44.772162Z[0m [32m INFO[0m L1 sync updated with blocks 2763 - 2788
+[2m2023-03-18T17:37:44.939310Z[0m [32m INFO[0m L1 sync updated with blocks 2789 - 2814
+[2m2023-03-18T17:37:45.129818Z[0m [32m INFO[0m L1 sync updated with blocks 2815 - 2838
+[2m2023-03-18T17:37:45.307844Z[0m [32m INFO[0m L1 sync updated with blocks 2839 - 2859
+[2m2023-03-18T17:37:45.475175Z[0m [32m INFO[0m L1 sync updated with blocks 2860 - 2881
+[2m2023-03-18T17:37:45.639280Z[0m [32m INFO[0m L1 sync updated with blocks 2882 - 2902
+[2m2023-03-18T17:37:45.848485Z[0m [32m INFO[0m L1 sync updated with blocks 2903 - 2973
+[2m2023-03-18T17:37:46.021805Z[0m [32m INFO[0m L1 sync updated with blocks 2974 - 2998
+[2m2023-03-18T17:37:46.192409Z[0m [32m INFO[0m L1 sync updated with blocks 2999 - 3015
+[2m2023-03-18T17:37:46.380535Z[0m [32m INFO[0m L1 sync updated with blocks 3016 - 3063
+[2m2023-03-18T17:37:46.577197Z[0m [32m INFO[0m L1 sync updated with blocks 3064 - 3157
+[2m2023-03-18T17:37:46.766167Z[0m [32m INFO[0m L1 sync updated with blocks 3158 - 3179
+[2m2023-03-18T17:37:46.933394Z[0m [32m INFO[0m L1 sync updated with blocks 3180 - 3197
+[2m2023-03-18T17:37:47.128013Z[0m [32m INFO[0m L1 sync updated with blocks 3198 - 3214
+[2m2023-03-18T17:37:47.330278Z[0m [32m INFO[0m L1 sync updated with blocks 3215 - 3230
+[2m2023-03-18T17:37:47.529461Z[0m [32m INFO[0m L1 sync updated with blocks 3231 - 3246
+[2m2023-03-18T17:37:47.714973Z[0m [32m INFO[0m L1 sync updated with blocks 3247 - 3264
+[2m2023-03-18T17:37:47.899909Z[0m [32m INFO[0m L1 sync updated with blocks 3265 - 3280
+[2m2023-03-18T17:37:48.098178Z[0m [32m INFO[0m L1 sync updated with blocks 3281 - 3297
+[2m2023-03-18T17:37:48.280613Z[0m [32m INFO[0m L1 sync updated with blocks 3298 - 3314
+[2m2023-03-18T17:37:48.483515Z[0m [32m INFO[0m Updated StarkNet state with block 11
+[2m2023-03-18T17:37:48.794754Z[0m [32m INFO[0m L1 sync updated with blocks 3315 - 3379
+[2m2023-03-18T17:37:48.983278Z[0m [32m INFO[0m L1 sync updated with blocks 3380 - 3432
+[2m2023-03-18T17:37:49.192153Z[0m [32m INFO[0m L1 sync updated with blocks 3433 - 3486
+[2m2023-03-18T17:37:49.388824Z[0m [32m INFO[0m L1 sync updated with blocks 3487 - 3609
+[2m2023-03-18T17:37:49.592239Z[0m [32m INFO[0m L1 sync updated with blocks 3610 - 3734
+[2m2023-03-18T17:37:49.758612Z[0m [32m INFO[0m L1 sync updated with blocks 3735 - 3759
+[2m2023-03-18T17:37:49.941659Z[0m [32m INFO[0m L1 sync updated with blocks 3760 - 3808
+[2m2023-03-18T17:37:50.117667Z[0m [32m INFO[0m L1 sync updated with blocks 3809 - 3826
+[2m2023-03-18T17:37:50.279365Z[0m [32m INFO[0m L1 sync updated with blocks 3827 - 3839
+[2m2023-03-18T17:37:50.460430Z[0m [32m INFO[0m L1 sync updated with blocks 3840 - 3857
+[2m2023-03-18T17:37:50.657052Z[0m [32m INFO[0m L1 sync updated with blocks 3858 - 3939
+[2m2023-03-18T17:37:50.839326Z[0m [32m INFO[0m L1 sync updated with blocks 3940 - 3972
+[2m2023-03-18T17:37:51.017981Z[0m [32m INFO[0m L1 sync updated with blocks 3973 - 4002
+[2m2023-03-18T17:37:51.207059Z[0m [32m INFO[0m L1 sync updated with blocks 4003 - 4055
+[2m2023-03-18T17:37:51.405278Z[0m [32m INFO[0m L1 sync updated with blocks 4056 - 4122
+[2m2023-03-18T17:37:51.599834Z[0m [32m INFO[0m L1 sync updated with blocks 4123 - 4169
+[2m2023-03-18T17:37:51.778188Z[0m [32m INFO[0m L1 sync updated with blocks 4170 - 4223
+[2m2023-03-18T17:37:51.971020Z[0m [32m INFO[0m L1 sync updated with blocks 4224 - 4258
+[2m2023-03-18T17:37:52.158504Z[0m [32m INFO[0m L1 sync updated with blocks 4259 - 4283
+[2m2023-03-18T17:37:52.323223Z[0m [32m INFO[0m L1 sync updated with blocks 4284 - 4312
+[2m2023-03-18T17:37:52.500500Z[0m [32m INFO[0m L1 sync updated with blocks 4313 - 4341
+[2m2023-03-18T17:37:52.694460Z[0m [32m INFO[0m L1 sync updated with blocks 4342 - 4379
+[2m2023-03-18T17:37:52.888414Z[0m [32m INFO[0m L1 sync updated with blocks 4380 - 4411
+[2m2023-03-18T17:37:53.065267Z[0m [32m INFO[0m L1 sync updated with blocks 4412 - 4444
+[2m2023-03-18T17:37:53.243964Z[0m [32m INFO[0m L1 sync updated with blocks 4445 - 4480
+[2m2023-03-18T17:37:53.426886Z[0m [32m INFO[0m L1 sync updated with blocks 4481 - 4512
+[2m2023-03-18T17:37:53.616688Z[0m [32m INFO[0m L1 sync updated with blocks 4513 - 4537
+[2m2023-03-18T17:37:53.801099Z[0m [32m INFO[0m L1 sync updated with blocks 4538 - 4567
+[2m2023-03-18T17:37:53.971155Z[0m [32m INFO[0m L1 sync updated with blocks 4568 - 4601
+[2m2023-03-18T17:37:54.174714Z[0m [32m INFO[0m L1 sync updated with blocks 4602 - 4633
+[2m2023-03-18T17:37:54.349827Z[0m [32m INFO[0m L1 sync updated with blocks 4634 - 4663
+[2m2023-03-18T17:37:54.538855Z[0m [32m INFO[0m L1 sync updated with blocks 4664 - 4685
+[2m2023-03-18T17:37:54.722488Z[0m [32m INFO[0m L1 sync updated with blocks 4686 - 4703
+[2m2023-03-18T17:37:54.901007Z[0m [32m INFO[0m L1 sync updated with blocks 4704 - 4722
+[2m2023-03-18T17:37:55.103592Z[0m [32m INFO[0m L1 sync updated with blocks 4723 - 4758
+[2m2023-03-18T17:37:55.280130Z[0m [32m INFO[0m L1 sync updated with blocks 4759 - 4790
+[2m2023-03-18T17:37:55.441805Z[0m [32m INFO[0m L1 sync updated with blocks 4791 - 4821
+[2m2023-03-18T17:37:55.597710Z[0m [32m INFO[0m L1 sync updated with blocks 4822 - 4847
+[2m2023-03-18T17:37:55.755245Z[0m [32m INFO[0m L1 sync updated with blocks 4848 - 4865
+[2m2023-03-18T17:37:55.932278Z[0m [32m INFO[0m L1 sync updated with blocks 4866 - 4883
+[2m2023-03-18T17:37:56.090429Z[0m [32m INFO[0m L1 sync updated with blocks 4884 - 4903
+[2m2023-03-18T17:37:56.238017Z[0m [32m INFO[0m Updated StarkNet state with block 12
+[2m2023-03-18T17:37:56.273447Z[0m [32m INFO[0m L1 sync updated with blocks 4904 - 4963
+[2m2023-03-18T17:37:56.444728Z[0m [32m INFO[0m L1 sync updated with blocks 4964 - 4982
+[2m2023-03-18T17:37:56.608080Z[0m [32m INFO[0m L1 sync updated with blocks 4983 - 5009
+[2m2023-03-18T17:37:56.802906Z[0m [32m INFO[0m L1 sync updated with blocks 5010 - 5044
+[2m2023-03-18T17:37:56.984173Z[0m [32m INFO[0m L1 sync updated with blocks 5045 - 5070
+[2m2023-03-18T17:37:57.177527Z[0m [32m INFO[0m L1 sync updated with blocks 5071 - 5127
+[2m2023-03-18T17:37:57.380448Z[0m [32m INFO[0m L1 sync updated with blocks 5128 - 5181
+[2m2023-03-18T17:37:57.540245Z[0m [32m INFO[0m L1 sync updated with blocks 5182 - 5212
+[2m2023-03-18T17:37:57.710051Z[0m [32m INFO[0m L1 sync updated with blocks 5213 - 5239
+[2m2023-03-18T17:37:57.882195Z[0m [32m INFO[0m L1 sync updated with blocks 5240 - 5264
+[2m2023-03-18T17:37:58.090222Z[0m [32m INFO[0m L1 sync updated with blocks 5265 - 5301
+[2m2023-03-18T17:37:58.276696Z[0m [32m INFO[0m L1 sync updated with blocks 5302 - 5335
+[2m2023-03-18T17:37:58.484152Z[0m [32m INFO[0m L1 sync updated with blocks 5336 - 5377
+[2m2023-03-18T17:37:58.685562Z[0m [32m INFO[0m L1 sync updated with blocks 5378 - 5473
+[2m2023-03-18T17:37:58.887390Z[0m [32m INFO[0m L1 sync updated with blocks 5474 - 5516
+[2m2023-03-18T17:37:59.078217Z[0m [32m INFO[0m L1 sync updated with blocks 5517 - 5570
+[2m2023-03-18T17:37:59.249066Z[0m [32m INFO[0m L1 sync updated with blocks 5571 - 5633
+[2m2023-03-18T17:37:59.451268Z[0m [32m INFO[0m L1 sync updated with blocks 5634 - 5673
+[2m2023-03-18T17:37:59.642563Z[0m [32m INFO[0m L1 sync updated with blocks 5674 - 5722
+[2m2023-03-18T17:37:59.822854Z[0m [32m INFO[0m L1 sync updated with blocks 5723 - 5769
+[2m2023-03-18T17:37:59.998694Z[0m [32m INFO[0m L1 sync updated with blocks 5770 - 5802
+[2m2023-03-18T17:38:00.243270Z[0m [32m INFO[0m L1 sync updated with blocks 5803 - 5824
+[2m2023-03-18T17:38:00.422174Z[0m [32m INFO[0m L1 sync updated with blocks 5825 - 5862
+[2m2023-03-18T17:38:00.594497Z[0m [32m INFO[0m L1 sync updated with blocks 5863 - 5882
+[2m2023-03-18T17:38:00.785183Z[0m [32m INFO[0m L1 sync updated with blocks 5883 - 5901
+[2m2023-03-18T17:38:00.976098Z[0m [32m INFO[0m L1 sync updated with blocks 5902 - 5943
+[2m2023-03-18T17:38:01.166590Z[0m [32m INFO[0m L1 sync updated with blocks 5944 - 6007
+[2m2023-03-18T17:38:01.375016Z[0m [32m INFO[0m L1 sync updated with blocks 6008 - 6043
+[2m2023-03-18T17:38:01.578376Z[0m [32m INFO[0m L1 sync updated with blocks 6044 - 6093
+[2m2023-03-18T17:38:01.765319Z[0m [32m INFO[0m L1 sync updated with blocks 6094 - 6164
+[2m2023-03-18T17:38:01.959481Z[0m [32m INFO[0m L1 sync updated with blocks 6165 - 6247
+[2m2023-03-18T17:38:02.221260Z[0m [32m INFO[0m L1 sync updated with blocks 6248 - 6361
+[2m2023-03-18T17:38:02.443002Z[0m [32m INFO[0m L1 sync updated with blocks 6362 - 6498
+[2m2023-03-18T17:38:02.634894Z[0m [32m INFO[0m L1 sync updated with blocks 6499 - 6645
+[2m2023-03-18T17:38:02.837240Z[0m [32m INFO[0m L1 sync updated with blocks 6646 - 6752
+[2m2023-03-18T17:38:03.106729Z[0m [32m INFO[0m L1 sync updated with blocks 6753 - 6922
+[2m2023-03-18T17:38:03.311814Z[0m [32m INFO[0m L1 sync updated with blocks 6923 - 7100
+[2m2023-03-18T17:38:03.356448Z[0m [32m INFO[0m Updated StarkNet state with block 13
+[2m2023-03-18T17:38:03.517104Z[0m [32m INFO[0m L1 sync updated with blocks 7101 - 7238
+[2m2023-03-18T17:38:03.708266Z[0m [32m INFO[0m L1 sync updated with blocks 7239 - 7373
+[2m2023-03-18T17:38:03.918000Z[0m [32m INFO[0m L1 sync updated with blocks 7374 - 7544
+[2m2023-03-18T17:38:04.138924Z[0m [32m INFO[0m L1 sync updated with blocks 7545 - 7671
+[2m2023-03-18T17:38:04.351565Z[0m [32m INFO[0m L1 sync updated with blocks 7672 - 7838
+[2m2023-03-18T17:38:04.642367Z[0m [32m INFO[0m Updated StarkNet state with block 14
+[2m2023-03-18T17:38:04.644279Z[0m [32m INFO[0m L1 sync updated with blocks 7839 - 8001
+[2m2023-03-18T17:38:04.864970Z[0m [32m INFO[0m L1 sync updated with blocks 8002 - 8137
+[2m2023-03-18T17:38:05.098925Z[0m [32m INFO[0m L1 sync updated with blocks 8138 - 8264
+[2m2023-03-18T17:38:05.293303Z[0m [32m INFO[0m L1 sync updated with blocks 8265 - 8362
+[2m2023-03-18T17:38:05.503020Z[0m [32m INFO[0m L1 sync updated with blocks 8363 - 8453
+[2m2023-03-18T17:38:05.693415Z[0m [32m INFO[0m L1 sync updated with blocks 8454 - 8569
+[2m2023-03-18T17:38:05.892164Z[0m [32m INFO[0m L1 sync updated with blocks 8570 - 8710
+[2m2023-03-18T17:38:06.127315Z[0m [32m INFO[0m L1 sync updated with blocks 8711 - 8853
+[2m2023-03-18T17:38:06.343524Z[0m [32m INFO[0m L1 sync updated with blocks 8854 - 9042
+[2m2023-03-18T17:38:06.531082Z[0m [32m INFO[0m Updated StarkNet state with block 15
+[2m2023-03-18T17:38:06.542277Z[0m [32m INFO[0m L1 sync updated with blocks 9043 - 9231
+[2m2023-03-18T17:38:06.794104Z[0m [32m INFO[0m L1 sync updated with blocks 9232 - 9466
+[2m2023-03-18T17:38:07.078333Z[0m [32m INFO[0m L1 sync updated with blocks 9467 - 9803
+[2m2023-03-18T17:38:07.400842Z[0m [32m INFO[0m L1 sync updated with blocks 9804 - 10173
+[2m2023-03-18T17:38:07.653647Z[0m [32m INFO[0m L1 sync updated with blocks 10174 - 10442
+[2m2023-03-18T17:38:07.927385Z[0m [32m INFO[0m L1 sync updated with blocks 10443 - 10795
+[2m2023-03-18T17:38:08.199574Z[0m [32m INFO[0m L1 sync updated with blocks 10796 - 11128
+[2m2023-03-18T17:38:08.442001Z[0m [32m INFO[0m L1 sync updated with blocks 11129 - 11386
+[2m2023-03-18T17:38:08.712227Z[0m [32m INFO[0m L1 sync updated with blocks 11387 - 11727
+[2m2023-03-18T17:38:08.894323Z[0m [32m INFO[0m Updated StarkNet state with block 16
+[2m2023-03-18T17:38:08.979415Z[0m [32m INFO[0m L1 sync updated with blocks 11728 - 12086
+[2m2023-03-18T17:38:09.293482Z[0m [32m INFO[0m L1 sync updated with blocks 12087 - 12539
+[2m2023-03-18T17:38:09.521718Z[0m [32m INFO[0m L1 sync updated with blocks 12540 - 12777
+[2m2023-03-18T17:38:09.776895Z[0m [32m INFO[0m L1 sync updated with blocks 12778 - 13098
+[2m2023-03-18T17:38:10.095388Z[0m [32m INFO[0m L1 sync updated with blocks 13099 - 13481
+[2m2023-03-18T17:38:10.336327Z[0m [32m INFO[0m L1 sync updated with blocks 13482 - 13740
+[2m2023-03-18T17:38:10.603405Z[0m [32m INFO[0m L1 sync updated with blocks 13741 - 14162
+[2m2023-03-18T17:38:11.003381Z[0m [32m INFO[0m L1 sync updated with blocks 14163 - 14873
+[2m2023-03-18T17:38:11.414006Z[0m [32m INFO[0m L1 sync updated with blocks 14874 - 15638
+[2m2023-03-18T17:38:11.804487Z[0m [32m INFO[0m L1 sync updated with blocks 15639 - 16185
+[2m2023-03-18T17:38:11.982534Z[0m [32m INFO[0m L1 sync updated with blocks 16186 - 16383
+[2m2023-03-18T17:38:12.197851Z[0m [32m INFO[0m L1 sync updated with blocks 16384 - 16501
+[2m2023-03-18T17:38:12.416856Z[0m [32m INFO[0m L1 sync updated with blocks 16502 - 16611
+[2m2023-03-18T17:38:12.603898Z[0m [32m INFO[0m L1 sync updated with blocks 16612 - 16689
+[2m2023-03-18T17:38:12.802654Z[0m [32m INFO[0m L1 sync updated with blocks 16690 - 16777
+[2m2023-03-18T17:38:13.044805Z[0m [32m INFO[0m L1 sync updated with blocks 16778 - 16925
+[2m2023-03-18T17:38:13.246133Z[0m [32m INFO[0m L1 sync updated with blocks 16926 - 17023
+[2m2023-03-18T17:38:13.447930Z[0m [32m INFO[0m L1 sync updated with blocks 17024 - 17096
+[2m2023-03-18T17:38:13.658838Z[0m [32m INFO[0m L1 sync updated with blocks 17097 - 17165
+[2m2023-03-18T17:38:13.859233Z[0m [32m INFO[0m L1 sync updated with blocks 17166 - 17250
+[2m2023-03-18T17:38:14.067944Z[0m [32m INFO[0m L1 sync updated with blocks 17251 - 17316
+[2m2023-03-18T17:38:14.269558Z[0m [32m INFO[0m L1 sync updated with blocks 17317 - 17415
+[2m2023-03-18T17:38:14.484419Z[0m [32m INFO[0m L1 sync updated with blocks 17416 - 17487
+[2m2023-03-18T17:38:14.696688Z[0m [32m INFO[0m L1 sync updated with blocks 17488 - 17605
+[2m2023-03-18T17:38:14.918288Z[0m [32m INFO[0m L1 sync updated with blocks 17606 - 17698
+[2m2023-03-18T17:38:15.093613Z[0m [32m INFO[0m Updated StarkNet state with block 17
+[2m2023-03-18T17:38:15.113099Z[0m [32m INFO[0m L1 sync updated with blocks 17699 - 17788
+[2m2023-03-18T17:38:15.319923Z[0m [32m INFO[0m L1 sync updated with blocks 17789 - 17859
+[2m2023-03-18T17:38:15.474682Z[0m [32m INFO[0m Updated StarkNet state with block 18
+[2m2023-03-18T17:38:15.548732Z[0m [32m INFO[0m L1 sync updated with blocks 17860 - 17926
+[2m2023-03-18T17:38:15.737344Z[0m [32m INFO[0m L1 sync updated with blocks 17927 - 17973
+[2m2023-03-18T17:38:15.912260Z[0m [32m INFO[0m L1 sync updated with blocks 17974 - 18031
+[2m2023-03-18T17:38:16.119680Z[0m [32m INFO[0m L1 sync updated with blocks 18032 - 18102
+[2m2023-03-18T17:38:16.211555Z[0m [32m INFO[0m Updated StarkNet state with block 19
+[2m2023-03-18T17:38:16.338180Z[0m [32m INFO[0m L1 sync updated with blocks 18103 - 18210
+[2m2023-03-18T17:38:16.520216Z[0m [32m INFO[0m L1 sync updated with blocks 18211 - 18311
+[2m2023-03-18T17:38:16.694496Z[0m [32m INFO[0m L1 sync updated with blocks 18312 - 18404
+[2m2023-03-18T17:38:16.890257Z[0m [32m INFO[0m L1 sync updated with blocks 18405 - 18478
+[2m2023-03-18T17:38:17.114616Z[0m [32m INFO[0m L1 sync updated with blocks 18479 - 18556
+[2m2023-03-18T17:38:17.443872Z[0m [32m INFO[0m L1 sync updated with blocks 18557 - 18633
+[2m2023-03-18T17:38:17.653075Z[0m [32m INFO[0m L1 sync updated with blocks 18634 - 18691
+[2m2023-03-18T17:38:17.827595Z[0m [32m INFO[0m L1 sync updated with blocks 18692 - 18740
+[2m2023-03-18T17:38:18.023381Z[0m [32m INFO[0m L1 sync updated with blocks 18741 - 18818
+[2m2023-03-18T17:38:18.236166Z[0m [32m INFO[0m L1 sync updated with blocks 18819 - 18874
+[2m2023-03-18T17:38:18.442095Z[0m [32m INFO[0m L1 sync updated with blocks 18875 - 18915
+[2m2023-03-18T17:38:18.635463Z[0m [32m INFO[0m Updated StarkNet state with block 20
+[2m2023-03-18T17:38:18.637596Z[0m [32m INFO[0m L1 sync updated with blocks 18916 - 18969
+[2m2023-03-18T17:38:18.816309Z[0m [32m INFO[0m L1 sync updated with blocks 18970 - 19012
+[2m2023-03-18T17:38:18.986538Z[0m [32m INFO[0m L1 sync updated with blocks 19013 - 19047
+[2m2023-03-18T17:38:19.156265Z[0m [32m INFO[0m L1 sync updated with blocks 19048 - 19092
+[2m2023-03-18T17:38:19.340705Z[0m [32m INFO[0m L1 sync updated with blocks 19093 - 19138
+[2m2023-03-18T17:38:19.530329Z[0m [32m INFO[0m L1 sync updated with blocks 19139 - 19183
+[2m2023-03-18T17:38:19.711520Z[0m [32m INFO[0m L1 sync updated with blocks 19184 - 19243
+[2m2023-03-18T17:38:19.912693Z[0m [32m INFO[0m Updated StarkNet state with block 21
+[2m2023-03-18T17:38:19.914374Z[0m [32m INFO[0m L1 sync updated with blocks 19244 - 19314
+[2m2023-03-18T17:38:20.090848Z[0m [32m INFO[0m L1 sync updated with blocks 19315 - 19370
+[2m2023-03-18T17:38:20.311784Z[0m [32m INFO[0m L1 sync updated with blocks 19371 - 19413
+[2m2023-03-18T17:38:20.488682Z[0m [32m INFO[0m L1 sync updated with blocks 19414 - 19497
+[2m2023-03-18T17:38:20.664859Z[0m [32m INFO[0m L1 sync updated with blocks 19498 - 19562
+[2m2023-03-18T17:38:20.849566Z[0m [32m INFO[0m L1 sync updated with blocks 19563 - 19627
+[2m2023-03-18T17:38:21.055333Z[0m [32m INFO[0m L1 sync updated with blocks 19628 - 19730
+[2m2023-03-18T17:38:21.213203Z[0m [32m INFO[0m Updated StarkNet state with block 22
+[2m2023-03-18T17:38:21.294756Z[0m [32m INFO[0m L1 sync updated with blocks 19731 - 19853
+[2m2023-03-18T17:38:21.533728Z[0m [32m INFO[0m L1 sync updated with blocks 19854 - 19919
+[2m2023-03-18T17:38:21.704524Z[0m [32m INFO[0m L1 sync updated with blocks 19920 - 19974
+[2m2023-03-18T17:38:21.874883Z[0m [32m INFO[0m L1 sync updated with blocks 19975 - 20054
+[2m2023-03-18T17:38:22.063802Z[0m [32m INFO[0m L1 sync updated with blocks 20055 - 20143
+[2m2023-03-18T17:38:22.119878Z[0m [32m INFO[0m Updated StarkNet state with block 23
+[2m2023-03-18T17:38:22.249164Z[0m [32m INFO[0m L1 sync updated with blocks 20144 - 20225
+[2m2023-03-18T17:38:22.462046Z[0m [32m INFO[0m L1 sync updated with blocks 20226 - 20293
+[2m2023-03-18T17:38:22.644462Z[0m [32m INFO[0m L1 sync updated with blocks 20294 - 20372
+[2m2023-03-18T17:38:22.826792Z[0m [32m INFO[0m L1 sync updated with blocks 20373 - 20422
+[2m2023-03-18T17:38:23.013287Z[0m [32m INFO[0m L1 sync updated with blocks 20423 - 20475
+[2m2023-03-18T17:38:23.169674Z[0m [32m INFO[0m Updated StarkNet state with block 24
+[2m2023-03-18T17:38:23.208762Z[0m [32m INFO[0m L1 sync updated with blocks 20476 - 20564
+[2m2023-03-18T17:38:23.487065Z[0m [32m INFO[0m L1 sync updated with blocks 20565 - 20652
+[2m2023-03-18T17:38:23.658213Z[0m [32m INFO[0m L1 sync updated with blocks 20653 - 20707
+[2m2023-03-18T17:38:23.856607Z[0m [32m INFO[0m L1 sync updated with blocks 20708 - 20763
+[2m2023-03-18T17:38:24.053759Z[0m [32m INFO[0m L1 sync updated with blocks 20764 - 20822
+[2m2023-03-18T17:38:24.253214Z[0m [32m INFO[0m L1 sync updated with blocks 20823 - 20924
+[2m2023-03-18T17:38:24.516657Z[0m [32m INFO[0m L1 sync updated with blocks 20925 - 21017
+[2m2023-03-18T17:38:24.715513Z[0m [32m INFO[0m L1 sync updated with blocks 21018 - 21114
+[2m2023-03-18T17:38:24.895043Z[0m [32m INFO[0m Updated StarkNet state with block 25
+[2m2023-03-18T17:38:24.899044Z[0m [32m INFO[0m L1 sync updated with blocks 21115 - 21180
+[2m2023-03-18T17:38:25.103846Z[0m [32m INFO[0m L1 sync updated with blocks 21181 - 21248
+[2m2023-03-18T17:38:25.249940Z[0m [32m INFO[0m Updated StarkNet state with block 26
+[2m2023-03-18T17:38:25.347507Z[0m [32m INFO[0m L1 sync updated with blocks 21249 - 21340
+[2m2023-03-18T17:38:25.559599Z[0m [32m INFO[0m L1 sync updated with blocks 21341 - 21450
+[2m2023-03-18T17:38:25.610915Z[0m [32m INFO[0m Updated StarkNet state with block 27
+[2m2023-03-18T17:38:25.784068Z[0m [32m INFO[0m L1 sync updated with blocks 21451 - 21538
+[2m2023-03-18T17:38:25.966511Z[0m [32m INFO[0m L1 sync updated with blocks 21539 - 21625
+[2m2023-03-18T17:38:26.147259Z[0m [32m INFO[0m L1 sync updated with blocks 21626 - 21708
+[2m2023-03-18T17:38:26.312970Z[0m [32m INFO[0m Updated StarkNet state with block 28
+[2m2023-03-18T17:38:26.314698Z[0m [32m INFO[0m L1 sync updated with blocks 21709 - 21759
+[2m2023-03-18T17:38:26.505937Z[0m [32m INFO[0m L1 sync updated with blocks 21760 - 21812
+[2m2023-03-18T17:38:26.713364Z[0m [32m INFO[0m L1 sync updated with blocks 21813 - 21940
+[2m2023-03-18T17:38:26.746646Z[0m [32m INFO[0m Updated StarkNet state with block 29
+[2m2023-03-18T17:38:26.918130Z[0m [32m INFO[0m L1 sync updated with blocks 21941 - 22050
+[2m2023-03-18T17:38:27.098076Z[0m [32m INFO[0m Updated StarkNet state with block 30
+[2m2023-03-18T17:38:27.105229Z[0m [32m INFO[0m L1 sync updated with blocks 22051 - 22165
+[2m2023-03-18T17:38:27.287680Z[0m [32m INFO[0m L1 sync updated with blocks 22166 - 22273
+[2m2023-03-18T17:38:27.533518Z[0m [32m INFO[0m L1 sync updated with blocks 22274 - 22653
+[2m2023-03-18T17:38:27.583879Z[0m [32m INFO[0m Updated StarkNet state with block 31
+[2m2023-03-18T17:38:28.089176Z[0m [32m INFO[0m Updated StarkNet state with block 32
+[2m2023-03-18T17:38:28.670462Z[0m [32m INFO[0m Updated StarkNet state with block 33
+[2m2023-03-18T17:38:29.142181Z[0m [32m INFO[0m Updated StarkNet state with block 34
+[2m2023-03-18T17:38:30.081693Z[0m [32m INFO[0m Updated StarkNet state with block 35
+[2m2023-03-18T17:38:30.409198Z[0m [32m INFO[0m Updated StarkNet state with block 36
+[2m2023-03-18T17:38:30.757851Z[0m [32m INFO[0m Updated StarkNet state with block 37
+[2m2023-03-18T17:38:31.257253Z[0m [32m INFO[0m Updated StarkNet state with block 38
+[2m2023-03-18T17:38:32.430651Z[0m [32m INFO[0m Updated StarkNet state with block 39
+[2m2023-03-18T17:38:33.561435Z[0m [32m INFO[0m Updated StarkNet state with block 40
+[2m2023-03-18T17:38:34.540084Z[0m [32m INFO[0m Updated StarkNet state with block 41
+[2m2023-03-18T17:38:34.873228Z[0m [32m INFO[0m Updated StarkNet state with block 42
+[2m2023-03-18T17:38:36.823738Z[0m [32m INFO[0m Updated StarkNet state with block 43
+[2m2023-03-18T17:38:37.830952Z[0m [32m INFO[0m Updated StarkNet state with block 44
+[2m2023-03-18T17:38:39.071864Z[0m [32m INFO[0m Updated StarkNet state with block 45
+[2m2023-03-18T17:38:39.415784Z[0m [32m INFO[0m Updated StarkNet state with block 46
+[2m2023-03-18T17:38:39.780275Z[0m [32m INFO[0m Updated StarkNet state with block 47
+[2m2023-03-18T17:38:40.138076Z[0m [32m INFO[0m Updated StarkNet state with block 48
+[2m2023-03-18T17:38:42.190446Z[0m [32m INFO[0m Updated StarkNet state with block 49
+[2m2023-03-18T17:38:44.045154Z[0m [32m INFO[0m Updated StarkNet state with block 50
+[2m2023-03-18T17:38:44.852523Z[0m [32m INFO[0m Updated StarkNet state with block 51
+[2m2023-03-18T17:38:45.326372Z[0m [32m INFO[0m Updated StarkNet state with block 52
+[2m2023-03-18T17:38:46.013024Z[0m [32m INFO[0m Updated StarkNet state with block 53
+[2m2023-03-18T17:38:46.681159Z[0m [32m INFO[0m Updated StarkNet state with block 54
+[2m2023-03-18T17:38:49.460806Z[0m [32m INFO[0m Updated StarkNet state with block 55
+[2m2023-03-18T17:38:52.007822Z[0m [32m INFO[0m Updated StarkNet state with block 56
+[2m2023-03-18T17:38:52.652631Z[0m [32m INFO[0m Updated StarkNet state with block 57
+[2m2023-03-18T17:38:52.997161Z[0m [32m INFO[0m Updated StarkNet state with block 58
+[2m2023-03-18T17:38:54.769941Z[0m [32m INFO[0m Updated StarkNet state with block 59
+[2m2023-03-18T17:38:55.091278Z[0m [32m INFO[0m Updated StarkNet state with block 60
+[2m2023-03-18T17:38:55.845628Z[0m [32m INFO[0m Updated StarkNet state with block 61
+[2m2023-03-18T17:38:56.185803Z[0m [32m INFO[0m Updated StarkNet state with block 62
+[2m2023-03-18T17:38:56.632331Z[0m [32m INFO[0m Updated StarkNet state with block 63
+[2m2023-03-18T17:38:56.984928Z[0m [32m INFO[0m Updated StarkNet state with block 64
+[2m2023-03-18T17:38:57.342025Z[0m [32m INFO[0m Updated StarkNet state with block 65
+[2m2023-03-18T17:38:57.715933Z[0m [32m INFO[0m Updated StarkNet state with block 66
+[2m2023-03-18T17:38:58.319373Z[0m [32m INFO[0m Updated StarkNet state with block 67
+[2m2023-03-18T17:38:58.677858Z[0m [32m INFO[0m Updated StarkNet state with block 68
+[2m2023-03-18T17:38:59.017705Z[0m [32m INFO[0m Updated StarkNet state with block 69
+[2m2023-03-18T17:38:59.437584Z[0m [32m INFO[0m Updated StarkNet state with block 70
+[2m2023-03-18T17:38:59.810129Z[0m [32m INFO[0m Updated StarkNet state with block 71
+[2m2023-03-18T17:39:00.154971Z[0m [32m INFO[0m Updated StarkNet state with block 72
+[2m2023-03-18T17:39:00.480105Z[0m [32m INFO[0m Updated StarkNet state with block 73
+[2m2023-03-18T17:39:00.820751Z[0m [32m INFO[0m Updated StarkNet state with block 74
+[2m2023-03-18T17:39:01.289916Z[0m [32m INFO[0m Updated StarkNet state with block 75
+[2m2023-03-18T17:39:01.623215Z[0m [32m INFO[0m Updated StarkNet state with block 76
+[2m2023-03-18T17:39:02.084748Z[0m [32m INFO[0m Updated StarkNet state with block 77
+[2m2023-03-18T17:39:02.423076Z[0m [32m INFO[0m Updated StarkNet state with block 78
+[2m2023-03-18T17:39:02.777879Z[0m [32m INFO[0m Updated StarkNet state with block 79
+[2m2023-03-18T17:39:03.110359Z[0m [32m INFO[0m Updated StarkNet state with block 80
+[2m2023-03-18T17:39:03.443963Z[0m [32m INFO[0m Updated StarkNet state with block 81
+[2m2023-03-18T17:39:04.165596Z[0m [32m INFO[0m Updated StarkNet state with block 82
+[2m2023-03-18T17:39:04.522070Z[0m [32m INFO[0m Updated StarkNet state with block 83
+[2m2023-03-18T17:39:05.121120Z[0m [32m INFO[0m Updated StarkNet state with block 84
+[2m2023-03-18T17:39:05.430475Z[0m [32m INFO[0m Updated StarkNet state with block 85
+[2m2023-03-18T17:39:05.787643Z[0m [32m INFO[0m Updated StarkNet state with block 86
+[2m2023-03-18T17:39:06.391445Z[0m [32m INFO[0m Updated StarkNet state with block 87
+[2m2023-03-18T17:39:06.834408Z[0m [32m INFO[0m Updated StarkNet state with block 88
+[2m2023-03-18T17:39:07.155835Z[0m [32m INFO[0m Updated StarkNet state with block 89
+[2m2023-03-18T17:39:07.522150Z[0m [32m INFO[0m Updated StarkNet state with block 90
+[2m2023-03-18T17:39:07.906516Z[0m [32m INFO[0m Updated StarkNet state with block 91
+[2m2023-03-18T17:39:08.234000Z[0m [32m INFO[0m Updated StarkNet state with block 92
+[2m2023-03-18T17:39:08.634561Z[0m [32m INFO[0m Updated StarkNet state with block 93
+[2m2023-03-18T17:39:09.067162Z[0m [32m INFO[0m Updated StarkNet state with block 94
+[2m2023-03-18T17:39:09.447052Z[0m [32m INFO[0m Updated StarkNet state with block 95
+[2m2023-03-18T17:39:09.834845Z[0m [32m INFO[0m Updated StarkNet state with block 96
+[2m2023-03-18T17:39:10.232761Z[0m [32m INFO[0m Updated StarkNet state with block 97
+[2m2023-03-18T17:39:10.608222Z[0m [32m INFO[0m Updated StarkNet state with block 98
+[2m2023-03-18T17:39:11.788206Z[0m [32m INFO[0m Updated StarkNet state with block 99
+[2m2023-03-18T17:39:12.224907Z[0m [32m INFO[0m Updated StarkNet state with block 100
+[2m2023-03-18T17:39:12.626597Z[0m [32m INFO[0m Updated StarkNet state with block 101
+[2m2023-03-18T17:39:13.036744Z[0m [32m INFO[0m Updated StarkNet state with block 102
+[2m2023-03-18T17:39:13.430967Z[0m [32m INFO[0m Updated StarkNet state with block 103
+[2m2023-03-18T17:39:13.817653Z[0m [32m INFO[0m Updated StarkNet state with block 104
+[2m2023-03-18T17:39:14.211354Z[0m [32m INFO[0m Updated StarkNet state with block 105
+[2m2023-03-18T17:39:14.739042Z[0m [32m INFO[0m Updated StarkNet state with block 106
+[2m2023-03-18T17:39:15.356167Z[0m [32m INFO[0m Updated StarkNet state with block 107
+[2m2023-03-18T17:39:15.943858Z[0m [32m INFO[0m Updated StarkNet state with block 108
+[2m2023-03-18T17:39:16.601676Z[0m [32m INFO[0m Updated StarkNet state with block 109
+[2m2023-03-18T17:39:17.641074Z[0m [32m INFO[0m Updated StarkNet state with block 110
+[2m2023-03-18T17:39:18.428679Z[0m [32m INFO[0m Updated StarkNet state with block 111
+[2m2023-03-18T17:39:19.069524Z[0m [32m INFO[0m Updated StarkNet state with block 112
+[2m2023-03-18T17:39:19.922007Z[0m [32m INFO[0m Updated StarkNet state with block 113
+[2m2023-03-18T17:39:20.520620Z[0m [32m INFO[0m Updated StarkNet state with block 114
+[2m2023-03-18T17:39:21.146025Z[0m [32m INFO[0m Updated StarkNet state with block 115
+[2m2023-03-18T17:39:21.738095Z[0m [32m INFO[0m Updated StarkNet state with block 116
+[2m2023-03-18T17:39:22.529825Z[0m [32m INFO[0m Updated StarkNet state with block 117
+[2m2023-03-18T17:39:23.194658Z[0m [32m INFO[0m Updated StarkNet state with block 118
+[2m2023-03-18T17:39:23.501411Z[0m [32m INFO[0m Updated StarkNet state with block 119
+[2m2023-03-18T17:39:24.090329Z[0m [32m INFO[0m Updated StarkNet state with block 120
+[2m2023-03-18T17:39:24.440239Z[0m [32m INFO[0m Updated StarkNet state with block 121
+[2m2023-03-18T17:39:24.742193Z[0m [32m INFO[0m Updated StarkNet state with block 122
+[2m2023-03-18T17:39:25.054620Z[0m [32m INFO[0m Updated StarkNet state with block 123
+[2m2023-03-18T17:39:25.420164Z[0m [32m INFO[0m Updated StarkNet state with block 124
+[2m2023-03-18T17:39:25.746167Z[0m [32m INFO[0m Updated StarkNet state with block 125
+[2m2023-03-18T17:39:26.205048Z[0m [32m INFO[0m Updated StarkNet state with block 126
+[2m2023-03-18T17:39:26.566240Z[0m [32m INFO[0m Updated StarkNet state with block 127
+[2m2023-03-18T17:39:26.923635Z[0m [32m INFO[0m Updated StarkNet state with block 128
+[2m2023-03-18T17:39:27.277411Z[0m [32m INFO[0m Updated StarkNet state with block 129
+[2m2023-03-18T17:39:27.667190Z[0m [32m INFO[0m Updated StarkNet state with block 130
+[2m2023-03-18T17:39:28.074919Z[0m [32m INFO[0m Updated StarkNet state with block 131
+[2m2023-03-18T17:39:28.490329Z[0m [32m INFO[0m Updated StarkNet state with block 132
+[2m2023-03-18T17:39:28.817116Z[0m [32m INFO[0m Updated StarkNet state with block 133
+[2m2023-03-18T17:39:29.157175Z[0m [32m INFO[0m Updated StarkNet state with block 134
+[2m2023-03-18T17:39:29.519225Z[0m [32m INFO[0m Updated StarkNet state with block 135
+[2m2023-03-18T17:39:29.833102Z[0m [32m INFO[0m Updated StarkNet state with block 136
+[2m2023-03-18T17:39:30.140629Z[0m [32m INFO[0m Updated StarkNet state with block 137
+[2m2023-03-18T17:39:30.694592Z[0m [32m INFO[0m Updated StarkNet state with block 138
+[2m2023-03-18T17:39:31.049951Z[0m [32m INFO[0m Updated StarkNet state with block 139
+[2m2023-03-18T17:39:31.437795Z[0m [32m INFO[0m Updated StarkNet state with block 140
+[2m2023-03-18T17:39:31.900168Z[0m [32m INFO[0m Updated StarkNet state with block 141
+[2m2023-03-18T17:39:32.226840Z[0m [32m INFO[0m Updated StarkNet state with block 142
+[2m2023-03-18T17:39:32.574679Z[0m [32m INFO[0m Updated StarkNet state with block 143
+[2m2023-03-18T17:39:32.930569Z[0m [32m INFO[0m Updated StarkNet state with block 144
+[2m2023-03-18T17:39:33.269684Z[0m [32m INFO[0m Updated StarkNet state with block 145
+[2m2023-03-18T17:39:34.513917Z[0m [32m INFO[0m Updated StarkNet state with block 146
+[2m2023-03-18T17:39:34.843368Z[0m [32m INFO[0m Updated StarkNet state with block 147
+[2m2023-03-18T17:39:35.179664Z[0m [32m INFO[0m Updated StarkNet state with block 148
+[2m2023-03-18T17:39:35.543236Z[0m [32m INFO[0m Updated StarkNet state with block 149
+[2m2023-03-18T17:39:37.226230Z[0m [32m INFO[0m Updated StarkNet state with block 150
+[2m2023-03-18T17:39:42.932460Z[0m [32m INFO[0m Updated StarkNet state with block 151
+[2m2023-03-18T17:39:47.916600Z[0m [32m INFO[0m Updated StarkNet state with block 152
+[2m2023-03-18T17:39:51.749500Z[0m [32m INFO[0m Updated StarkNet state with block 153
+[2m2023-03-18T17:39:52.139072Z[0m [32m INFO[0m Updated StarkNet state with block 154
+[2m2023-03-18T17:39:52.457281Z[0m [32m INFO[0m Updated StarkNet state with block 155
+[2m2023-03-18T17:39:53.908082Z[0m [32m INFO[0m Updated StarkNet state with block 156
+[2m2023-03-18T17:39:54.242094Z[0m [32m INFO[0m Updated StarkNet state with block 157
+[2m2023-03-18T17:39:55.816224Z[0m [32m INFO[0m Updated StarkNet state with block 158
+[2m2023-03-18T17:39:56.159143Z[0m [32m INFO[0m Updated StarkNet state with block 159
+[2m2023-03-18T17:39:56.879100Z[0m [32m INFO[0m Updated StarkNet state with block 160
+[2m2023-03-18T17:39:59.955500Z[0m [32m INFO[0m Updated StarkNet state with block 161
+[2m2023-03-18T17:40:07.775342Z[0m [32m INFO[0m Updated StarkNet state with block 162
+[2m2023-03-18T17:40:08.610401Z[0m [32m INFO[0m Updated StarkNet state with block 163
+[2m2023-03-18T17:40:08.946189Z[0m [32m INFO[0m Updated StarkNet state with block 164
+[2m2023-03-18T17:40:09.427411Z[0m [32m INFO[0m Updated StarkNet state with block 165
+[2m2023-03-18T17:40:10.063427Z[0m [32m INFO[0m Updated StarkNet state with block 166
+[2m2023-03-18T17:40:12.402236Z[0m [32m INFO[0m Updated StarkNet state with block 167
+[2m2023-03-18T17:40:12.929796Z[0m [32m INFO[0m Updated StarkNet state with block 168
+[2m2023-03-18T17:40:14.589218Z[0m [32m INFO[0m Updated StarkNet state with block 169
+[2m2023-03-18T17:40:15.151822Z[0m [32m INFO[0m Updated StarkNet state with block 170
+[2m2023-03-18T17:40:20.060361Z[0m [32m INFO[0m Updated StarkNet state with block 171
+[2m2023-03-18T17:40:22.141803Z[0m [32m INFO[0m Updated StarkNet state with block 172
+[2m2023-03-18T17:40:25.784332Z[0m [32m INFO[0m Updated StarkNet state with block 173
+[2m2023-03-18T17:40:26.811967Z[0m [32m INFO[0m Updated StarkNet state with block 174
+[2m2023-03-18T17:40:41.637435Z[0m [32m INFO[0m Updated StarkNet state with block 175
+[2m2023-03-18T17:40:42.002203Z[0m [32m INFO[0m Updated StarkNet state with block 176
+[2m2023-03-18T17:40:42.508133Z[0m [32m INFO[0m Updated StarkNet state with block 177
+[2m2023-03-18T17:40:42.820402Z[0m [32m INFO[0m Updated StarkNet state with block 178
+[2m2023-03-18T17:40:43.178544Z[0m [32m INFO[0m Updated StarkNet state with block 179
+[2m2023-03-18T17:40:44.357635Z[0m [32m INFO[0m Updated StarkNet state with block 180
+[2m2023-03-18T17:40:44.673989Z[0m [32m INFO[0m Updated StarkNet state with block 181
+[2m2023-03-18T17:40:45.020767Z[0m [32m INFO[0m Updated StarkNet state with block 182
+[2m2023-03-18T17:40:45.813211Z[0m [32m INFO[0m Updated StarkNet state with block 183
+[2m2023-03-18T17:40:46.860734Z[0m [32m INFO[0m Updated StarkNet state with block 184
+[2m2023-03-18T17:40:48.437627Z[0m [32m INFO[0m Updated StarkNet state with block 185
+[2m2023-03-18T17:40:48.750456Z[0m [32m INFO[0m Updated StarkNet state with block 186
+[2m2023-03-18T17:40:49.136270Z[0m [32m INFO[0m Updated StarkNet state with block 187
+[2m2023-03-18T17:40:49.509372Z[0m [32m INFO[0m Updated StarkNet state with block 188
+[2m2023-03-18T17:40:49.875708Z[0m [32m INFO[0m Updated StarkNet state with block 189
+[2m2023-03-18T17:40:50.212395Z[0m [32m INFO[0m Updated StarkNet state with block 190
+[2m2023-03-18T17:40:53.852206Z[0m [32m INFO[0m Updated StarkNet state with block 191
+[2m2023-03-18T17:40:55.239707Z[0m [32m INFO[0m Updated StarkNet state with block 192
+[2m2023-03-18T17:40:55.625060Z[0m [32m INFO[0m Updated StarkNet state with block 193
+[2m2023-03-18T17:40:55.973017Z[0m [32m INFO[0m Updated StarkNet state with block 194
+[2m2023-03-18T17:40:56.514026Z[0m [32m INFO[0m Updated StarkNet state with block 195
+[2m2023-03-18T17:40:56.870280Z[0m [32m INFO[0m Updated StarkNet state with block 196
+[2m2023-03-18T17:40:57.323893Z[0m [32m INFO[0m Updated StarkNet state with block 197
+[2m2023-03-18T17:40:58.201782Z[0m [32m INFO[0m Updated StarkNet state with block 198
+[2m2023-03-18T17:40:58.605717Z[0m [32m INFO[0m Updated StarkNet state with block 199
+[2m2023-03-18T17:40:59.978039Z[0m [32m INFO[0m Updated StarkNet state with block 200
+[2m2023-03-18T17:41:00.662459Z[0m [32m INFO[0m Updated StarkNet state with block 201
+[2m2023-03-18T17:41:01.156704Z[0m [32m INFO[0m Updated StarkNet state with block 202
+[2m2023-03-18T17:41:01.639171Z[0m [32m INFO[0m Updated StarkNet state with block 203
+[2m2023-03-18T17:41:03.312729Z[0m [32m INFO[0m Updated StarkNet state with block 204
+[2m2023-03-18T17:41:04.521141Z[0m [32m INFO[0m Updated StarkNet state with block 205
+[2m2023-03-18T17:41:04.993975Z[0m [32m INFO[0m Updated StarkNet state with block 206
+[2m2023-03-18T17:41:05.350026Z[0m [32m INFO[0m Updated StarkNet state with block 207
+[2m2023-03-18T17:41:05.699083Z[0m [32m INFO[0m Updated StarkNet state with block 208
+[2m2023-03-18T17:41:06.061541Z[0m [32m INFO[0m Updated StarkNet state with block 209
+[2m2023-03-18T17:41:07.508496Z[0m [32m INFO[0m Updated StarkNet state with block 210
+[2m2023-03-18T17:41:09.936486Z[0m [32m INFO[0m Updated StarkNet state with block 211
+[2m2023-03-18T17:41:11.544665Z[0m [32m INFO[0m Updated StarkNet state with block 212
+[2m2023-03-18T17:41:13.538868Z[0m [32m INFO[0m Updated StarkNet state with block 213
+[2m2023-03-18T17:41:14.445144Z[0m [32m INFO[0m Updated StarkNet state with block 214
+[2m2023-03-18T17:41:14.772741Z[0m [32m INFO[0m Updated StarkNet state with block 215
+[2m2023-03-18T17:41:16.923081Z[0m [32m INFO[0m Updated StarkNet state with block 216
+[2m2023-03-18T17:41:17.537449Z[0m [32m INFO[0m Updated StarkNet state with block 217
+[2m2023-03-18T17:41:17.868587Z[0m [32m INFO[0m Updated StarkNet state with block 218
+[2m2023-03-18T17:41:18.196461Z[0m [32m INFO[0m Updated StarkNet state with block 219
+[2m2023-03-18T17:41:18.945138Z[0m [32m INFO[0m Updated StarkNet state with block 220
+[2m2023-03-18T17:41:20.110567Z[0m [32m INFO[0m Updated StarkNet state with block 221
+[2m2023-03-18T17:41:21.459816Z[0m [32m INFO[0m Updated StarkNet state with block 222
+[2m2023-03-18T17:41:21.836227Z[0m [32m INFO[0m Updated StarkNet state with block 223
+[2m2023-03-18T17:41:22.160880Z[0m [32m INFO[0m Updated StarkNet state with block 224
+[2m2023-03-18T17:41:23.014676Z[0m [32m INFO[0m Updated StarkNet state with block 225
+[2m2023-03-18T17:41:28.345935Z[0m [32m INFO[0m Updated StarkNet state with block 226
+[2m2023-03-18T17:41:32.726601Z[0m [32m INFO[0m Updated StarkNet state with block 227
+[2m2023-03-18T17:41:36.104530Z[0m [32m INFO[0m Updated StarkNet state with block 228
+[2m2023-03-18T17:41:41.727244Z[0m [32m INFO[0m Updated StarkNet state with block 229
+[2m2023-03-18T17:41:42.474058Z[0m [32m INFO[0m Updated StarkNet state with block 230
+[2m2023-03-18T17:41:48.024851Z[0m [32m INFO[0m Updated StarkNet state with block 231
+[2m2023-03-18T17:41:48.386030Z[0m [32m INFO[0m Updated StarkNet state with block 232
+[2m2023-03-18T17:41:48.744218Z[0m [32m INFO[0m Updated StarkNet state with block 233
+[2m2023-03-18T17:41:49.172344Z[0m [32m INFO[0m Updated StarkNet state with block 234
+[2m2023-03-18T17:41:53.988434Z[0m [32m INFO[0m Updated StarkNet state with block 235
+[2m2023-03-18T17:41:54.702343Z[0m [32m INFO[0m Updated StarkNet state with block 236
+[2m2023-03-18T17:41:55.039436Z[0m [32m INFO[0m Updated StarkNet state with block 237
+[2m2023-03-18T17:41:55.426541Z[0m [32m INFO[0m Updated StarkNet state with block 238
+[2m2023-03-18T17:41:56.247846Z[0m [32m INFO[0m Updated StarkNet state with block 239
+[2m2023-03-18T17:41:56.607656Z[0m [32m INFO[0m Updated StarkNet state with block 240
+[2m2023-03-18T17:41:56.957552Z[0m [32m INFO[0m Updated StarkNet state with block 241
+[2m2023-03-18T17:41:58.597724Z[0m [32m INFO[0m Updated StarkNet state with block 242
+[2m2023-03-18T17:41:58.963920Z[0m [32m INFO[0m Updated StarkNet state with block 243
+[2m2023-03-18T17:41:59.979847Z[0m [32m INFO[0m Updated StarkNet state with block 244
+[2m2023-03-18T17:42:00.349019Z[0m [32m INFO[0m Updated StarkNet state with block 245
+[2m2023-03-18T17:42:01.014060Z[0m [32m INFO[0m Updated StarkNet state with block 246
+[2m2023-03-18T17:42:01.365660Z[0m [32m INFO[0m Updated StarkNet state with block 247
+[2m2023-03-18T17:42:02.415629Z[0m [32m INFO[0m Updated StarkNet state with block 248
+[2m2023-03-18T17:42:02.831858Z[0m [32m INFO[0m Updated StarkNet state with block 249
+[2m2023-03-18T17:42:03.408655Z[0m [32m INFO[0m Updated StarkNet state with block 250
+[2m2023-03-18T17:42:05.329066Z[0m [32m INFO[0m Updated StarkNet state with block 251
+[2m2023-03-18T17:42:05.825614Z[0m [32m INFO[0m Updated StarkNet state with block 252
+[2m2023-03-18T17:42:06.229014Z[0m [32m INFO[0m Updated StarkNet state with block 253
+[2m2023-03-18T17:42:06.719007Z[0m [32m INFO[0m Updated StarkNet state with block 254
+[2m2023-03-18T17:42:07.557698Z[0m [32m INFO[0m Updated StarkNet state with block 255
+[2m2023-03-18T17:42:08.139287Z[0m [32m INFO[0m Updated StarkNet state with block 256
+[2m2023-03-18T17:42:08.694251Z[0m [32m INFO[0m Updated StarkNet state with block 257
+[2m2023-03-18T17:42:09.344807Z[0m [32m INFO[0m Updated StarkNet state with block 258
+[2m2023-03-18T17:42:10.692941Z[0m [32m INFO[0m Updated StarkNet state with block 259
+[2m2023-03-18T17:42:15.652403Z[0m [32m INFO[0m Updated StarkNet state with block 260
+[2m2023-03-18T17:42:16.130975Z[0m [32m INFO[0m Updated StarkNet state with block 261
+[2m2023-03-18T17:42:16.520097Z[0m [32m INFO[0m Updated StarkNet state with block 262
+[2m2023-03-18T17:42:17.008550Z[0m [32m INFO[0m Updated StarkNet state with block 263
+[2m2023-03-18T17:42:17.547461Z[0m [32m INFO[0m Updated StarkNet state with block 264
+[2m2023-03-18T17:42:20.443460Z[0m [32m INFO[0m Updated StarkNet state with block 265
+[2m2023-03-18T17:42:24.277353Z[0m [32m INFO[0m Updated StarkNet state with block 266
+[2m2023-03-18T17:42:25.787982Z[0m [32m INFO[0m Updated StarkNet state with block 267
+[2m2023-03-18T17:42:30.704768Z[0m [32m INFO[0m Updated StarkNet state with block 268
+[2m2023-03-18T17:42:31.485180Z[0m [32m INFO[0m Updated StarkNet state with block 269
+[2m2023-03-18T17:42:31.910167Z[0m [32m INFO[0m Updated StarkNet state with block 270
+[2m2023-03-18T17:42:32.288469Z[0m [32m INFO[0m Updated StarkNet state with block 271
+[2m2023-03-18T17:42:34.384750Z[0m [32m INFO[0m Updated StarkNet state with block 272
+[2m2023-03-18T17:42:36.128996Z[0m [32m INFO[0m Updated StarkNet state with block 273
+[2m2023-03-18T17:42:37.585047Z[0m [32m INFO[0m Updated StarkNet state with block 274
+[2m2023-03-18T17:42:40.493059Z[0m [32m INFO[0m Updated StarkNet state with block 275
+[2m2023-03-18T17:42:44.633597Z[0m [32m INFO[0m Updated StarkNet state with block 276
+[2m2023-03-18T17:42:45.141263Z[0m [32m INFO[0m Updated StarkNet state with block 277
+[2m2023-03-18T17:42:45.495230Z[0m [32m INFO[0m Updated StarkNet state with block 278
+[2m2023-03-18T17:42:45.890534Z[0m [32m INFO[0m Updated StarkNet state with block 279
+[2m2023-03-18T17:42:46.227052Z[0m [32m INFO[0m Updated StarkNet state with block 280
+[2m2023-03-18T17:42:46.662811Z[0m [32m INFO[0m Updated StarkNet state with block 281
+[2m2023-03-18T17:42:47.817121Z[0m [32m INFO[0m Updated StarkNet state with block 282
+[2m2023-03-18T17:42:48.627010Z[0m [32m INFO[0m Updated StarkNet state with block 283
+[2m2023-03-18T17:42:49.000221Z[0m [32m INFO[0m Updated StarkNet state with block 284
+[2m2023-03-18T17:42:49.659698Z[0m [32m INFO[0m Updated StarkNet state with block 285
+[2m2023-03-18T17:42:50.308245Z[0m [32m INFO[0m Updated StarkNet state with block 286
+[2m2023-03-18T17:42:50.702302Z[0m [32m INFO[0m Updated StarkNet state with block 287
+[2m2023-03-18T17:42:51.212106Z[0m [32m INFO[0m Updated StarkNet state with block 288
+[2m2023-03-18T17:42:54.549076Z[0m [32m INFO[0m Updated StarkNet state with block 289
+[2m2023-03-18T17:42:55.023459Z[0m [32m INFO[0m Updated StarkNet state with block 290
+[2m2023-03-18T17:42:58.296060Z[0m [32m INFO[0m Updated StarkNet state with block 291
+[2m2023-03-18T17:42:58.796011Z[0m [32m INFO[0m Updated StarkNet state with block 292
+[2m2023-03-18T17:42:59.173964Z[0m [32m INFO[0m Updated StarkNet state with block 293
+[2m2023-03-18T17:42:59.533450Z[0m [32m INFO[0m Updated StarkNet state with block 294
+[2m2023-03-18T17:42:59.892289Z[0m [32m INFO[0m Updated StarkNet state with block 295
+[2m2023-03-18T17:43:01.289792Z[0m [32m INFO[0m Updated StarkNet state with block 296
+[2m2023-03-18T17:43:02.380940Z[0m [32m INFO[0m Updated StarkNet state with block 297
+[2m2023-03-18T17:43:02.811952Z[0m [32m INFO[0m Updated StarkNet state with block 298
+[2m2023-03-18T17:43:03.316988Z[0m [32m INFO[0m Updated StarkNet state with block 299
+[2m2023-03-18T17:43:04.907831Z[0m [32m INFO[0m Updated StarkNet state with block 300
+[2m2023-03-18T17:43:05.268302Z[0m [32m INFO[0m Updated StarkNet state with block 301
+[2m2023-03-18T17:43:05.651565Z[0m [32m INFO[0m Updated StarkNet state with block 302
+[2m2023-03-18T17:43:07.675058Z[0m [32m INFO[0m Updated StarkNet state with block 303
+[2m2023-03-18T17:43:08.236963Z[0m [32m INFO[0m Updated StarkNet state with block 304
+[2m2023-03-18T17:43:16.372072Z[0m [32m INFO[0m Updated StarkNet state with block 305
+[2m2023-03-18T17:43:16.980033Z[0m [32m INFO[0m Updated StarkNet state with block 306
+[2m2023-03-18T17:43:20.123474Z[0m [32m INFO[0m Updated StarkNet state with block 307
+[2m2023-03-18T17:43:23.889784Z[0m [32m INFO[0m Updated StarkNet state with block 308
+[2m2023-03-18T17:43:24.847026Z[0m [32m INFO[0m Updated StarkNet state with block 309
+[2m2023-03-18T17:43:29.470455Z[0m [32m INFO[0m Updated StarkNet state with block 310
+[2m2023-03-18T17:43:30.495939Z[0m [32m INFO[0m Updated StarkNet state with block 311
+[2m2023-03-18T17:43:30.844430Z[0m [32m INFO[0m Updated StarkNet state with block 312
+[2m2023-03-18T17:43:32.893399Z[0m [32m INFO[0m Updated StarkNet state with block 313
+[2m2023-03-18T17:43:34.017013Z[0m [32m INFO[0m Updated StarkNet state with block 314
+[2m2023-03-18T17:43:35.136632Z[0m [32m INFO[0m Updated StarkNet state with block 315
+[2m2023-03-18T17:43:36.662849Z[0m [32m INFO[0m Updated StarkNet state with block 316
+[2m2023-03-18T17:43:38.399898Z[0m [32m INFO[0m Updated StarkNet state with block 317
+[2m2023-03-18T17:43:39.333557Z[0m [32m INFO[0m Updated StarkNet state with block 318
+[2m2023-03-18T17:43:40.083242Z[0m [32m INFO[0m Updated StarkNet state with block 319
+[2m2023-03-18T17:43:40.922340Z[0m [32m INFO[0m Updated StarkNet state with block 320
+[2m2023-03-18T17:43:41.982168Z[0m [32m INFO[0m Updated StarkNet state with block 321
+[2m2023-03-18T17:43:46.940211Z[0m [32m INFO[0m Updated StarkNet state with block 322
+[2m2023-03-18T17:43:48.357244Z[0m [32m INFO[0m Updated StarkNet state with block 323
+[2m2023-03-18T17:43:48.778367Z[0m [32m INFO[0m Updated StarkNet state with block 324
+[2m2023-03-18T17:43:51.423800Z[0m [32m INFO[0m Updated StarkNet state with block 325
+[2m2023-03-18T17:43:54.048279Z[0m [32m INFO[0m Updated StarkNet state with block 326
+[2m2023-03-18T17:43:58.756375Z[0m [32m INFO[0m Updated StarkNet state with block 327
+[2m2023-03-18T17:44:01.390397Z[0m [32m INFO[0m Updated StarkNet state with block 328
+[2m2023-03-18T17:44:02.016932Z[0m [32m INFO[0m Updated StarkNet state with block 329
+[2m2023-03-18T17:44:02.387428Z[0m [32m INFO[0m Updated StarkNet state with block 330
+[2m2023-03-18T17:44:03.312601Z[0m [32m INFO[0m Updated StarkNet state with block 331
+[2m2023-03-18T17:44:04.359031Z[0m [32m INFO[0m Updated StarkNet state with block 332
+[2m2023-03-18T17:44:06.181478Z[0m [32m INFO[0m Updated StarkNet state with block 333
+[2m2023-03-18T17:44:07.756400Z[0m [32m INFO[0m Updated StarkNet state with block 334
+[2m2023-03-18T17:44:10.120528Z[0m [32m INFO[0m Updated StarkNet state with block 335
+[2m2023-03-18T17:44:10.755157Z[0m [32m INFO[0m Updated StarkNet state with block 336
+[2m2023-03-18T17:44:11.152155Z[0m [32m INFO[0m Updated StarkNet state with block 337
+[2m2023-03-18T17:44:15.386013Z[0m [32m INFO[0m Updated StarkNet state with block 338
+[2m2023-03-18T17:44:16.566742Z[0m [32m INFO[0m Updated StarkNet state with block 339
+[2m2023-03-18T17:44:16.928991Z[0m [32m INFO[0m Updated StarkNet state with block 340
+[2m2023-03-18T17:44:18.583074Z[0m [32m INFO[0m Updated StarkNet state with block 341
+[2m2023-03-18T17:44:18.964922Z[0m [32m INFO[0m Updated StarkNet state with block 342
+[2m2023-03-18T17:44:19.512907Z[0m [32m INFO[0m Updated StarkNet state with block 343
+[2m2023-03-18T17:44:21.062282Z[0m [32m INFO[0m Updated StarkNet state with block 344
+[2m2023-03-18T17:44:21.453873Z[0m [32m INFO[0m Updated StarkNet state with block 345
+[2m2023-03-18T17:44:22.355302Z[0m [32m INFO[0m Updated StarkNet state with block 346
+[2m2023-03-18T17:44:22.765309Z[0m [32m INFO[0m Updated StarkNet state with block 347
+[2m2023-03-18T17:44:23.407514Z[0m [32m INFO[0m Updated StarkNet state with block 348
+[2m2023-03-18T17:44:25.564064Z[0m [32m INFO[0m Updated StarkNet state with block 349
+[2m2023-03-18T17:44:25.934388Z[0m [32m INFO[0m Updated StarkNet state with block 350
+[2m2023-03-18T17:44:26.327114Z[0m [32m INFO[0m Updated StarkNet state with block 351
+[2m2023-03-18T17:44:27.015772Z[0m [32m INFO[0m Updated StarkNet state with block 352
+[2m2023-03-18T17:44:30.334445Z[0m [32m INFO[0m Updated StarkNet state with block 353
+[2m2023-03-18T17:44:32.913096Z[0m [32m INFO[0m Updated StarkNet state with block 354
+[2m2023-03-18T17:44:35.692419Z[0m [32m INFO[0m Updated StarkNet state with block 355
+[2m2023-03-18T17:44:42.671607Z[0m [32m INFO[0m Updated StarkNet state with block 356
+[2m2023-03-18T17:44:43.359491Z[0m [32m INFO[0m Updated StarkNet state with block 357
+[2m2023-03-18T17:44:45.219347Z[0m [32m INFO[0m Updated StarkNet state with block 358
+[2m2023-03-18T17:44:49.930045Z[0m [32m INFO[0m Updated StarkNet state with block 359
+[2m2023-03-18T17:44:50.320380Z[0m [32m INFO[0m Updated StarkNet state with block 360
+[2m2023-03-18T17:44:50.711618Z[0m [32m INFO[0m Updated StarkNet state with block 361
+[2m2023-03-18T17:44:52.863116Z[0m [32m INFO[0m Updated StarkNet state with block 362
+[2m2023-03-18T17:44:55.050845Z[0m [32m INFO[0m Updated StarkNet state with block 363
+[2m2023-03-18T17:44:55.499131Z[0m [32m INFO[0m Updated StarkNet state with block 364
+[2m2023-03-18T17:44:57.846616Z[0m [32m INFO[0m Updated StarkNet state with block 365
+[2m2023-03-18T17:44:58.865220Z[0m [32m INFO[0m Updated StarkNet state with block 366
+[2m2023-03-18T17:45:00.509873Z[0m [32m INFO[0m Updated StarkNet state with block 367
+[2m2023-03-18T17:45:00.873040Z[0m [32m INFO[0m Updated StarkNet state with block 368
+[2m2023-03-18T17:45:01.239586Z[0m [32m INFO[0m Updated StarkNet state with block 369
+[2m2023-03-18T17:45:01.853154Z[0m [32m INFO[0m Updated StarkNet state with block 370
+[2m2023-03-18T17:45:02.267736Z[0m [32m INFO[0m Updated StarkNet state with block 371
+[2m2023-03-18T17:45:05.759104Z[0m [32m INFO[0m Updated StarkNet state with block 372
+[2m2023-03-18T17:45:06.164819Z[0m [32m INFO[0m Updated StarkNet state with block 373
+[2m2023-03-18T17:45:11.618729Z[0m [32m INFO[0m Updated StarkNet state with block 374
+[2m2023-03-18T17:45:14.120209Z[0m [32m INFO[0m Updated StarkNet state with block 375
+[2m2023-03-18T17:45:16.209138Z[0m [32m INFO[0m Updated StarkNet state with block 376
+[2m2023-03-18T17:45:17.622892Z[0m [32m INFO[0m Updated StarkNet state with block 377
+[2m2023-03-18T17:45:19.483680Z[0m [32m INFO[0m Updated StarkNet state with block 378
+[2m2023-03-18T17:45:27.983972Z[0m [32m INFO[0m Updated StarkNet state with block 379
+[2m2023-03-18T17:45:28.385021Z[0m [32m INFO[0m Updated StarkNet state with block 380
+[2m2023-03-18T17:45:29.112229Z[0m [32m INFO[0m Updated StarkNet state with block 381
+[2m2023-03-18T17:45:29.724673Z[0m [32m INFO[0m Updated StarkNet state with block 382
+[2m2023-03-18T17:45:30.085142Z[0m [32m INFO[0m Updated StarkNet state with block 383
+[2m2023-03-18T17:45:31.384500Z[0m [32m INFO[0m Updated StarkNet state with block 384
+[2m2023-03-18T17:45:31.775198Z[0m [32m INFO[0m Updated StarkNet state with block 385
+[2m2023-03-18T17:45:32.274303Z[0m [32m INFO[0m Updated StarkNet state with block 386
+[2m2023-03-18T17:45:32.651616Z[0m [32m INFO[0m Updated StarkNet state with block 387
+[2m2023-03-18T17:45:37.966774Z[0m [32m INFO[0m Updated StarkNet state with block 388
+[2m2023-03-18T17:45:41.501415Z[0m [32m INFO[0m Updated StarkNet state with block 389
+[2m2023-03-18T17:45:41.984355Z[0m [32m INFO[0m Updated StarkNet state with block 390
+[2m2023-03-18T17:45:42.344029Z[0m [32m INFO[0m Updated StarkNet state with block 391
+[2m2023-03-18T17:45:42.917408Z[0m [32m INFO[0m Updated StarkNet state with block 392
+[2m2023-03-18T17:45:45.092547Z[0m [32m INFO[0m Updated StarkNet state with block 393
+[2m2023-03-18T17:45:47.628549Z[0m [32m INFO[0m Updated StarkNet state with block 394
+[2m2023-03-18T17:45:47.959717Z[0m [32m INFO[0m Updated StarkNet state with block 395
+[2m2023-03-18T17:45:48.403837Z[0m [32m INFO[0m Updated StarkNet state with block 396
+[2m2023-03-18T17:45:48.737010Z[0m [32m INFO[0m Updated StarkNet state with block 397
+[2m2023-03-18T17:45:49.878242Z[0m [32m INFO[0m Updated StarkNet state with block 398
+[2m2023-03-18T17:45:53.251502Z[0m [32m INFO[0m Updated StarkNet state with block 399
+[2m2023-03-18T17:45:56.779202Z[0m [32m INFO[0m Updated StarkNet state with block 400
+[2m2023-03-18T17:45:57.302282Z[0m [32m INFO[0m Updated StarkNet state with block 401
+[2m2023-03-18T17:45:57.679466Z[0m [32m INFO[0m Updated StarkNet state with block 402
+[2m2023-03-18T17:45:59.472210Z[0m [32m INFO[0m Updated StarkNet state with block 403
+[2m2023-03-18T17:45:59.832627Z[0m [32m INFO[0m Updated StarkNet state with block 404
+[2m2023-03-18T17:46:01.328965Z[0m [32m INFO[0m Updated StarkNet state with block 405
+[2m2023-03-18T17:46:01.837762Z[0m [32m INFO[0m Updated StarkNet state with block 406
+[2m2023-03-18T17:46:02.745485Z[0m [32m INFO[0m Updated StarkNet state with block 407
+[2m2023-03-18T17:46:03.072143Z[0m [32m INFO[0m Updated StarkNet state with block 408
+[2m2023-03-18T17:46:12.456473Z[0m [32m INFO[0m Updated StarkNet state with block 409
+[2m2023-03-18T17:46:13.468915Z[0m [32m INFO[0m Updated StarkNet state with block 410
+[2m2023-03-18T17:46:13.792064Z[0m [32m INFO[0m Updated StarkNet state with block 411
+[2m2023-03-18T17:46:16.810494Z[0m [32m INFO[0m Updated StarkNet state with block 412
+[2m2023-03-18T17:46:17.704223Z[0m [32m INFO[0m Updated StarkNet state with block 413
+[2m2023-03-18T17:46:20.559686Z[0m [32m INFO[0m Updated StarkNet state with block 414
+[2m2023-03-18T17:46:33.875999Z[0m [32m INFO[0m Updated StarkNet state with block 415
+[2m2023-03-18T17:46:36.002871Z[0m [32m INFO[0m Updated StarkNet state with block 416
+[2m2023-03-18T17:46:37.692910Z[0m [32m INFO[0m Updated StarkNet state with block 417
+[2m2023-03-18T17:46:39.320800Z[0m [32m INFO[0m Updated StarkNet state with block 418
+[2m2023-03-18T17:46:43.438806Z[0m [32m INFO[0m Updated StarkNet state with block 419
+[2m2023-03-18T17:46:44.577762Z[0m [32m INFO[0m Updated StarkNet state with block 420
+[2m2023-03-18T17:46:47.367356Z[0m [32m INFO[0m Updated StarkNet state with block 421
+[2m2023-03-18T17:46:47.878095Z[0m [32m INFO[0m Updated StarkNet state with block 422
+[2m2023-03-18T17:46:49.245639Z[0m [32m INFO[0m Updated StarkNet state with block 423
+[2m2023-03-18T17:46:50.561513Z[0m [32m INFO[0m Updated StarkNet state with block 424
+[2m2023-03-18T17:46:58.914841Z[0m [32m INFO[0m Updated StarkNet state with block 425
+[2m2023-03-18T17:46:59.606271Z[0m [32m INFO[0m Updated StarkNet state with block 426
+[2m2023-03-18T17:46:59.857730Z[0m [32m INFO[0m Updated StarkNet state with block 427
+[2m2023-03-18T17:47:03.885507Z[0m [32m INFO[0m Updated StarkNet state with block 428
+[2m2023-03-18T17:47:04.974035Z[0m [32m INFO[0m Updated StarkNet state with block 429
+[2m2023-03-18T17:47:08.514614Z[0m [32m INFO[0m Updated StarkNet state with block 430
+[2m2023-03-18T17:47:08.837116Z[0m [32m INFO[0m Updated StarkNet state with block 431
+[2m2023-03-18T17:47:09.433077Z[0m [32m INFO[0m Updated StarkNet state with block 432
+[2m2023-03-18T17:47:09.900915Z[0m [32m INFO[0m Updated StarkNet state with block 433
+[2m2023-03-18T17:47:10.336030Z[0m [32m INFO[0m Updated StarkNet state with block 434
+[2m2023-03-18T17:47:11.719376Z[0m [32m INFO[0m Updated StarkNet state with block 435
+[2m2023-03-18T17:47:14.495135Z[0m [32m INFO[0m Updated StarkNet state with block 436
+[2m2023-03-18T17:47:18.221080Z[0m [32m INFO[0m Updated StarkNet state with block 437
+[2m2023-03-18T17:47:20.414965Z[0m [32m INFO[0m Updated StarkNet state with block 438
+[2m2023-03-18T17:47:22.860564Z[0m [32m INFO[0m Updated StarkNet state with block 439
+[2m2023-03-18T17:47:24.958972Z[0m [32m INFO[0m Updated StarkNet state with block 440
+[2m2023-03-18T17:47:25.840749Z[0m [32m INFO[0m Updated StarkNet state with block 441
+[2m2023-03-18T17:47:26.441568Z[0m [32m INFO[0m Updated StarkNet state with block 442
+[2m2023-03-18T17:47:27.620395Z[0m [32m INFO[0m Updated StarkNet state with block 443
+[2m2023-03-18T17:47:28.147285Z[0m [32m INFO[0m Updated StarkNet state with block 444
+[2m2023-03-18T17:47:28.630403Z[0m [32m INFO[0m Updated StarkNet state with block 445
+[2m2023-03-18T17:47:35.396019Z[0m [32m INFO[0m Updated StarkNet state with block 446
+[2m2023-03-18T17:47:36.837758Z[0m [32m INFO[0m Updated StarkNet state with block 447
+[2m2023-03-18T17:47:39.174397Z[0m [32m INFO[0m Updated StarkNet state with block 448
+[2m2023-03-18T17:47:40.084096Z[0m [32m INFO[0m Updated StarkNet state with block 449
+[2m2023-03-18T17:47:42.974707Z[0m [32m INFO[0m Updated StarkNet state with block 450
+[2m2023-03-18T17:47:43.421504Z[0m [32m INFO[0m Updated StarkNet state with block 451
+[2m2023-03-18T17:47:43.885326Z[0m [32m INFO[0m Updated StarkNet state with block 452
+[2m2023-03-18T17:47:47.354577Z[0m [32m INFO[0m Updated StarkNet state with block 453
+[2m2023-03-18T17:47:55.614755Z[0m [32m INFO[0m Updated StarkNet state with block 454
+[2m2023-03-18T17:47:56.085746Z[0m [32m INFO[0m Updated StarkNet state with block 455
+[2m2023-03-18T17:47:56.462671Z[0m [32m INFO[0m Updated StarkNet state with block 456
+[2m2023-03-18T17:47:58.611343Z[0m [32m INFO[0m Updated StarkNet state with block 457
+[2m2023-03-18T17:48:00.539555Z[0m [32m INFO[0m Updated StarkNet state with block 458
+[2m2023-03-18T17:48:03.164857Z[0m [32m INFO[0m Updated StarkNet state with block 459
+[2m2023-03-18T17:48:03.559235Z[0m [32m INFO[0m Updated StarkNet state with block 460
+[2m2023-03-18T17:48:03.922611Z[0m [32m INFO[0m Updated StarkNet state with block 461
+[2m2023-03-18T17:48:04.284656Z[0m [32m INFO[0m Updated StarkNet state with block 462
+[2m2023-03-18T17:48:04.821096Z[0m [32m INFO[0m Updated StarkNet state with block 463
+[2m2023-03-18T17:48:05.290614Z[0m [32m INFO[0m Updated StarkNet state with block 464
+[2m2023-03-18T17:48:05.655975Z[0m [32m INFO[0m Updated StarkNet state with block 465
+[2m2023-03-18T17:48:06.035057Z[0m [32m INFO[0m Updated StarkNet state with block 466
+[2m2023-03-18T17:48:06.424151Z[0m [32m INFO[0m Updated StarkNet state with block 467
+[2m2023-03-18T17:48:06.785925Z[0m [32m INFO[0m Updated StarkNet state with block 468
+[2m2023-03-18T17:48:07.171823Z[0m [32m INFO[0m Updated StarkNet state with block 469
+[2m2023-03-18T17:48:14.657747Z[0m [32m INFO[0m Updated StarkNet state with block 470
+[2m2023-03-18T17:48:15.054597Z[0m [32m INFO[0m Updated StarkNet state with block 471
+[2m2023-03-18T17:48:15.650339Z[0m [32m INFO[0m Updated StarkNet state with block 472
+[2m2023-03-18T17:48:17.596134Z[0m [32m INFO[0m Updated StarkNet state with block 473
+[2m2023-03-18T17:48:18.167960Z[0m [32m INFO[0m Updated StarkNet state with block 474
+[2m2023-03-18T17:48:18.897022Z[0m [32m INFO[0m Updated StarkNet state with block 475
+[2m2023-03-18T17:48:19.257207Z[0m [32m INFO[0m Updated StarkNet state with block 476
+[2m2023-03-18T17:48:21.249174Z[0m [32m INFO[0m Updated StarkNet state with block 477
+[2m2023-03-18T17:48:22.900872Z[0m [32m INFO[0m Updated StarkNet state with block 478
+[2m2023-03-18T17:48:23.235184Z[0m [32m INFO[0m Updated StarkNet state with block 479
+[2m2023-03-18T17:48:23.616282Z[0m [32m INFO[0m Updated StarkNet state with block 480
+[2m2023-03-18T17:48:24.701672Z[0m [32m INFO[0m Updated StarkNet state with block 481
+[2m2023-03-18T17:48:25.207710Z[0m [32m INFO[0m Updated StarkNet state with block 482
+[2m2023-03-18T17:48:28.064934Z[0m [32m INFO[0m Updated StarkNet state with block 483
+[2m2023-03-18T17:48:28.462214Z[0m [32m INFO[0m Updated StarkNet state with block 484
+[2m2023-03-18T17:48:29.226009Z[0m [32m INFO[0m Updated StarkNet state with block 485
+[2m2023-03-18T17:48:29.586155Z[0m [32m INFO[0m Updated StarkNet state with block 486
+[2m2023-03-18T17:48:31.351904Z[0m [32m INFO[0m Updated StarkNet state with block 487
+[2m2023-03-18T17:48:32.712636Z[0m [32m INFO[0m Updated StarkNet state with block 488
+[2m2023-03-18T17:48:33.514687Z[0m [32m INFO[0m Updated StarkNet state with block 489
+[2m2023-03-18T17:48:33.933435Z[0m [32m INFO[0m Updated StarkNet state with block 490
+[2m2023-03-18T17:48:34.499562Z[0m [32m INFO[0m Updated StarkNet state with block 491
+[2m2023-03-18T17:48:36.703561Z[0m [32m INFO[0m Updated StarkNet state with block 492
+[2m2023-03-18T17:48:37.073417Z[0m [32m INFO[0m Updated StarkNet state with block 493
+[2m2023-03-18T17:48:37.684453Z[0m [32m INFO[0m Updated StarkNet state with block 494
+[2m2023-03-18T17:48:38.020094Z[0m [32m INFO[0m Updated StarkNet state with block 495
+[2m2023-03-18T17:48:38.652031Z[0m [32m INFO[0m Updated StarkNet state with block 496
+[2m2023-03-18T17:48:39.762040Z[0m [32m INFO[0m Updated StarkNet state with block 497
+[2m2023-03-18T17:48:40.364917Z[0m [32m INFO[0m Updated StarkNet state with block 498
+[2m2023-03-18T17:48:41.541612Z[0m [32m INFO[0m Updated StarkNet state with block 499
+[2m2023-03-18T17:48:47.139293Z[0m [32m INFO[0m Updated StarkNet state with block 500
+[2m2023-03-18T17:48:48.198197Z[0m [32m INFO[0m Updated StarkNet state with block 501
+[2m2023-03-18T17:48:51.777438Z[0m [32m INFO[0m Updated StarkNet state with block 502
+[2m2023-03-18T17:48:57.186518Z[0m [32m INFO[0m Updated StarkNet state with block 503
+[2m2023-03-18T17:48:57.571406Z[0m [32m INFO[0m Updated StarkNet state with block 504
+[2m2023-03-18T17:48:58.744100Z[0m [32m INFO[0m Updated StarkNet state with block 505
+[2m2023-03-18T17:48:59.547991Z[0m [32m INFO[0m Updated StarkNet state with block 506
+[2m2023-03-18T17:49:00.595668Z[0m [32m INFO[0m Updated StarkNet state with block 507
+[2m2023-03-18T17:49:01.799840Z[0m [32m INFO[0m Updated StarkNet state with block 508
+[2m2023-03-18T17:49:03.114697Z[0m [32m INFO[0m Updated StarkNet state with block 509
+[2m2023-03-18T17:49:03.584115Z[0m [32m INFO[0m Updated StarkNet state with block 510
+[2m2023-03-18T17:49:09.058266Z[0m [32m INFO[0m Updated StarkNet state with block 511
+[2m2023-03-18T17:49:09.711835Z[0m [32m INFO[0m Updated StarkNet state with block 512
+[2m2023-03-18T17:49:10.245931Z[0m [32m INFO[0m Updated StarkNet state with block 513
+[2m2023-03-18T17:49:12.284834Z[0m [32m INFO[0m Updated StarkNet state with block 514
+[2m2023-03-18T17:49:13.303140Z[0m [32m INFO[0m Updated StarkNet state with block 515
+[2m2023-03-18T17:49:19.650395Z[0m [32m INFO[0m Updated StarkNet state with block 516
+[2m2023-03-18T17:49:28.862694Z[0m [32m INFO[0m Updated StarkNet state with block 517
+[2m2023-03-18T17:49:29.792739Z[0m [32m INFO[0m Updated StarkNet state with block 518
+[2m2023-03-18T17:49:29.817871Z[0m [32m INFO[0m Updated StarkNet state with block 519
+[2m2023-03-18T17:49:30.593717Z[0m [32m INFO[0m Updated StarkNet state with block 520
+[2m2023-03-18T17:49:31.891755Z[0m [32m INFO[0m Updated StarkNet state with block 521
+[2m2023-03-18T17:49:32.280161Z[0m [32m INFO[0m Updated StarkNet state with block 522
+[2m2023-03-18T17:49:37.057803Z[0m [32m INFO[0m Updated StarkNet state with block 523
+[2m2023-03-18T17:49:37.408645Z[0m [32m INFO[0m Updated StarkNet state with block 524
+[2m2023-03-18T17:49:39.491126Z[0m [32m INFO[0m Updated StarkNet state with block 525
+[2m2023-03-18T17:49:40.396370Z[0m [32m INFO[0m Updated StarkNet state with block 526
+[2m2023-03-18T17:49:44.906172Z[0m [32m INFO[0m Updated StarkNet state with block 527
+[2m2023-03-18T17:49:45.277890Z[0m [32m INFO[0m Updated StarkNet state with block 528
+[2m2023-03-18T17:49:46.863843Z[0m [32m INFO[0m Updated StarkNet state with block 529
+[2m2023-03-18T17:49:48.398944Z[0m [32m INFO[0m Updated StarkNet state with block 530
+[2m2023-03-18T17:49:52.773225Z[0m [32m INFO[0m Updated StarkNet state with block 531
+[2m2023-03-18T17:49:53.479716Z[0m [32m INFO[0m Updated StarkNet state with block 532
+[2m2023-03-18T17:49:54.492254Z[0m [32m INFO[0m Updated StarkNet state with block 533
+[2m2023-03-18T17:49:54.855071Z[0m [32m INFO[0m Updated StarkNet state with block 534
+[2m2023-03-18T17:49:55.187697Z[0m [32m INFO[0m Updated StarkNet state with block 535
+[2m2023-03-18T17:49:55.651393Z[0m [32m INFO[0m Updated StarkNet state with block 536
+[2m2023-03-18T17:49:56.128884Z[0m [32m INFO[0m Updated StarkNet state with block 537
+[2m2023-03-18T17:49:56.791530Z[0m [32m INFO[0m Updated StarkNet state with block 538
+[2m2023-03-18T17:50:01.531895Z[0m [32m INFO[0m Updated StarkNet state with block 539
+[2m2023-03-18T17:50:02.338574Z[0m [32m INFO[0m Updated StarkNet state with block 540
+[2m2023-03-18T17:50:10.462809Z[0m [32m INFO[0m Updated StarkNet state with block 541
+[2m2023-03-18T17:50:11.113553Z[0m [32m INFO[0m Updated StarkNet state with block 542
+[2m2023-03-18T17:50:11.727670Z[0m [32m INFO[0m Updated StarkNet state with block 543
+[2m2023-03-18T17:50:12.230872Z[0m [32m INFO[0m Updated StarkNet state with block 544
+[2m2023-03-18T17:50:12.840105Z[0m [32m INFO[0m Updated StarkNet state with block 545
+[2m2023-03-18T17:50:18.178275Z[0m [32m INFO[0m Updated StarkNet state with block 546
+[2m2023-03-18T17:50:18.565571Z[0m [32m INFO[0m Updated StarkNet state with block 547
+[2m2023-03-18T17:50:19.313207Z[0m [32m INFO[0m Updated StarkNet state with block 548
+[2m2023-03-18T17:50:19.901049Z[0m [32m INFO[0m Updated StarkNet state with block 549
+[2m2023-03-18T17:50:22.164390Z[0m [32m INFO[0m Updated StarkNet state with block 550
+[2m2023-03-18T17:50:23.001032Z[0m [32m INFO[0m Updated StarkNet state with block 551
+[2m2023-03-18T17:50:30.168063Z[0m [32m INFO[0m Updated StarkNet state with block 552
+[2m2023-03-18T17:50:30.827722Z[0m [32m INFO[0m Updated StarkNet state with block 553
+[2m2023-03-18T17:50:31.649089Z[0m [32m INFO[0m Updated StarkNet state with block 554
+[2m2023-03-18T17:50:31.995979Z[0m [32m INFO[0m Updated StarkNet state with block 555
+[2m2023-03-18T17:50:38.523386Z[0m [32m INFO[0m Updated StarkNet state with block 556
+[2m2023-03-18T17:50:38.943535Z[0m [32m INFO[0m Updated StarkNet state with block 557
+[2m2023-03-18T17:50:40.375755Z[0m [32m INFO[0m Updated StarkNet state with block 558
+[2m2023-03-18T17:50:40.953050Z[0m [32m INFO[0m Updated StarkNet state with block 559
+[2m2023-03-18T17:50:41.349557Z[0m [32m INFO[0m Updated StarkNet state with block 560
+[2m2023-03-18T17:50:42.027441Z[0m [32m INFO[0m Updated StarkNet state with block 561
+[2m2023-03-18T17:50:42.931825Z[0m [32m INFO[0m Updated StarkNet state with block 562
+[2m2023-03-18T17:50:43.912751Z[0m [32m INFO[0m Updated StarkNet state with block 563
+[2m2023-03-18T17:50:45.572143Z[0m [32m INFO[0m Updated StarkNet state with block 564
+[2m2023-03-18T17:50:48.228087Z[0m [32m INFO[0m Updated StarkNet state with block 565
+[2m2023-03-18T17:50:49.101185Z[0m [32m INFO[0m Updated StarkNet state with block 566
+[2m2023-03-18T17:50:53.062099Z[0m [32m INFO[0m Updated StarkNet state with block 567
+[2m2023-03-18T17:50:53.393104Z[0m [32m INFO[0m Updated StarkNet state with block 568
+[2m2023-03-18T17:50:53.754204Z[0m [32m INFO[0m Updated StarkNet state with block 569
+[2m2023-03-18T17:50:56.597627Z[0m [32m INFO[0m Updated StarkNet state with block 570
+[2m2023-03-18T17:51:04.489522Z[0m [32m INFO[0m Updated StarkNet state with block 571
+[2m2023-03-18T17:51:04.836244Z[0m [32m INFO[0m Updated StarkNet state with block 572
+[2m2023-03-18T17:51:05.692779Z[0m [32m INFO[0m Updated StarkNet state with block 573
+[2m2023-03-18T17:51:06.891381Z[0m [32m INFO[0m Updated StarkNet state with block 574
+[2m2023-03-18T17:51:14.604363Z[0m [32m INFO[0m Updated StarkNet state with block 575
+[2m2023-03-18T17:51:16.534532Z[0m [32m INFO[0m Updated StarkNet state with block 576
+[2m2023-03-18T17:51:17.368618Z[0m [32m INFO[0m Updated StarkNet state with block 577
+[2m2023-03-18T17:51:19.614889Z[0m [32m INFO[0m Updated StarkNet state with block 578
+[2m2023-03-18T17:51:20.580355Z[0m [32m INFO[0m Updated StarkNet state with block 579
+[2m2023-03-18T17:51:21.113232Z[0m [32m INFO[0m Updated StarkNet state with block 580
+[2m2023-03-18T17:51:21.525222Z[0m [32m INFO[0m Updated StarkNet state with block 581
+[2m2023-03-18T17:51:22.606838Z[0m [32m INFO[0m Updated StarkNet state with block 582
+[2m2023-03-18T17:51:23.948713Z[0m [32m INFO[0m Updated StarkNet state with block 583
+[2m2023-03-18T17:51:25.176705Z[0m [32m INFO[0m Updated StarkNet state with block 584
+[2m2023-03-18T17:51:25.604046Z[0m [32m INFO[0m Updated StarkNet state with block 585
+[2m2023-03-18T17:51:27.458718Z[0m [32m INFO[0m Updated StarkNet state with block 586
+[2m2023-03-18T17:51:28.383569Z[0m [32m INFO[0m Updated StarkNet state with block 587
+[2m2023-03-18T17:51:28.997431Z[0m [32m INFO[0m Updated StarkNet state with block 588
+[2m2023-03-18T17:51:29.682121Z[0m [32m INFO[0m Updated StarkNet state with block 589
+[2m2023-03-18T17:51:30.247466Z[0m [32m INFO[0m Updated StarkNet state with block 590
+[2m2023-03-18T17:51:30.889402Z[0m [32m INFO[0m Updated StarkNet state with block 591
+[2m2023-03-18T17:51:31.354132Z[0m [32m INFO[0m Updated StarkNet state with block 592
+[2m2023-03-18T17:51:32.060180Z[0m [32m INFO[0m Updated StarkNet state with block 593
+[2m2023-03-18T17:51:32.493386Z[0m [32m INFO[0m Updated StarkNet state with block 594
+[2m2023-03-18T17:51:32.806738Z[0m [32m INFO[0m Updated StarkNet state with block 595
+[2m2023-03-18T17:51:33.609982Z[0m [32m INFO[0m Updated StarkNet state with block 596
+[2m2023-03-18T17:51:34.357722Z[0m [32m INFO[0m Updated StarkNet state with block 597
+[2m2023-03-18T17:51:34.756974Z[0m [32m INFO[0m Updated StarkNet state with block 598
+[2m2023-03-18T17:51:35.211590Z[0m [32m INFO[0m Updated StarkNet state with block 599
+[2m2023-03-18T17:51:35.582704Z[0m [32m INFO[0m Updated StarkNet state with block 600
+[2m2023-03-18T17:51:36.170979Z[0m [32m INFO[0m Updated StarkNet state with block 601
+[2m2023-03-18T17:51:36.665442Z[0m [32m INFO[0m Updated StarkNet state with block 602
+[2m2023-03-18T17:51:37.110671Z[0m [32m INFO[0m Updated StarkNet state with block 603
+[2m2023-03-18T17:51:37.515073Z[0m [32m INFO[0m Updated StarkNet state with block 604
+[2m2023-03-18T17:51:38.085564Z[0m [32m INFO[0m Updated StarkNet state with block 605
+[2m2023-03-18T17:51:39.088052Z[0m [32m INFO[0m Updated StarkNet state with block 606
+[2m2023-03-18T17:51:39.608548Z[0m [32m INFO[0m Updated StarkNet state with block 607
+[2m2023-03-18T17:51:40.186116Z[0m [32m INFO[0m Updated StarkNet state with block 608
+[2m2023-03-18T17:51:43.299832Z[0m [32m INFO[0m Updated StarkNet state with block 609
+[2m2023-03-18T17:51:43.760035Z[0m [32m INFO[0m Updated StarkNet state with block 610
+[2m2023-03-18T17:51:44.289381Z[0m [32m INFO[0m Updated StarkNet state with block 611
+[2m2023-03-18T17:51:44.704378Z[0m [32m INFO[0m Updated StarkNet state with block 612
+[2m2023-03-18T17:51:48.978365Z[0m [32m INFO[0m Updated StarkNet state with block 613
+[2m2023-03-18T17:51:49.366673Z[0m [32m INFO[0m Updated StarkNet state with block 614
+[2m2023-03-18T17:51:49.761227Z[0m [32m INFO[0m Updated StarkNet state with block 615
+[2m2023-03-18T17:51:50.542991Z[0m [32m INFO[0m Updated StarkNet state with block 616
+[2m2023-03-18T17:51:50.953637Z[0m [32m INFO[0m Updated StarkNet state with block 617
+[2m2023-03-18T17:51:55.488333Z[0m [32m INFO[0m Updated StarkNet state with block 618
+[2m2023-03-18T17:51:55.843716Z[0m [32m INFO[0m Updated StarkNet state with block 619
+[2m2023-03-18T17:51:56.373885Z[0m [32m INFO[0m Updated StarkNet state with block 620
+[2m2023-03-18T17:52:05.056706Z[0m [32m INFO[0m Updated StarkNet state with block 621
+[2m2023-03-18T17:52:05.494497Z[0m [32m INFO[0m Updated StarkNet state with block 622
+[2m2023-03-18T17:52:05.839922Z[0m [32m INFO[0m Updated StarkNet state with block 623
+[2m2023-03-18T17:52:06.217588Z[0m [32m INFO[0m Updated StarkNet state with block 624
+[2m2023-03-18T17:52:06.561427Z[0m [32m INFO[0m Updated StarkNet state with block 625
+[2m2023-03-18T17:52:07.006795Z[0m [32m INFO[0m Updated StarkNet state with block 626
+[2m2023-03-18T17:52:07.347600Z[0m [32m INFO[0m Updated StarkNet state with block 627
+[2m2023-03-18T17:52:07.754598Z[0m [32m INFO[0m Updated StarkNet state with block 628
+[2m2023-03-18T17:52:08.107602Z[0m [32m INFO[0m Updated StarkNet state with block 629
+[2m2023-03-18T17:52:08.567477Z[0m [32m INFO[0m Updated StarkNet state with block 630
+[2m2023-03-18T17:52:08.989808Z[0m [32m INFO[0m Updated StarkNet state with block 631
+[2m2023-03-18T17:52:09.663425Z[0m [32m INFO[0m Updated StarkNet state with block 632
+[2m2023-03-18T17:52:10.034401Z[0m [32m INFO[0m Updated StarkNet state with block 633
+[2m2023-03-18T17:52:10.406144Z[0m [32m INFO[0m Updated StarkNet state with block 634
+[2m2023-03-18T17:52:17.724806Z[0m [32m INFO[0m Updated StarkNet state with block 635
+[2m2023-03-18T17:52:18.160830Z[0m [32m INFO[0m Updated StarkNet state with block 636
+[2m2023-03-18T17:52:18.550142Z[0m [32m INFO[0m Updated StarkNet state with block 637
+[2m2023-03-18T17:52:18.967804Z[0m [32m INFO[0m Updated StarkNet state with block 638
+[2m2023-03-18T17:52:19.380156Z[0m [32m INFO[0m Updated StarkNet state with block 639
+[2m2023-03-18T17:52:19.805797Z[0m [32m INFO[0m Updated StarkNet state with block 640
+[2m2023-03-18T17:52:25.221913Z[0m [32m INFO[0m Updated StarkNet state with block 641
+[2m2023-03-18T17:52:25.612991Z[0m [32m INFO[0m Updated StarkNet state with block 642
+[2m2023-03-18T17:52:26.655536Z[0m [32m INFO[0m Updated StarkNet state with block 643
+[2m2023-03-18T17:52:29.719547Z[0m [32m INFO[0m Updated StarkNet state with block 644
+[2m2023-03-18T17:52:35.813356Z[0m [32m INFO[0m Updated StarkNet state with block 645
+[2m2023-03-18T17:52:36.261340Z[0m [32m INFO[0m Updated StarkNet state with block 646
+[2m2023-03-18T17:52:36.746661Z[0m [32m INFO[0m Updated StarkNet state with block 647
+[2m2023-03-18T17:52:44.769180Z[0m [32m INFO[0m Updated StarkNet state with block 648
+[2m2023-03-18T17:52:47.147590Z[0m [32m INFO[0m Updated StarkNet state with block 649
+[2m2023-03-18T17:52:52.088433Z[0m [32m INFO[0m Updated StarkNet state with block 650
+[2m2023-03-18T17:52:52.604953Z[0m [32m INFO[0m Updated StarkNet state with block 651
+[2m2023-03-18T17:52:58.746392Z[0m [32m INFO[0m Updated StarkNet state with block 652
+[2m2023-03-18T17:52:59.109389Z[0m [32m INFO[0m Updated StarkNet state with block 653
+[2m2023-03-18T17:52:59.538401Z[0m [32m INFO[0m Updated StarkNet state with block 654
+[2m2023-03-18T17:53:01.821517Z[0m [32m INFO[0m Updated StarkNet state with block 655
+[2m2023-03-18T17:53:07.654539Z[0m [32m INFO[0m Updated StarkNet state with block 656
+[2m2023-03-18T17:53:08.439407Z[0m [32m INFO[0m Updated StarkNet state with block 657
+[2m2023-03-18T17:53:15.725487Z[0m [32m INFO[0m Updated StarkNet state with block 658
+[2m2023-03-18T17:53:17.393561Z[0m [32m INFO[0m Updated StarkNet state with block 659
+[2m2023-03-18T17:53:17.979629Z[0m [32m INFO[0m Updated StarkNet state with block 660
+[2m2023-03-18T17:53:18.372755Z[0m [32m INFO[0m Updated StarkNet state with block 661
+[2m2023-03-18T17:53:22.655742Z[0m [32m INFO[0m Updated StarkNet state with block 662
+[2m2023-03-18T17:53:30.103411Z[0m [32m INFO[0m Updated StarkNet state with block 663
+[2m2023-03-18T17:53:38.600890Z[0m [32m INFO[0m Updated StarkNet state with block 664
+[2m2023-03-18T17:53:39.665784Z[0m [32m INFO[0m Updated StarkNet state with block 665
+[2m2023-03-18T17:53:42.284430Z[0m [32m INFO[0m Updated StarkNet state with block 666
+[2m2023-03-18T17:53:45.415103Z[0m [32m INFO[0m Updated StarkNet state with block 667
+[2m2023-03-18T17:53:45.938782Z[0m [32m INFO[0m Updated StarkNet state with block 668
+[2m2023-03-18T17:53:48.792348Z[0m [32m INFO[0m Updated StarkNet state with block 669
+[2m2023-03-18T17:53:52.480904Z[0m [32m INFO[0m Updated StarkNet state with block 670
+[2m2023-03-18T17:53:52.871845Z[0m [32m INFO[0m Updated StarkNet state with block 671
+[2m2023-03-18T17:53:53.924239Z[0m [32m INFO[0m Updated StarkNet state with block 672
+[2m2023-03-18T17:53:54.757339Z[0m [32m INFO[0m Updated StarkNet state with block 673
+[2m2023-03-18T17:53:59.930844Z[0m [32m INFO[0m Updated StarkNet state with block 674
+[2m2023-03-18T17:54:00.299035Z[0m [32m INFO[0m Updated StarkNet state with block 675
+[2m2023-03-18T17:54:10.980528Z[0m [32m INFO[0m Updated StarkNet state with block 676
+[2m2023-03-18T17:54:15.702400Z[0m [32m INFO[0m Updated StarkNet state with block 677
+[2m2023-03-18T17:54:16.939565Z[0m [32m INFO[0m Updated StarkNet state with block 678
+[2m2023-03-18T17:54:18.055438Z[0m [32m INFO[0m Updated StarkNet state with block 679
+[2m2023-03-18T17:54:22.351252Z[0m [32m INFO[0m Updated StarkNet state with block 680
+[2m2023-03-18T17:54:23.166387Z[0m [32m INFO[0m Updated StarkNet state with block 681
+[2m2023-03-18T17:54:23.486228Z[0m [32m INFO[0m Updated StarkNet state with block 682
+[2m2023-03-18T17:54:26.597373Z[0m [32m INFO[0m Updated StarkNet state with block 683
+[2m2023-03-18T17:54:27.257112Z[0m [32m INFO[0m Updated StarkNet state with block 684
+[2m2023-03-18T17:54:27.754136Z[0m [32m INFO[0m Updated StarkNet state with block 685
+[2m2023-03-18T17:54:31.190122Z[0m [32m INFO[0m Updated StarkNet state with block 686
+[2m2023-03-18T17:54:35.051643Z[0m [32m INFO[0m Updated StarkNet state with block 687
+[2m2023-03-18T17:54:35.696664Z[0m [32m INFO[0m Updated StarkNet state with block 688
+[2m2023-03-18T17:54:36.955219Z[0m [32m INFO[0m Updated StarkNet state with block 689
+[2m2023-03-18T17:54:41.206474Z[0m [32m INFO[0m Updated StarkNet state with block 690
+[2m2023-03-18T17:54:42.875260Z[0m [32m INFO[0m Updated StarkNet state with block 691
+[2m2023-03-18T17:54:44.902721Z[0m [32m INFO[0m Updated StarkNet state with block 692
+[2m2023-03-18T17:54:47.753669Z[0m [32m INFO[0m Updated StarkNet state with block 693
+[2m2023-03-18T17:54:49.338056Z[0m [32m INFO[0m Updated StarkNet state with block 694
+[2m2023-03-18T17:54:50.042274Z[0m [32m INFO[0m Updated StarkNet state with block 695
+[2m2023-03-18T17:54:50.986341Z[0m [32m INFO[0m Updated StarkNet state with block 696
+[2m2023-03-18T17:54:52.166994Z[0m [32m INFO[0m Updated StarkNet state with block 697
+[2m2023-03-18T17:54:54.317635Z[0m [32m INFO[0m Updated StarkNet state with block 698
+[2m2023-03-18T17:54:55.263712Z[0m [32m INFO[0m Updated StarkNet state with block 699
+[2m2023-03-18T17:54:56.050750Z[0m [32m INFO[0m Updated StarkNet state with block 700
+[2m2023-03-18T17:54:57.299635Z[0m [32m INFO[0m Updated StarkNet state with block 701
+[2m2023-03-18T17:54:57.924505Z[0m [32m INFO[0m Updated StarkNet state with block 702
+[2m2023-03-18T17:54:59.881263Z[0m [32m INFO[0m Updated StarkNet state with block 703
+[2m2023-03-18T17:55:05.729025Z[0m [32m INFO[0m Updated StarkNet state with block 704
+[2m2023-03-18T17:55:06.626339Z[0m [32m INFO[0m Updated StarkNet state with block 705
+[2m2023-03-18T17:55:08.447913Z[0m [32m INFO[0m Updated StarkNet state with block 706
+[2m2023-03-18T17:55:08.780286Z[0m [32m INFO[0m Updated StarkNet state with block 707
+[2m2023-03-18T17:55:09.565641Z[0m [32m INFO[0m Updated StarkNet state with block 708
+[2m2023-03-18T17:55:10.791368Z[0m [32m INFO[0m Updated StarkNet state with block 709
+[2m2023-03-18T17:55:11.176772Z[0m [32m INFO[0m Updated StarkNet state with block 710
+[2m2023-03-18T17:55:11.504545Z[0m [32m INFO[0m Updated StarkNet state with block 711
+[2m2023-03-18T17:55:12.437886Z[0m [32m INFO[0m Updated StarkNet state with block 712
+[2m2023-03-18T17:55:12.775282Z[0m [32m INFO[0m Updated StarkNet state with block 713
+[2m2023-03-18T17:55:13.179068Z[0m [32m INFO[0m Updated StarkNet state with block 714
+[2m2023-03-18T17:55:13.538548Z[0m [32m INFO[0m Updated StarkNet state with block 715
+[2m2023-03-18T17:55:14.106573Z[0m [32m INFO[0m Updated StarkNet state with block 716
+[2m2023-03-18T17:55:14.554060Z[0m [32m INFO[0m Updated StarkNet state with block 717
+[2m2023-03-18T17:55:15.140981Z[0m [32m INFO[0m Updated StarkNet state with block 718
+[2m2023-03-18T17:55:15.562658Z[0m [32m INFO[0m Updated StarkNet state with block 719
+[2m2023-03-18T17:55:15.919283Z[0m [32m INFO[0m Updated StarkNet state with block 720
+[2m2023-03-18T17:55:16.323088Z[0m [32m INFO[0m Updated StarkNet state with block 721
+[2m2023-03-18T17:55:16.730937Z[0m [32m INFO[0m Updated StarkNet state with block 722
+[2m2023-03-18T17:55:17.295462Z[0m [32m INFO[0m Updated StarkNet state with block 723
+[2m2023-03-18T17:55:17.749452Z[0m [32m INFO[0m Updated StarkNet state with block 724
+[2m2023-03-18T17:55:18.111793Z[0m [32m INFO[0m Updated StarkNet state with block 725
+[2m2023-03-18T17:55:18.564087Z[0m [32m INFO[0m Updated StarkNet state with block 726
+[2m2023-03-18T17:55:19.517285Z[0m [32m INFO[0m Updated StarkNet state with block 727
+[2m2023-03-18T17:55:20.113963Z[0m [32m INFO[0m Updated StarkNet state with block 728
+[2m2023-03-18T17:55:24.042505Z[0m [32m INFO[0m Updated StarkNet state with block 729
+[2m2023-03-18T17:55:24.461035Z[0m [32m INFO[0m Updated StarkNet state with block 730
+[2m2023-03-18T17:55:24.833459Z[0m [32m INFO[0m Updated StarkNet state with block 731
+[2m2023-03-18T17:55:25.245188Z[0m [32m INFO[0m Updated StarkNet state with block 732
+[2m2023-03-18T17:55:29.617048Z[0m [32m INFO[0m Updated StarkNet state with block 733
+[2m2023-03-18T17:55:29.988045Z[0m [32m INFO[0m Updated StarkNet state with block 734
+[2m2023-03-18T17:55:31.179927Z[0m [32m INFO[0m Updated StarkNet state with block 735
+[2m2023-03-18T17:55:34.854711Z[0m [32m INFO[0m Updated StarkNet state with block 736
+[2m2023-03-18T17:55:37.563629Z[0m [32m INFO[0m Updated StarkNet state with block 737
+[2m2023-03-18T17:55:37.961160Z[0m [32m INFO[0m Updated StarkNet state with block 738
+[2m2023-03-18T17:55:38.578475Z[0m [32m INFO[0m Updated StarkNet state with block 739
+[2m2023-03-18T17:55:41.983452Z[0m [32m INFO[0m Updated StarkNet state with block 740
+[2m2023-03-18T17:55:42.441598Z[0m [32m INFO[0m Updated StarkNet state with block 741
+[2m2023-03-18T17:55:44.026630Z[0m [32m INFO[0m Updated StarkNet state with block 742
+[2m2023-03-18T17:55:45.604551Z[0m [32m INFO[0m Updated StarkNet state with block 743
+[2m2023-03-18T17:55:46.006303Z[0m [32m INFO[0m Updated StarkNet state with block 744
+[2m2023-03-18T17:55:46.589052Z[0m [32m INFO[0m Updated StarkNet state with block 745
+[2m2023-03-18T17:55:47.693954Z[0m [32m INFO[0m Updated StarkNet state with block 746
+[2m2023-03-18T17:55:48.124259Z[0m [32m INFO[0m Updated StarkNet state with block 747
+[2m2023-03-18T17:55:48.934759Z[0m [32m INFO[0m Updated StarkNet state with block 748
+[2m2023-03-18T17:55:58.224392Z[0m [32m INFO[0m Updated StarkNet state with block 749
+[2m2023-03-18T17:55:58.743855Z[0m [32m INFO[0m Updated StarkNet state with block 750
+[2m2023-03-18T17:55:59.393101Z[0m [32m INFO[0m Updated StarkNet state with block 751
+[2m2023-03-18T17:55:59.733896Z[0m [32m INFO[0m Updated StarkNet state with block 752
+[2m2023-03-18T17:56:01.853401Z[0m [32m INFO[0m Updated StarkNet state with block 753
+[2m2023-03-18T17:56:07.278392Z[0m [32m INFO[0m Updated StarkNet state with block 754
+[2m2023-03-18T17:56:07.722475Z[0m [32m INFO[0m Updated StarkNet state with block 755
+[2m2023-03-18T17:56:13.841740Z[0m [32m INFO[0m Updated StarkNet state with block 756
+[2m2023-03-18T17:56:16.994665Z[0m [32m INFO[0m Updated StarkNet state with block 757
+[2m2023-03-18T17:56:17.694745Z[0m [32m INFO[0m Updated StarkNet state with block 758
+[2m2023-03-18T17:56:18.317808Z[0m [32m INFO[0m Updated StarkNet state with block 759
+[2m2023-03-18T17:56:22.128657Z[0m [32m INFO[0m Updated StarkNet state with block 760
+[2m2023-03-18T17:56:22.595074Z[0m [32m INFO[0m Updated StarkNet state with block 761
+[2m2023-03-18T17:56:23.947377Z[0m [32m INFO[0m Updated StarkNet state with block 762
+[2m2023-03-18T17:56:32.168477Z[0m [32m INFO[0m Updated StarkNet state with block 763
+[2m2023-03-18T17:56:32.898841Z[0m [32m INFO[0m Updated StarkNet state with block 764
+[2m2023-03-18T17:56:39.165060Z[0m [32m INFO[0m Updated StarkNet state with block 765
+[2m2023-03-18T17:56:39.415407Z[0m [32m INFO[0m Updated StarkNet state with block 766
+[2m2023-03-18T17:56:44.359724Z[0m [32m INFO[0m Updated StarkNet state with block 767
+[2m2023-03-18T17:56:46.217785Z[0m [32m INFO[0m Updated StarkNet state with block 768
+[2m2023-03-18T17:56:46.714060Z[0m [32m INFO[0m Updated StarkNet state with block 769
+[2m2023-03-18T17:56:47.932479Z[0m [32m INFO[0m Updated StarkNet state with block 770
+[2m2023-03-18T17:56:48.504688Z[0m [32m INFO[0m Updated StarkNet state with block 771
+[2m2023-03-18T17:56:53.596438Z[0m [32m INFO[0m Updated StarkNet state with block 772
+[2m2023-03-18T17:57:02.578693Z[0m [32m INFO[0m Updated StarkNet state with block 773
+[2m2023-03-18T17:57:03.214450Z[0m [32m INFO[0m Updated StarkNet state with block 774
+[2m2023-03-18T17:57:03.796890Z[0m [32m INFO[0m Updated StarkNet state with block 775
+[2m2023-03-18T17:57:06.263921Z[0m [32m INFO[0m Updated StarkNet state with block 776
+[2m2023-03-18T17:57:10.664129Z[0m [32m INFO[0m Updated StarkNet state with block 777
+[2m2023-03-18T17:57:15.562983Z[0m [32m INFO[0m Updated StarkNet state with block 778
+[2m2023-03-18T17:57:16.066999Z[0m [32m INFO[0m Updated StarkNet state with block 779
+[2m2023-03-18T17:57:16.452431Z[0m [32m INFO[0m Updated StarkNet state with block 780
+[2m2023-03-18T17:57:17.115236Z[0m [32m INFO[0m Updated StarkNet state with block 781
+[2m2023-03-18T17:57:25.878623Z[0m [32m INFO[0m Updated StarkNet state with block 782
+[2m2023-03-18T17:57:27.259226Z[0m [32m INFO[0m Updated StarkNet state with block 783
+[2m2023-03-18T17:57:29.033197Z[0m [32m INFO[0m Updated StarkNet state with block 784
+[2m2023-03-18T17:57:37.083862Z[0m [32m INFO[0m Updated StarkNet state with block 785
+[2m2023-03-18T17:57:38.341410Z[0m [32m INFO[0m Updated StarkNet state with block 786
+[2m2023-03-18T17:57:39.146287Z[0m [32m INFO[0m Updated StarkNet state with block 787
+[2m2023-03-18T17:57:39.577699Z[0m [32m INFO[0m Updated StarkNet state with block 788
+[2m2023-03-18T17:57:40.731352Z[0m [32m INFO[0m Updated StarkNet state with block 789
+[2m2023-03-18T17:57:42.303364Z[0m [32m INFO[0m Updated StarkNet state with block 790
+[2m2023-03-18T17:57:47.593645Z[0m [32m INFO[0m Updated StarkNet state with block 791
+[2m2023-03-18T17:57:48.163676Z[0m [32m INFO[0m Updated StarkNet state with block 792
+[2m2023-03-18T17:57:48.644274Z[0m [32m INFO[0m Updated StarkNet state with block 793
+[2m2023-03-18T17:57:49.853052Z[0m [32m INFO[0m Updated StarkNet state with block 794
+[2m2023-03-18T17:57:50.459701Z[0m [32m INFO[0m Updated StarkNet state with block 795
+[2m2023-03-18T17:57:51.190624Z[0m [32m INFO[0m Updated StarkNet state with block 796
+[2m2023-03-18T17:57:55.253936Z[0m [32m INFO[0m Updated StarkNet state with block 797
+[2m2023-03-18T17:57:55.746430Z[0m [32m INFO[0m Updated StarkNet state with block 798
+[2m2023-03-18T17:57:56.663143Z[0m [32m INFO[0m Updated StarkNet state with block 799
+[2m2023-03-18T17:57:57.104695Z[0m [32m INFO[0m Updated StarkNet state with block 800
+[2m2023-03-18T17:58:12.918283Z[0m [32m INFO[0m Updated StarkNet state with block 801
+[2m2023-03-18T17:58:15.851723Z[0m [32m INFO[0m Updated StarkNet state with block 802
+[2m2023-03-18T17:58:17.773083Z[0m [32m INFO[0m Updated StarkNet state with block 803
+[2m2023-03-18T17:58:18.350622Z[0m [32m INFO[0m Updated StarkNet state with block 804
+[2m2023-03-18T17:58:25.878508Z[0m [32m INFO[0m Updated StarkNet state with block 805
+[2m2023-03-18T17:58:26.476036Z[0m [32m INFO[0m Updated StarkNet state with block 806
+[2m2023-03-18T17:58:28.528105Z[0m [32m INFO[0m Updated StarkNet state with block 807
+[2m2023-03-18T17:58:35.359379Z[0m [32m INFO[0m Updated StarkNet state with block 808
+[2m2023-03-18T17:58:35.680579Z[0m [32m INFO[0m Updated StarkNet state with block 809
+[2m2023-03-18T17:58:36.127031Z[0m [32m INFO[0m Updated StarkNet state with block 810
+[2m2023-03-18T17:58:41.345599Z[0m [32m INFO[0m Updated StarkNet state with block 811
+[2m2023-03-18T17:58:41.943748Z[0m [32m INFO[0m Updated StarkNet state with block 812
+[2m2023-03-18T17:58:42.304535Z[0m [32m INFO[0m Updated StarkNet state with block 813
+[2m2023-03-18T17:58:45.706901Z[0m [32m INFO[0m Updated StarkNet state with block 814
+[2m2023-03-18T17:58:55.348692Z[0m [32m INFO[0m Updated StarkNet state with block 815
+[2m2023-03-18T17:59:02.110795Z[0m [32m INFO[0m Updated StarkNet state with block 816
+[2m2023-03-18T17:59:04.228387Z[0m [32m INFO[0m Updated StarkNet state with block 817
+[2m2023-03-18T17:59:11.721232Z[0m [32m INFO[0m Updated StarkNet state with block 818
+[2m2023-03-18T17:59:13.029669Z[0m [32m INFO[0m Updated StarkNet state with block 819
+[2m2023-03-18T17:59:17.409127Z[0m [32m INFO[0m Updated StarkNet state with block 820
+[2m2023-03-18T17:59:18.255691Z[0m [32m INFO[0m Updated StarkNet state with block 821
+[2m2023-03-18T17:59:18.656823Z[0m [32m INFO[0m Updated StarkNet state with block 822
+[2m2023-03-18T17:59:19.012633Z[0m [32m INFO[0m Updated StarkNet state with block 823
+[2m2023-03-18T17:59:19.357659Z[0m [32m INFO[0m Updated StarkNet state with block 824
+[2m2023-03-18T17:59:25.069183Z[0m [32m INFO[0m Updated StarkNet state with block 825
+[2m2023-03-18T17:59:27.202425Z[0m [32m INFO[0m Updated StarkNet state with block 826
+[2m2023-03-18T17:59:28.079720Z[0m [32m INFO[0m Updated StarkNet state with block 827
+[2m2023-03-18T17:59:31.557988Z[0m [32m INFO[0m Updated StarkNet state with block 828
+[2m2023-03-18T17:59:34.041444Z[0m [32m INFO[0m Updated StarkNet state with block 829
+[2m2023-03-18T17:59:34.489625Z[0m [32m INFO[0m Updated StarkNet state with block 830
+[2m2023-03-18T17:59:36.798863Z[0m [32m INFO[0m Updated StarkNet state with block 831
+[2m2023-03-18T17:59:37.349815Z[0m [32m INFO[0m Updated StarkNet state with block 832
+[2m2023-03-18T17:59:40.043715Z[0m [32m INFO[0m Updated StarkNet state with block 833
+[2m2023-03-18T17:59:43.870736Z[0m [32m INFO[0m Updated StarkNet state with block 834

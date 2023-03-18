@@ -1,8 +1,19 @@
-/data
-/deployments
-/logs
-/target
-/Cargo.lock
+Dockerfile
 .git
-**/resources
-!crates/papyrus_load_test/src/resources
+# rust temporary files
+target/
+crates/load-test/target/
+crates/stark_hash_python/target/
+# Python virtualenv
+.venv
+# database files
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+# compressed database dump files
+*.zst
+# direnv
+.envrc
+.env
+# pyenv
+.python-version

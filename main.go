@@ -6,7 +6,7 @@ import (
 
 
 const (
-	logsFile           = "client/logs.txt"
+	logsFile           = "network/l2/logs.txt"
 	dbConnectionString = "root:tokenApi!@tcp(localhost:3306)/juno"
 )
 

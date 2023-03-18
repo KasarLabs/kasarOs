@@ -20,7 +20,7 @@ import (
 
 
 const (
-	logsFile           = "./client/logs.txt"
+	logsFile           = "./network/l2/logs.txt"
 	dbConnectionString = "root:tokenApi!@tcp(localhost:3306)/juno"
 )
 
@@ -33,16 +33,13 @@ type Block struct {
     status				string
     timestamp			int64
     transactions		[]string
-	local struct {
-		timestamp		int64
-		prev_timestamp	int64
-		number			int64
-	}
+	local 				Local
 }
 
-var block = Block {
-	hash: "0",
-	number: 0,
+type Local struct {
+	number			int64
+	timestamp		int64
+	prev_timestamp	int64
 }
 
 type SyncTime struct {
@@ -61,9 +58,15 @@ var syncTime = SyncTime {
 	count: 0,
 }
 
-func getSyncTime(block Block) {
+var local = Local {
+	number: 0,
+	timestamp: 0,
+	prev_timestamp: 0,
+}
+
+func getSyncTime(block Block, local Local) {
 	syncTime.count += 1;
-	syncTime.last = float64(block.local.timestamp - block.local.prev_timestamp);
+	syncTime.last = float64(local.timestamp - local.prev_timestamp);
 	if (syncTime.count > 3) {
 		// Set min max syncTime
 		if (syncTime.last > syncTime.max) {
@@ -150,17 +153,18 @@ func Scanner() {
 			line := strings.ReplaceAll(utils.RemoveBraces(scanner.Text()), " ", "\t")
 			if len(line) > 0 {
 				number, _ := strconv.ParseInt(utils.ExtractNumber(line), 10, 64)
-				if number > block.number {
-					// timestamp, _ := utils.ExtractTimestamp(line)
-					// block.local.number = number
-					// block.local.prev_timestamp = block.timestamp
-					// block.local.timestamp = timestamp
+				if (number > local.number) {
 					block, err := getBlockData(number)
 					if err != nil {
 						panic(err)
 					}
-					fmt.Printf("%+v", block)
-					getSyncTime(block)
+					if (syncTime.count <= 0) {
+						block.local.timestamp = 0
+					}
+					local.number = number
+					local.prev_timestamp = local.timestamp
+					local.timestamp, _ = utils.ExtractTimestamp(line)
+					getSyncTime(block, local)
 				}
 			}
 			// Update the size variable to the current byte offset
