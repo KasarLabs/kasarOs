@@ -1,6 +1,6 @@
 {
     "name": "test",
-    "client": "pathfinder",
+    "client": "juno",
     "rpc_key": "test",
     "osiris_key": "test"
 }

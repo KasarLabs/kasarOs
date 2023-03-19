@@ -1,0 +1,80 @@
+CREATE TABLE Health (
+  id SERIAL PRIMARY KEY,
+  status BOOLEAN NOT NULL
+);
+
+CREATE TABLE SyncTime (
+  id SERIAL PRIMARY KEY,
+  last FLOAT NOT NULL,
+  min FLOAT NOT NULL,
+  max FLOAT NOT NULL,
+  avg FLOAT NOT NULL
+);
+
+CREATE TABLE Block (
+  id SERIAL PRIMARY KEY,
+  -- Fields specific to Block entity
+);
+
+CREATE TABLE L2 (
+  id SERIAL PRIMARY KEY,
+  syncTime_id INTEGER NOT NULL REFERENCES SyncTime(id),
+  lastProgress INTEGER NOT NULL,
+  lastBlock_id INTEGER REFERENCES Block(id)
+);
+
+CREATE TABLE L1 (
+  id SERIAL PRIMARY KEY,
+  syncTime_id INTEGER NOT NULL REFERENCES SyncTime(id),
+  lastProgress INTEGER NOT NULL,
+  lastBlock_id INTEGER REFERENCES Block(id)
+);
+
+CREATE TABLE Cpu (
+  id SERIAL PRIMARY KEY,
+  last FLOAT NOT NULL,
+  min FLOAT NOT NULL,
+  max FLOAT NOT NULL,
+  avg FLOAT NOT NULL
+);
+
+CREATE TABLE Memory (
+  id SERIAL PRIMARY KEY,
+  last FLOAT NOT NULL,
+  min FLOAT NOT NULL,
+  max FLOAT NOT NULL,
+  avg FLOAT NOT NULL
+);
+
+CREATE TABLE Storage (
+  id SERIAL PRIMARY KEY,
+  last FLOAT NOT NULL,
+  min FLOAT NOT NULL,
+  max FLOAT NOT NULL,
+  avg FLOAT NOT NULL
+);
+
+CREATE TABLE Temp (
+  id SERIAL PRIMARY KEY,
+  last FLOAT NOT NULL,
+  min FLOAT NOT NULL,
+  max FLOAT NOT NULL,
+  avg FLOAT NOT NULL
+);
+
+CREATE TABLE System (
+   id SERIAL PRIMARY KEY,
+   cpu_id INTEGER NOT NULL REFERENCES Cpu(id),
+   memory_id INTEGER NOT NULL REFERENCES Memory(id),
+   storage_id INTEGER NOT NULL REFERENCES Storage(id),
+   temp_id INTEGER REFERENCES Temp(id)
+);
+
+CREATE TABLE User (
+  id SERIAL PRIMARY KEY,
+  health_id INTEGER NOT NULL REFERENCES Health(id),
+  l1_id INTEGER NOT NULL REFERENCES L1(id),
+  l2_id INTEGER NOT NULL REFERENCES L2(id),
+  system_id INTEGER NOT NULL REFERENCES System(id)
+);
+

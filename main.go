@@ -1,7 +1,9 @@
 package main
 
 import (
-	"myOsiris/network/l2/scanner"
+
+	"myOsiris/network/l1/scannerL1"
+	"myOsiris/network/l2/scannerL2"
 )
 
 
@@ -10,12 +12,17 @@ const (
 	dbConnectionString = "root:tokenApi!@tcp(localhost:3306)/juno"
 )
 
-type Block struct {
-	number    int64
-	syncTime  int64
-	hash      string
-}
-
 func main() {
-	scanner.Scanner()
+	go func() {
+		for {
+			scannerL2.ScannerL2()
+		}
+	}()
+
+	go func() {
+		for {
+			scannerL1.ScannerL1()
+		}	
+	}()
+	select {}
 }
