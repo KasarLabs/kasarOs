@@ -2,13 +2,13 @@ package main
 
 import (
 
-	"myOsiris/network/l1/scannerL1"
-	"myOsiris/network/l2/scannerL2"
+	"myOsiris/network/scannerL1"
+	"myOsiris/network/scannerL2"
 )
 
 
 const (
-	logsFile           = "network/l2/logs.txt"
+	logsFile           = "network/logs.txt"
 	dbConnectionString = "root:tokenApi!@tcp(localhost:3306)/juno"
 )
 

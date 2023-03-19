@@ -27,3 +27,5 @@ func LoadConfig() (Config, error) {
 
 	return config, nil
 }
+
+var User, _ = LoadConfig()

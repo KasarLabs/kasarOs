@@ -6962,3 +6962,181 @@ Juno is a Go implementation of a Starknet full node client created by Nethermind
 19:31:43.870 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11442, "hash": "0x5956...478a", "root": "0x6076...b24a"}
 19:31:44.454 19/03/2023 +01:00	[34mINFO[0m	node/node.go:178	Shutting down Juno...
 19:31:46.267 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11443, "hash": "0xa119...0b9c", "root": "0x3dae...c5e9"}
+
+       _                    
+      | |                   
+      | |_   _ _ __   ___   
+  _   | | | | | '_ \ / _ \  
+ | |__| | |_| | | | | (_) |  
+  \____/ \__,_|_| |_|\___/  
+
+Juno is a Go implementation of a Starknet full node client created by Nethermind.
+
+19:37:56.799 19/03/2023 +01:00	[34mINFO[0m	node/node.go:136	Starting Juno...	{"config": "{Verbosity:info RpcPort:6060 Metrics:false DatabasePath:/home/antiyro/.local/share/juno/mainnet Network:mainnet EthNode: Pprof:false}"}
+19:38:18.113 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11444, "hash": "0x62dc...89fe", "root": "0x1a81...fa3a"}
+19:38:24.764 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11445, "hash": "0x7dd9...9247", "root": "0x11ed...a5e9"}
+19:38:27.191 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11446, "hash": "0xd053...9468", "root": "0x51c8...6e7b"}
+19:38:29.855 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11447, "hash": "0x9c3c...b5cf", "root": "0x7bb3...b4f7"}
+19:38:33.148 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11448, "hash": "0xbdf8...9846", "root": "0x7d16...9c20"}
+19:38:35.212 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11449, "hash": "0x5fd7...89a4", "root": "0x59d3...802e"}
+19:38:37.668 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11450, "hash": "0x3b4e...de6c", "root": "0x425b...ee77"}
+19:38:39.939 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11451, "hash": "0x5ca2...cee7", "root": "0x5ba6...88ba"}
+19:38:42.265 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11452, "hash": "0x3551...a7b6", "root": "0x25b5...eeab"}
+19:38:44.083 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11453, "hash": "0x3536...b680", "root": "0x7761...af51"}
+19:38:46.333 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11454, "hash": "0x788b...78f8", "root": "0x1371...b148"}
+19:38:49.023 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11455, "hash": "0x4fd3...70be", "root": "0x5939...c757"}
+19:38:51.276 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11456, "hash": "0x2031...5f07", "root": "0x7d41...5cf9"}
+19:38:53.031 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11457, "hash": "0x3c6c...f6e3", "root": "0x6935...850b"}
+19:38:55.087 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11458, "hash": "0x4f65...5369", "root": "0x745b...877a"}
+19:38:57.415 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11459, "hash": "0x245a...f905", "root": "0x5ed2...0535"}
+19:38:59.544 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11460, "hash": "0x4d4a...e1c4", "root": "0x4252...7b24"}
+19:39:02.114 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11461, "hash": "0x657f...6edc", "root": "0x85f5...6a6c"}
+19:39:04.396 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11462, "hash": "0x7241...37dc", "root": "0x5f2a...f9a6"}
+19:39:06.973 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11463, "hash": "0x103b...82dc", "root": "0x61fe...ad6d"}
+19:39:09.871 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11464, "hash": "0x1c61...31d8", "root": "0x3d21...d473"}
+19:39:12.725 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11465, "hash": "0x1a3b...7255", "root": "0x6ea3...2419"}
+19:39:15.047 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11466, "hash": "0x4b62...9c33", "root": "0x2108...f2a5"}
+19:39:17.320 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11467, "hash": "0x4362...821d", "root": "0x7b0f...3937"}
+19:39:19.914 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11468, "hash": "0x5888...c570", "root": "0x1f2c...2bc0"}
+19:39:22.900 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11469, "hash": "0x157f...82c6", "root": "0x3d49...29ac"}
+19:39:25.664 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11470, "hash": "0x53c1...e689", "root": "0x66ff...db54"}
+19:39:28.255 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11471, "hash": "0x686e...fe13", "root": "0x6391...a929"}
+19:39:31.203 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11472, "hash": "0x2028...cc9f", "root": "0x1248...f6bb"}
+19:39:34.444 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11473, "hash": "0x1d73...15e7", "root": "0x488e...7ae8"}
+19:39:37.398 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11474, "hash": "0x1edf...fd32", "root": "0x62b2...d9e5"}
+19:39:39.380 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11475, "hash": "0x1b34...dd58", "root": "0x7465...e457"}
+19:39:41.994 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11476, "hash": "0x5b92...e151", "root": "0x7d93...e4f5"}
+19:39:44.912 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11477, "hash": "0x1da2...b3dc", "root": "0x3f36...30f7"}
+19:39:47.840 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11478, "hash": "0x40ba...bd7a", "root": "0x2553...5d52"}
+19:39:50.515 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11479, "hash": "0x325f...e6f7", "root": "0x2a2e...e1c3"}
+19:39:52.815 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11480, "hash": "0x3892...1c23", "root": "0x59db...0c21"}
+19:39:55.446 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11481, "hash": "0x47cf...ba77", "root": "0x7470...2075"}
+19:39:57.903 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11482, "hash": "0x5d86...fb7c", "root": "0x45e9...57c7"}
+19:40:00.139 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11483, "hash": "0x6e28...bc42", "root": "0x49cf...db24"}
+19:40:02.412 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11484, "hash": "0x1289...904d", "root": "0x53ae...6e0d"}
+19:40:04.724 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11485, "hash": "0x7bad...d2db", "root": "0x3e0e...0835"}
+19:40:07.574 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11486, "hash": "0x74cc...30f9", "root": "0x1846...77c5"}
+19:40:09.574 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11487, "hash": "0x62bc...018b", "root": "0x11c0...5687"}
+19:40:12.017 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11488, "hash": "0xed7f...872e", "root": "0x2a9e...25f1"}
+19:40:14.395 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11489, "hash": "0x1664...9ab5", "root": "0x1131...7b8f"}
+19:40:17.057 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11490, "hash": "0x75a4...a45e", "root": "0x4f09...e430"}
+19:40:19.402 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11491, "hash": "0x5585...8c5a", "root": "0x1aad...e0ce"}
+19:40:21.765 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11492, "hash": "0x771c...3a64", "root": "0xb29f...83fc"}
+19:40:24.793 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11493, "hash": "0x184c...d72a", "root": "0x1f9e...d75f"}
+19:40:27.181 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11494, "hash": "0x3648...7eac", "root": "0x74f2...384d"}
+19:40:29.851 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11495, "hash": "0x71d9...2d88", "root": "0x8718...b866"}
+19:40:32.262 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11496, "hash": "0x729d...708a", "root": "0x6e5f...2890"}
+19:40:34.600 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11497, "hash": "0x6411...38f3", "root": "0x6a40...3115"}
+19:40:37.440 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11498, "hash": "0x1ddd...16dd", "root": "0x7f21...621f"}
+19:40:39.999 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11499, "hash": "0x7eda...8a3e", "root": "0x69e5...1934"}
+19:40:42.707 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11500, "hash": "0x241f...78e5", "root": "0x7931...a5c3"}
+19:40:45.692 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11501, "hash": "0x26b6...6045", "root": "0x5926...8997"}
+19:40:48.833 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11502, "hash": "0x752b...8693", "root": "0x5044...cc2f"}
+19:40:51.602 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11503, "hash": "0x2c8e...86f4", "root": "0x4a84...5835"}
+19:40:54.120 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11504, "hash": "0xa5c2...cbac", "root": "0x5d66...e736"}
+19:40:56.661 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11505, "hash": "0x3e13...8238", "root": "0x28da...b79f"}
+19:40:59.213 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11506, "hash": "0x57c9...8a9d", "root": "0x70ee...b96e"}
+19:41:02.037 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11507, "hash": "0x2ee8...8a44", "root": "0x383d...e374"}
+19:41:04.055 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11508, "hash": "0x3101...aea4", "root": "0x7dd9...57fa"}
+19:41:06.928 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11509, "hash": "0x4412...f6da", "root": "0x1ecf...f1b9"}
+19:41:09.303 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11510, "hash": "0x5d5e...94c3", "root": "0x1767...b3be"}
+19:41:11.635 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11511, "hash": "0x5609...1b4e", "root": "0x2925...a380"}
+19:41:14.512 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11512, "hash": "0x34ed...8805", "root": "0x4188...f179"}
+19:41:17.049 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11513, "hash": "0x7547...7a4f", "root": "0x6499...1565"}
+19:41:19.891 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11514, "hash": "0x1ac5...de0f", "root": "0x4a8e...1180"}
+19:41:22.938 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11515, "hash": "0x3fe8...bfe4", "root": "0x1036...058f"}
+19:41:26.110 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11516, "hash": "0x56ea...9775", "root": "0x7358...748f"}
+19:41:28.906 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11517, "hash": "0xba71...78fb", "root": "0x22ab...c265"}
+19:41:31.983 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11518, "hash": "0x5196...b7e7", "root": "0x4a03...96b7"}
+19:41:34.850 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11519, "hash": "0x3001...9748", "root": "0x3522...ebbe"}
+19:41:36.820 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11520, "hash": "0x1959...84b5", "root": "0x33fd...f3bd"}
+19:41:38.771 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11521, "hash": "0x5a01...d116", "root": "0x22cd...6b31"}
+19:41:41.531 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11522, "hash": "0x3b4a...9304", "root": "0x74bf...2f38"}
+19:41:44.289 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11523, "hash": "0x28bc...29a0", "root": "0x5f86...a3b8"}
+19:41:46.485 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11524, "hash": "0x64c9...c897", "root": "0x43f2...6596"}
+19:41:48.464 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11525, "hash": "0x4b74...e39b", "root": "0x2853...57fa"}
+19:41:49.915 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11526, "hash": "0xfabc...c932", "root": "0x32ed...ae68"}
+19:41:52.375 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11527, "hash": "0xc657...f55b", "root": "0x18a6...9ea6"}
+19:41:55.209 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11528, "hash": "0xfdb4...b52c", "root": "0x77be...33fc"}
+19:41:57.665 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11529, "hash": "0x5914...1bf4", "root": "0x5a88...f51b"}
+19:42:01.031 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11530, "hash": "0x62f2...381b", "root": "0x4210...93dd"}
+19:42:04.189 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11531, "hash": "0x69d3...bf16", "root": "0x119e...154a"}
+19:42:07.777 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11532, "hash": "0x19de...2454", "root": "0x1b65...559f"}
+19:42:11.610 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11533, "hash": "0x493b...4a48", "root": "0x7026...5077"}
+19:42:15.265 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11534, "hash": "0x4d63...c573", "root": "0x1731...37b3"}
+19:42:17.440 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11535, "hash": "0x4f45...5f45", "root": "0x55c6...6b0d"}
+19:42:20.507 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11536, "hash": "0x5d18...a659", "root": "0x68e2...13c8"}
+19:42:24.222 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11537, "hash": "0x932a...070a", "root": "0x5b4b...8c7c"}
+19:42:25.901 19/03/2023 +01:00	[34mINFO[0m	node/node.go:178	Shutting down Juno...
+19:42:26.690 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11538, "hash": "0x7377...ff36", "root": "0x1f98...09a0"}
+
+       _                    
+      | |                   
+      | |_   _ _ __   ___   
+  _   | | | | | '_ \ / _ \  
+ | |__| | |_| | | | | (_) |  
+  \____/ \__,_|_| |_|\___/  
+
+Juno is a Go implementation of a Starknet full node client created by Nethermind.
+
+19:45:17.558 19/03/2023 +01:00	[34mINFO[0m	node/node.go:136	Starting Juno...	{"config": "{Verbosity:info RpcPort:6060 Metrics:false DatabasePath:/home/antiyro/.local/share/juno/mainnet Network:mainnet EthNode: Pprof:false}"}
+19:45:27.468 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11539, "hash": "0x612f...c063", "root": "0x429f...cf03"}
+19:45:31.833 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11540, "hash": "0x339b...2fbf", "root": "0x75f9...929e"}
+19:45:33.279 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11541, "hash": "0x5790...2633", "root": "0x3e30...4da0"}
+19:45:35.609 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11542, "hash": "0x6b22...aac7", "root": "0x6f76...1dbd"}
+19:45:39.139 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11543, "hash": "0x7384...d486", "root": "0x46c3...036c"}
+19:45:41.440 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11544, "hash": "0x1836...8237", "root": "0x1d90...eda2"}
+19:45:44.001 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11545, "hash": "0x174f...c6c8", "root": "0x47b9...fd19"}
+19:45:46.231 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11546, "hash": "0x549a...48b3", "root": "0x1490...bf04"}
+19:45:49.138 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11547, "hash": "0x3f5f...be8a", "root": "0x78e3...de51"}
+19:45:52.406 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11548, "hash": "0x24e9...0c91", "root": "0x273d...1aa3"}
+19:45:56.073 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11549, "hash": "0x2f30...322b", "root": "0x50e4...6322"}
+19:45:59.810 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11550, "hash": "0x73b2...c3d0", "root": "0x495b...0f00"}
+19:46:01.995 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11551, "hash": "0x3c30...2bf0", "root": "0x74b4...3d20"}
+19:46:06.027 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11552, "hash": "0x4ec8...35e9", "root": "0x43b6...1b12"}
+19:46:09.212 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11553, "hash": "0x76ee...7fd4", "root": "0x1dda...e808"}
+19:46:11.359 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11554, "hash": "0x6a89...74e8", "root": "0x230d...4ae9"}
+19:46:13.384 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11555, "hash": "0x7b35...2aee", "root": "0x6e55...5332"}
+19:46:16.883 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11556, "hash": "0x75e1...7205", "root": "0x7ae2...325d"}
+19:46:20.492 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11557, "hash": "0x264f...ce67", "root": "0x7a30...7eae"}
+19:46:24.055 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11558, "hash": "0xfd46...27ca", "root": "0x1697...6ae1"}
+19:46:26.831 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11559, "hash": "0x7b53...f55e", "root": "0x4faf...2693"}
+19:46:30.564 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11560, "hash": "0x2f35...1de0", "root": "0x3baa...f506"}
+19:46:34.170 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11561, "hash": "0x591d...c565", "root": "0x3cdc...f521"}
+19:46:36.653 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11562, "hash": "0x6361...c900", "root": "0xfcd2...e5a7"}
+19:46:40.107 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11563, "hash": "0x670a...699c", "root": "0x3f6b...7880"}
+19:46:43.517 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11564, "hash": "0x6956...ca60", "root": "0x71fb...7226"}
+19:46:45.623 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11565, "hash": "0x35f8...1606", "root": "0x51a3...7914"}
+19:46:48.153 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11566, "hash": "0x4a3a...1383", "root": "0x3f50...4e1b"}
+19:46:51.381 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11567, "hash": "0x1161...33f5", "root": "0x244e...e65a"}
+19:46:53.162 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11568, "hash": "0x7594...3b9f", "root": "0x765e...4145"}
+19:46:56.820 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11569, "hash": "0x7caf...4dcc", "root": "0x329d...a0f3"}
+19:47:00.477 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11570, "hash": "0x46e4...a8e8", "root": "0x168a...cd40"}
+19:47:02.632 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11571, "hash": "0x56bf...3e3a", "root": "0x76ca...3449"}
+19:47:06.544 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11572, "hash": "0x3602...b953", "root": "0x6e9b...8ce1"}
+19:47:10.166 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11573, "hash": "0x49c1...a70f", "root": "0x29d3...93fa"}
+19:47:13.677 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11574, "hash": "0x15f1...f2dd", "root": "0x4f91...ffc8"}
+19:47:15.562 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11575, "hash": "0x773f...c94b", "root": "0x7b50...7726"}
+19:47:17.955 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11576, "hash": "0x649c...afb9", "root": "0x256f...30e9"}
+19:47:20.983 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11577, "hash": "0x2b1b...de44", "root": "0xa316...32af"}
+19:47:23.910 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11578, "hash": "0x2417...de9b", "root": "0x2795...f54b"}
+19:47:28.392 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11579, "hash": "0x425e...d58d", "root": "0x7d79...bd32"}
+19:47:31.615 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11580, "hash": "0x116c...4d8d", "root": "0x53c9...8726"}
+19:47:35.477 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11581, "hash": "0x5ba3...789d", "root": "0x4ba7...0221"}
+19:47:39.183 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11582, "hash": "0x4a3b...932c", "root": "0x369d...a4c2"}
+19:47:41.959 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11583, "hash": "0x4883...5108", "root": "0x7335...cfb3"}
+19:47:45.108 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11584, "hash": "0x4854...8465", "root": "0x3acf...b033"}
+19:47:46.574 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11585, "hash": "0x2e07...0a68", "root": "0x3311...e01c"}
+19:47:50.976 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11586, "hash": "0x7f3e...f078", "root": "0x323f...469c"}
+19:47:54.950 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11587, "hash": "0x563b...531f", "root": "0x6135...8aef"}
+19:47:58.161 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11588, "hash": "0x59a0...86b7", "root": "0x55d8...4876"}
+19:48:02.399 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11589, "hash": "0x2890...fa93", "root": "0x35f6...ae47"}
+19:48:03.982 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11590, "hash": "0x293f...fe87", "root": "0x87d1...175c"}
+19:48:07.543 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11591, "hash": "0x38a1...de0f", "root": "0x304e...f97f"}
+19:48:11.276 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11592, "hash": "0xb1ac...2e43", "root": "0x5112...ab1e"}
+19:48:14.203 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11593, "hash": "0x2bab...e2a3", "root": "0x356d...67b5"}
+19:48:17.616 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11594, "hash": "0x697d...c882", "root": "0x5f4c...9986"}
+19:48:19.390 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11595, "hash": "0x3781...0e23", "root": "0x5908...8826"}
+19:48:23.005 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11596, "hash": "0x27d3...6aff", "root": "0x1edb...9a15"}
+19:48:25.484 19/03/2023 +01:00	[34mINFO[0m	node/node.go:178	Shutting down Juno...
+19:48:26.275 19/03/2023 +01:00	[34mINFO[0m	sync/sync.go:122	Stored Block	{"number": 11597, "hash": "0x317d...a76c", "root": "0x2402...19c6"}

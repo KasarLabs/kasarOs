@@ -8,7 +8,7 @@ import (
 	"strings"
 	"strconv"
 	"path/filepath"
-	"myOsiris/network/l2/utils"
+	"myOsiris/network/utils"
 	"math"
 	"bytes"
 	"encoding/json"
@@ -20,7 +20,7 @@ import (
 
 
 const (
-	logsFile           = "./network/l2/logs.txt"
+	logsFile           = "./network/logs.txt"
 	dbConnectionString = "root:tokenApi!@tcp(localhost:3306)/juno"
 )
 
@@ -76,10 +76,12 @@ func getSyncTime(block Block, local Local) {
 		}
 		// Set avg syncTime
 		syncTime.avg = math.Round(float64((syncTime.avg + syncTime.last) / 2) * 100) / 100
+		// Push to DB
+		fmt.Println("Pushing to DB", syncTime)
+
 	} else {
 		syncTime.min = syncTime.last
 	}
-	fmt.Println(syncTime)
 }
 
 func getBlockData(blockNumber int64) (block Block, err error) {
