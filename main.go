@@ -2,8 +2,9 @@ package main
 
 import (
 
-	"myOsiris/network/scannerL1"
-	"myOsiris/network/scannerL2"
+	// "myOsiris/network/scannerL1"
+	// "myOsiris/network/scannerL2"
+	"myOsiris/system"
 )
 
 
@@ -13,16 +14,21 @@ const (
 )
 
 func main() {
-	go func() {
-		for {
-			scannerL2.ScannerL2()
-		}
-	}()
+	// go func() {
+	// 	for {
+	// 		scannerL2.ScannerL2()
+	// 	}
+	// }()
 
+	// go func() {
+	// 	for {
+	// 		scannerL1.ScannerL1()
+	// 	}	
+	// }()
 	go func() {
 		for {
-			scannerL1.ScannerL1()
-		}	
+			system.ScannerSystem()
+		}
 	}()
 	select {}
 }

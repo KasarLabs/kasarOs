@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"myOsiris/network/config"
 )
 
 type Block struct {
@@ -27,7 +28,7 @@ type Block struct {
 }
 
 func getBlockData() Block {
-	client, err := ethclient.Dial("https://eth-mainnet.g.alchemy.com/v2/CDPivBjTjgi1b1Qov1IrL6bBPxGwnAgg")
+	client, err := ethclient.Dial(config.User.Client)
 	if err != nil {
 		log.Fatal(err)
 	}

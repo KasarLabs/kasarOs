@@ -1,3 +1,83 @@
+type Health @entity {
+  id: ID!
+  status: Boolean!
+}
+
+type SyncTime @entity {
+  id: ID!
+  last: Float!
+  min: Float!
+  max: Float!
+  avg: Float!
+}
+
+type Block @entity {
+  id: ID!
+  # Fields specific to Block entity
+}
+
+type L2 @entity {
+  id: ID!
+  syncTime: SyncTime!
+  lastProgress: Int!
+  lastBlock: Block
+}
+
+type L1 @entity {
+  id: ID!
+  syncTime: SyncTime!
+  lastProgress: Int!
+  lastBlock: Block
+}
+
+type Cpu @entity {
+  id: ID!
+  last: Float!
+  min: Float!
+  max: Float!
+  avg: Float!
+}
+
+type Memory @entity {
+  id: ID!
+  last: Float!
+  min: Float!
+  max: Float!
+  avg: Float!
+}
+
+type Storage @entity {
+  id: ID!
+  last: Float!
+  min: Float!
+  max: Float!
+  avg: Float!
+}
+
+type Temp @entity {
+  id: ID!
+  last: Float!
+  min: Float!
+  max: Float!
+  avg: Float!
+}
+
+type System @entity {
+   id: ID!
+   cpu: Cpu!
+   memory: Memory!
+   storage: Storage!
+   temp: Temp # temperature
+}
+
+type User @entity {
+  id: ID! # osiris_key
+  health: Health!
+  l1: L1!
+  l2: L2!,
+  system: System!
+}
+
 CREATE TABLE Health (
   id SERIAL PRIMARY KEY,
   status BOOLEAN NOT NULL
@@ -77,4 +157,3 @@ CREATE TABLE User (
   l2_id INTEGER NOT NULL REFERENCES L2(id),
   system_id INTEGER NOT NULL REFERENCES System(id)
 );
-
