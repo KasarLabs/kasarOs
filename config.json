@@ -1,6 +1,6 @@
 {
-    "name": "test",
+    "name": "Mew",
     "client": "juno",
     "rpc_key": "https://eth-mainnet.g.alchemy.com/v2/Oqh-00iLC3Nx08nkJOg241ky-7JA41cJ",
-    "osiris_key": "test"
+    "osiris_key": "test_key"
 }
