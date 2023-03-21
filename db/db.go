@@ -37,3 +37,23 @@ func NodeExist() (bool) {
     fmt.Printf("Node %s does not exist\n", nodeConfig.OsirisKey)
 	return(false)
 }
+
+func CreateNode() (bool) {
+    if (NodeExist()) {
+        fmt.Println("Node already exist")
+        return false
+    }
+	resp, err := http.Get(Url + "createNode?nodeID=" + nodeConfig.OsirisKey)
+	if err != nil {
+		log.Fatalf("Error making HTTP request: %v", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusCreated {
+		log.Fatalf("Received non-OK status code: %d", resp.StatusCode)
+	}
+
+	fmt.Printf("Node %s created successfully\n", nodeConfig.OsirisKey)
+	return(true)
+}
+

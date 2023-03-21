@@ -10,7 +10,8 @@ import (
 )
 
 func main() {
-    db.NodeExist()
+    db.CreateNode()
+	db.UserExist("10")
 	// go func() {
 	// 	for {
 	// 		scannerL2.ScannerL2()
