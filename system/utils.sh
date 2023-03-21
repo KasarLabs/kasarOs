@@ -44,7 +44,7 @@ print_menu() {
     echo -e "${question}\n"
     for i in "${!options[@]}"; do
         if [ $i -eq $selected ]; then
-            echo -e "${red}➡️  ${options[$i]}${reset}"
+            echo -e "${red}>  ${options[$i]}${reset}"
         else
             echo -e "${yellow}   ${options[$i]}${reset}"
         fi
