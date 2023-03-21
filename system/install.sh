@@ -19,10 +19,13 @@ main() {
 	fi
 
 	if [ "${options[$selected]}" = "Papyrus - Starkware" ]; then
+		installTools
 		installPapyrus
 	elif [ "${options[$selected]}" = "Juno - Nethermind" ]; then
+		installTools
 		installJuno
 	elif [ "${options[$selected]}" = "Pathfinder - Equilibrium" ]; then
+		installTools
 		installPathfinder
 	fi
 }
@@ -51,11 +54,11 @@ installJuno() {
 	git clone https://github.com/NethermindEth/juno ../client &> /dev/null
 	mkdir -p $HOME/.client_data/juno
 	sudo docker run -d -it \
-	  -p 6060:6060 \
-	  -v $HOME/.client_data/juno:/var/lib/juno \
-	  nethermindeth/juno \
-	  --rpc-port 6060 \
- 	 --db-path /var/lib/juno
+	-p 6060:6060 \
+	-v $HOME/.client_data/juno:/var/lib/juno \
+	nethermindeth/juno \
+	--rpc-port 6060 \
+ 	--db-path /var/lib/juno
 	echo -e "\n\033[1;32mDone !\033[m\n"
 }
 
@@ -68,15 +71,15 @@ installPathfinder() {
 	git clone https://github.com/NethermindEth/juno ../client &> /dev/nul
 	mkdir -p $HOME/.client_data/.pathfinder
 	sudo docker run \
-	  --name pathfinder \
-	  --restart unless-stopped \
-	  --detach \
-	  -p 9545:9545 \
-	  --user "$(id -u):$(id -g)" \
-	  -e RUST_LOG=info \
-	  -e PATHFINDER_ETHEREUM_API_URL="https://goerli.infura.io/v3/<project-id>" \
-	  -v $HOME/.client_data/pathfinder:/usr/share/pathfinder/data \
-	  eqlabs/pathfinder
+	--name pathfinder \
+	--restart unless-stopped \
+	--detach \
+	-p 9545:9545 \
+	--user "$(id -u):$(id -g)" \
+	-e RUST_LOG=info \
+	-e PATHFINDER_ETHEREUM_API_URL="https://goerli.infura.io/v3/<project-id>" \
+	-v $HOME/.client_data/pathfinder:/usr/share/pathfinder/data \
+	eqlabs/pathfinder
 	echo -e "\n\033[1;32mDone !\033[m\n"
 }
 
@@ -92,30 +95,28 @@ installTools() {
 EOF
 )
 
-echo -e "\n\033[34mInstalling tools... \033[m\n"
-sleep 1
-while read -r p ; do sudo apt install -y $p ; done < <(cat << "EOF"
+	echo -e "\n\033[34mInstalling tools... \033[m\n"
+	sleep 1
+	while read -r p ; do sudo apt install -y $p ; done < <(cat << "EOF"
 		sysstat
 		bc
 EOF
 )
 
-if [ ! -d "$(pwd)/tmp/" ]
-then
-	mkdir $(pwd)/tmp/
-fi
+	if [ ! -d "$(pwd)/tmp/" ]
+	then
+		mkdir $(pwd)/tmp/
+	fi
 
 
-git -C $(pwd)/tmp/ clone https://github.com/raboof/nethogs >& $(pwd)/tmp/sample.log
-sudo make install -C $(pwd)/tmp/nethogs/ >& $(pwd)/tmp/sample.log
-rm -rf $(pwd)/tmp/
-sudo cp $(pwd)/osiris /usr/local/bin
-
-echo -e "\n\033[1;32mDone !\033[m\n"
+	git -C $(pwd)/tmp/ clone https://github.com/raboof/nethogs >& $(pwd)/tmp/sample.log
+	sudo make install -C $(pwd)/tmp/nethogs/ >& $(pwd)/tmp/sample.log
+	rm -rf $(pwd)/tmp/
+	sudo cp $(pwd)/osiris /usr/local/bin
+	
+	curl -fsSL https://get.docker.com -o get-docker.sh
+	sh get-docker.sh
+	rm get-docker.sh
+	echo -e "\n\033[1;32mDone !\033[m\n"
 }
-
-# INTEGRATE JUNO INSTALLER FN
-# INTEGRATE PATHFINDER INSTALLER FN
-# INTEGRATE PAPYRUS INSTALLER FN
-
 main
