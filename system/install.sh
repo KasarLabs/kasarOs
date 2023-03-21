@@ -112,11 +112,9 @@ EOF
 	git -C $(pwd)/tmp/ clone https://github.com/raboof/nethogs >& $(pwd)/tmp/sample.log
 	sudo make install -C $(pwd)/tmp/nethogs/ >& $(pwd)/tmp/sample.log
 	rm -rf $(pwd)/tmp/
-	sudo cp $(pwd)/osiris /usr/local/bin
 	
 	curl -fsSL https://get.docker.com -o get-docker.sh
 	sh get-docker.sh
 	rm get-docker.sh
-	echo -e "\n\033[1;32mDone !\033[m\n"
 }
 main
