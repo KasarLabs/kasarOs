@@ -111,14 +111,17 @@ refreshClient()
 	if sudo docker ps | grep juno > /dev/null 
 	then
 		sudo docker stop juno > /dev/null
+		sudo docker rm -f juno > /dev/null
 	fi
 	if sudo docker ps | grep papyrus > /dev/null
 	then
 		sudo docker stop papyrus > /dev/null
+		sudo docker rm -f papyrus > /dev/null
 	fi
 	if sudo docker ps | grep pathfinder > /dev/null
 	then
 		sudo docker stop pathfinder > /dev/null
+		sudo docker rm -f pathfinder > /dev/null
 	fi	
 	if [ -d $CLIENT_DIR ]
 	then
