@@ -5,13 +5,13 @@ set -eu -o pipefail
 source ./utils.sh
 
 OSIRIS_PATH=$(dirname $(pwd))
-CLIENT_NAME="client"
-CLIENT_DIR="$OSIRIS_PATH/$CLIENT_NAME"
+CLIENT_DIR="$OSIRIS_PATH/client"
+LOGS_PATH="$OSIRIS_PATH/network/logs.txt"
 
 # Main menu
 main() {
 	osirisClear
-	options=("Juno - Nethermind" "Quit")
+	options=("Papyrus - Starkware" "Quit")
 	yesOrNo=("Yes" "No" "Quit")
 	if [ -f "/usr/local/bin/osiris" ]
 	then
@@ -36,10 +36,11 @@ installPapyrus() {
 	sleep 1
 	refreshClient
 	git clone git@github.com:starkware-libs/papyrus.git $CLIENT_DIR &> /dev/null
-	sudo docker run -d --rm --name papyrus\
+	sudo docker run -d --rm --name papyrus \
 	-p 8080-8081:8080-8081 \
 	-v $CLIENT_DIR:/app/data \
-	ghcr.io/starkware-libs/papyrus:dev > /dev/null
+	ghcr.io/starkware-libs/papyrus:dev
+	sudo docker logs -f papyrus &>> $LOGS_PATH & return
 }
 
 installJuno() {
@@ -47,12 +48,13 @@ installJuno() {
 	sleep 1
 	refreshClient
 	git clone https://github.com/NethermindEth/juno $CLIENT_DIR &> /dev/null
-	sudo docker run -d -it --name juno\
+	sudo docker run -d -it --name juno \
 	-p 6060:6060 \
 	-v $CLIENT_DIR:/var/lib/juno \
 	nethermindeth/juno \
 	--rpc-port 6060 \
-	--db-path /var/lib/juno > /dev/null
+	--db-path /var/lib/juno
+	sudo docker logs -f juno &>> $LOGS_PATH & return
 }
 
 installPathfinder() {
@@ -70,6 +72,7 @@ installPathfinder() {
 	-e PATHFINDER_ETHEREUM_API_URL="https://goerli.infura.io/v3/<project-id>" \
 	-v $CLIENT_DIR:/usr/share/pathfinder/data \
 	eqlabs/pathfinder > /dev/null
+	sudo docker logs -f pathfinder &>> $LOGS_PATH & return
 }
 
 installTools() {
@@ -105,20 +108,23 @@ EOF
 
 refreshClient()
 {
-	if sudo docker ps | grep juno > /dev/null 
+	if sudo docker ps -a | grep juno > /dev/null 
 	then
 		sudo docker rm -f juno > /dev/null
 		sudo docker image rm -f nethermindeth/juno > /dev/null
+		rm -f $LOGS_PATH > /dev/null
 	fi
-	if sudo docker ps | grep papyrus > /dev/null
+	if sudo docker ps -a | grep papyrus > /dev/null
 	then
 		sudo docker rm -f papyrus > /dev/null
 		sudo docker image rm -f ghcr.io/starkware-libs/papyrus:dev > /dev/null
+		rm -f $LOGS_PATH > /dev/null
 	fi
-	if sudo docker ps | grep pathfinder > /dev/null
+	if sudo docker ps -a | grep pathfinder > /dev/null
 	then
 		sudo docker rm -f pathfinder > /dev/null
 		sudo docker image rm -f eqlabs/pathfinder > /dev/null
+		rm -f $LOGS_PATH > /dev/null
 	fi
 	if [ -d $CLIENT_DIR ]
 	then
