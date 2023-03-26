@@ -1,8 +1,6 @@
 #!/bin/bash
 
 set -eu -o pipefail
-sudo -n true
-test $? -eq 0 || exit 1 "You should have sudo privilege to run this script."
 
 source ./utils.sh
 
@@ -13,7 +11,7 @@ CLIENT_DIR="$OSIRIS_PATH/$CLIENT_NAME"
 # Main menu
 main() {
 	osirisClear
-	options=("Papyrus - Starkware" "Juno - Nethermind" "Pathfinder - Equilibrium" "Quit")
+	options=("Juno - Nethermind" "Quit")
 	yesOrNo=("Yes" "No" "Quit")
 	if [ -f "/usr/local/bin/osiris" ]
 	then
@@ -21,7 +19,6 @@ main() {
 	else
 		print_menu "Welcome to myOsiris!" "Please chose the client you'd like to install" "${options[@]}"
 	fi
-
 	if [ "${options[$selected]}" = "Papyrus - Starkware" ]; then
 		installTools
 		installPapyrus
@@ -38,31 +35,31 @@ installPapyrus() {
 	echo -e "\n\033[34mRunning docker... \033[m"
 	sleep 1
 	refreshClient
-	git clone git@github.com:starkware-libs/papyrus.git ../client &> /dev/null
+	git clone git@github.com:starkware-libs/papyrus.git $CLIENT_DIR &> /dev/null
 	sudo docker run -d --rm --name papyrus\
-  	-p 8080-8081:8080-8081 \
-  	-v $CLIENT_DIR:/app/data \
-  	ghcr.io/starkware-libs/papyrus:dev > /dev/null
+	-p 8080-8081:8080-8081 \
+	-v $CLIENT_DIR:/app/data \
+	ghcr.io/starkware-libs/papyrus:dev > /dev/null
 }
 
 installJuno() {
 	echo -e "\n\033[34mRunning docker... \033[m"
 	sleep 1
 	refreshClient
-	git clone https://github.com/NethermindEth/juno ../client &> /dev/null
-	sudo docker run -d -it \
+	git clone https://github.com/NethermindEth/juno $CLIENT_DIR &> /dev/null
+	sudo docker run -d -it --name juno\
 	-p 6060:6060 \
 	-v $CLIENT_DIR:/var/lib/juno \
 	nethermindeth/juno \
 	--rpc-port 6060 \
- 	--db-path /var/lib/juno > /dev/null
+	--db-path /var/lib/juno > /dev/null
 }
 
 installPathfinder() {
 	echo -e "\n\033[34mRunning docker... \033[m"
 	sleep 1
 	refreshClient
-	git clone https://github.com/NethermindEth/juno ../client &> /dev/nul
+	git clone git@github.com:eqlabs/pathfinder.git $CLIENT_DIR &> /dev/null
 	sudo docker run \
 	--name pathfinder \
 	--restart unless-stopped \
@@ -110,19 +107,19 @@ refreshClient()
 {
 	if sudo docker ps | grep juno > /dev/null 
 	then
-		sudo docker stop juno > /dev/null
 		sudo docker rm -f juno > /dev/null
+		sudo docker image rm -f nethermindeth/juno > /dev/null
 	fi
 	if sudo docker ps | grep papyrus > /dev/null
 	then
-		sudo docker stop papyrus > /dev/null
 		sudo docker rm -f papyrus > /dev/null
+		sudo docker image rm -f ghcr.io/starkware-libs/papyrus:dev > /dev/null
 	fi
 	if sudo docker ps | grep pathfinder > /dev/null
 	then
-		sudo docker stop pathfinder > /dev/null
 		sudo docker rm -f pathfinder > /dev/null
-	fi	
+		sudo docker image rm -f eqlabs/pathfinder > /dev/null
+	fi
 	if [ -d $CLIENT_DIR ]
 	then
 		rm -rf $CLIENT_DIR
