@@ -64,7 +64,7 @@ var local = Local {
 	prev_timestamp: 0,
 }
 
-func getSyncTime(block Block, local Local) {
+func getSyncTime(block Block, local Local) (SyncTime) {
 	syncTime.count += 1;
 	syncTime.last = float64(local.timestamp - local.prev_timestamp);
 	if (syncTime.count > 3) {
@@ -76,12 +76,12 @@ func getSyncTime(block Block, local Local) {
 		}
 		// Set avg syncTime
 		syncTime.avg = math.Round(float64((syncTime.avg + syncTime.last) / 2) * 100) / 100
-		// Push to DB
-		fmt.Println("Pushing to DB", syncTime)
+		return syncTime
 
 	} else {
 		syncTime.min = syncTime.last
 	}
+	return syncTime
 }
 
 func getBlockData(blockNumber int64) (block Block, err error) {
@@ -166,7 +166,8 @@ func ScannerL2() {
 					local.number = number
 					local.prev_timestamp = local.timestamp
 					local.timestamp, _ = utils.ExtractTimestamp(line)
-					getSyncTime(block, local)
+					syncTime := getSyncTime(block, local)
+					fmt.Print("L2 - SyncTime : ", syncTime, "\nL2 - SyncData : ", block.hash, block.number)
 				}
 			}
 			// Update the size variable to the current byte offset

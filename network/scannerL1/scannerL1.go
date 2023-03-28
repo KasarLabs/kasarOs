@@ -28,11 +28,10 @@ type Block struct {
 }
 
 func getBlockData() Block {
-	client, err := ethclient.Dial(config.User.Client)
+	client, err := ethclient.Dial(config.User.RPCKey)
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	data, err := client.BlockByNumber(context.Background(), nil)
 	if err != nil {
 		log.Fatal(err)
@@ -72,6 +71,6 @@ func ScannerL1() {
 	if block.Number.Cmp(num) > 0 {
 		num.Set(block.Number)
 		// push block to DB
-		fmt.Println("Pushing to db", block.Number)
+		fmt.Println("L1 SyncData :", block.Number, block.TxHash)
 	}
 }

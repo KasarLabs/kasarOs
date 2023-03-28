@@ -77,7 +77,8 @@ print_menu() {
             "") # Enter key
                 osirisClear
                 if [ "${options[$selected]}" = "Quit" ]; then
-                    echo "See you soon!"
+                    echo -e "\nSee you soon!"
+                    exit
                 else
                     echo -e "\nYou selected ${options[$selected]}\n"
                 fi
@@ -92,7 +93,7 @@ main() {
     options=("Papyrus - Starkware" "Pathfinder - Equilibrium" "Juno - Nethermind" "Quit")
     yesOrNo=("Yes" "No" "Quit")
     selected=0 # Initialize the selected variable
-    print_menu "Welcome to myOsiris! $OSIRIS_PATH" "Please chose the client you'd like to install" "${options[@]}"
+    print_menu "Welcome to myOsiris!" "Please chose the client you'd like to install" "${options[@]}"
     # Prompt for node name, rpc_key, and osiris_key
     echo -e -n "${yellow}> Enter a name for your node:${reset} "
     read node_name
@@ -103,19 +104,19 @@ main() {
 
     # Create a JSON object and store it in config.json
     if [ "${options[$selected]}" = "Papyrus - Starkware" ]; then
+        client="papyrus"
         installTools
         installPapyrus
-        client="papyrus"
     elif [ "${options[$selected]}" = "Juno - Nethermind" ]; then
+        client="juno"
         installTools
         installJuno
-        client="juno"
     elif [ "${options[$selected]}" = "Pathfinder - Equilibrium" ]; then
+        client="pathfinder"
         installTools
         installPathfinder
-        client="pathfinder"
     fi
-    echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json
+    echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json    
 }
 
 installPapyrus() {
@@ -130,9 +131,10 @@ installPapyrus() {
     # Wait for the Papyrus client to start
     echo -e "\n\033[34mWaiting for Papyrus client to start... \033[m"
     while ! sudo docker exec papyrus pgrep papyrus > /dev/null; do sleep 1; done
+    go build
     echo -e "\n\033[32m$(cat ./config.json | jq -r '.name') full node is running correctly using Papyrus client!\033[m"
     echo -e "\033[32mTo stop or remove it please run setup.sh again\033[m"
-    sudo docker logs -f papyrus &>> $LOGS_PATH & return
+    sudo docker logs -f papyrus &>> $LOGS_PATH & ./myOsiris
 }
 
 installJuno() {
@@ -149,9 +151,10 @@ installJuno() {
     # Wait for the Juno client to start
     echo -e "\n\033[34mWaiting for Juno client to start... \033[m"
    	while ! sudo docker exec juno pgrep juno > /dev/null; do sleep 1; done
+    go build
     echo -e "\n\033[32m$(cat ./config.json | jq -r '.name') full node is running correctly using Juno client!\033[m"
     echo -e "\033[32mTo stop or remove it please run setup.sh again\033[m"
-    sudo docker logs -f juno &>> $LOGS_PATH & return
+    sudo docker logs -f juno &>> $LOGS_PATH & ./myOsiris
 }
 
 installPathfinder() {
@@ -172,8 +175,10 @@ installPathfinder() {
     # Wait for the Pathfinder client to start
     echo -e "\n\033[34mWaiting for Pathfinder client to start... \033[m"
    	while ! sudo docker exec pathfinder pgrep pathfinder > /dev/null; do sleep 1; done
-    echo -e "\n\033[32m$(cat ./config.json | jq -r '.name') full node is running correctly using Pathfinder client!\033[m"
-    sudo docker logs -f pathfinder &>> $LOGS_PATH & return
+    go build
+    echo -e "\n\033[32m$name full node is running correctly using Pathfinder client!\033[m"
+    sudo docker logs -f pathfinder &>> $LOGS_PATH & ./myOsiris
+
 }
 
 installTools() {
