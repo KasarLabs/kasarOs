@@ -103,17 +103,17 @@ main() {
 
     # Create a JSON object and store it in config.json
     if [ "${options[$selected]}" = "Papyrus - Starkware" ]; then
-        client='papyrus'
         installTools
         installPapyrus
+        client="papyrus"
     elif [ "${options[$selected]}" = "Juno - Nethermind" ]; then
-        client='juno'
         installTools
         installJuno
+        client="juno"
     elif [ "${options[$selected]}" = "Pathfinder - Equilibrium" ]; then
-        client='pathfinder'
         installTools
         installPathfinder
+        client="pathfinder"
     fi
     echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json
 }
