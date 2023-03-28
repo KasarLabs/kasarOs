@@ -79,7 +79,7 @@ print_menu() {
                 if [ "${options[$selected]}" = "Quit" ]; then
                     echo "See you soon!"
                 else
-                    echo "\nYou selected ${options[$selected]}"
+                    echo -e "\nYou selected ${options[$selected]}"
                 fi
                 break
                 ;;
@@ -93,6 +93,16 @@ main() {
     yesOrNo=("Yes" "No" "Quit")
     selected=0 # Initialize the selected variable
     print_menu "Welcome to myOsiris! $OSIRIS_PATH" "Please chose the client you'd like to install" "${options[@]}"
+    # Prompt for node name, rpc_key, and osiris_key
+    echo -e -n "${yellow}> Enter a name for your node:${reset} "
+    read node_name
+    echo -e -n "${yellow}> Enter your RPC key:${reset} "
+    read rpc_key
+    echo -e -n "${yellow}> Enter your Osiris key:${reset} "
+    read osiris_key
+
+    # Create a JSON object and store it in config.json
+    echo "{\"name\": \"${node_name}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json
     if [ "${options[$selected]}" = "Papyrus - Starkware" ]; then
         installTools
         installPapyrus
