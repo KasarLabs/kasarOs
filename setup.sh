@@ -79,7 +79,7 @@ print_menu() {
                 if [ "${options[$selected]}" = "Quit" ]; then
                     echo "See you soon!"
                 else
-                    echo -e "\nYou selected ${options[$selected]}"
+                    echo -e "\nYou selected ${options[$selected]}\n"
                 fi
                 break
                 ;;
@@ -102,17 +102,20 @@ main() {
     read osiris_key
 
     # Create a JSON object and store it in config.json
-    echo "{\"name\": \"${node_name}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json
     if [ "${options[$selected]}" = "Papyrus - Starkware" ]; then
+        client='papyrus'
         installTools
         installPapyrus
     elif [ "${options[$selected]}" = "Juno - Nethermind" ]; then
+        client='juno'
         installTools
         installJuno
     elif [ "${options[$selected]}" = "Pathfinder - Equilibrium" ]; then
+        client='pathfinder'
         installTools
         installPathfinder
     fi
+    echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json
 }
 
 installPapyrus() {
