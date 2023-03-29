@@ -88,7 +88,49 @@ print_menu() {
     done
 }
 
-main() {
+getClient() {
+	if sudo docker ps -a | grep juno > /dev/null
+	then
+		node_docker="juno"
+	elif sudo docker ps -a | grep papyrus > /dev/null
+	then
+		node_docker="papyrus"
+	elif sudo docker ps -a | grep pathfinder > /dev/null
+	then
+		node_docker="pathfinder"
+	else
+		node_docker="null"
+	fi
+}
+
+menu_installer() {
+    osirisClear
+    options=("Stop" "Restart" "Delete" "Quit")
+    yesOrNo=("Yes" "No" "Quit")
+    selected=0 # Initialize the selected variable
+    print_menu "Welcome to myOsiris!" "Please chose your option!" "${options[@]}"
+
+   if [ "${options[$selected]}" = "Stop" ]; then
+        osirisClear
+        sudo docker stop ${node_docker} > /dev/null
+        echo -e "\nNode stoped.\n"
+        exit
+    fi
+    if [ "${options[$selected]}" = "Restart" ]; then
+        osirisClear
+        sudo docker start ${node_docker} > /dev/null
+        echo -e "\nNode started.\n"
+        exit
+    fi
+    if [ "${options[$selected]}" = "Delete" ]; then
+        osirisClear
+        echo -e "\nNode deleted.\n"
+        refreshClient
+        exit
+    fi
+}
+
+menu_running() {
     osirisClear
     options=("Papyrus - Starkware" "Pathfinder - Equilibrium" "Juno - Nethermind" "Quit")
     yesOrNo=("Yes" "No" "Quit")
@@ -116,10 +158,20 @@ main() {
         installTools
         installPathfinder
     fi
+    echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json    
+}
+
+main(){
+    getClient
+    if [ "${node_docker}" = "null" ]; then
+        menu_running
+    else
+        menu_installer
+    fi
 }
 
 installPapyrus() {
-	echo -e "\n\033[34mRunning docker... \033[m"
+    echo -e "\n\033[34mRunning docker... \033[m"
     sleep 1
     refreshClient
     git clone git@github.com:starkware-libs/papyrus.git $CLIENT_DIR &> /dev/null
