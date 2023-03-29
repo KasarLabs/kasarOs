@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 	"math/big"
-	"fmt"
+	// "fmt"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"myOsiris/network/config"
@@ -60,8 +60,8 @@ func getBlockData() Block {
 var isFirstCall = true
 var num = new(big.Int).SetInt64(0)
 
-func ScannerL1() {
-	block := getBlockData()
+func ScannerL1() (block Block) {
+	block = getBlockData()
 
 	if isFirstCall {
 		num.Set(block.Number)
@@ -71,6 +71,8 @@ func ScannerL1() {
 	if block.Number.Cmp(num) > 0 {
 		num.Set(block.Number)
 		// push block to DB
-		fmt.Printf("\033[1A\033[2K\rL1 SyncData : %d %s\n", block.Number, block.TxHash)
+		// fmt.Printf("\033[1A\033[2K\rL1 SyncData : %d %s\n", block.Number, block.TxHash)
+		return block
 	}
+	return Block{}
 }

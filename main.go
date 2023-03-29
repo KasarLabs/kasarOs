@@ -3,7 +3,7 @@ package main
 import (
 
 	"myOsiris/network/scannerL1"
-	"myOsiris/network/scannerL2"
+	// "myOsiris/network/scannerL2"
 	"fmt"
 	"sync"
 	"time"
@@ -27,20 +27,26 @@ func main() {
 
 	// Starting trackers
 	go func() {
+		i := 1
 		for {
 			mu.Lock()
-			scannerL2.ScannerL2()
+			fmt.Printf("\033[s\033[2K\rL2 - %d\033[u", i)
+			i++
 			mu.Unlock()
 			time.Sleep(time.Millisecond * 500)
 		}
 	}()
+
 	go func() {
+		// Print an initial line to separate process L1 output
+		fmt.Println()
 		for {
 			mu.Lock()
-			scannerL1.ScannerL1()
+			block := scannerL1.ScannerL1()
+			fmt.Printf("\033[s\033[1A\033[2K\rL1 - %d\033[u", block.Number)
 			mu.Unlock()
 			time.Sleep(time.Millisecond * 500)
-		}	
+		}
 	}()
 	// go func() {
 	// 	for {

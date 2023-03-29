@@ -125,7 +125,7 @@ func getBlockData(blockNumber int64) (block Block, err error) {
 	return block, nil
 }
 
-func ScannerL2() {
+func ScannerL2() (block Block) {
 	absPath, err := filepath.Abs(logsFile)
 	if err != nil {
 		fmt.Println(err)
@@ -166,8 +166,9 @@ func ScannerL2() {
 					local.number = number
 					local.prev_timestamp = local.timestamp
 					local.timestamp, _ = utils.ExtractTimestamp(line)
-					syncTime := getSyncTime(block, local)
-					fmt.Printf("\rL2 - SyncTime : %v\nL2 - SyncData : %s %d\n", syncTime, block.hash, block.number)
+					// syncTime := getSyncTime(block, local)
+					// fmt.Printf("\rL2 - SyncTime : %v\nL2 - SyncData : %s %d\n", syncTime, block.hash, block.number)
+					return (block)
 				}
 			}
 			// Update the size variable to the current byte offset
