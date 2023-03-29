@@ -28,7 +28,7 @@ type Block struct {
 }
 
 func getBlockData() Block {
-	client, err := ethclient.Dial(config.User.RPCKey)
+	client, err := ethclient.Dial(config.User.RpcKey)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -4,7 +4,7 @@ import (
 
 	"myOsiris/network/scannerL1"
 	"myOsiris/network/scannerL2"
-	// "fmt"
+	"fmt"
 	"myOsiris/network/config"
     _ "github.com/lib/pq" // Import PostgreSQL driver
 	// "myOsiris/system"
@@ -14,6 +14,11 @@ import (
 var nodeConfig = config.User
 
 func main() {
+	err := config.CheckConfig("config.json")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println("Starting tracker...")
 		// db.CreateNode(nodeConfig.OsirisKey)
 	// db.CreateNode(nodeConfig.OsirisKey)
 	// fmt.Println(db.GetNode(nodeConfig.OsirisKey))

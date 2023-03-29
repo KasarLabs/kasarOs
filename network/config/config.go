@@ -3,13 +3,55 @@ package config
 import (
 	"encoding/json"
 	"io/ioutil"
+    "fmt"
+    "net/http"
+    "os"
 )
 
 type Config struct {
 	Name       string `json:"name"`
 	Client     string `json:"client"`
-	RPCKey     string `json:"rpc_key"`
+	RpcKey     string `json:"rpc_key"`
 	OsirisKey  string `json:"osiris_key"`
+}
+
+func CheckConfig(filename string) error {
+	file, err := os.Open(filename)
+	if err != nil {
+		return fmt.Errorf("error opening config file: %v", err)
+	}
+	defer file.Close()
+
+	var config Config
+	decoder := json.NewDecoder(file)
+	err = decoder.Decode(&config)
+	if err != nil {
+		return fmt.Errorf("error decoding config file: %v", err)
+	}
+
+	if config.Name == "" {
+		return fmt.Errorf("error: name is empty")
+	}
+	if config.Client == "" {
+		return fmt.Errorf("error: client is empty")
+	}
+	if config.RpcKey == "" {
+		return fmt.Errorf("error: rpc_key is empty")
+	} else {
+		resp, err := http.Get(config.RpcKey)
+		if err != nil {
+			return fmt.Errorf("error testing rpc_key: %v", err)
+		} else {
+			if resp.StatusCode != http.StatusOK {
+				return nil
+			}
+		}
+	}
+	if config.OsirisKey == "" {
+		fmt.Println("warning: osiris_key is empty")
+	}
+
+	return nil
 }
 
 func LoadConfig() (Config, error) {
