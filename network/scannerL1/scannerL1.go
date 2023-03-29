@@ -71,6 +71,6 @@ func ScannerL1() {
 	if block.Number.Cmp(num) > 0 {
 		num.Set(block.Number)
 		// push block to DB
-		fmt.Println("L1 SyncData :", block.Number, block.TxHash)
+		fmt.Printf("\033[1A\033[2K\rL1 SyncData : %d %s\n", block.Number, block.TxHash)
 	}
 }

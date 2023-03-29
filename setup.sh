@@ -175,7 +175,7 @@ installPathfinder() {
         eqlabs/pathfinder > /dev/null
     # Wait for the Pathfinder client to start
     echo -e "\n\033[34mWaiting for Pathfinder client to start... \033[m"
-   	while ! sudo docker exec pathfinder pgrep pathfinder > /dev/null; do sleep 1; done
+   	while ! sudo docker exec pathfinder grep pathfinder > /dev/null; do sleep 1; done
     echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json    
     go build
     echo -e "\n\033[32m$name full node is running correctly using Pathfinder client!\033[m"

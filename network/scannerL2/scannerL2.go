@@ -167,7 +167,7 @@ func ScannerL2() {
 					local.prev_timestamp = local.timestamp
 					local.timestamp, _ = utils.ExtractTimestamp(line)
 					syncTime := getSyncTime(block, local)
-					fmt.Print("L2 - SyncTime : ", syncTime, "\nL2 - SyncData : ", block.hash, block.number)
+					fmt.Printf("\rL2 - SyncTime : %v\nL2 - SyncData : %s %d\n", syncTime, block.hash, block.number)
 				}
 			}
 			// Update the size variable to the current byte offset
