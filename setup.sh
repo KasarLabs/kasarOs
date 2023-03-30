@@ -105,12 +105,19 @@ getClient() {
 
 menu_installer() {
     osirisClear
-    options=("Stop" "Restart" "Delete" "Quit")
+    options=("Track" "Stop" "Restart" "Delete" "Quit")
     yesOrNo=("Yes" "No" "Quit")
     selected=0 # Initialize the selected variable
     print_menu "Welcome to myOsiris!" "Please chose your option!" "${options[@]}"
 
-   if [ "${options[$selected]}" = "Stop" ]; then
+    if [ "${options[$selected]}" = "Track" ]; then
+        osirisClear
+        ./myOsiris
+        echo -e "\nLaunching Osiris\n"
+        refreshClient
+        exit
+    fi
+    if [ "${options[$selected]}" = "Stop" ]; then
         osirisClear
         sudo docker stop ${node_docker} > /dev/null
         echo -e "\nNode stoped.\n"

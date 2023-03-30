@@ -3,7 +3,7 @@ package main
 import (
 
 	"myOsiris/network/scannerL1"
-	// "myOsiris/network/scannerL2"
+	"myOsiris/network/scannerL2"
 	"fmt"
 	"sync"
 	"time"
@@ -30,7 +30,8 @@ func main() {
 		i := 1
 		for {
 			mu.Lock()
-			fmt.Printf("\033[s\033[2K\rL2 - %d\033[u", i)
+			l2Block, l2Time := scannerL2.ScannerL2()
+			fmt.Printf("\033[s\033[2K\rL2 - %v, %v\033[u", l2Block, l2Time)
 			i++
 			mu.Unlock()
 			time.Sleep(time.Millisecond * 500)
@@ -42,8 +43,8 @@ func main() {
 		fmt.Println()
 		for {
 			mu.Lock()
-			block := scannerL1.ScannerL1()
-			fmt.Printf("\033[s\033[1A\033[2K\rL1 - %d\033[u", block.Number)
+			l1 := scannerL1.ScannerL1()
+			fmt.Printf("\033[s\033[1A\033[2K\rL1 - last block sync %d\033[u", l1.Number)
 			mu.Unlock()
 			time.Sleep(time.Millisecond * 500)
 		}
