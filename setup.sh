@@ -119,8 +119,7 @@ menu_installer() {
     if [ "${options[$selected]}" = "Restart" ]; then
         osirisClear
         sudo docker start ${node_docker} > /dev/null
-    	sudo docker logs -f juno &>> $LOGS_PATH & ./myOsiris
-        echo -e "\nNode started.\n"
+    	sudo docker logs -f juno &>> $LOGS_PATH & echo -e "\nNode started.\n"
         exit
     fi
     if [ "${options[$selected]}" = "Delete" ]; then
