@@ -25,15 +25,15 @@ const (
 )
 
 type Block struct {
-	hash				string
-	number				int64
-	new_root			string
-    parent_hash			string
-    sequencer_address	string
-    status				string
-    timestamp			int64
-    transactions		[]string
-	local 				Local
+	Hash				string
+	Number				int64
+	New_root			string
+    Parent_hash			string
+    Sequencer_address	string
+    Status				string
+    Timestamp			int64
+    Transactions		[]string
+	Local 				Local
 }
 
 type Local struct {
@@ -43,19 +43,19 @@ type Local struct {
 }
 
 type SyncTime struct {
-	last	float64
-	min		float64
-	max 	float64
-	avg		float64
-	count	int64
+	Last	float64
+	Min		float64
+	Max 	float64
+	Avg		float64
+	Count	int64
 }	
 
 var syncTime = SyncTime {
-	last: 0.00,
-	min: 0.00,
-	max: 0.00,
-	avg: 0.00,
-	count: 0,
+	Last: 0.00,
+	Min: 0.00,
+	Max: 0.00,
+	Avg: 0.00,
+	Count: 0,
 }
 
 var local = Local {
@@ -65,21 +65,21 @@ var local = Local {
 }
 
 func getSyncTime(block Block, local Local) (SyncTime) {
-	syncTime.count += 1;
-	syncTime.last = float64(local.timestamp - local.prev_timestamp);
-	if (syncTime.count > 3) {
+	syncTime.Count += 1;
+	syncTime.Last = float64(local.timestamp - local.prev_timestamp);
+	if (syncTime.Count > 3) {
 		// Set min max syncTime
-		if (syncTime.last > syncTime.max) {
-			syncTime.max = syncTime.last
-		} else if (syncTime.last < syncTime.min) {
-			syncTime.min = syncTime.last
+		if (syncTime.Last > syncTime.Max) {
+			syncTime.Max = syncTime.Last
+		} else if (syncTime.Last < syncTime.Min) {
+			syncTime.Min = syncTime.Last
 		}
 		// Set avg syncTime
-		syncTime.avg = math.Round(float64((syncTime.avg + syncTime.last) / 2) * 100) / 100
+		syncTime.Avg = math.Round(float64((syncTime.Avg + syncTime.Last) / 2) * 100) / 100
 		return syncTime
 
 	} else {
-		syncTime.min = syncTime.last
+		syncTime.Min = syncTime.Last
 	}
 	return syncTime
 }
@@ -113,14 +113,14 @@ func getBlockData(blockNumber int64) (block Block, err error) {
 		return block, err
 	}
 	block = Block{
-		hash:              response.Result.BlockHash,
-		number:            response.Result.BlockNumber,
-		new_root:          response.Result.NewRoot,
-		parent_hash:       response.Result.ParentHash,
-		sequencer_address: response.Result.SequencerAddress,
-		status:            response.Result.Status,
-		timestamp:         response.Result.Timestamp,
-		transactions:      response.Result.Transactions,
+		Hash:              response.Result.BlockHash,
+		Number:            response.Result.BlockNumber,
+		New_root:          response.Result.NewRoot,
+		Parent_hash:       response.Result.ParentHash,
+		Sequencer_address: response.Result.SequencerAddress,
+		Status:            response.Result.Status,
+		Timestamp:         response.Result.Timestamp,
+		Transactions:      response.Result.Transactions,
 	}
 	return block, nil
 }
@@ -130,8 +130,8 @@ func ScannerL2() (block Block, syncTime SyncTime) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	if syncTime.last == 0 {
-		syncTime.last = float64(time.Now().Unix())
+	if syncTime.Last == 0 {
+		syncTime.Last = float64(time.Now().Unix())
 	}
 	// Get initial size of the file
 	fileinfo, err := os.Stat(absPath)
@@ -160,8 +160,8 @@ func ScannerL2() (block Block, syncTime SyncTime) {
 					if err != nil {
 						panic(err)
 					}
-					if (syncTime.count <= 0) {
-						block.local.timestamp = 0
+					if (syncTime.Count <= 0) {
+						block.Local.timestamp = 0
 					}
 					local.number = number
 					local.prev_timestamp = local.timestamp

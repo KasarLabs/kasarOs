@@ -27,12 +27,10 @@ func main() {
 
 	// Starting trackers
 	go func() {
-		i := 1
 		for {
 			mu.Lock()
 			l2Block, l2Time := scannerL2.ScannerL2()
-			fmt.Printf("\033[s\033[2K\rL2 - %v, %v\033[u", l2Block, l2Time)
-			i++
+			fmt.Printf("\033[s\033[2K\rL2 - %d, %v\033[u", l2Block.Number, l2Time.Avg)
 			mu.Unlock()
 			time.Sleep(time.Millisecond * 500)
 		}
