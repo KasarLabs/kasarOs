@@ -4,10 +4,11 @@ import (
 	"context"
 	"log"
 	"math/big"
-	// "fmt"
+	"fmt"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"myOsiris/network/config"
+	"time"
 )
 
 type Block struct {
@@ -25,6 +26,52 @@ type Block struct {
 	Extra         []byte         `json:"extraData"        gencodec:"required"`
 	MixDigest     common.Hash    `json:"mixHash"`
 	BaseFee       *big.Int       `json:"baseFeePerGas" rlp:"optional"`
+}
+
+type Local struct {
+	number          int64
+	timestamp       time.Time
+	prev_timestamp  time.Time
+}
+
+var local = Local {
+	number:         0,
+	timestamp:      time.Time{},
+	prev_timestamp: time.Time{},
+}
+
+type SyncTime struct {
+	Last  time.Duration
+	Min   time.Duration
+	Max   time.Duration
+	Avg   time.Duration
+	Count int64
+}
+
+var syncTime = SyncTime {
+	Last: 0.00,
+	Min: 0.00,
+	Max: 0.00,
+	Avg: 0.00,
+	Count: 0,
+}
+
+func getSyncTime(block Block, local Local) SyncTime {
+	syncTime.Count += 1
+	syncTime.Last = local.timestamp.Sub(local.prev_timestamp)
+	if syncTime.Count > 3 {
+		if syncTime.Last > syncTime.Max {
+			syncTime.Max = syncTime.Last
+		} else if syncTime.Last < syncTime.Min {
+			syncTime.Min = syncTime.Last
+		}
+		syncTime.Avg = (syncTime.Avg + syncTime.Last) / 2
+		return syncTime
+
+	} else {
+		syncTime.Min = syncTime.Last
+	}
+	return syncTime
 }
 
 func getBlockData() Block {
@@ -60,7 +107,7 @@ func getBlockData() Block {
 var isFirstCall = true
 var num = new(big.Int).SetInt64(0)
 
-func ScannerL1() (block Block) {
+func ScannerL1() (block Block, syncTime SyncTime) {
 	block = getBlockData()
 
 	if isFirstCall {
@@ -71,8 +118,16 @@ func ScannerL1() (block Block) {
 	if block.Number.Cmp(num) > 0 {
 		num.Set(block.Number)
 		// push block to DB
-		// fmt.Printf("\033[1A\033[2K\rL1 SyncData : %d %s\n", block.Number, block.TxHash)
-		return block
+
+		// Update the local timestamp
+		local.prev_timestamp = local.timestamp
+		local.timestamp = time.Now()
+
+		// Calculate the sync time
+		syncTime := getSyncTime(block, local)
+		fmt.Printf("\033[s\033[1A\033[2K\rL1 - Block number %d synced in %.2f seconds\033[u", block.Number, syncTime.Last.Seconds())
+
+		return block, syncTime
 	}
-	return Block{}
+	return Block{}, SyncTime{}
 }

@@ -11,7 +11,7 @@ import (
     _ "github.com/go-sql-driver/mysql"
 )
 
-func ExtractTimestamp(line string) (int64, error) {
+func ExtractTimestamp(line string) (time.Time, error) {
     var timestampStr string
     var layout string
 
@@ -27,15 +27,15 @@ func ExtractTimestamp(line string) (int64, error) {
         ansiRegex := regexp.MustCompile(`\x1b\[[0-9;]*m`)
         timestampStr = ansiRegex.ReplaceAllString(parts[0], "")
     default:
-        return time.Time{}.Unix(), fmt.Errorf("unknown user.Client")
+        return time.Time{}, fmt.Errorf("unknown user.Client")
     }
 
     t, err := time.Parse(layout, timestampStr)
     if err != nil {
-        return time.Time{}.Unix(), fmt.Errorf("error parsing date: %v", err)
+        return time.Time{}, fmt.Errorf("error parsing date: %v", err)
     }
 
-    return t.Unix(), nil
+    return t, nil
 }
 
 func ExtractNumber(input string) string {

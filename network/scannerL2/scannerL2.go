@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"path/filepath"
 	"myOsiris/network/utils"
-	"math"
+	// "math"
 	"bytes"
 	"encoding/json"
 	"io/ioutil"
@@ -37,18 +37,24 @@ type Block struct {
 }
 
 type Local struct {
-	number			int64
-	timestamp		int64
-	prev_timestamp	int64
+	number          int64
+	timestamp       time.Time
+	prev_timestamp  time.Time
+}
+
+var local = Local{
+	number:         0,
+	timestamp:      time.Time{},
+	prev_timestamp: time.Time{},
 }
 
 type SyncTime struct {
-	Last	float64
-	Min		float64
-	Max 	float64
-	Avg		float64
-	Count	int64
-}	
+	Last  time.Duration
+	Min   time.Duration
+	Max   time.Duration
+	Avg   time.Duration
+	Count int64
+}
 
 var syncTime = SyncTime {
 	Last: 0.00,
@@ -58,24 +64,16 @@ var syncTime = SyncTime {
 	Count: 0,
 }
 
-var local = Local {
-	number: 0,
-	timestamp: 0,
-	prev_timestamp: 0,
-}
-
-func getSyncTime(block Block, local Local) (SyncTime) {
-	syncTime.Count += 1;
-	syncTime.Last = float64(local.timestamp - local.prev_timestamp);
-	if (syncTime.Count > 3) {
-		// Set min max syncTime
-		if (syncTime.Last > syncTime.Max) {
+func getSyncTime(block Block, local Local) SyncTime {
+	syncTime.Count += 1
+	syncTime.Last = local.timestamp.Sub(local.prev_timestamp)
+	if syncTime.Count > 3 {
+		if syncTime.Last > syncTime.Max {
 			syncTime.Max = syncTime.Last
-		} else if (syncTime.Last < syncTime.Min) {
+		} else if syncTime.Last < syncTime.Min {
 			syncTime.Min = syncTime.Last
 		}
-		// Set avg syncTime
-		syncTime.Avg = math.Round(float64((syncTime.Avg + syncTime.Last) / 2) * 100) / 100
+		syncTime.Avg = (syncTime.Avg + syncTime.Last) / 2
 		return syncTime
 
 	} else {
@@ -131,7 +129,7 @@ func ScannerL2() (block Block, syncTime SyncTime) {
 		fmt.Println(err)
 	}
 	if syncTime.Last == 0 {
-		syncTime.Last = float64(time.Now().Unix())
+		syncTime.Last = time.Duration(0 * time.Millisecond)
 	}
 	// Get initial size of the file
 	fileinfo, err := os.Stat(absPath)
@@ -160,15 +158,15 @@ func ScannerL2() (block Block, syncTime SyncTime) {
 					if err != nil {
 						panic(err)
 					}
-					if (syncTime.Count <= 0) {
-						block.Local.timestamp = 0
+					if syncTime.Count <= 0 {
+						block.Local.timestamp = time.Time{}
 					}
 					local.number = number
 					local.prev_timestamp = local.timestamp
 					local.timestamp, _ = utils.ExtractTimestamp(line)
 					syncTime := getSyncTime(block, local)
-					// fmt.Printf("\rL2 - SyncTime : %v\nL2 - SyncData : %s %d\n", syncTime, block.hash, block.number)
-					return block, syncTime
+					fmt.Printf("\033[s\033[2K\rL2 - Block number %d with id %d synced in %.2f seconds\033[u", block.Number, block.Number, syncTime.Last.Seconds())
+					continue
 				}
 			}
 			// Update the size variable to the current byte offset

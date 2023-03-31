@@ -193,7 +193,8 @@ installPapyrus() {
     go build
     echo -e "\n\033[32m$(cat ./config.json | jq -r '.name') full node is running correctly using Papyrus client!\033[m"
     echo -e "\033[32mTo stop or remove it please run setup.sh again\033[m"
-    sudo docker logs -f papyrus &>> $LOGS_PATH & ./myOsiris
+    sudo docker logs -f papyrus &>> $LOGS_PATH & nohup ./myOsiris&
+    tail -f nohup.out
 }
 
 installJuno() {
@@ -214,7 +215,8 @@ installJuno() {
     go build
     echo -e "\n\033[32m$(cat ./config.json | jq -r '.name') full node is running correctly using Juno client!\033[m"
     echo -e "\033[32mTo stop or remove it please run setup.sh again\033[m"
-    sudo docker logs -f juno &>> $LOGS_PATH & ./myOsiris
+    sudo docker logs -f juno &>> $LOGS_PATH & nohup ./myOsiris&
+    tail -f nohup.out
 }
 
 installPathfinder() {
@@ -238,8 +240,8 @@ installPathfinder() {
     echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json    
     go build
     echo -e "\n\033[32m$name full node is running correctly using Pathfinder client!\033[m"
-    sudo docker logs -f pathfinder &>> $LOGS_PATH & ./myOsiris
-
+    sudo docker logs -f pathfinder &>> $LOGS_PATH & nohup ./myOsiris&
+    tail -f nohup.out
 }
 
 installTools() {
