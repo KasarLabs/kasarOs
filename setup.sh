@@ -112,7 +112,7 @@ menu_installer() {
 
     if [ "${options[$selected]}" = "Track" ]; then
         osirisClear
-        ./myOsiris
+        tail -f nohup.out
         echo -e "\nLaunching Osiris\n"
         refreshClient
         exit
@@ -281,18 +281,21 @@ refreshClient()
 	then
 		sudo docker rm -f juno > /dev/null
 		sudo docker image rm -f nethermindeth/juno > /dev/null
+        rm -rf ./nohup.out > /dev/null
 		rm -f $LOGS_PATH > /dev/null
 	fi
 	if sudo docker ps -a | grep papyrus > /dev/null
 	then
 		sudo docker rm -f papyrus > /dev/null
 		sudo docker image rm -f ghcr.io/starkware-libs/papyrus:dev > /dev/null
+        rm -rf ./nohup.out > /dev/null
 		rm -f $LOGS_PATH > /dev/null
 	fi
 	if sudo docker ps -a | grep pathfinder > /dev/null
 	then
 		sudo docker rm -f pathfinder > /dev/null
 		sudo docker image rm -f eqlabs/pathfinder > /dev/null
+        rm -rf ./nohup.out > /dev/null
 		rm -f $LOGS_PATH > /dev/null
 	fi
 	if [ -d $CLIENT_DIR ]
