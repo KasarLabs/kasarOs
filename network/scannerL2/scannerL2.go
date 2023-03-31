@@ -165,7 +165,7 @@ func ScannerL2() (block Block, syncTime SyncTime) {
 					local.prev_timestamp = local.timestamp
 					local.timestamp, _ = utils.ExtractTimestamp(line)
 					syncTime := getSyncTime(block, local)
-					fmt.Printf("\033[s\033[2K\rL2 - Block number %d with id %d synced in %.2f seconds\033[u", block.Number, block.Number, syncTime.Last.Seconds())
+					fmt.Printf("\033[s\033[1A\033[2K\rL2 - Block number %d with id %d synced in %.2f seconds\033[u", block.Number, block.Number, syncTime.Last.Seconds())
 					continue
 				}
 			}

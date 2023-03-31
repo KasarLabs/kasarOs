@@ -9,7 +9,7 @@ import (
 	// "time"
 	"myOsiris/network/config"
     _ "github.com/lib/pq" // Import PostgreSQL driver
-	// "myOsiris/system"
+	"myOsiris/system"
 	// "myOsiris/db"
 )
 
@@ -40,10 +40,10 @@ func main() {
 			scannerL1.ScannerL1()
 		}
 	}()
-	// go func() {
-	// 	for {
-	// 		system.ScannerSystem()
-	// 	}
-	// }()
+	go func() {
+		for {
+			system.ScannerSystem()
+		}
+	}()
 	select {}
 }

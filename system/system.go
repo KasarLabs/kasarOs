@@ -6,6 +6,7 @@ import (
 
 	"github.com/shirou/gopsutil/v3/disk"
 	"github.com/shirou/gopsutil/v3/process"
+	"myOsiris/network/config"
 )
 
 type Entity interface {
@@ -97,7 +98,8 @@ type System struct {
 }
 
 func ScannerSystem() {
-	processName := "juno"
+	config := config.User
+	processName := config.Client
 
 	for {
 		processList, _ := process.Processes()
@@ -137,5 +139,6 @@ func TrackProcess(p *process.Process) {
 	diskInfo, _ := disk.Usage("/")
 	sys.storage.Update(float64(diskInfo.Used))
 
-	fmt.Println(sys.cpu)
+	fmt.Printf("\033[s\033[2A\033[2K\rL3 - CPU: %.2f, Memory: %.2f, Storage: %.2f, Temp: %.2f\n", sys.cpu.last, sys.memory.last, sys.storage.last, sys.temp.last)
+
 }
