@@ -169,7 +169,6 @@ menu_running() {
 }
 
 main(){
-    reset
     getClient
     if [ "${node_docker}" = "null" ]; then
         menu_running

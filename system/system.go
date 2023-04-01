@@ -41,7 +41,7 @@ type Memory struct {
 }
 
 func (m *Memory) Update(value float64) {
-	m.last = value
+	m.last = value / (1024 * 1024 * 1024)
 	if m.min == 0 || value < m.min {
 		m.min = value
 	}
@@ -60,7 +60,7 @@ type Storage struct {
 }
 
 func (s *Storage) Update(value float64) {
-	s.last = value
+	s.last = value / (1024 * 1024 * 1024)
 	if s.min == 0 || value < s.min {
 		s.min = value
 	}
@@ -139,5 +139,5 @@ func TrackProcess(p *process.Process) {
 	diskInfo, _ := disk.Usage("/")
 	sys.storage.Update(float64(diskInfo.Used))
 
-	fmt.Printf("\033[s\033[1B\033[2K\rL3 - CPU: %.2f, Memory: %.2f, Storage: %.2f, Temp: %.2f\n\033[u", sys.cpu.last, sys.memory.last, sys.storage.last, sys.temp.last)
+	fmt.Printf("\033[s\033[1B\033[2K\rL3 - CPU: %.2f, Memory: %.2fgb, Storage: %.2fgb, Temp: %.2f\n\033[u", sys.cpu.last, sys.memory.last, sys.storage.last, sys.temp.last)
 }
