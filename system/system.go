@@ -139,6 +139,5 @@ func TrackProcess(p *process.Process) {
 	diskInfo, _ := disk.Usage("/")
 	sys.storage.Update(float64(diskInfo.Used))
 
-	fmt.Printf("\033[s\033[2A\033[2K\rL3 - CPU: %.2f, Memory: %.2f, Storage: %.2f, Temp: %.2f\n", sys.cpu.last, sys.memory.last, sys.storage.last, sys.temp.last)
-
+	fmt.Printf("\033[s\033[1B\033[2K\rL3 - CPU: %.2f, Memory: %.2f, Storage: %.2f, Temp: %.2f\n\033[u", sys.cpu.last, sys.memory.last, sys.storage.last, sys.temp.last)
 }
