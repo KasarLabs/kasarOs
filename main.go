@@ -11,6 +11,7 @@ import (
     _ "github.com/lib/pq" // Import PostgreSQL driver
 	"myOsiris/system"
 	// "myOsiris/db"
+	"os/exec"
 )
 
 var nodeConfig = config.User
@@ -21,7 +22,17 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println("Starting tracker...")
+	scriptPath := "./network/utils/banner.sh"
+
+	cmd := exec.Command("bash", scriptPath)
+
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		fmt.Printf("Error running script: %v\n", err)
+		return
+	}
+
+	fmt.Print(string(output))
 
 	// var mu sync.Mutex
 
@@ -29,7 +40,6 @@ func main() {
 	go func() {
 		for {
 			scannerL2.ScannerL2()
-
 		}
 	}()
 

@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"myOsiris/network/utils"
 	"myOsiris/network/config"
 	"time"
 )
@@ -125,9 +126,10 @@ func ScannerL1() (block Block, syncTime SyncTime) {
 
 		// Calculate the sync time
 		syncTime := getSyncTime(block, local)
-		fmt.Printf("\033[s\033[1A\033[2K\rL1 - Block number %d with id %s synced in %.2f seconds\033[u", block.Number, block.ReceiptHash, syncTime.Last.Seconds())
-
-		return block, syncTime
+		if (syncTime.Last.Seconds() > 9999999) {
+			return block, syncTime
+		}
+		fmt.Printf("\033[s\033[1A\033[2K\rL1 - Block number %d with id %s synced in %.2f seconds - avg sync time %.2f \033[u", block.Number, utils.FormatHash(block.ReceiptHash.Hex()), syncTime.Last.Seconds(), syncTime.Avg.Seconds())
 	}
 	return Block{}, SyncTime{}
 }

@@ -59,7 +59,7 @@ func ExtractNumber(input string) string {
             }
         }
     }
-    panic("unknown user.Client")
+    return ""
 }
 
 func RemoveBraces(input string) string {
@@ -68,4 +68,10 @@ func RemoveBraces(input string) string {
     output = strings.ReplaceAll(output, "\"", "")
 
     return output
+}
+
+func FormatHash(address string) string {
+	firstFive := address[:7]
+	lastFive := address[len(address)-7:]
+    return (firstFive + "..." + lastFive)
 }
