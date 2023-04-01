@@ -1,6 +1,5 @@
 #!/bin/bash
 
-reset
 set -eu -o pipefail
 
 OSIRIS_PATH=$(pwd)
@@ -170,6 +169,7 @@ menu_running() {
 }
 
 main(){
+    reset
     getClient
     if [ "${node_docker}" = "null" ]; then
         menu_running
