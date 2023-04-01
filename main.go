@@ -7,7 +7,6 @@ import (
 	"fmt"
 	// "sync"
 	// "time"
-	"log"
 	"myOsiris/network/config"
     _ "github.com/lib/pq" // Import PostgreSQL driver
 	// "myOsiris/system"
@@ -24,14 +23,6 @@ func main() {
 		fmt.Println(err)
 	}
 	scriptPath := "./network/utils/banner.sh"
-    
-	getLogs := fmt.Sprintf("sudo docker logs -f %s &>> ./network/logs.txt &", config.User.Client)
-
-	cmd1 := exec.Command("/bin/bash", "-c", getLogs)
-	_, err1 := cmd1.CombinedOutput()
-	if err1 != nil {
-		log.Fatalf("Failed to get combined output: %v", err1)
-	}
 
 	cmd := exec.Command("bash", scriptPath)
 
