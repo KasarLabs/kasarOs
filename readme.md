@@ -19,18 +19,25 @@
 
 # Osiris
 
-This repo contains an easy to use Starknet full node tracker/monitoring script supported by any clients available on Starknet and used by Starknode plug'n'play to track its performances.
+This repo contains an easy to use Starknet full node installer and tracker/monitoring script that supports any clients available on Starknet and that will be used by Starknode plug'n'play to track its performances.
 
 ## 💻 Installation
 
-This plug-in works independently from your full node, you can install it anywhere by running :
+(Recomended) To install a Starknet full node and start monitoring it please run the following command:
 ```bash
-curl -L https://raw.githubusercontent.com/KasarLabs/osiris/main/tracker/install/install.sh | bash
+git clone https://github.com/kasarlabs/myOsiris | bash setup.sh --track
 ```
-Or if you want it to be installed to a different path:
+Or if you only want to setup a full node locally without tracking it you can run the following:
 ```bash
-curl -L https://raw.githubusercontent.com/KasarLabs/osiris/main/tracker/install/install.sh | bash -s mypath/
+git clone https://github.com/kasarlabs/myOsiris | bash setup.sh
 ```
+
+1. Now you need to choose a client between:
+- Papyrus from Starkware ([infos](https://github.com/starkware-libs/papyrus))
+- Pathfinder from Equilibrium ([infos](https://github.com/eqlabs/pathfinder))
+- Juno from Nethermind ([infos](https://github.com/NethermindEth/juno))
+
+2. Then you'll need to enter a **name** for your node (can be whatever), reference your **RPC url** (from any RPC provider, if you dont have one yet please check this tutorial [here](https://blog.infura.io/post/getting-started-with-infuras-ethereum-api)) and you can leave the **Osiris Key** field empty for now (coming soon).
 
 ## 📊 Data
 

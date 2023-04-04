@@ -146,7 +146,7 @@ menu_running() {
     # Prompt for node name, rpc_key, and osiris_key
     echo -e -n "${yellow}> Enter a name for your node:${reset} "
     read node_name
-    echo -e -n "${yellow}> Enter your RPC key:${reset} "
+    echo -e -n "${yellow}> Enter your RPC url:${reset} "
     read rpc_key
     echo -e -n "${yellow}> Enter your Osiris key:${reset} "
     read osiris_key
