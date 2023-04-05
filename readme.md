@@ -42,7 +42,7 @@ Now you need to choose a client between:
 Then you'll need to enter a **name** for your node (can be whatever), reference your **RPC url** (from any RPC provider, if you dont have one yet please check this tutorial [here](https://blog.infura.io/post/getting-started-with-infuras-ethereum-api)) and you can leave the **Osiris Key** field empty for now (coming soon).
 
 <div align="center">
-  <img src="https://s10.gifyu.com/images/Capture-video-du-05-04-2023-04_57_12.gif">
+  <img src="https://s10.gifyu.com/images/Capture-video-du-05-04-2023-04_57_12.gif" height="441" width="624">
 </div>
 
 ## 📊 Data
@@ -138,5 +138,5 @@ This script is the first tool of the Osiris trilogy containing an API, and an on
 This is a [KasarLabs](https://twitter.com/kasarlabs) project If you need any help about myOsiris or anything else related to Starknet please feel free to open an issue or contact us via telegram [here](https://t.me/antiyro).
 
 <p align="center">
-  <img src="https://i.ibb.co/BNjdJdg/Kasarlabs-logo.png" height="50" width="50" alt="Sublime's custom image"/>
+  <img src="https://i.ibb.co/Lts6dNk/logo-eau.png" height="50" width="50" alt="Sublime's custom image"/>
 </p>
