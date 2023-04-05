@@ -112,10 +112,18 @@ menu_installer() {
 
     if [ "${options[$selected]}" = "Track" ]; then
         osirisClear
-        tail -f nohup.out
-        echo -e "\nLaunching Osiris\n"
-        refreshClient
-        exit
+        if sudo docker exec papyrus pgrep papyrus > /dev/null 2>&1; then
+            if ! command -v jq &> /dev/null; then
+                echo "jq not found. Installing jq..."
+                sudo apt-get update
+                sudo apt-get install -y jq
+            fi
+            client=$(jq -r '.client' config.json)
+            sudo docker logs -f $client &>> $LOGS_PATH & nohup ./myOsiris&
+            sleep 2
+        else
+            tail -f nohup.out
+        fi
     fi
     if [ "${options[$selected]}" = "Stop" ]; then
         osirisClear
@@ -193,9 +201,13 @@ installPapyrus() {
     go build
     echo -e "\n\033[32m$(cat ./config.json | jq -r '.name') full node is running correctly using Papyrus client!\033[m"
     echo -e "\033[32mTo stop or remove it please run setup.sh again\033[m"
-    sudo docker logs -f papyrus &>> $LOGS_PATH & nohup ./myOsiris&
-    sleep 2
-    tail -f nohup.out
+    if [ "$#" -eq 1 ] && [ "$1" == "--track" ]; then
+        sudo docker logs -f papyrus &>> $LOGS_PATH & nohup ./myOsiris&
+        sleep 2
+        tail -f nohup.out
+    else
+        exit
+    fi
 }
 
 installJuno() {
@@ -216,9 +228,13 @@ installJuno() {
     go build
     echo -e "\n\033[32m$(cat ./config.json | jq -r '.name') full node is running correctly using Juno client!\033[m"
     echo -e "\033[32mTo stop or remove it please run setup.sh again\033[m"
-    sudo docker logs -f juno &>> $LOGS_PATH & nohup ./myOsiris&
-    sleep 2
-    tail -f nohup.out
+    if [ "$#" -eq 1 ] && [ "$1" == "--track" ]; then
+        sudo docker logs -f juno &>> $LOGS_PATH & nohup ./myOsiris&
+        sleep 2
+        tail -f nohup.out
+    else
+        exit
+    fi
 }
 
 installPathfinder() {
@@ -242,9 +258,13 @@ installPathfinder() {
     echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json    
     go build
     echo -e "\n\033[32m$name full node is running correctly using Pathfinder client!\033[m"
-    sudo docker logs -f pathfinder &>> $LOGS_PATH & nohup ./myOsiris&
-    sleep 2
-    tail -f nohup.out
+    if [ "$#" -eq 1 ] && [ "$1" == "--track" ]; then
+        sudo docker logs -f pathfinder &>> $LOGS_PATH & nohup ./myOsiris&
+        sleep 2
+        tail -f nohup.out
+    else
+        exit
+    fi
 }
 
 installTools() {
