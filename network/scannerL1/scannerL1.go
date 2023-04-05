@@ -12,6 +12,11 @@ import (
 	"time"
 )
 
+type L1 struct {
+	Block    Block
+	SyncTime SyncTime
+}
+
 type Block struct {
 	ParentHash    common.Hash    `json:"parentHash"       gencodec:"required"`
 	UncleHash     common.Hash    `json:"sha3Uncles"       gencodec:"required"`
@@ -108,8 +113,8 @@ func getBlockData() Block {
 var isFirstCall = true
 var num = new(big.Int).SetInt64(0)
 
-func ScannerL1() (block Block, syncTime SyncTime) {
-	block = getBlockData()
+func ScannerL1() L1 {
+	block := getBlockData()
 
 	if isFirstCall {
 		num.Set(block.Number)
@@ -127,9 +132,9 @@ func ScannerL1() (block Block, syncTime SyncTime) {
 		// Calculate the sync time
 		syncTime := getSyncTime(block, local)
 		if (syncTime.Last.Seconds() > 9999999) {
-			return block, syncTime
+			return L1{Block: block, SyncTime: syncTime}
 		}
-		fmt.Printf("\033[s\033[1A\033[2K\rL1 - Block number %d with id %s synced in %.2f seconds - avg sync time %.2f \033[u", block.Number, utils.FormatHash(block.ReceiptHash.Hex()), syncTime.Last.Seconds(), syncTime.Avg.Seconds())
+		fmt.Printf("\033[s\033[1A\033[2K\rL1 - Block number %d with id %s synced in %.2f seconds - avg sync time %.2f \033[u", L1.Block.Number, utils.FormatHash(block.ReceiptHash.Hex()), syncTime.Last.Seconds(), syncTime.Avg.Seconds())
 	}
-	return Block{}, SyncTime{}
+	return L1{}
 }
