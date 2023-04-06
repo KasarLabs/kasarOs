@@ -23,11 +23,11 @@ This repo contains an easy to use Starknet full node installer and tracker/monit
 
 ## 💻 Installation
 
-(Recomended) To install a Starknet full node and start monitoring it please run the following command:
+To install a Starknet full node and start monitoring it please run the following command:
 ```bash
 git clone https://github.com/kasarlabs/myOsiris | bash setup.sh --track
 ```
-Or if you only want to setup a full node locally without tracking it you can run the following:
+(Recomended) Or if you only want to setup a full node locally without tracking it you can run the following:
 ```bash
 git clone https://github.com/kasarlabs/myOsiris | bash setup.sh
 ```

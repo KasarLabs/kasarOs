@@ -5,6 +5,7 @@ set -eu -o pipefail
 OSIRIS_PATH=$(pwd)
 CLIENT_DIR="$OSIRIS_PATH/client"
 LOGS_PATH="$OSIRIS_PATH/network/logs.txt"
+TRACK_MODE=false
 
 # Utils
 # Define colors
@@ -178,6 +179,14 @@ menu_running() {
 }
 
 main(){
+    while getopts "t" opt; do
+        case ${opt} in
+            t)
+                TRACK_MODE=true
+                ;;
+        esac
+    done
+    shift $((OPTIND -1))
     getClient
     if [ "${node_docker}" = "null" ]; then
         menu_running
@@ -204,10 +213,11 @@ installPapyrus() {
     go build
     echo -e "\n\033[32m$(cat ./config.json | jq -r '.name') full node is running correctly using Papyrus client!\033[m"
     echo -e "\033[32mTo stop or remove it please run setup.sh again\033[m"
-    if [ "$#" -eq 1 ] && [ "$1" == "--track" ]; then
+    if [ TRACK_MODE ]; then
         sudo docker logs -f papyrus &>> $LOGS_PATH & nohup ./myOsiris&
         sleep 2
-        tail -f nohup.out
+        echo -e -n "\n${red}Tracking view mode will exit in 10secs${reset}\n"
+        timeout 10s tail -f nohup.out
     else
         exit
     fi
@@ -233,10 +243,11 @@ installJuno() {
     go build
     echo -e "\n\033[32m$(cat ./config.json | jq -r '.name') full node is running correctly using Juno client!\033[m"
     echo -e "\033[32mTo stop or remove it please run setup.sh again\033[m"
-    if [ "$#" -eq 1 ] && [ "$1" == "--track" ]; then
+    if [ TRACK_MODE ]; then
         sudo docker logs -f juno &>> $LOGS_PATH & nohup ./myOsiris&
         sleep 2
-        tail -f nohup.out
+        echo -e -n "\n${red}Tracking view mode will exit in 10secs${reset}\n"
+        timeout 10s tail -f nohup.out
     else
         exit
     fi
@@ -265,10 +276,11 @@ installPathfinder() {
     echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json    
     go build
     echo -e "\n\033[32m$name full node is running correctly using Pathfinder client!\033[m"
-    if [ "$#" -eq 1 ] && [ "$1" == "--track" ]; then
+    if [ TRACK_MODE ]; then
         sudo docker logs -f pathfinder &>> $LOGS_PATH & nohup ./myOsiris&
         sleep 2
-        tail -f nohup.out
+        echo -e -n "\n${red}Tracking view mode will exit in 10secs${reset}\n"
+        timeout 10s tail -f nohup.out
     else
         exit
     fi
