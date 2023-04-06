@@ -125,7 +125,7 @@ menu_installer() {
             sudo docker logs -f $client &>> $LOGS_PATH & nohup ./myOsiris&
             sleep 2
         fi
-        timeout 10s tail -f nohup.out
+        timeout 20s tail -f nohup.out
     fi
     if [ "${options[$selected]}" = "Stop" ]; then
         osirisClear
@@ -156,7 +156,7 @@ menu_running() {
     # Prompt for node name, rpc_key, and osiris_key
     echo -e -n "${yellow}> Enter a name for your node:${reset} "
     read node_name
-    echo -e -n "${yellow}> Enter your RPC url:${reset} "
+    echo -e -n "${yellow}> Enter your Ethereum RPC url:${reset} "
     read rpc_key
     echo -e -n "${yellow}> Enter your Osiris key:${reset} "
     read osiris_key
