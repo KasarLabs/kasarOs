@@ -25,11 +25,21 @@ This repo contains an easy to use Starknet full node installer and tracker/monit
 
 To install a Starknet full node and start monitoring it please run the following command:
 ```bash
-git clone https://github.com/kasarlabs/myOsiris | bash setup.sh --track
+git clone https://github.com/kasarlabs/myOsiris
+cd myOsiris
 ```
-(Recomended) Or if you only want to setup a full node locally without tracking it you can run the following:
+
+Next you'll need to run the installation/manager script.
+You can chose to either to install and run a node (recomended):
+
 ```bash
-git clone https://github.com/kasarlabs/myOsiris | bash setup.sh
+bash setup.sh
+```
+
+Or also start the node monitoring using:
+
+```bash
+bash setup.sh --track
 ```
 
 #### 1. Chose your client
@@ -45,7 +55,22 @@ Then you'll need to enter a **name** for your node (can be whatever), reference 
   <img src="https://s10.gifyu.com/images/Capture-video-du-05-04-2023-04_57_12.gif" height="441" width="624">
 </div>
 
+#### 3. Manage your node
+If you did not start the tracker or you want to stop, restart or permanently delete your node you can launch the node manager again:
+
+```bash
+bash setup.sh
+```
+
+It will detect if one of the 3 clients is runing and propose you to manage it:
+
+<div align="center">
+  <img src="https://s10.gifyu.com/images/Capture-video-du-06-04-2023-14_17_50.gif" height="436" width="692">
+</div>
+
 ## 📊 Data
+
+
 
 At this point the following data is returned from the tracker
 
