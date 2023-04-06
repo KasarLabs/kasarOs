@@ -7,6 +7,22 @@ CLIENT_DIR="$OSIRIS_PATH/client"
 LOGS_PATH="$OSIRIS_PATH/network/logs.txt"
 TRACK_MODE=false
 
+check_track() {
+    echo "$@"
+    for arg in "$@"
+    do
+        case $arg in
+            --track)
+                TRACK_MODE=true
+                shift
+                ;;
+            *)
+                shift
+                ;;
+        esac
+    done
+}
+
 # Utils
 # Define colors
 red='\033[0;31m'
@@ -110,7 +126,7 @@ menu_installer() {
     options=("Track" "Stop" "Restart" "Delete" "Quit")
     yesOrNo=("Yes" "No" "Quit")
     selected=0 # Initialize the selected variable
-    print_menu "Welcome to myOsiris!" "Please chose your option!" "${options[@]}"
+    print_menu "Welcome back to myOsiris!" "A client has been detected on this machine. Please chose your option!" "${options[@]}"
 
     if [ "${options[$selected]}" = "Track" ]; then
         osirisClear
@@ -179,14 +195,7 @@ menu_running() {
 }
 
 main(){
-    while getopts "t" opt; do
-        case ${opt} in
-            t)
-                TRACK_MODE=true
-                ;;
-        esac
-    done
-    shift $((OPTIND -1))
+    check_track "$@"
     getClient
     if [ "${node_docker}" = "null" ]; then
         menu_running
@@ -213,7 +222,7 @@ installPapyrus() {
     go build
     echo -e "\n\033[32m$(cat ./config.json | jq -r '.name') full node is running correctly using Papyrus client!\033[m"
     echo -e "\033[32mTo stop or remove it please run setup.sh again\033[m"
-    if [ TRACK_MODE ]; then
+    if [ $TRACK_MODE == true ]; then
         sudo docker logs -f papyrus &>> $LOGS_PATH & nohup ./myOsiris&
         sleep 2
         echo -e -n "\n${red}Tracking view mode will exit in 10secs${reset}\n"
@@ -243,7 +252,7 @@ installJuno() {
     go build
     echo -e "\n\033[32m$(cat ./config.json | jq -r '.name') full node is running correctly using Juno client!\033[m"
     echo -e "\033[32mTo stop or remove it please run setup.sh again\033[m"
-    if [ TRACK_MODE ]; then
+    if [ $TRACK_MODE == true ]; then
         sudo docker logs -f juno &>> $LOGS_PATH & nohup ./myOsiris&
         sleep 2
         echo -e -n "\n${red}Tracking view mode will exit in 10secs${reset}\n"
@@ -276,7 +285,7 @@ installPathfinder() {
     echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json    
     go build
     echo -e "\n\033[32m$name full node is running correctly using Pathfinder client!\033[m"
-    if [ TRACK_MODE ]; then
+    if [ $TRACK_MODE == true ]; then
         sudo docker logs -f pathfinder &>> $LOGS_PATH & nohup ./myOsiris&
         sleep 2
         echo -e -n "\n${red}Tracking view mode will exit in 10secs${reset}\n"
@@ -346,4 +355,4 @@ refreshClient()
 		rm -rf $CLIENT_DIR
 	fi
 }
-main
+main "$@"
