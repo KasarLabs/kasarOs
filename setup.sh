@@ -26,7 +26,7 @@ osirisClear() {
     echo -e "\e[1;33m⡄⠀⠈⠛⠿⢿⡿⠟⠛⠛⠛⠛⠛⠛⠛⠉⠉⠉⠉⠉⠁⠀⠀⠈⠉⠉⠛⠻⡇⠀\e[0m"
     echo -e "\e[1;33m⢹⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣴⣶⣶⣶⣶⣦⣄⠀⠀⠀⠁⠀\e[0m"
     echo -e "\e[1;33m⠀⢻⣿⣿⣶⣶⣦⣤⣤⣤⣤⣤⣶⣾⣿⣿⠿⠛⢋⣿⣿⣿⣿⡛⢿⣷⣄⠀⠀⠀\e[0m"
-    echo -e "\e[1;33m⠀⠀⣿⣿⣿⡿⢿⣿⣿⣿⣿⣿⣿⣭⣁⡀⠀⠀⠸⣿⣿⣿⣿⠇⠀⣘⣿⣿⣦⡄ \t\t\033[1;33mOsiris v1.0"
+    echo -e "\e[1;33m⠀⠀⣿⣿⣿⡿⢿⣿⣿⣿⣿⣿⣿⣭⣁⡀⠀⠀⠸⣿⣿⣿⣿⠇⠀⣘⣿⣿⣦⡄ \t\t\033[1;33mOsiris v0.1.0-beta.1"
     echo -e "\e[1;33m⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⠿⢿⣿⣿⣶⣶⣿⣿⣿⣿⣶⣿⣿⡿⠿⠿⣇    \t\033[1;35mBy Kasar Labs"
     echo -e "\e[1;33m⠀⠀⠀⠀⠀⠀⠐⣶⣤⡀⠀⠀⠀⠀⠀⠀⠉⠙⠛⣻⣿⣿⣿⡟⠉⠀⠀⠀⠀⠀\e[0m"
     echo -e "\e[1;33m⠀⠀⠀⠀⢀⣶⡿⠿⢿⣿⡆⠀⠀⠀⠀⠀⠀⣀⣴⣿⣿⢿⣿⡅⢸⠀⠀⠀⠀⠀\e[0m"
@@ -104,6 +104,7 @@ getClient() {
 }
 
 menu_installer() {
+    reset
     osirisClear
     options=("Track" "Stop" "Restart" "Delete" "Quit")
     yesOrNo=("Yes" "No" "Quit")
@@ -112,18 +113,18 @@ menu_installer() {
 
     if [ "${options[$selected]}" = "Track" ]; then
         osirisClear
-        if sudo docker exec papyrus pgrep papyrus > /dev/null 2>&1; then
+        echo -e -n "\n${red}Tracking view mode will exit in 10secs${reset}\n"
+        client=$(jq -r '.client' config.json)
+        if sudo docker exec $client pgrep $client > /dev/null; then
             if ! command -v jq &> /dev/null; then
                 echo "jq not found. Installing jq..."
                 sudo apt-get update
                 sudo apt-get install -y jq
             fi
-            client=$(jq -r '.client' config.json)
             sudo docker logs -f $client &>> $LOGS_PATH & nohup ./myOsiris&
             sleep 2
-        else
-            tail -f nohup.out
         fi
+        timeout 10s tail -f nohup.out
     fi
     if [ "${options[$selected]}" = "Stop" ]; then
         osirisClear
@@ -186,6 +187,7 @@ main(){
 }
 
 installPapyrus() {
+    osirisClear
     echo -e "\n\033[34mRunning docker... \033[m"
     sleep 1
     refreshClient
@@ -195,6 +197,7 @@ installPapyrus() {
         -v $CLIENT_DIR:/app/data \
         ghcr.io/starkware-libs/papyrus:dev
     # Wait for the Papyrus client to start
+    osirisClear
     echo -e "\n\033[34mWaiting for Papyrus client to start... \033[m"
     while ! sudo docker exec papyrus pgrep papyrus > /dev/null; do sleep 1; done
     echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json    
@@ -211,6 +214,7 @@ installPapyrus() {
 }
 
 installJuno() {
+    osirisClear
     echo -e "\n\033[34mRunning docker... \033[m"
     sleep 1
     refreshClient
@@ -222,6 +226,7 @@ installJuno() {
         --rpc-port 6060 \
         --db-path /var/lib/juno
     # Wait for the Juno client to start
+    osirisClear
     echo -e "\n\033[34mWaiting for Juno client to start... \033[m"
    	while ! sudo docker exec juno pgrep juno > /dev/null; do sleep 1; done
     echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json    
@@ -238,6 +243,7 @@ installJuno() {
 }
 
 installPathfinder() {
+    osirisClear
     echo -e "\n\033[34mRunning docker... \033[m"
     sleep 1
     refreshClient
@@ -253,6 +259,7 @@ installPathfinder() {
         -v $CLIENT_DIR:/usr/share/pathfinder/data \
         eqlabs/pathfinder > /dev/null
     # Wait for the Pathfinder client to start
+    osirisClear
     echo -e "\n\033[34mWaiting for Pathfinder client to start... \033[m"
    	while ! sudo docker exec pathfinder grep pathfinder > /dev/null; do sleep 1; done
     echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json    
@@ -268,6 +275,7 @@ installPathfinder() {
 }
 
 installTools() {
+    osirisClear
 	echo -e "\n\033[34mInstalling tools pre-requisites... \033[m\n"
 	sleep 1
 	while read -r p ; do sudo apt install -y $p ; done < <(cat << "EOF"
@@ -278,7 +286,7 @@ installTools() {
 		jq
 EOF
 )
-
+    osirisClear
 	echo -e "\n\033[34mInstalling tools... \033[m\n"
 	sleep 1
 	while read -r p ; do sudo apt install -y $p ; done < <(cat << "EOF"
@@ -327,4 +335,3 @@ refreshClient()
 	fi
 }
 main
-echo -e "\n\033[1;32mDone !\033[m\n"
