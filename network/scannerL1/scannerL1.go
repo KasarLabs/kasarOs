@@ -7,55 +7,19 @@ import (
     "math/big"
     "time"
 
-    "github.com/ethereum/go-ethereum/common"
     "github.com/ethereum/go-ethereum/ethclient"
     "myOsiris/network/config"
     "myOsiris/network/utils"
+    "myOsiris/types"
 )
 
-type L1 struct {
-    Block    Block
-    SyncTime SyncTime
+var local = types.Local {
+    Number:         0,
+    Timestamp:      time.Time{},
+    Prev_timestamp: time.Time{},
 }
 
-type Block struct {
-    ParentHash    common.Hash    `json:"parentHash"       gencodec:"required"`
-    UncleHash     common.Hash    `json:"sha3Uncles"       gencodec:"required"`
-    Coinbase      common.Address `json:"miner"`
-    Root          common.Hash    `json:"stateRoot"        gencodec:"required"`
-    TxHash        common.Hash    `json:"transactionsRoot" gencodec:"required"`
-    ReceiptHash   common.Hash    `json:"receiptsRoot"     gencodec:"required"`
-    Difficulty    *big.Int       `json:"difficulty"       gencodec:"required"`
-    Number        *big.Int       `json:"number"           gencodec:"required"`
-    GasLimit      uint64         `json:"gasLimit"         gencodec:"required"`
-    GasUsed       uint64         `json:"gasUsed"          gencodec:"required"`
-    Time          uint64         `json:"timestamp"        gencodec:"required"`
-    Extra         []byte         `json:"extraData"        gencodec:"required"`
-    MixDigest     common.Hash    `json:"mixHash"`
-    BaseFee       *big.Int       `json:"baseFeePerGas" rlp:"optional"`
-}
-
-type Local struct {
-    number          int64
-    timestamp       time.Time
-    prev_timestamp  time.Time
-}
-
-type SyncTime struct {
-    Last  time.Duration
-    Min   time.Duration
-    Max   time.Duration
-    Avg   time.Duration
-    Count int64
-}
-
-var local = Local{
-    number:         0,
-    timestamp:      time.Time{},
-    prev_timestamp: time.Time{},
-}
-
-var syncTime = SyncTime{
+var syncTime = types.SyncTime{
     Last: 0.00,
     Min:  0.00,
     Max:  0.00,
@@ -63,7 +27,7 @@ var syncTime = SyncTime{
     Count: 0,
 }
 
-func getBlockData() Block {
+func getBlockData() types.L1Block {
     client, err := ethclient.Dial(config.User.RpcKey)
     if err != nil {
         log.Fatal(err)
@@ -73,7 +37,7 @@ func getBlockData() Block {
         log.Fatal(err)
     }
 
-    block := Block{
+    block := types.L1Block{
         ParentHash:    data.ParentHash(),
         UncleHash:     data.UncleHash(),
         Coinbase:      data.Coinbase(),
@@ -93,9 +57,9 @@ func getBlockData() Block {
     return block
 }
 
-func getSyncTime(block Block, local Local) SyncTime {
+func getSyncTime(block types.L1Block, local types.Local) types.SyncTime {
     syncTime.Count++
-    syncTime.Last = local.timestamp.Sub(local.prev_timestamp)
+    syncTime.Last = local.Timestamp.Sub(local.Prev_timestamp)
 
     if syncTime.Count > 3 {
         if syncTime.Last > syncTime.Max {
@@ -118,7 +82,7 @@ var (
     num         = new(big.Int).SetInt64(0)
 )
 
-func ScannerL1() L1 {
+func ScannerL1() types.L1 {
     block := getBlockData()
 
     if isFirstCall {
@@ -132,17 +96,17 @@ func ScannerL1() L1 {
         // push block to DB
 
         // Update the local timestamp
-        local.prev_timestamp = local.timestamp
-        local.timestamp = time.Now()
+        local.Prev_timestamp = local.Timestamp
+        local.Timestamp = time.Now()
 
         // Calculate the sync time
         syncTime := getSyncTime(block, local)
         if syncTime.Last.Seconds() > 9999999 {
-            return L1{Block: block, SyncTime: syncTime}
+            return types.L1{Block: block, SyncTime: syncTime}
         }
 
         fmt.Printf("\033[s\033[1A\033[2K\rL1 - Block number %d with id %s synced in %.2f seconds - avg sync time %.2f \033[u", block.Number, utils.FormatHash(block.ReceiptHash.Hex()), syncTime.Last.Seconds(), syncTime.Avg.Seconds())
     }
 
-    return L1{}
+    return types.L1{}
 }

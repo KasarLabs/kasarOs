@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"path/filepath"
 	"myOsiris/network/utils"
+	"myOsiris/types"
 	// "math"
 	"bytes"
 	"encoding/json"
@@ -24,39 +25,13 @@ const (
 	dbConnectionString = "root:tokenApi!@tcp(localhost:3306)/juno"
 )
 
-type Block struct {
-	Hash				string
-	Number				int64
-	New_root			string
-    Parent_hash			string
-    Sequencer_address	string
-    Status				string
-    Timestamp			int64
-    Transactions		[]string
-	Local 				Local
+var local = types.Local{
+	Number:         0,
+	Timestamp:      time.Time{},
+	Prev_timestamp: time.Time{},
 }
 
-type Local struct {
-	number          int64
-	timestamp       time.Time
-	prev_timestamp  time.Time
-}
-
-var local = Local{
-	number:         0,
-	timestamp:      time.Time{},
-	prev_timestamp: time.Time{},
-}
-
-type SyncTime struct {
-	Last  time.Duration
-	Min   time.Duration
-	Max   time.Duration
-	Avg   time.Duration
-	Count int64
-}
-
-var syncTime = SyncTime {
+var syncTime = types.SyncTime {
 	Last: 0.00,
 	Min: 0.00,
 	Max: 0.00,
@@ -64,9 +39,9 @@ var syncTime = SyncTime {
 	Count: 0,
 }
 
-func getSyncTime(block Block, local Local) SyncTime {
+func getSyncTime(block types.L2Block, local types.Local) types.SyncTime {
 	syncTime.Count += 1
-	syncTime.Last = local.timestamp.Sub(local.prev_timestamp)
+	syncTime.Last = local.Timestamp.Sub(local.Prev_timestamp)
 	if syncTime.Count > 3 {
 		if syncTime.Last > syncTime.Max {
 			syncTime.Max = syncTime.Last
@@ -82,7 +57,7 @@ func getSyncTime(block Block, local Local) SyncTime {
 	return syncTime
 }
 
-func getBlockData(blockNumber int64) (block Block, err error) {
+func getBlockData(blockNumber int64) (block types.L2Block, err error) {
 	url := "https://starknet-mainnet.infura.io/v3/bfd7c1b53bea4e1ebe1bd41aa8f52aaf"
 	payload := []byte(fmt.Sprintf(`{"jsonrpc": "2.0", "method": "starknet_getBlockWithTxHashes", "params": {"block_id": {"block_number": %d}}, "id": 0}`, blockNumber))
 	resp, err := http.Post(url, "application/json", bytes.NewBuffer(payload))
@@ -110,7 +85,7 @@ func getBlockData(blockNumber int64) (block Block, err error) {
 	if err != nil {
 		return block, err
 	}
-	block = Block{
+	block = types.L2Block{
 		Hash:              response.Result.BlockHash,
 		Number:            response.Result.BlockNumber,
 		New_root:          response.Result.NewRoot,
@@ -123,7 +98,7 @@ func getBlockData(blockNumber int64) (block Block, err error) {
 	return block, nil
 }
 
-func ScannerL2() (block Block, syncTime SyncTime) {
+func ScannerL2() (block types.L2Block, syncTime types.SyncTime) {
 	absPath, err := filepath.Abs(logsFile)
 	if err != nil {
 		fmt.Println(err)
@@ -153,17 +128,17 @@ func ScannerL2() (block Block, syncTime SyncTime) {
 			line := strings.ReplaceAll(utils.RemoveBraces(scanner.Text()), " ", "\t")
 			if len(line) > 0 {
 				number, _ := strconv.ParseInt(utils.ExtractNumber(line), 10, 64)
-				if (number > local.number) {
+				if (number > local.Number) {
 					block, err := getBlockData(number)
 					if err != nil {
 						panic(err)
 					}
 					if syncTime.Count <= 0 {
-						block.Local.timestamp = time.Time{}
+						block.Local.Timestamp = time.Time{}
 					}
-					local.number = number
-					local.prev_timestamp = local.timestamp
-					local.timestamp, _ = utils.ExtractTimestamp(line)
+					local.Number = number
+					local.Prev_timestamp = local.Timestamp
+					local.Timestamp, _ = utils.ExtractTimestamp(line)
 					syncTime := getSyncTime(block, local)
 					if (syncTime.Last.Seconds() > 9999999) {
 						continue
