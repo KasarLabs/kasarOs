@@ -105,7 +105,8 @@ func ScannerL1() types.L1 {
             return types.L1{Block: block, SyncTime: syncTime}
         }
 
-        fmt.Printf("\033[s\033[1A\033[2K\rL1 - Block number %d with id %s synced in %.2f seconds - avg sync time %.2f \033[u", block.Number, utils.FormatHash(block.ReceiptHash.Hex()), syncTime.Last.Seconds(), syncTime.Avg.Seconds())
+        l1 := types.L1{Block: block, SyncTime: syncTime}
+        fmt.Printf("\033[s\033[1A\033[2K\rL1 - Block number %d with id %s synced in %.2f seconds - avg sync time %.2f \033[u", l1.Block.Number, utils.FormatHash(l1.Block.ReceiptHash.Hex()), l1.SyncTime.Last.Seconds(), l1.SyncTime.Avg.Seconds())
     }
 
     return types.L1{}

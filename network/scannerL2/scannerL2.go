@@ -98,7 +98,7 @@ func getBlockData(blockNumber int64) (block types.L2Block, err error) {
 	return block, nil
 }
 
-func ScannerL2() (block types.L2Block, syncTime types.SyncTime) {
+func ScannerL2() types.L2 {
 	absPath, err := filepath.Abs(logsFile)
 	if err != nil {
 		fmt.Println(err)
@@ -143,7 +143,8 @@ func ScannerL2() (block types.L2Block, syncTime types.SyncTime) {
 					if (syncTime.Last.Seconds() > 9999999) {
 						continue
 					}
-					fmt.Printf("\033[s\033[2K\rL2 - Block number %d with id %s synced in %.2f secs - avg sync time %.2f \033[u", block.Number, utils.FormatHash(block.Hash), syncTime.Last.Seconds(), syncTime.Avg.Seconds())
+					l2 := types.L2{Block: block, SyncTime: syncTime}
+					fmt.Printf("\033[s\033[2K\rL2 - Block number %d with id %s synced in %.2f secs - avg sync time %.2f \033[u", l2.Block.Number, utils.FormatHash(l2.Block.Hash), l2.SyncTime.Last.Seconds(), l2.SyncTime.Avg.Seconds())
 					continue
 				}
 			}

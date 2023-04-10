@@ -26,6 +26,11 @@ type L1 struct {
     SyncTime SyncTime
 }
 
+type L2 struct {
+    Block    L2Block
+    SyncTime SyncTime
+}
+
 type L1Block struct {
     ParentHash    common.Hash    `json:"parentHash"       gencodec:"required"`
     UncleHash     common.Hash    `json:"sha3Uncles"       gencodec:"required"`
@@ -67,4 +72,92 @@ type SyncTime struct {
     Max   time.Duration
     Avg   time.Duration
     Count int64
+}
+
+type Entity interface {
+	Update(value float64)
+}
+
+type Cpu struct {
+	ID   string
+	Last float64
+	Min  float64
+	Max  float64
+	Avg  float64
+}
+
+type Memory struct {
+	ID   string
+	Last float64
+	Min  float64
+	Max  float64
+	Avg  float64
+}
+
+type Storage struct {
+	ID   string
+	Last float64
+	Min  float64
+	Max  float64
+	Avg  float64
+}
+
+type Temp struct {
+	ID   string
+	Last float64
+	Min  float64
+	Max  float64
+	Avg  float64
+}
+
+type System struct {
+	ID      string
+	Cpu     Cpu
+	Memory  Memory
+	Storage Storage
+	Temp    Temp
+}
+
+func (c *Cpu) Update(value float64) {
+	c.Last = value
+	if c.Min == 0 || value < c.Min {
+		c.Min = value
+	}
+	if value > c.Max {
+		c.Max = value
+	}
+	c.Avg = (c.Avg + value) / 2
+}
+
+func (m *Memory) Update(value float64) {
+	m.Last = value / (1024 * 1024 * 1024)
+	if m.Min == 0 || value < m.Min {
+		m.Min = value
+	}
+	if value > m.Max {
+		m.Max = value
+	}
+	m.Avg = (m.Avg + value) / 2
+}
+
+func (s *Storage) Update(value float64) {
+	s.Last = value / (1024 * 1024 * 1024)
+	if s.Min == 0 || value < s.Min {
+		s.Min = value
+	}
+	if value > s.Max {
+		s.Max = value
+	}
+	s.Avg = (s.Avg + value) / 2
+}
+
+func (t *Temp) Update(value float64) {
+	t.Last = value
+	if t.Min == 0 || value < t.Min {
+		t.Min = value
+	}
+	if value > t.Max {
+		t.Max = value
+	}
+	t.Avg = (t.Avg + value) / 2
 }
