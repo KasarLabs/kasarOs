@@ -133,11 +133,6 @@ menu_installer() {
         echo -e -n "\n${red}Tracking view mode will exit in 10secs${reset}\n"
         client=$(jq -r '.client' config.json)
         if sudo docker exec $client pgrep $client > /dev/null; then
-            if ! command -v jq &> /dev/null; then
-                echo "jq not found. Installing jq..."
-                sudo apt-get update
-                sudo apt-get install -y jq
-            fi
             sudo docker logs -f $client &>> $LOGS_PATH & nohup ./myOsiris&
             sleep 2
         fi
@@ -297,34 +292,45 @@ installPathfinder() {
 
 installTools() {
     osirisClear
-	echo -e "\n\033[34mInstalling tools pre-requisites... \033[m\n"
-	sleep 1
-	while read -r p ; do sudo apt install -y $p ; done < <(cat << "EOF"
-		build-essential
-		libncurses5-dev 
-		libpcap-dev
-		git
-		jq
+    echo -e "\n\033[34mInstalling tools pre-requisites... \033[m\n"
+    sleep 1
+    while read -r p ; do sudo apt install -y $p ; done < <(cat << "EOF"
+        build-essential
+        libncurses5-dev
+        libpcap-dev
+        git
+        jq
 EOF
 )
     osirisClear
-	echo -e "\n\033[34mInstalling tools... \033[m\n"
-	sleep 1
-	while read -r p ; do sudo apt install -y $p ; done < <(cat << "EOF"
-		sysstat
-		bc
+    echo -e "\n\033[34mInstalling tools... \033[m\n"
+    sleep 1
+    sudo apt-get update
+    sudo apt-get install -y \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        gnupg \
+        lsb-release
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+    sleep 1
+    while read -r p ; do sudo apt install -y $p ; done < <(cat << "EOF"
+        sysstat
+        bc
 EOF
 )
 
-	if [ ! -d "$(pwd)/tmp/" ]
-	then
-		mkdir $(pwd)/tmp/
-	fi
+    if [ ! -d "$(pwd)/tmp/" ]
+    then
+        mkdir $(pwd)/tmp/
+    fi
 
-
-	git -C $(pwd)/tmp/ clone https://github.com/raboof/nethogs >& $(pwd)/tmp/sample.log
-	sudo make install -C $(pwd)/tmp/nethogs/ >& $(pwd)/tmp/sample.log
-	rm -rf $(pwd)/tmp/
+    git -C $(pwd)/tmp/ clone https://github.com/raboof/nethogs >& $(pwd)/tmp/sample.log
+    sudo make install -C $(pwd)/tmp/nethogs/ >& $(pwd)/tmp/sample.log
+    rm -rf $(pwd)/tmp/
 }
 
 refreshClient()
