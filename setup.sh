@@ -415,28 +415,32 @@ installCelo() {
     sudo docker pull $CELO_IMAGE
 
     # Set up the data directory
-    CELO_DATA_DIR=$HOME/celo-data-dir
+    mkdir -p $HOME/client
+    CELO_DATA_DIR=$HOME/client/celo-data-dir
     mkdir -p $CELO_DATA_DIR
     chmod 777 $CELO_DATA_DIR
 
     # Create an account and get its address
-    CELO_ACCOUNT_ADDRESS=$(sudo docker run -v $CELO_DATA_DIR:/root/.celo --rm -it $CELO_IMAGE account new | grep "Public address of the key:" | awk '{print $NF}')
-    echo "Celo account address: $CELO_ACCOUNT_ADDRESS"
+    sudo docker run -v $CELO_DATA_DIR:/root/.celo --rm -it $CELO_IMAGE account new
+    echo "Please copy and paste your Celo public key and press Enter:"
+    read CELO_ACCOUNT_ADDRESS
 
+    echo "Celo account address: $CELO_ACCOUNT_ADDRESS"
     # Start the Celo full node
-    sudo docker run --name celo -d --restart unless-stopped --stop-timeout 300 \
-        -p 127.0.0.1:8545:8545 -p 127.0.0.1:8546:8546 -p 30303:30303 -p 30303:30303/udp \
-        -v $CELO_DATA_DIR:/root/.celo $CELO_IMAGE --verbosity 3 --syncmode full --http \
-        --http.addr 0.0.0.0 --http.api eth,net,web3,debug,admin,personal --light.serve 90 \
-        --light.maxpeers 1000 --maxpeers 1100 --etherbase $CELO_ACCOUNT_ADDRESS --datadir /root/.celo
+    sudo docker run --name celo -d --restart unless-stopped --stop-timeout 300 -p 127.0.0.1:8545:8545 -p 127.0.0.1:8546:8546 -p 30303:30303 -p 30303:30303/udp -v $PWD:/root/.celo $CELO_IMAGE --verbosity 3 --syncmode full --http --http.addr 0.0.0.0 --http.api eth,net,web3,debug,admin,personal --light.serve 90 --light.maxpeers 1000 --maxpeers 1100 --etherbase $CELO_ACCOUNT_ADDRESS --datadir /root/.celo
 
     osirisClear
     echo -e "\n\033[34mWaiting for Celo full node to start... \033[m"
-    while ! sudo docker logs celo-fullnode | grep "Imported new chain segment"; do sleep 1; done
+   	while ! sudo docker logs celo > /dev/null; do sleep 1; done
     echo -e "\n\033[32mCelo full node is running correctly!\033[m"
+    echo -e "\n\033[34mExposing RPC endpoint...\033[m"
+    sudo ufw enable
+    sudo ufw allow 8545
+    PUBLIC_IP=$(curl -s ifconfig.me)
+    echo -e "\n\033[32mCelo full node RPC is exposed correctly at: http://$PUBLIC_IP:8545\033[m"
 
     if [ $TRACK_MODE == true ]; then
-        sudo docker logs -f celo-fullnode &>> $LOGS_PATH & nohup ./myOsiris &
+        sudo docker logs -f celo &>> $LOGS_PATH & nohup ./myOsiris &
         sleep 2
         echo -e -n "\n${red}Tracking view mode will exit in 10secs${reset}\n"
         timeout 10s tail -f nohup.out
@@ -474,7 +478,7 @@ EOF
         sudo apt-get update
         sudo apt-get install -y docker-ce docker-ce-cli containerd.io
     fi
-    if command version go >/dev/null; then
+    if ! command go version >/dev/null; then
         echo "Installing go language package version 1.20.2"
         curl https://storage.googleapis.com/golang/go1.20.2.linux-amd64.tar.gz | sudo tar -C /usr/local -xzf -
         echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee -a /etc/environment > /dev/null
@@ -492,9 +496,9 @@ EOF
         mkdir $(pwd)/tmp/
     fi
 
-    git -C $(pwd)/tmp/ clone https://github.com/raboof/nethogs >& $(pwd)/tmp/sample.log
-    sudo make install -C $(pwd)/tmp/nethogs/ >& $(pwd)/tmp/sample.log
-    rm -rf $(pwd)/tmp/
+    # git -C $(pwd)/tmp/ clone https://github.com/raboof/nethogs > $(pwd)/tmp/sample.log 2>&1
+    # sudo make install -C $(pwd)/tmp/nethogs/ >> $(pwd)/tmp/sample.log 2>&1
+    # rm -rf $(pwd)/tmp/
 }
 
 refreshClient()
@@ -524,22 +528,22 @@ refreshClient()
 	then
 		sudo docker rm -f mainnet-geth > /dev/null
 		sudo docker rm -f mainnet-lodestar > /dev/null
-		sudo docker image rm -f chainsafe/lodestar > /dev/null
-		sudo docker image rm -f ethereum/client-go > /dev/null
+		# sudo docker image rm -f chainsafe/lodestar > /dev/null
+		# sudo docker image rm -f ethereum/client-go > /dev/null
         rm -rf ./nohup.out > /dev/null
 		rm -f $LOGS_PATH > /dev/null
 	fi
     if sudo docker ps -a | grep taiko > /dev/null
 	then
 		sudo docker rm -f taiko-client > /dev/null
-		sudo docker image rm -f ethereum/client-go > /dev/null
+		# sudo docker image rm -f ethereum/client-go > /dev/null
         rm -rf ./nohup.out > /dev/null
 		rm -f $LOGS_PATH > /dev/null
 	fi
-    if sudo docker ps -a | grep celo-fullnode > /dev/null
+    if sudo docker ps -a | grep celo > /dev/null
 	then
-		sudo docker rm -f us.gcr.io/celo-org/geth:mainnet > /dev/null
-		sudo docker image rm -f ethereum/client-go > /dev/null
+		sudo docker rm -f celo > /dev/null
+		# sudo docker image rm -f us.gcr.io/celo-org/geth:mainnet > /dev/null
         rm -rf ./nohup.out > /dev/null
 		rm -f $LOGS_PATH > /dev/null
 	fi
