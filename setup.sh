@@ -118,6 +118,12 @@ getClient() {
     elif sudo docker ps -a | grep geth > /dev/null
 	then
 		node_docker="geth"
+    elif sudo docker ps -a | grep taiko > /dev/null
+	then
+		node_docker="taiko"
+    elif sudo docker ps -a | grep celo > /dev/null
+	then
+		node_docker="celo"
 	else
 		node_docker="null"
 	fi
@@ -163,7 +169,7 @@ menu_installer() {
 
 menu_running() {
     osirisClear
-    options=("Ethereum" "Starknet" "Taiko" "Quit")
+    options=("Ethereum" "Starknet" "Taiko" "Celo" "Quit")
     yesOrNo=("Yes" "No" "Quit")
     selected=0 # Initialize the selected variable
     print_menu "Welcome to myOsiris!" "Please chose a blockchain you'd like to setup" "${options[@]}"
@@ -174,8 +180,10 @@ menu_running() {
         installTools
         installTaiko
     elif [ "${options[$selected]}" = "Ethereum" ]; then
+        menu_ethereum
+    elif [ "${options[$selected]}" = "Celo" ]; then
         installTools
-        installGeth
+        installCelo
     fi
 }
 
@@ -206,6 +214,39 @@ menu_starknet() {
         client="pathfinder"
         installTools
         installPathfinder
+    fi
+    echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json    
+}
+
+menu_ethereum() {
+    osirisClear
+    options=("Geth - Ethereum" "Nethermind - Nethermind" "Besu - Hyperledger" "Erigon - Ledgerstack" "Quit")
+    yesOrNo=("Yes" "No" "Quit")
+    selected=0 # Initialize the selected variable
+    print_menu "You selected Ethereum" "Please chose the execution client you'd like to install (currently using Lodestar concensus client)" "${options[@]}"
+    # Prompt for node name, rpc_key, and osiris_key
+    echo -e -n "${yellow}> Enter a name for your node:${reset} "
+    read node_name
+    echo -e -n "${yellow}> Enter your Osiris key:${reset} "
+    read osiris_key
+
+    # Create a JSON object and store it in config.json
+    if [ "${options[$selected]}" = "Geth - Ethereum" ]; then
+        client="geth"
+        installTools
+        installGeth
+    elif [ "${options[$selected]}" = "Nethermind - Nethermind" ]; then
+        client="nethermind"
+        installTools
+        installGeth
+    elif [ "${options[$selected]}" = "Besu - Hyperl" ]; then
+        client="besu"
+        installTools
+        installGeth
+    elif [ "${options[$selected]}" = "Erigon - Ledgerwatch" ]; then
+        client="erigon"
+        installTools
+        installGeth
     fi
     echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json    
 }
@@ -318,57 +359,18 @@ installGeth() {
     echo -e "\n\033[34mCloning and running docker... \033[m"
     sleep 1
     refreshClient
-    git clone https://github.com/ethereum/go-ethereum.git $CLIENT_DIR
-
-    # Set the data directories for Geth and Nimbus
-    GETH_DATA=$(pwd)/geth_data
-    NIMBUS_DATA=$(pwd)/nimbus_data
-
-    sudo chown -R $(id -u):$(id -g) "$NIMBUS_DATA"
-
-    # Pull the Geth and Nimbus Docker images
-    docker pull ethereum/client-go:latest
-    docker pull statusim/nimbus-eth2:latest
-
-    # Create a custom network for the containers
-    docker network create eth2_network
-
-    # Start the Geth Docker container
-    docker run -d \
-    --name geth \
-    --network eth2_network \
-    -p 30303:30303 \
-    -p 30303:30303/udp \
-    -p 8551:8551 \
-    -u "$(id -u):$(id -g)" \
-    -e RUST_LOG=info \
-    -v "$GETH_DATA:/home/geth/.ethereum" \
-    ethereum/client-go \
-    --datadir /home/geth/.ethereum \
-    --http \
-    --http.addr 0.0.0.0 \
-    --http.port 8551 \
-    --http.vhosts=*
-
-    # Start the Nimbus Docker container and connect it to the Geth container
-    docker run -it \
-    --name nimbus \
-    --network eth2_network \
-    -p 9000:9000 \
-    -v "$NIMBUS_DATA:/home/nimbus/.nimbus" \
-    --user "$(id -u):$(id -g)" \
-    statusim/nimbus-eth2:amd64-latest \
-    --log-level=info \
-    --data-dir=/home/nimbus/.nimbus \
-    --web3-url=http://geth:8551
-
+    git clone https://github.com/ChainSafe/lodestar-quickstart $CLIENT_DIR
+    cd $CLIENT_DIR
+    sed -i 's|LODESTAR_EXTRA_ARGS="--network mainnet $LODESTAR_FIXED_VARS"|LODESTAR_EXTRA_ARGS="--checkpointSyncUrl https://beaconstate-mainnet.chainsafe.io --network mainnet $LODESTAR_FIXED_VARS"|g' ./mainnet.vars
+    ./setup.sh --dataDir goerli-data --elClient geth --network mainnet --detached --dockerWithSudo
     # Wait for the Geth client to start
     osirisClear
     echo -e "\n\033[34mWaiting for Geth container to be in a running state... \033[m"
-    while [[ "$(sudo docker inspect -f '{{.State.Status}}' geth)" != "running" ]]; do sleep 1; done
+    while [[ "$(sudo docker inspect -f '{{.State.Status}}' mainnet-geth)" != "running" ]]; do sleep 1; done
     osirisClear
     echo -e "\n\033[34mWaiting for Geth client to start... \033[m"
-    while ! sudo docker exec geth grep Ethereum > /dev/null; do sleep 1; done
+    sudo docker logs mainnet-geth
+    while ! sudo docker exec mainnet-geth grep Ethereum > /dev/null; do sleep 1; done
     echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json
     go build
     echo -e "\n\033[32m$name full node is running correctly using Geth client!\033[m"
@@ -399,6 +401,50 @@ installTaiko() {
     sleep 1
     sudo docker compose up -d
 }
+
+installCelo() {
+    osirisClear
+    echo -e "\n\033[34mSetting up Celo full node... \033[m"
+    sleep 1
+    refreshClient
+
+    # Set up the environment variable
+    export CELO_IMAGE=us.gcr.io/celo-org/geth:mainnet
+
+    # Pull the Celo Docker image
+    sudo docker pull $CELO_IMAGE
+
+    # Set up the data directory
+    CELO_DATA_DIR=$HOME/celo-data-dir
+    mkdir -p $CELO_DATA_DIR
+    chmod 777 $CELO_DATA_DIR
+
+    # Create an account and get its address
+    CELO_ACCOUNT_ADDRESS=$(sudo docker run -v $CELO_DATA_DIR:/root/.celo --rm -it $CELO_IMAGE account new | grep "Public address of the key:" | awk '{print $NF}')
+    echo "Celo account address: $CELO_ACCOUNT_ADDRESS"
+
+    # Start the Celo full node
+    sudo docker run --name celo -d --restart unless-stopped --stop-timeout 300 \
+        -p 127.0.0.1:8545:8545 -p 127.0.0.1:8546:8546 -p 30303:30303 -p 30303:30303/udp \
+        -v $CELO_DATA_DIR:/root/.celo $CELO_IMAGE --verbosity 3 --syncmode full --http \
+        --http.addr 0.0.0.0 --http.api eth,net,web3,debug,admin,personal --light.serve 90 \
+        --light.maxpeers 1000 --maxpeers 1100 --etherbase $CELO_ACCOUNT_ADDRESS --datadir /root/.celo
+
+    osirisClear
+    echo -e "\n\033[34mWaiting for Celo full node to start... \033[m"
+    while ! sudo docker logs celo-fullnode | grep "Imported new chain segment"; do sleep 1; done
+    echo -e "\n\033[32mCelo full node is running correctly!\033[m"
+
+    if [ $TRACK_MODE == true ]; then
+        sudo docker logs -f celo-fullnode &>> $LOGS_PATH & nohup ./myOsiris &
+        sleep 2
+        echo -e -n "\n${red}Tracking view mode will exit in 10secs${reset}\n"
+        timeout 10s tail -f nohup.out
+    else
+        exit
+    fi
+}
+
 
 
 installTools() {
@@ -474,16 +520,32 @@ refreshClient()
         rm -rf ./nohup.out > /dev/null
 		rm -f $LOGS_PATH > /dev/null
 	fi
-    if sudo docker ps -a | grep geth > /dev/null
+    if sudo docker ps -a | grep mainnet-geth > /dev/null
 	then
-		sudo docker rm -f geth > /dev/null
+		sudo docker rm -f mainnet-geth > /dev/null
+		sudo docker rm -f mainnet-lodestar > /dev/null
+		sudo docker image rm -f chainsafe/lodestar > /dev/null
+		sudo docker image rm -f ethereum/client-go > /dev/null
+        rm -rf ./nohup.out > /dev/null
+		rm -f $LOGS_PATH > /dev/null
+	fi
+    if sudo docker ps -a | grep taiko > /dev/null
+	then
+		sudo docker rm -f taiko-client > /dev/null
+		sudo docker image rm -f ethereum/client-go > /dev/null
+        rm -rf ./nohup.out > /dev/null
+		rm -f $LOGS_PATH > /dev/null
+	fi
+    if sudo docker ps -a | grep celo-fullnode > /dev/null
+	then
+		sudo docker rm -f us.gcr.io/celo-org/geth:mainnet > /dev/null
 		sudo docker image rm -f ethereum/client-go > /dev/null
         rm -rf ./nohup.out > /dev/null
 		rm -f $LOGS_PATH > /dev/null
 	fi
 	if [ -d $CLIENT_DIR ]
 	then
-		rm -rf $CLIENT_DIR
+		sudo rm -rf $CLIENT_DIR
 	fi
 }
 main "$@"
