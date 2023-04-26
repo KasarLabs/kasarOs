@@ -124,6 +124,12 @@ getClient() {
     elif sudo docker ps -a | grep celo > /dev/null
 	then
 		node_docker="celo"
+    elif sudo docker ps -a | grep gnosis > /dev/null
+	then
+		node_docker="gnosis"
+    elif sudo docker ps -a | grep scroll > /dev/null
+	then
+		node_docker="scroll"
 	else
 		node_docker="null"
 	fi
@@ -169,7 +175,7 @@ menu_installer() {
 
 menu_running() {
     osirisClear
-    options=("Ethereum" "Starknet" "Taiko" "Celo" "Quit")
+    options=("Ethereum" "Starknet" "Taiko" "Celo" "Gnosis" "Scroll" "Quit")
     yesOrNo=("Yes" "No" "Quit")
     selected=0 # Initialize the selected variable
     print_menu "Welcome to myOsiris!" "Please chose a blockchain you'd like to setup" "${options[@]}"
@@ -184,6 +190,9 @@ menu_running() {
     elif [ "${options[$selected]}" = "Celo" ]; then
         installTools
         installCelo
+    elif [ "${options[$selected]}" = "Scroll" ]; then
+        installTools
+        installScroll
     fi
 }
 
@@ -340,10 +349,10 @@ installPathfinder() {
     # Wait for the Pathfinder client to start
     osirisClear
     echo -e "\n\033[34mWaiting for Pathfinder client to start... \033[m"
-   	while ! sudo docker exec pathfinder grep pathfinder > /dev/null; do sleep 1; done
+   	while ! sudo docker logs pathfinder > /dev/null; do sleep 1; done
     echo "{\"name\": \"${node_name}\", \"client\": \"${client}\", \"rpc_key\": \"${rpc_key}\", \"osiris_key\": \"${osiris_key}\"}" > config.json    
     go build
-    echo -e "\n\033[32m$name full node is running correctly using Pathfinder client!\033[m"
+    echo -e "\n\033[32mPathfinder full node is running correctly using Pathfinder client!\033[m"
     if [ $TRACK_MODE == true ]; then
         sudo docker logs -f pathfinder &>> $LOGS_PATH & nohup ./myOsiris&
         sleep 2
@@ -395,11 +404,18 @@ installTaiko() {
     echo -e "\n\033[34mConfiguring Taiko node... \033[m"
     sleep 1
     cp .env.sample .env
-    # Prompt the user to set L1_ENDPOINT_HTTP and L1_ENDPOINT_WS in the .env file manually
+    sed -i 's/L1_ENDPOINT_HTTP=.*/L1_ENDPOINT_HTTP=https:\/\/l1rpc.a2.taiko.xyz/g' .env
+    sed -i 's/L1_ENDPOINT_WS=.*/L1_ENDPOINT_WS=wss:\/\/l1ws.a2.taiko.xyz/g' .env
+    sed -i 's/\(- --ws.origins.*\)/\0\n  - --p2p.syncTimeout\n  - "600"/' docker-compose.yml
     osirisClear
     echo -e "\n\033[34mStarting Taiko node... \033[m"
     sleep 1
     sudo docker compose up -d
+    echo -e "\n\033[34mExposing RPC endpoint...\033[m"
+    sudo ufw enable
+    sudo ufw allow 8545
+    PUBLIC_IP=$(curl -s ifconfig.me)
+    echo -e "\n\033[32mCelo full node RPC is exposed correctly at: http://$PUBLIC_IP:8545\033[m"
 }
 
 installCelo() {
@@ -449,7 +465,27 @@ installCelo() {
     fi
 }
 
+installScroll() {
+  # Step 1: Download genesis.json
+  echo "Downloading genesis.json..."
+  curl -o ./genesis.json https://www.notion.so/genesis-json-c65ec90622a14e9bb22d82750c1a621e
 
+  # Step 3 and 4: Create a directory for persistent data
+  echo "Creating /l2geth-datadir for persistent data storage..."
+  sudo mkdir -p /l2geth-datadir
+
+  # Step 5: Run a container using the created image
+  echo "Running l2geth-docker container..."
+  docker run -d --name l2geth-docker \
+    -p 8545:8545 -p 8546:8546 -p 8547:8547 -p 30303:30303 -p 30303:30303/udp \
+    -v $(pwd)/l2geth-datadir:/l2geth-datadir \
+    scroll_l2geth
+
+  echo "l2geth-docker container is now running."
+  # Step 7: In a separate shell, you can now attach to l2geth
+  echo "In a separate shell, you can now attach to l2geth using the following command:"
+  echo "docker exec -it l2geth-docker geth attach"
+}
 
 installTools() {
     osirisClear
@@ -520,7 +556,7 @@ refreshClient()
 	if sudo docker ps -a | grep pathfinder > /dev/null
 	then
 		sudo docker rm -f pathfinder > /dev/null
-		sudo docker image rm -f eqlabs/pathfinder > /dev/null
+		# sudo docker image rm -f eqlabs/pathfinder > /dev/null
         rm -rf ./nohup.out > /dev/null
 		rm -f $LOGS_PATH > /dev/null
 	fi
@@ -536,6 +572,11 @@ refreshClient()
     if sudo docker ps -a | grep taiko > /dev/null
 	then
 		sudo docker rm -f taiko-client > /dev/null
+		sudo docker rm -f client-grafana-1 > /dev/null
+		sudo docker rm -f client-prometheus-1 > /dev/null
+		sudo docker rm -f client-taiko_client_prover_relayer-1 > /dev/null
+		sudo docker rm -f client-taiko_client_driver-1 > /dev/null
+		sudo docker rm -f client-l2_execution_engine-1 > /dev/null
 		# sudo docker image rm -f ethereum/client-go > /dev/null
         rm -rf ./nohup.out > /dev/null
 		rm -f $LOGS_PATH > /dev/null
