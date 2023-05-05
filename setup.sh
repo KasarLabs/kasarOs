@@ -163,6 +163,7 @@ menu_installer() {
         osirisClear
         sudo docker start ${node_docker} > /dev/null
         echo -e "\nNode started.\n"
+        sudo docker logs -f papyrus &>> $LOGS_PATH & nohup ./myOsiris&
         exit
     fi
     if [ "${options[$selected]}" = "Delete" ]; then
@@ -175,10 +176,10 @@ menu_installer() {
 
 menu_running() {
     osirisClear
-    options=("Ethereum" "Starknet" "Taiko" "Celo" "Gnosis" "Scroll" "Quit")
+    options=("Starknet" "Quit")
     yesOrNo=("Yes" "No" "Quit")
     selected=0 # Initialize the selected variable
-    print_menu "Welcome to myOsiris!" "Please chose a blockchain you'd like to setup" "${options[@]}"
+    print_menu "Welcome to myOsiris!" "Please chose the chain you'd like to setup" "${options[@]}"
 
     if [ "${options[$selected]}" = "Starknet" ]; then
         menu_starknet
@@ -207,8 +208,7 @@ menu_starknet() {
     read node_name
     echo -e -n "${yellow}> Enter your Ethereum RPC url:${reset} "
     read rpc_key
-    echo -e -n "${yellow}> Enter your Osiris key:${reset} "
-    read osiris_key
+    osiris_key="null"
 
     # Create a JSON object and store it in config.json
     if [ "${options[$selected]}" = "Papyrus - Starkware" ]; then

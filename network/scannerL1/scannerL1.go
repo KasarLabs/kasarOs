@@ -4,7 +4,6 @@ import (
     "context"
     "fmt"
     "log"
-    "math/big"
     "time"
 
     "github.com/ethereum/go-ethereum/ethclient"
@@ -37,21 +36,21 @@ func getBlockData() types.L1Block {
         log.Fatal(err)
     }
 
-    block := types.L1Block{
-        ParentHash:    data.ParentHash(),
-        UncleHash:     data.UncleHash(),
-        Coinbase:      data.Coinbase(),
-        Root:          data.Root(),
-        TxHash:        data.TxHash(),
-        ReceiptHash:   data.ReceiptHash(),
-        Difficulty:    data.Difficulty(),
-        Number:        data.Number(),
+    block := types.L1Block {
+        ParentHash:    data.ParentHash().Hex(),
+        UncleHash:     data.UncleHash().Hex(),
+        Coinbase:      data.Coinbase().Hex(),
+        Root:          data.Root().Hex(),
+        TxHash:        data.TxHash().Hex(),
+        ReceiptHash:   data.ReceiptHash().Hex(),
+        Difficulty:    data.Difficulty().Int64(),
+        Number:        data.Number().Int64(),
         GasLimit:      data.GasLimit(),
         GasUsed:       data.GasUsed(),
         Time:          data.Time(),
         Extra:         data.Extra(),
-        MixDigest:     data.MixDigest(),
-        BaseFee:       data.BaseFee(),
+        MixDigest:     data.MixDigest().Hex(),
+        BaseFee:       data.BaseFee().Int64(),
     }
 
     return block
@@ -79,19 +78,19 @@ func getSyncTime(block types.L1Block, local types.Local) types.SyncTime {
 
 var (
     isFirstCall = true
-    num         = new(big.Int).SetInt64(0)
+    num         int64
 )
 
 func ScannerL1() types.L1 {
     block := getBlockData()
 
     if isFirstCall {
-        num.Set(block.Number)
+        num = block.Number
         isFirstCall = false
     }
 
-    if block.Number.Cmp(num) > 0 {
-        num.Set(block.Number)
+    if block.Number > num {
+        num = block.Number
 
         // push block to DB
 
@@ -106,7 +105,7 @@ func ScannerL1() types.L1 {
         }
 
         l1 := types.L1{Block: block, SyncTime: syncTime}
-        fmt.Printf("\033[s\033[1A\033[2K\rL1 - Block number %d with id %s synced in %.2f seconds - avg sync time %.2f \033[u", l1.Block.Number, utils.FormatHash(l1.Block.ReceiptHash.Hex()), l1.SyncTime.Last.Seconds(), l1.SyncTime.Avg.Seconds())
+        fmt.Printf("\033[s\033[1A\033[2K\rL1 - Block number %d with id %s synced in %.2f seconds - avg sync time %.2f \033[u", l1.Block.Number, utils.FormatHash(l1.Block.ReceiptHash), l1.SyncTime.Last.Seconds(), l1.SyncTime.Avg.Seconds())
     }
 
     return types.L1{}

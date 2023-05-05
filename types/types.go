@@ -1,54 +1,59 @@
 package types
 
 import (
-    "github.com/ethereum/go-ethereum/common"
-    "math/big"
     "time"
 )
 
 type Users struct {
-    ID       string   `json:"id"`
-    Mail     string   `json:"mail"`
-    Password string   `json:"password"`
-    Keys     []string `json:"keys"`
+    ID       string
+    Keys     []string
+}
+
+type Providers struct {
+    ID       string
+    Keys     []string
+	Nodes	 []Node
 }
 
 type Node struct {
-	ID      int    `json:"id"`
-	HealthID  int    `json:"health_id"`
-	L1ID      int    `json:"l1_id"`
-	L2ID      int    `json:"l2_id"`
-	SystemID  int    `json:"system_id"`
+	ID     string
+	L1     L1
+	L2     L2
+	System System
 }
 
 type L1 struct {
+	ID		 string
     Block    L1Block
     SyncTime SyncTime
 }
 
 type L2 struct {
+	ID   	string
     Block    L2Block
     SyncTime SyncTime
 }
 
 type L1Block struct {
-    ParentHash    common.Hash    `json:"parentHash"       gencodec:"required"`
-    UncleHash     common.Hash    `json:"sha3Uncles"       gencodec:"required"`
-    Coinbase      common.Address `json:"miner"`
-    Root          common.Hash    `json:"stateRoot"        gencodec:"required"`
-    TxHash        common.Hash    `json:"transactionsRoot" gencodec:"required"`
-    ReceiptHash   common.Hash    `json:"receiptsRoot"     gencodec:"required"`
-    Difficulty    *big.Int       `json:"difficulty"       gencodec:"required"`
-    Number        *big.Int       `json:"number"           gencodec:"required"`
+	ID					string
+    ParentHash    string    `json:"parentHash"       gencodec:"required"`
+    UncleHash     string    `json:"sha3Uncles"       gencodec:"required"`
+    Coinbase      string	`json:"miner"`
+    Root          string    `json:"stateRoot"        gencodec:"required"`
+    TxHash        string    `json:"transactionsRoot" gencodec:"required"`
+    ReceiptHash   string    `json:"receiptsRoot"     gencodec:"required"`
+    Difficulty    int64       `json:"difficulty"       gencodec:"required"`
+    Number        int64       `json:"number"           gencodec:"required"`
     GasLimit      uint64         `json:"gasLimit"         gencodec:"required"`
     GasUsed       uint64         `json:"gasUsed"          gencodec:"required"`
     Time          uint64         `json:"timestamp"        gencodec:"required"`
     Extra         []byte         `json:"extraData"        gencodec:"required"`
-    MixDigest     common.Hash    `json:"mixHash"`
-    BaseFee       *big.Int       `json:"baseFeePerGas" rlp:"optional"`
+    MixDigest     string    `json:"mixHash"`
+    BaseFee       int64       `json:"baseFeePerGas" rlp:"optional"`
 }
 
 type L2Block struct {
+	ID					string
 	Hash				string
 	Number				int64
 	New_root			string

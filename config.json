@@ -1,1 +1,1 @@
-{"name": "test", "client": "juno", "rpc_key": "https://mainnet.infura.io/v3/05762b82007d4e0fabb3e49bef3a7c12", "osiris_key": "test"}
+{"name": "juno", "client": "juno", "rpc_key": "https://eth-mainnet.g.alchemy.com/v2/eAb5qDHT1KMHHG8hpUTzBrdv27TYkN2w", "osiris_key": "null"}
