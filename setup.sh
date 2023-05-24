@@ -497,6 +497,7 @@ installTools() {
         libpcap-dev
         git
         jq
+        ufw
 EOF
 )
     osirisClear
@@ -510,13 +511,13 @@ EOF
             gnupg \
             lsb-release
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+        echo "deb [arch=arm64] download.docker.com/linux/ubuntu focal stable" | sudo tee /etc/apt/sources.list.d/docker.list
         sudo apt-get update
         sudo apt-get install -y docker-ce docker-ce-cli containerd.io
     fi
     if ! command go version >/dev/null; then
         echo "Installing go language package version 1.20.2"
-        curl https://storage.googleapis.com/golang/go1.20.2.linux-amd64.tar.gz | sudo tar -C /usr/local -xzf -
+        sudo tar -C /usr/local -xzf ~/go1.20.4.linux-arm64.tar.gz
         echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee -a /etc/environment > /dev/null
         sudo chmod 0644 /etc/environment
         source /etc/environment
