@@ -13,7 +13,7 @@
 
 cd /home/starknode/kasarOs
 
-git pull
+#git pull
 
 ./start.sh > /home/starknode/logs 2>&1 &
 
