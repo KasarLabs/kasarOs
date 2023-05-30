@@ -82,7 +82,9 @@ EOF
     fi
     if ! command go version >/dev/null; then
         echo "Installing go language package version 1.20.2"
-        sudo tar -C /usr/local -xzf /home/starknode/kasarOs/go1.20.4.linux-arm64.tar.gz
+        curl https://dl.google.com/go/go1.20.4.linux-arm64.tar.gz --output ../go1.20.4.linux-arm64.tar.gz
+        sudo tar -C /usr/local -xzf /home/starknode/go1.20.4.linux-arm64.tar.gz
+        rm -rf /home/starknode/go1.20.4.linux-arm64.tar.gz
         echo 'export PATH=$PATH:/usr/local/go/bin' >> /home/starknode/.bashrc
         echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee -a /etc/environment > /dev/null
         export GOPATH="/home/starknode/go"
