@@ -8,9 +8,6 @@ CLIENT_DIR="$KASAROS_PATH/client"
 LOGS_PATH="$KASAROS_PATH/network/logs.txt"
 TRACK_MODE=true
 
-client=$(jq -r '.client' $KASAROS_PATH/config.json)
-rpc_key=$(jq -r '.rpc_key' $KASAROS_PATH/config.json)
-
 check_track() {
     echo "$@"
     for arg in "$@"
@@ -110,8 +107,6 @@ EOF
 }
 
 install() {
-    installTools
-    
     if [ "$client" = "pathfinder" ]; then
         installPathfinder
     elif [ "$client" = "juno" ] || [ "$client" = "papyrus" ]; then
@@ -120,6 +115,11 @@ install() {
         echo "Client $client does not exist."
     fi
 }
+
+installTools
+
+client=$(jq -r '.client' $KASAROS_PATH/config.json)
+rpc_key=$(jq -r '.rpc_key' $KASAROS_PATH/config.json)
 
 node_docker=$client
 
