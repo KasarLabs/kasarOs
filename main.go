@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
@@ -35,7 +36,11 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	nodeId := uint(1)
+	nodeId, err := strconv.Atoi(nodeConfig.NodeID)
+	if err != nil {
+		fmt.Println("Error during Atoi :", err)
+		return
+	}
 
 	db, err := sql.Open("postgres", "postgres://"+dbUsername+":"+dbPassword+"@"+dbHost+"/"+dbName+"?sslmode=disable")
 	if err != nil {
@@ -74,7 +79,7 @@ func main() {
 
 	go func() {
 		for {
-			scannerL2.ScannerL2(db, nodeId)
+			scannerL2.ScannerL2(db, uint(nodeId))
 		}
 	}()
 
@@ -82,13 +87,13 @@ func main() {
 		// Print an initial line to separate process L1 output
 		// fmt.Println()
 		for {
-			scannerL1.ScannerL1(db, nodeId)
+			scannerL1.ScannerL1(db, uint(nodeId))
 		}
 	}()
 
 	go func() {
 		for {
-			system.ScannerSystem(db, nodeId)
+			system.ScannerSystem(db, uint(nodeId))
 		}
 	}()
 

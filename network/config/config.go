@@ -2,17 +2,17 @@ package config
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
-    "fmt"
-    "net/http"
-    "os"
+	"net/http"
+	"os"
 )
 
 type Config struct {
-	Name       string `json:"name"`
-	Client     string `json:"client"`
-	RpcKey     string `json:"rpc_key"`
-	OsirisKey  string `json:"osiris_key"`
+	Name   string `json:"name"`
+	Client string `json:"client"`
+	RpcKey string `json:"rpc_key"`
+	NodeID string `json:"node_id"`
 }
 
 func CheckConfig(filename string) error {
@@ -46,9 +46,6 @@ func CheckConfig(filename string) error {
 				return nil
 			}
 		}
-	}
-	if config.OsirisKey == "" {
-		fmt.Println("warning: osiris_key is empty")
 	}
 
 	return nil
