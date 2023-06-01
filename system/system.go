@@ -20,7 +20,7 @@ func ScannerSystem(db *sql.DB, nodeId uint) {
 		processList, _ := process.Processes()
 		for _, p := range processList {
 			name, _ := p.Name()
-			if name == name && processName != "lol" {
+			if name == processName {
 				TrackProcess(p, db, nodeId)
 				time.Sleep(time.Second * 10)
 			}
