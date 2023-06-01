@@ -2,14 +2,17 @@ package scannerL2
 
 import (
 	"bufio"
+	"database/sql"
 	"fmt"
-	"os"
-	"time"
-	"strings"
-	"strconv"
-	"path/filepath"
+	"log"
 	"myOsiris/network/utils"
 	"myOsiris/types"
+	"os"
+	"path/filepath"
+	"strconv"
+	"strings"
+	"time"
+
 	// "math"
 	"bytes"
 	"encoding/json"
@@ -18,7 +21,6 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 )
-
 
 const (
 	logsFile           = "./network/logs.txt"
@@ -31,11 +33,11 @@ var local = types.Local{
 	Prev_timestamp: time.Time{},
 }
 
-var syncTime = types.SyncTime {
-	Last: 0.00,
-	Min: 0.00,
-	Max: 0.00,
-	Avg: 0.00,
+var syncTime = types.SyncTime{
+	Last:  0.00,
+	Min:   0.00,
+	Max:   0.00,
+	Avg:   0.00,
 	Count: 0,
 }
 
@@ -71,14 +73,14 @@ func getBlockData(blockNumber int64) (block types.L2Block, err error) {
 	}
 	var response struct {
 		Result struct {
-			BlockHash         string   `json:"block_hash"`
-			BlockNumber       int64    `json:"block_number"`
-			NewRoot           string   `json:"new_root"`
-			ParentHash        string   `json:"parent_hash"`
-			SequencerAddress  string   `json:"sequencer_address"`
-			Status            string   `json:"status"`
-			Timestamp         int64    `json:"timestamp"`
-			Transactions      []string `json:"transactions"`
+			BlockHash        string   `json:"block_hash"`
+			BlockNumber      int64    `json:"block_number"`
+			NewRoot          string   `json:"new_root"`
+			ParentHash       string   `json:"parent_hash"`
+			SequencerAddress string   `json:"sequencer_address"`
+			Status           string   `json:"status"`
+			Timestamp        int64    `json:"timestamp"`
+			Transactions     []string `json:"transactions"`
 		} `json:"result"`
 	}
 	err = json.Unmarshal(body, &response)
@@ -98,7 +100,7 @@ func getBlockData(blockNumber int64) (block types.L2Block, err error) {
 	return block, nil
 }
 
-func ScannerL2() types.L2 {
+func ScannerL2(db *sql.DB, nodeId uint) types.L2 {
 	absPath, err := filepath.Abs(logsFile)
 	if err != nil {
 		fmt.Println(err)
@@ -128,7 +130,7 @@ func ScannerL2() types.L2 {
 			line := strings.ReplaceAll(utils.RemoveBraces(scanner.Text()), " ", "\t")
 			if len(line) > 0 {
 				number, _ := strconv.ParseInt(utils.ExtractNumber(line), 10, 64)
-				if (number > local.Number) {
+				if number > local.Number {
 					block, err := getBlockData(number)
 					if err != nil {
 						panic(err)
@@ -140,11 +142,16 @@ func ScannerL2() types.L2 {
 					local.Prev_timestamp = local.Timestamp
 					local.Timestamp, _ = utils.ExtractTimestamp(line)
 					syncTime := getSyncTime(block, local)
-					if (syncTime.Last.Seconds() > 9999999) {
+					if syncTime.Last.Seconds() > 9999999 {
 						continue
 					}
 					l2 := types.L2{Block: block, SyncTime: syncTime}
-					fmt.Printf("\033[s\033[2K\rL2 - Block number %d with id %s synced in %.2f secs - avg sync time %.2f \033[u", l2.Block.Number, utils.FormatHash(l2.Block.Hash), l2.SyncTime.Last.Seconds(), l2.SyncTime.Avg.Seconds())
+					rows, err := db.Query("INSERT INTO l2 (node_id, block_id, sync_time) VALUES ($1, $2, $3)", nodeId, l2.Block.Number, l2.SyncTime.Avg.Seconds())
+					if err != nil {
+						log.Fatal(err)
+					}
+					defer rows.Close()
+					//fmt.Printf("\033[s\033[2K\rL2 - Block number %d with id %s synced in %.2f secs - avg sync time %.2f \033[u", l2.Block.Number, utils.FormatHash(l2.Block.Hash), l2.SyncTime.Last.Seconds(), l2.SyncTime.Avg.Seconds())
 					continue
 				}
 			}

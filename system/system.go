@@ -1,16 +1,18 @@
 package system
 
 import (
-	"fmt"
+	"database/sql"
+	"log"
 	"time"
+
+	"myOsiris/network/config"
+	"myOsiris/types"
 
 	"github.com/shirou/gopsutil/v3/disk"
 	"github.com/shirou/gopsutil/v3/process"
-	"myOsiris/network/config"
-	"myOsiris/types"
 )
 
-func ScannerSystem() {
+func ScannerSystem(db *sql.DB, nodeId uint) {
 	config := config.User
 	processName := config.Client
 
@@ -18,15 +20,15 @@ func ScannerSystem() {
 		processList, _ := process.Processes()
 		for _, p := range processList {
 			name, _ := p.Name()
-			if name == processName {
-				TrackProcess(p)
-				time.Sleep(time.Second)
+			if name == name && processName != "lol" {
+				TrackProcess(p, db, nodeId)
+				time.Sleep(time.Second * 10)
 			}
 		}
 	}
 }
 
-func TrackProcess(p *process.Process) {
+func TrackProcess(p *process.Process, db *sql.DB, nodeId uint) {
 	sys := types.System{
 		ID: "system",
 		Cpu: types.Cpu{
@@ -51,6 +53,24 @@ func TrackProcess(p *process.Process) {
 
 	diskInfo, _ := disk.Usage("/")
 	sys.Storage.Update(float64(diskInfo.Used))
-
-	fmt.Printf("\033[s\033[1B\033[2K\rSystem - CPU: %.2f, Memory: %.2fgb, Storage: %.2fgb, Temp: %.2f\n\033[u", sys.Cpu.Last, sys.Memory.Last, sys.Storage.Last, sys.Temp.Last)
+	rows, err := db.Query("INSERT INTO system_cpu (node_id, cpu_value) VALUES ($1, $2)", nodeId, sys.Cpu.Last)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+	rows, err = db.Query("INSERT INTO system_memory (node_id, memory_value) VALUES ($1, $2)", nodeId, sys.Memory.Last)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+	rows, err = db.Query("INSERT INTO system_storage (node_id, storage_value) VALUES ($1, $2)", nodeId, sys.Storage.Last)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+	rows, err = db.Query("INSERT INTO system_temp (node_id, temp_value) VALUES ($1, $2)", nodeId, sys.Temp.Last)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
 }
