@@ -63,7 +63,7 @@ func main() {
 
 	go func() {
 		for {
-			scannerL2.ScannerL2(baseUrl+"node/L2/update?provider_id"+providerId.String(), uint(nodeId))
+			scannerL2.ScannerL2(baseUrl+"node/L2/update?provider_id="+providerId.String(), uint(nodeId))
 		}
 	}()
 
@@ -71,7 +71,7 @@ func main() {
 		// Print an initial line to separate process L1 output
 		// fmt.Println()
 		for {
-			scannerL1.ScannerL1(baseUrl+"node/L1/update?provider_id"+providerId.String(), uint(nodeId))
+			scannerL1.ScannerL1(baseUrl+"node/L1/update?provider_id="+providerId.String(), uint(nodeId))
 		}
 	}()
 

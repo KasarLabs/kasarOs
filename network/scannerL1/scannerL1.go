@@ -100,7 +100,6 @@ func ScannerL1(baseUrl string, nodeId uint) types.L1 {
 
 	if block.Number > num {
 		num = block.Number
-
 		// push block to DB
 
 		// Update the local timestamp
@@ -136,7 +135,6 @@ func ScannerL1(baseUrl string, nodeId uint) types.L1 {
 			return types.L1{}
 		}
 		defer response.Body.Close()
-		//fmt.Printf("\033[s\033[1A\033[2K\rL1 - Block number %d with id %s synced in %.2f seconds - avg sync time %.2f \033[u", l1.Block.Number, utils.FormatHash(l1.Block.ReceiptHash), l1.SyncTime.Last.Seconds(), l1.SyncTime.Avg.Seconds())
 	}
 
 	return types.L1{}
