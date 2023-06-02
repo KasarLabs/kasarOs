@@ -41,10 +41,11 @@ installPathfinder() {
         -v $CLIENT_DIR:/usr/share/pathfinder/data \
         eqlabs/pathfinder > /dev/null
     echo -e "\n\033[34mWaiting for Pathfinder client to start... \033[m"
-   	while ! sudo docker logs pathfinder > /dev/null; do sleep 1; done    
+   	while ! sudo docker logs pathfinder > /dev/null; do sleep 1; done
+    go build
     echo -e "\n\033[32mPathfinder full node is running correctly using Pathfinder client!\033[m"
     if [ $TRACK_MODE == true ]; then
-        sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/kasarOs > $KASAROS_PATH/nohup.out 2>&1 &
+        sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
         sleep 2
         echo -e -n "\nTracking view mode will exit in 10secs\n"
         timeout 10s tail -f nohup.out
@@ -127,7 +128,7 @@ node_docker=$client
 if sudo docker ps -a --format '{{.Names}}' | grep -q "^pathfinder$"; then
     sudo docker start ${node_docker} > /dev/null
     echo -e "\nNode started.\n"
-    sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/kasarOs > $KASAROS_PATH/nohup.out 2>&1 &
+    sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
     exit
 else
     install
