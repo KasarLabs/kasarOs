@@ -9,10 +9,11 @@ import (
 )
 
 type Config struct {
-	Name   string `json:"name"`
-	Client string `json:"client"`
-	RpcKey string `json:"rpc_key"`
-	NodeID string `json:"node_id"`
+	Name       string `json:"name"`
+	Client     string `json:"client"`
+	RpcKey     string `json:"rpc_key"`
+	NodeID     string `json:"node_id"`
+	ProviderID string `json:"provider_id"`
 }
 
 func CheckConfig(filename string) error {
@@ -46,6 +47,12 @@ func CheckConfig(filename string) error {
 				return nil
 			}
 		}
+	}
+	if config.NodeID == "" {
+		return fmt.Errorf("error: NodeID is empty")
+	}
+	if config.ProviderID == "" {
+		return fmt.Errorf("error: ProviderID is empty")
 	}
 
 	return nil
