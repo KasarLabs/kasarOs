@@ -1,18 +1,18 @@
 package types
 
 import (
-    "time"
+	"time"
 )
 
 type Users struct {
-    ID       string
-    Keys     []string
+	ID   string
+	Keys []string
 }
 
 type Providers struct {
-    ID       string
-    Keys     []string
-	Nodes	 []Node
+	ID    string
+	Keys  []string
+	Nodes []Node
 }
 
 type Node struct {
@@ -23,60 +23,60 @@ type Node struct {
 }
 
 type L1 struct {
-	ID		 string
-    Block    L1Block
-    SyncTime SyncTime
+	ID       string
+	Block    L1Block
+	SyncTime SyncTime
 }
 
 type L2 struct {
-	ID   	string
-    Block    L2Block
-    SyncTime SyncTime
+	ID       string
+	Block    L2Block
+	SyncTime SyncTime
 }
 
 type L1Block struct {
-	ID					string
-    ParentHash    string    `json:"parentHash"       gencodec:"required"`
-    UncleHash     string    `json:"sha3Uncles"       gencodec:"required"`
-    Coinbase      string	`json:"miner"`
-    Root          string    `json:"stateRoot"        gencodec:"required"`
-    TxHash        string    `json:"transactionsRoot" gencodec:"required"`
-    ReceiptHash   string    `json:"receiptsRoot"     gencodec:"required"`
-    Difficulty    int64       `json:"difficulty"       gencodec:"required"`
-    Number        int64       `json:"number"           gencodec:"required"`
-    GasLimit      uint64         `json:"gasLimit"         gencodec:"required"`
-    GasUsed       uint64         `json:"gasUsed"          gencodec:"required"`
-    Time          uint64         `json:"timestamp"        gencodec:"required"`
-    Extra         []byte         `json:"extraData"        gencodec:"required"`
-    MixDigest     string    `json:"mixHash"`
-    BaseFee       int64       `json:"baseFeePerGas" rlp:"optional"`
+	ID          string
+	ParentHash  string `json:"parentHash"       gencodec:"required"`
+	UncleHash   string `json:"sha3Uncles"       gencodec:"required"`
+	Coinbase    string `json:"miner"`
+	Root        string `json:"stateRoot"        gencodec:"required"`
+	TxHash      string `json:"transactionsRoot" gencodec:"required"`
+	ReceiptHash string `json:"receiptsRoot"     gencodec:"required"`
+	Difficulty  int64  `json:"difficulty"       gencodec:"required"`
+	Number      int64  `json:"number"           gencodec:"required"`
+	GasLimit    uint64 `json:"gasLimit"         gencodec:"required"`
+	GasUsed     uint64 `json:"gasUsed"          gencodec:"required"`
+	Time        uint64 `json:"timestamp"        gencodec:"required"`
+	Extra       []byte `json:"extraData"        gencodec:"required"`
+	MixDigest   string `json:"mixHash"`
+	BaseFee     int64  `json:"baseFeePerGas" rlp:"optional"`
 }
 
 type L2Block struct {
-	ID					string
-	Hash				string
-	Number				int64
-	New_root			string
-    Parent_hash			string
-    Sequencer_address	string
-    Status				string
-    Timestamp			int64
-    Transactions		[]string
-	Local 				Local
+	ID                string
+	Hash              string
+	Number            int64
+	New_root          string
+	Parent_hash       string
+	Sequencer_address string
+	Status            string
+	Timestamp         int64
+	Transactions      []string
+	Local             Local
 }
 
 type Local struct {
-    Number          int64
-    Timestamp       time.Time
-    Prev_timestamp  time.Time
+	Number         int64
+	Timestamp      time.Time
+	Prev_timestamp time.Time
 }
 
 type SyncTime struct {
-    Last  time.Duration
-    Min   time.Duration
-    Max   time.Duration
-    Avg   time.Duration
-    Count int64
+	Last  time.Duration
+	Min   time.Duration
+	Max   time.Duration
+	Avg   time.Duration
+	Count int64
 }
 
 type Entity interface {

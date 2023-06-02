@@ -2,9 +2,7 @@ package scannerL2
 
 import (
 	"bufio"
-	"database/sql"
 	"fmt"
-	"log"
 	"myOsiris/network/utils"
 	"myOsiris/types"
 	"os"
@@ -21,6 +19,12 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 )
+
+type L2 struct {
+	NodeID   uint
+	Block    uint
+	SyncTime float64
+}
 
 const (
 	logsFile           = "./network/logs.txt"
@@ -100,7 +104,7 @@ func getBlockData(blockNumber int64) (block types.L2Block, err error) {
 	return block, nil
 }
 
-func ScannerL2(db *sql.DB, nodeId uint) types.L2 {
+func ScannerL2(baseUrl string, nodeId uint) types.L2 {
 	absPath, err := filepath.Abs(logsFile)
 	if err != nil {
 		fmt.Println(err)
@@ -145,13 +149,36 @@ func ScannerL2(db *sql.DB, nodeId uint) types.L2 {
 					if syncTime.Last.Seconds() > 9999999 {
 						continue
 					}
-					l2 := types.L2{Block: block, SyncTime: syncTime}
-					rows, err := db.Query("INSERT INTO l2 (node_id, block_id, sync_time) VALUES ($1, $2, $3)", nodeId, l2.Block.Number, l2.SyncTime.Avg.Seconds())
+
+					/*rows, err := db.Query("INSERT INTO l2 (node_id, block_id, sync_time) VALUES ($1, $2, $3)", nodeId, l2.Block.Number, l2.SyncTime.Avg.Seconds())
 					if err != nil {
 						log.Fatal(err)
 					}
-					defer rows.Close()
+					defer rows.Close()*/
 					//fmt.Printf("\033[s\033[2K\rL2 - Block number %d with id %s synced in %.2f secs - avg sync time %.2f \033[u", l2.Block.Number, utils.FormatHash(l2.Block.Hash), l2.SyncTime.Last.Seconds(), l2.SyncTime.Avg.Seconds())
+					data := L2{
+						NodeID:   nodeId,
+						Block:    uint(block.Number),
+						SyncTime: syncTime.Last.Seconds(),
+					}
+					jsonData, err := json.Marshal(data)
+					if err != nil {
+						return types.L2{}
+					}
+					request, err := http.NewRequest("POST", baseUrl, bytes.NewBuffer(jsonData))
+					if err != nil {
+
+						return types.L2{}
+					}
+					request.Header.Set("Content-Type", "application/json")
+
+					client := &http.Client{}
+					response, err := client.Do(request)
+					if err != nil {
+
+						return types.L2{}
+					}
+					defer response.Body.Close()
 					continue
 				}
 			}

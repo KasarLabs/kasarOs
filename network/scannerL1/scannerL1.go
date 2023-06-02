@@ -1,9 +1,11 @@
 package scannerL1
 
 import (
+	"bytes"
 	"context"
-	"database/sql"
+	"encoding/json"
 	"log"
+	"net/http"
 	"time"
 
 	"myOsiris/network/config"
@@ -11,6 +13,12 @@ import (
 
 	"github.com/ethereum/go-ethereum/ethclient"
 )
+
+type L1 struct {
+	NodeID   uint
+	Block    uint
+	SyncTime float64
+}
 
 var local = types.Local{
 	Number:         0,
@@ -81,7 +89,8 @@ var (
 	num         int64
 )
 
-func ScannerL1(db *sql.DB, nodeId uint) types.L1 {
+func ScannerL1(baseUrl string, nodeId uint) types.L1 {
+
 	block := getBlockData()
 
 	if isFirstCall {
@@ -104,14 +113,29 @@ func ScannerL1(db *sql.DB, nodeId uint) types.L1 {
 			return types.L1{Block: block, SyncTime: syncTime}
 		}
 
-		l1 := types.L1{Block: block, SyncTime: syncTime}
-
-		rows, err := db.Query("INSERT INTO l1 (node_id, block_id, sync_time) VALUES ($1, $2, $3)", nodeId, l1.Block.Number, l1.SyncTime.Avg.Seconds())
-		if err != nil {
-			log.Fatal(err)
+		data := L1{
+			NodeID:   nodeId,
+			Block:    uint(block.Number),
+			SyncTime: syncTime.Last.Seconds(),
 		}
-		defer rows.Close()
+		jsonData, err := json.Marshal(data)
+		if err != nil {
+			return types.L1{}
+		}
+		request, err := http.NewRequest("POST", baseUrl, bytes.NewBuffer(jsonData))
+		if err != nil {
 
+			return types.L1{}
+		}
+		request.Header.Set("Content-Type", "application/json")
+
+		client := &http.Client{}
+		response, err := client.Do(request)
+		if err != nil {
+
+			return types.L1{}
+		}
+		defer response.Body.Close()
 		//fmt.Printf("\033[s\033[1A\033[2K\rL1 - Block number %d with id %s synced in %.2f seconds - avg sync time %.2f \033[u", l1.Block.Number, utils.FormatHash(l1.Block.ReceiptHash), l1.SyncTime.Last.Seconds(), l1.SyncTime.Avg.Seconds())
 	}
 

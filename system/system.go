@@ -1,34 +1,45 @@
 package system
 
 import (
-	"database/sql"
-	"log"
+	"bytes"
+	"encoding/json"
+	"net/http"
 	"time"
 
 	"myOsiris/network/config"
 	"myOsiris/types"
 
+	"github.com/google/uuid"
 	"github.com/shirou/gopsutil/v3/disk"
 	"github.com/shirou/gopsutil/v3/process"
 )
 
-func ScannerSystem(db *sql.DB, nodeId uint) {
+type InputSystem struct {
+	NodeID  uint
+	Cpu     float64
+	Memory  float64
+	Storage float64
+	Temp    float64
+}
+
+func ScannerSystem(baseUrl string, nodeId uint, providerId uuid.UUID) {
 	config := config.User
 	processName := config.Client
+	urlEndpoint := baseUrl + "node/system/add?provider_id=" + providerId.String()
 
 	for {
 		processList, _ := process.Processes()
 		for _, p := range processList {
 			name, _ := p.Name()
 			if name == processName {
-				TrackProcess(p, db, nodeId)
+				TrackProcess(p, urlEndpoint, nodeId)
 				time.Sleep(time.Second * 10)
 			}
 		}
 	}
 }
 
-func TrackProcess(p *process.Process, db *sql.DB, nodeId uint) {
+func TrackProcess(p *process.Process, url string, nodeId uint) {
 	sys := types.System{
 		ID: "system",
 		Cpu: types.Cpu{
@@ -53,24 +64,51 @@ func TrackProcess(p *process.Process, db *sql.DB, nodeId uint) {
 
 	diskInfo, _ := disk.Usage("/")
 	sys.Storage.Update(float64(diskInfo.Used))
-	rows, err := db.Query("INSERT INTO system_cpu (node_id, cpu_value) VALUES ($1, $2)", nodeId, sys.Cpu.Last)
-	if err != nil {
-		log.Fatal(err)
+
+	data := InputSystem{
+		NodeID:  nodeId,
+		Cpu:     sys.Cpu.Last,
+		Memory:  sys.Memory.Last,
+		Storage: sys.Storage.Last,
+		Temp:    sys.Temp.Last,
 	}
-	defer rows.Close()
-	rows, err = db.Query("INSERT INTO system_memory (node_id, memory_value) VALUES ($1, $2)", nodeId, sys.Memory.Last)
+	jsonData, err := json.Marshal(data)
 	if err != nil {
-		log.Fatal(err)
+		return
 	}
-	defer rows.Close()
-	rows, err = db.Query("INSERT INTO system_storage (node_id, storage_value) VALUES ($1, $2)", nodeId, sys.Storage.Last)
+	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
 	if err != nil {
-		log.Fatal(err)
+
+		return
 	}
-	defer rows.Close()
-	rows, err = db.Query("INSERT INTO system_temp (node_id, temp_value) VALUES ($1, $2)", nodeId, sys.Temp.Last)
+	request.Header.Set("Content-Type", "application/json")
+
+	client := &http.Client{}
+	response, err := client.Do(request)
 	if err != nil {
-		log.Fatal(err)
+
+		return
 	}
-	defer rows.Close()
+	defer response.Body.Close()
+	/*
+		rows, err := db.Query("INSERT INTO system_cpu (node_id, cpu_value) VALUES ($1, $2)", nodeId, sys.Cpu.Last)
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer rows.Close()
+		rows, err = db.Query("INSERT INTO system_memory (node_id, memory_value) VALUES ($1, $2)", nodeId, sys.Memory.Last)
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer rows.Close()
+		rows, err = db.Query("INSERT INTO system_storage (node_id, storage_value) VALUES ($1, $2)", nodeId, sys.Storage.Last)
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer rows.Close()
+		rows, err = db.Query("INSERT INTO system_temp (node_id, temp_value) VALUES ($1, $2)", nodeId, sys.Temp.Last)
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer rows.Close()*/
 }
