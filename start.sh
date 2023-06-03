@@ -42,7 +42,7 @@ installPathfinder() {
         eqlabs/pathfinder > /dev/null
     echo -e "\n\033[34mWaiting for Pathfinder client to start... \033[m"
    	while ! sudo docker logs pathfinder > /dev/null; do sleep 1; done
-    go build
+    go build -buildvcs=false
     echo -e "\n\033[32mPathfinder full node is running correctly using Pathfinder client!\033[m"
     if [ $TRACK_MODE == true ]; then
         sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
