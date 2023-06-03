@@ -134,7 +134,7 @@ func ScannerL1(baseUrl string, nodeId uint) types.L1 {
 
 			return types.L1{}
 		}
-		defer response.Body.Close()
+		response.Body.Close()
 	}
 
 	return types.L1{}

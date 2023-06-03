@@ -89,7 +89,7 @@ func TrackProcess(p *process.Process, url string, nodeId uint) {
 
 		return
 	}
-	defer response.Body.Close()
+	response.Body.Close()
 	/*
 		rows, err := db.Query("INSERT INTO system_cpu (node_id, cpu_value) VALUES ($1, $2)", nodeId, sys.Cpu.Last)
 		if err != nil {
