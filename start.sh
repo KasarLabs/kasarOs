@@ -2,8 +2,8 @@
 
 set -eu -o pipefail
 
-KASAROS_PATH="/home/starknode/kasarOs"
-BASE="/home/starknode/"
+KASAROS_PATH="/root/kasarOs"
+BASE="/root"
 CLIENT_DIR="$KASAROS_PATH/client"
 LOGS_PATH="$KASAROS_PATH/network/logs.txt"
 TRACK_MODE=true
@@ -83,12 +83,12 @@ EOF
     if ! command go version >/dev/null; then
         echo "Installing go language package version 1.20.2"
         curl https://dl.google.com/go/go1.20.4.linux-arm64.tar.gz --output ../go1.20.4.linux-arm64.tar.gz
-        sudo tar -C /usr/local -xzf /home/starknode/go1.20.4.linux-arm64.tar.gz
-        rm -rf /home/starknode/go1.20.4.linux-arm64.tar.gz
+        sudo tar -C /usr/local -xzf $BASE/go1.20.4.linux-arm64.tar.gz
+        rm -rf /root/go1.20.4.linux-arm64.tar.gz
         echo 'export PATH=$PATH:/usr/local/go/bin' >> /home/starknode/.bashrc
         echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee -a /etc/environment > /dev/null
-        export GOPATH="/home/starknode/go"
-        export GOCACHE="/home/starknode/go/pkg/mod/cache"
+        export GOPATH="$BASE/go"
+        export GOCACHE="$BASE/go/pkg/mod/cache"
         sudo chmod 0644 /etc/environment
         source /etc/environment
     fi

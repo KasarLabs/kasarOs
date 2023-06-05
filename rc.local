@@ -11,10 +11,10 @@
 #
 # By default this script does nothing.
 
-cd /home/starknode/kasarOs
+cd 
 
 #git pull
 
-./start.sh > /home/starknode/logs 2>&1 &
+./start.sh > /root/logs 2>&1 &
 
 exit 0
