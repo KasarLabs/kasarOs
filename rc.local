@@ -11,10 +11,12 @@
 #
 # By default this script does nothing.
 
-cd ~/kasarOs
+echo "Starting..." > rc.local.log
+
+cd ./kasarOs
 
 #git pull
-cp /boot/efi/config.json ./config.json
+cp /boot/efi/src/config.json ./config.json
 
 ./start.sh > /root/logs 2>&1 &
 
