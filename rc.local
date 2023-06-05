@@ -11,9 +11,9 @@
 #
 # By default this script does nothing.
 
-echo "Starting..." > rc.local.log
+cd /root/kasarOs
 
-cd ./kasarOs
+echo "Starting..." > kasar.log
 
 #git pull
 cp /boot/efi/src/config.json ./config.json
