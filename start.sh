@@ -54,6 +54,52 @@ installPathfinder() {
     fi
 }
 
+installJuno() {
+    echo -e "\n\033[34mCloning and running docker... \033[m"
+    sleep 1
+    git clone https://github.com/NethermindEth/juno $CLIENT_DIR
+    sudo docker run -d -it --name juno \
+        -p 6060:6060 \
+        -v $CLIENT_DIR:/var/lib/juno \
+        nethermindeth/juno \
+        --rpc-port 6060 \
+        --db-path /var/lib/juno
+    echo -e "\n\033[34mWaiting for Juno client to start... \033[m"
+   	while ! sudo docker logs juno > /dev/null; do sleep 1; done
+    go build -buildvcs=false
+    echo -e "\n\033[32mJuno full node is running correctly using Pathfinder client!\033[m"
+    if [ $TRACK_MODE == true ]; then
+        sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
+        sleep 2
+        echo -e -n "\nTracking view mode will exit in 10secs\n"
+        timeout 10s tail -f nohup.out
+    else
+        exit
+    fi
+}
+
+installPapyrus() {
+    echo -e "Cloning and running docker...[m"
+
+    git clone https://github.com/starkware-libs/papyrus $CLIENT_DIR
+    sudo docker run -d --rm --name papyrus \
+        -p 8080-8081:8080-8081 \
+        -v $CLIENT_DIR:/app/data \
+        ghcr.io/starkware-libs/papyrus:dev
+    echo -e "Waiting for Papyrus client to start..."
+    while ! sudo docker exec papyrus pgrep papyrus > /dev/null; do sleep 1; done   
+    go build -buildvcs=false
+    echo -e "Papyrus full node is running correctly using Pathfinder client!"
+    if [ $TRACK_MODE == true ]; then
+        sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
+        sleep 2
+        echo -e -n "\nTracking view mode will exit in 10secs\n"
+        timeout 10s tail -f nohup.out
+    else
+        exit
+    fi
+}
+
 installTools() {
     echo -e "\n\033[34mInstalling tools pre-requisites... \033[m\n"
     sleep 1
@@ -111,8 +157,10 @@ EOF
 install() {
     if [ "$client" = "pathfinder" ]; then
         installPathfinder
-    elif [ "$client" = "juno" ] || [ "$client" = "papyrus" ]; then
-        echo "$client is not supported at the moment."
+    elif [ "$client" = "juno" ]; then
+        installJuno
+    elif [ "$client" = "papyrus" ]; then
+        installPapyrus
     else
         echo "Client $client does not exist."
     fi
