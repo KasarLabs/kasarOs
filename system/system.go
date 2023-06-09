@@ -33,7 +33,7 @@ func ScannerSystem(baseUrl string, nodeId uint, providerId uuid.UUID) {
 			name, _ := p.Name()
 			if name == processName {
 				TrackProcess(p, urlEndpoint, nodeId)
-				time.Sleep(time.Second * 10)
+				time.Sleep(time.Second * 60)
 			}
 		}
 	}
