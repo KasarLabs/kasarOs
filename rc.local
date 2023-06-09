@@ -13,10 +13,21 @@
 
 cd /root/kasarOs
 
-echo "Starting..." > kasar.log
+if ! command -v jq &> /dev/null; then
+    sudo apt update
+    sudo apt-get install -y jq
+fi
 
-#git pull
 cp /boot/efi/src/config.json ./config.json
+
+value=$(jq -r '.action' config.json)
+
+if [[ "$value" == "update" || "$value" == "autoUpdate" ]]; then
+    git pull > /dev/null 2>&1
+    if [ $? = 0 ]; then
+    
+    fi
+fi
 
 ./start.sh > /root/logs 2>&1 &
 
