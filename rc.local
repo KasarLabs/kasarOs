@@ -13,7 +13,8 @@
 
 cd /root/kasarOs
 
-if ! command -v jq &> /dev/null; then
+if ! command -v jq >/dev/null 2>&1
+then
     sudo apt update
     sudo apt-get install -y jq
 fi
@@ -24,9 +25,6 @@ value=$(jq -r '.action' config.json)
 
 if [[ "$value" == "update" || "$value" == "autoUpdate" ]]; then
     git pull > /dev/null 2>&1
-    if [ $? = 0 ]; then
-    
-    fi
 fi
 
 ./start.sh > /root/logs 2>&1 &
