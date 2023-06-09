@@ -12,7 +12,7 @@
 # By default this script does nothing.
 
 cd /root/kasarOs
-
+echo "Version 0.1" > /root/version.log
 if ! command -v jq >/dev/null 2>&1
 then
     sudo apt update
