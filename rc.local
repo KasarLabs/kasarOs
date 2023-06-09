@@ -12,7 +12,7 @@
 # By default this script does nothing.
 
 cd /root/kasarOs
-echo "Version 0.1" > /root/version.log
+#echo "Version 0.1" > /root/version.log
 if ! command -v jq >/dev/null 2>&1
 then
     sudo apt update
@@ -23,7 +23,7 @@ cp /boot/efi/src/config.json ./config.json
 
 value=$(jq -r '.action' config.json)
 
-if [[ "$value" == "update" || "$value" == "autoUpdate" ]]; then
+if [ "$value" = "update" ] || [ "$value" = "autoUpdate" ]; then
     git pull > /dev/null 2>&1
 
     if ! cmp -s "./rc.local" "/etc/rc.local"; then
