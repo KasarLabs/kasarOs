@@ -103,6 +103,7 @@ installPapyrus() {
 installTools() {
     echo -e "\n\033[34mInstalling tools pre-requisites... \033[m\n"
     sleep 1
+    sudo apt-get update --fix-missing 
     while read -r p ; do sudo apt install -y $p ; done < <(cat << "EOF"
         build-essential
         libncurses5-dev
