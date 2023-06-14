@@ -7,6 +7,8 @@ BASE="/root"
 CLIENT_DIR="$KASAROS_PATH/client"
 LOGS_PATH="$KASAROS_PATH/network/logs.txt"
 TRACK_MODE=true
+provider_id=$(jq -r '.provider_id' $KASAROS_PATH/config.json)
+node_id=$(jq -r '.node_id' $KASAROS_PATH/config.json)
 
 check_track() {
     echo "$@"
@@ -177,9 +179,6 @@ postState() {
     echo $DATA
     curl -X POST -H "Content-Type: application/json" -d "$DATA" "$URL"
 }
-
-provider_id=$(jq -r '.provider_id' $KASAROS_PATH/config.json)
-node_id=$(jq -r '.node_id' $KASAROS_PATH/config.json)
 
 postState "install/update"
 
