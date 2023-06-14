@@ -41,6 +41,7 @@ installPathfinder() {
         -v $CLIENT_DIR:/usr/share/pathfinder/data \
         eqlabs/pathfinder > /dev/null
     echo -e "\n\033[34mWaiting for Pathfinder client to start... \033[m"
+    postState "Starting"
    	while ! sudo docker logs pathfinder > /dev/null; do sleep 1; done
     go build -buildvcs=false
     echo -e "\n\033[32mPathfinder full node is running correctly using Pathfinder client!\033[m"
@@ -65,6 +66,7 @@ installJuno() {
         --rpc-port 6060 \
         --db-path /var/lib/juno
     echo -e "\n\033[34mWaiting for Juno client to start... \033[m"
+    postState "Starting"
    	while ! sudo docker logs juno > /dev/null; do sleep 1; done
     go build -buildvcs=false
     echo -e "\n\033[32mJuno full node is running correctly using Pathfinder client!\033[m"
@@ -87,6 +89,7 @@ installPapyrus() {
         -v $CLIENT_DIR:/app/data \
         ghcr.io/starkware-libs/papyrus:dev
     echo -e "Waiting for Papyrus client to start..."
+    postState "Starting"
     while ! sudo docker exec papyrus pgrep papyrus > /dev/null; do sleep 1; done   
     go build -buildvcs=false
     echo -e "Papyrus full node is running correctly using Pathfinder client!"
@@ -167,6 +170,19 @@ install() {
     fi
 }
 
+postState() {
+
+    URL="http://179.61.246.59:8080/node/setState?provider_id=$provider_id&node_id=$node_id"
+    DATA='{"state": '+"$1"+'}'
+
+    curl -X POST -H "Content-Type: application/json" -d "$DATA" "$URL"
+}
+
+provider_id=$(jq -r '.provider_id' $KASAROS_PATH/config.json)
+node_id=$(jq -r '.node_id' $KASAROS_PATH/config.json)
+
+postState "install/update"
+
 installTools
 
 client=$(jq -r '.client' $KASAROS_PATH/config.json)
@@ -175,12 +191,16 @@ rpc_key=$(jq -r '.rpc_key' $KASAROS_PATH/config.json)
 node_docker=$client
 
 if sudo docker ps -a --format '{{.Names}}' | grep -q "^pathfinder$"; then
+    postState "Starting"
     sudo docker start ${node_docker} > /dev/null
+    postState "Run"
     echo -e "\nNode started.\n"
     sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
     exit
 else
+    postState "Install & Run"
     install
+    postState "Started"
 fi
 
 
