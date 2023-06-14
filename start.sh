@@ -173,8 +173,8 @@ install() {
 postState() {
 
     URL="http://179.61.246.59:8080/node/setState?provider_id=$provider_id&node_id=$node_id"
-    DATA='{"state": '+"$1"+'}'
-
+    DATA="\"$1\""
+    echo $DATA
     curl -X POST -H "Content-Type: application/json" -d "$DATA" "$URL"
 }
 
