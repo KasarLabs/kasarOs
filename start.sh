@@ -41,6 +41,7 @@ installPathfinder() {
         -e RUST_LOG=info \
         -e PATHFINDER_ETHEREUM_API_URL="$rpc_key" \
         -v $CLIENT_DIR:/usr/share/pathfinder/data \
+        --data-directory /home/starknode \
         eqlabs/pathfinder > /dev/null
     echo -e "\n\033[34mWaiting for Pathfinder client to start... \033[m"
     postState "Starting"
@@ -180,7 +181,7 @@ postState() {
     curl -X POST -H "Content-Type: application/json" -d "$DATA" "$URL"
 }
 
-postState "install/update"
+postState "Install Tools"
 
 installTools
 
@@ -193,13 +194,12 @@ if sudo docker ps -a --format '{{.Names}}' | grep -q "^pathfinder$"; then
     postState "Starting"
     sudo docker start ${node_docker} > /dev/null
     postState "Run"
-    echo -e "\nNode started.\n"
     sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
     exit
 else
-    postState "Install & Run"
+    postState "Setup Docker"
     install
-    postState "Started"
+    postState "Run"
 fi
 
 
