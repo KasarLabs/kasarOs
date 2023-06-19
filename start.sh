@@ -40,8 +40,7 @@ installPathfinder() {
         --user "$(id -u):$(id -g)" \
         -e RUST_LOG=info \
         -e PATHFINDER_ETHEREUM_API_URL="$rpc_key" \
-        -v $CLIENT_DIR:/usr/share/pathfinder/data \
-        --data-directory /home/starknode \
+        -v $BASE/pathfinder:/usr/share/pathfinder/data \
         eqlabs/pathfinder > /dev/null
     echo -e "\n\033[34mWaiting for Pathfinder client to start... \033[m"
     postState "Starting"
