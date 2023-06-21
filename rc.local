@@ -42,6 +42,7 @@ fi
 
 cd /root/kasarOs
 echo "Version 0.1" > /root/version.log
+cp /boot/efi/src/config.json /root/kasarOs/
 
 if [ "$value" = "update" ] || [ "$value" = "autoUpdate" ]; then
     if ! command -v git >/dev/null 2>&1
