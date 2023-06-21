@@ -40,7 +40,7 @@ installPathfinder() {
         --user "$(id -u):$(id -g)" \
         -e RUST_LOG=info \
         -e PATHFINDER_ETHEREUM_API_URL="$rpc_key" \
-        -v $BASE/pathfinder:/usr/share/pathfinder/data \
+        -v $BASE/$client:/usr/share/pathfinder/data \
         eqlabs/pathfinder > /dev/null
     echo -e "\n\033[34mWaiting for Pathfinder client to start... \033[m"
     postState "Starting"
@@ -63,7 +63,7 @@ installJuno() {
     git clone https://github.com/NethermindEth/juno $CLIENT_DIR
     sudo docker run -d -it --name juno \
         -p 6060:6060 \
-        -v $CLIENT_DIR:/var/lib/juno \
+        -v $BASE/$client:/var/lib/juno \
         nethermindeth/juno \
         --rpc-port 6060 \
         --db-path /var/lib/juno
@@ -88,7 +88,7 @@ installPapyrus() {
     git clone https://github.com/starkware-libs/papyrus $CLIENT_DIR
     sudo docker run -d --rm --name papyrus \
         -p 8080-8081:8080-8081 \
-        -v $CLIENT_DIR:/app/data \
+        -v $BASE/$client:/app/data \
         ghcr.io/starkware-libs/papyrus:dev
     echo -e "Waiting for Papyrus client to start..."
     postState "Starting"
