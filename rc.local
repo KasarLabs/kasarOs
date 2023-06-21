@@ -11,20 +11,59 @@
 #
 # By default this script does nothing.
 
-cd /root/kasarOs
-echo "Version 0.1" > /root/version.log
 if ! command -v jq >/dev/null 2>&1
 then
-    sudo apt update
+    sudo apt-get update
     sudo apt-get install -y jq
 fi
 
-cp /boot/efi/src/config.json ./config.json
+value=$(jq -r '.action' /boot/efi/src/config.json)
+client=$(jq -r '.client' /boot/efi/src/config.json)
 
-value=$(jq -r '.action' config.json)
+if [ "$value" = "reset" ] || [ "$value" = "hardReset" ] || [ ! -d "/root/kasarOs" ]; then
+    if command -v docker >/dev/null 2>&1; then
+        sudo docker stop $(docker ps -aq) > /dev/null 2>&1 || true
+        sudo docker rm $(docker ps -aq) > /dev/null 2>&1 || true
+    fi
+    if [ "$value" = "reset" ] && [ -d "/root/kasarOs" ]; then
+        rm -rf /root/kasarOs
+    elif [ "$value" = "hardReset" ]; then
+        rm -rf /root/*
+        rm -rf /home/starknode/*
+    fi
+    cd /root/
+    git clone https://github.com/KasarLabs/kasarOs && cd kasarOs && git checkout roc-dev
+    if ! cmp -s "/root/kasarOs/rc.local" "/etc/rc.local"; then
+        cp "/root/kasarOs/rc.local" "/etc/rc.local"
+        /etc/rc.local &
+        exit 0
+    fi
+fi
+
+cd /root/kasarOs
+echo "Version 0.1" > /root/version.log
 
 if [ "$value" = "update" ] || [ "$value" = "autoUpdate" ]; then
-    git pull > /dev/null 2>&1
+    if ! command -v git >/dev/null 2>&1
+    then
+        sudo apt-get update
+        sudo apt-get install -y git
+    fi
+    git config user.email "starknode@kasarlab.io" > /dev/null 2>&1 || true
+    git config user.name "starknode" > /dev/null 2>&1 || true
+    git pull > /dev/null 2>&1 || true 
+
+    if command -v docker >/dev/null 2>&1; then
+        sudo docker stop $(docker ps -aq) > /dev/null 2>&1 || true
+        sudo docker rm $(docker ps -aq) > /dev/null 2>&1 || true
+        if [ "$client" = "pathfinder" ]; then
+            sudo docker pull eqlabs/pathfinder
+        elif [ "$client" = "juno" ]; then
+            echo ""
+        elif [ "$client" = "papyrus" ]; then
+            echo ""
+        fi
+    fi
 
     if ! cmp -s "./rc.local" "/etc/rc.local"; then
         cp "./rc.local" "/etc/rc.local"
