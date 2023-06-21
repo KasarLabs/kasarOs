@@ -30,6 +30,9 @@ check_track() {
 installPathfinder() {
     echo -e "\n\033[34mCloning and running docker... \033[m"
     sleep 1
+    if [ -d "$CLIENT_DIR" ]; then
+        rm -rf $CLIENT_DIR
+    fi
     git clone https://github.com/eqlabs/pathfinder $CLIENT_DIR
     sudo mkdir -p $BASE/pathfinder
     sudo chmod 777 $BASE/pathfinder
