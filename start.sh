@@ -6,9 +6,10 @@ KASAROS_PATH="/root/kasarOs"
 BASE="/root"
 CLIENT_DIR="$KASAROS_PATH/client"
 LOGS_PATH="$KASAROS_PATH/network/logs.txt"
+CONFIG_PATH="/boot/efi/src/config.json"
 TRACK_MODE=true
-provider_id=$(jq -r '.provider_id' $KASAROS_PATH/config.json)
-node_id=$(jq -r '.node_id' $KASAROS_PATH/config.json)
+provider_id=$(jq -r '.provider_id' $CONFIG_PATH)
+node_id=$(jq -r '.node_id' $CONFIG_PATH)
 
 check_track() {
     echo "$@"
@@ -184,8 +185,8 @@ postState "Install Tools"
 
 installTools
 
-client=$(jq -r '.client' $KASAROS_PATH/config.json)
-rpc_key=$(jq -r '.rpc_key' $KASAROS_PATH/config.json)
+client=$(jq -r '.client' $CONFIG_PATH)
+rpc_key=$(jq -r '.rpc_key' $CONFIG_PATH)
 
 node_docker=$client
 
