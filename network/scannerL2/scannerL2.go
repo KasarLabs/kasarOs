@@ -14,7 +14,6 @@ import (
 	// "math"
 	"bytes"
 	"encoding/json"
-	"io/ioutil"
 	"net/http"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -38,70 +37,13 @@ var local = types.Local{
 }
 
 var syncTime = types.SyncTime{
-	Last:  0.00,
-	Min:   0.00,
-	Max:   0.00,
-	Avg:   0.00,
-	Count: 0,
+	Last: 0.00,
 }
 
-func getSyncTime(block types.L2Block, local types.Local) types.SyncTime {
+func getSyncTime(local types.Local) types.SyncTime {
 	syncTime.Count += 1
 	syncTime.Last = local.Timestamp.Sub(local.Prev_timestamp)
-	if syncTime.Count > 3 {
-		if syncTime.Last > syncTime.Max {
-			syncTime.Max = syncTime.Last
-		} else if syncTime.Last < syncTime.Min {
-			syncTime.Min = syncTime.Last
-		}
-		syncTime.Avg = (syncTime.Avg + syncTime.Last) / 2
-		return syncTime
-
-	} else {
-		syncTime.Min = syncTime.Last
-	}
 	return syncTime
-}
-
-func getBlockData(blockNumber int64) (block types.L2Block, err error) {
-	url := "https://starknet-mainnet.infura.io/v3/bfd7c1b53bea4e1ebe1bd41aa8f52aaf"
-	payload := []byte(fmt.Sprintf(`{"jsonrpc": "2.0", "method": "starknet_getBlockWithTxHashes", "params": {"block_id": {"block_number": %d}}, "id": 0}`, blockNumber))
-	resp, err := http.Post(url, "application/json", bytes.NewBuffer(payload))
-	if err != nil {
-		return block, err
-	}
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return block, err
-	}
-	var response struct {
-		Result struct {
-			BlockHash        string   `json:"block_hash"`
-			BlockNumber      int64    `json:"block_number"`
-			NewRoot          string   `json:"new_root"`
-			ParentHash       string   `json:"parent_hash"`
-			SequencerAddress string   `json:"sequencer_address"`
-			Status           string   `json:"status"`
-			Timestamp        int64    `json:"timestamp"`
-			Transactions     []string `json:"transactions"`
-		} `json:"result"`
-	}
-	err = json.Unmarshal(body, &response)
-	if err != nil {
-		return block, err
-	}
-	block = types.L2Block{
-		Hash:              response.Result.BlockHash,
-		Number:            response.Result.BlockNumber,
-		New_root:          response.Result.NewRoot,
-		Parent_hash:       response.Result.ParentHash,
-		Sequencer_address: response.Result.SequencerAddress,
-		Status:            response.Result.Status,
-		Timestamp:         response.Result.Timestamp,
-		Transactions:      response.Result.Transactions,
-	}
-	return block, nil
 }
 
 func ScannerL2(baseUrl string, nodeId uint) types.L2 {
@@ -135,17 +77,10 @@ func ScannerL2(baseUrl string, nodeId uint) types.L2 {
 			if len(line) > 0 {
 				number, _ := strconv.ParseInt(utils.ExtractNumber(line), 10, 64)
 				if number > local.Number {
-					block, err := getBlockData(number)
-					if err != nil {
-						panic(err)
-					}
-					if syncTime.Count <= 0 {
-						block.Local.Timestamp = time.Time{}
-					}
 					local.Number = number
 					local.Prev_timestamp = local.Timestamp
 					local.Timestamp, _ = utils.ExtractTimestamp(line)
-					syncTime := getSyncTime(block, local)
+					syncTime := getSyncTime(local)
 					if syncTime.Last.Seconds() > 9999999 {
 						continue
 					}
@@ -158,7 +93,7 @@ func ScannerL2(baseUrl string, nodeId uint) types.L2 {
 					//fmt.Printf("\033[s\033[2K\rL2 - Block number %d with id %s synced in %.2f secs - avg sync time %.2f \033[u", l2.Block.Number, utils.FormatHash(l2.Block.Hash), l2.SyncTime.Last.Seconds(), l2.SyncTime.Avg.Seconds())
 					data := L2{
 						NodeID:   nodeId,
-						Block:    uint(block.Number),
+						Block:    uint(local.Number),
 						SyncTime: syncTime.Last.Seconds(),
 					}
 					jsonData, err := json.Marshal(data)
@@ -167,7 +102,6 @@ func ScannerL2(baseUrl string, nodeId uint) types.L2 {
 					}
 					request, err := http.NewRequest("POST", baseUrl, bytes.NewBuffer(jsonData))
 					if err != nil {
-
 						return types.L2{}
 					}
 					request.Header.Set("Content-Type", "application/json")

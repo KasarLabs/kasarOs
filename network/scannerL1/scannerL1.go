@@ -46,7 +46,6 @@ func getBlockNumber() int64 {
 func getSyncTime(local types.Local) types.SyncTime {
 	syncTime.Count++
 	syncTime.Last = local.Timestamp.Sub(local.Prev_timestamp)
-
 	return syncTime
 }
 
