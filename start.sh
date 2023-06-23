@@ -51,6 +51,7 @@ installPathfinder() {
    	while ! sudo docker logs pathfinder > /dev/null; do sleep 1; done
     go build -buildvcs=false
     echo -e "\n\033[32mPathfinder full node is running correctly using Pathfinder client!\033[m"
+    postState "Run"
     if [ $TRACK_MODE == true ]; then
         sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
         sleep 2
@@ -76,6 +77,7 @@ installJuno() {
    	while ! sudo docker logs juno > /dev/null; do sleep 1; done
     go build -buildvcs=false
     echo -e "\n\033[32mJuno full node is running correctly using Pathfinder client!\033[m"
+    postState "Run"
     if [ $TRACK_MODE == true ]; then
         sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
         sleep 2
@@ -99,6 +101,7 @@ installPapyrus() {
     while ! sudo docker exec papyrus pgrep papyrus > /dev/null; do sleep 1; done   
     go build -buildvcs=false
     echo -e "Papyrus full node is running correctly using Pathfinder client!"
+    postState "Run"
     if [ $TRACK_MODE == true ]; then
         sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
         sleep 2
@@ -202,7 +205,6 @@ if sudo docker ps -a --format '{{.Names}}' | grep -q "^pathfinder$"; then
 else
     postState "Setup Docker"
     install
-    postState "Run"
 fi
 
 
