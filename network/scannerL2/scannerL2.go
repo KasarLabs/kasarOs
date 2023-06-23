@@ -26,8 +26,7 @@ type L2 struct {
 }
 
 const (
-	logsFile           = "./network/logs.txt"
-	dbConnectionString = "root:tokenApi!@tcp(localhost:3306)/juno"
+	logsFile = "./network/logs.txt"
 )
 
 var local = types.Local{
@@ -37,7 +36,8 @@ var local = types.Local{
 }
 
 var syncTime = types.SyncTime{
-	Last: 0.00,
+	Last:  0.00,
+	Count: 0,
 }
 
 func getSyncTime(local types.Local) types.SyncTime {
@@ -52,7 +52,7 @@ func ScannerL2(baseUrl string, nodeId uint) types.L2 {
 		fmt.Println(err)
 	}
 	if syncTime.Last == 0 {
-		syncTime.Last = time.Duration(0 * time.Millisecond)
+		syncTime.Last = time.Duration(1 * time.Millisecond)
 	}
 	// Get initial size of the file
 	fileinfo, err := os.Stat(absPath)
@@ -76,7 +76,7 @@ func ScannerL2(baseUrl string, nodeId uint) types.L2 {
 			line := strings.ReplaceAll(utils.RemoveBraces(scanner.Text()), " ", "\t")
 			if len(line) > 0 {
 				number, _ := strconv.ParseInt(utils.ExtractNumber(line), 10, 64)
-				if number > local.Number {
+				if number > local.Number || syncTime.Count < 3 {
 					local.Number = number
 					local.Prev_timestamp = local.Timestamp
 					local.Timestamp, _ = utils.ExtractTimestamp(line)
