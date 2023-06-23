@@ -76,7 +76,7 @@ func ScannerL2(baseUrl string, nodeId uint) types.L2 {
 			line := strings.ReplaceAll(utils.RemoveBraces(scanner.Text()), " ", "\t")
 			if len(line) > 0 {
 				number, _ := strconv.ParseInt(utils.ExtractNumber(line), 10, 64)
-				if number > local.Number || (syncTime.Count < 4 && number > 50) {
+				if number+1 == local.Number || (syncTime.Count < 4 && number > 50) {
 					local.Number = number
 					local.Prev_timestamp = local.Timestamp
 					local.Timestamp, _ = utils.ExtractTimestamp(line)
