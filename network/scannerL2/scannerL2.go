@@ -98,10 +98,12 @@ func ScannerL2(baseUrl string, nodeId uint) types.L2 {
 					}
 					jsonData, err := json.Marshal(data)
 					if err != nil {
+						fmt.Println("Error L2:", err)
 						return types.L2{}
 					}
 					request, err := http.NewRequest("POST", baseUrl, bytes.NewBuffer(jsonData))
 					if err != nil {
+						fmt.Println("Error L2:", err)
 						return types.L2{}
 					}
 					request.Header.Set("Content-Type", "application/json")
@@ -109,7 +111,7 @@ func ScannerL2(baseUrl string, nodeId uint) types.L2 {
 					client := &http.Client{}
 					response, err := client.Do(request)
 					if err != nil {
-
+						fmt.Println("Error L2:", err)
 						return types.L2{}
 					}
 					response.Body.Close()

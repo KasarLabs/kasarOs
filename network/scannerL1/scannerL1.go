@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -81,11 +82,12 @@ func ScannerL1(baseUrl string, nodeId uint) types.L1 {
 		}
 		jsonData, err := json.Marshal(data)
 		if err != nil {
+			fmt.Println("Error L1:", err)
 			return types.L1{}
 		}
 		request, err := http.NewRequest("POST", baseUrl, bytes.NewBuffer(jsonData))
 		if err != nil {
-
+			fmt.Println("Error L1:", err)
 			return types.L1{}
 		}
 		request.Header.Set("Content-Type", "application/json")
@@ -93,7 +95,7 @@ func ScannerL1(baseUrl string, nodeId uint) types.L1 {
 		client := &http.Client{}
 		response, err := client.Do(request)
 		if err != nil {
-
+			fmt.Println("Error L1:", err)
 			return types.L1{}
 		}
 		response.Body.Close()

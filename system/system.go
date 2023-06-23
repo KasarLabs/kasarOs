@@ -3,6 +3,7 @@ package system
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"time"
 
@@ -74,11 +75,12 @@ func TrackProcess(p *process.Process, url string, nodeId uint) {
 	}
 	jsonData, err := json.Marshal(data)
 	if err != nil {
+		fmt.Println("Error system:", err)
 		return
 	}
 	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
 	if err != nil {
-
+		fmt.Println("Error system:", err)
 		return
 	}
 	request.Header.Set("Content-Type", "application/json")
@@ -86,29 +88,8 @@ func TrackProcess(p *process.Process, url string, nodeId uint) {
 	client := &http.Client{}
 	response, err := client.Do(request)
 	if err != nil {
-
+		fmt.Println("Error system:", err)
 		return
 	}
 	response.Body.Close()
-	/*
-		rows, err := db.Query("INSERT INTO system_cpu (node_id, cpu_value) VALUES ($1, $2)", nodeId, sys.Cpu.Last)
-		if err != nil {
-			log.Fatal(err)
-		}
-		defer rows.Close()
-		rows, err = db.Query("INSERT INTO system_memory (node_id, memory_value) VALUES ($1, $2)", nodeId, sys.Memory.Last)
-		if err != nil {
-			log.Fatal(err)
-		}
-		defer rows.Close()
-		rows, err = db.Query("INSERT INTO system_storage (node_id, storage_value) VALUES ($1, $2)", nodeId, sys.Storage.Last)
-		if err != nil {
-			log.Fatal(err)
-		}
-		defer rows.Close()
-		rows, err = db.Query("INSERT INTO system_temp (node_id, temp_value) VALUES ($1, $2)", nodeId, sys.Temp.Last)
-		if err != nil {
-			log.Fatal(err)
-		}
-		defer rows.Close()*/
 }
