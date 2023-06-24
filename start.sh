@@ -38,13 +38,16 @@ installPathfinder() {
         if [ -d "/root/mainnet-v0.5.6-64152.tar.xz" ]; then
             rm -rf /root/mainnet-v0.5.6-64152.tar.xz
         fi
+        postState "Download Mainnet"
         wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.5.6-64152.tar.xz
         sudo mkdir -p $BASE/pathfinder
         sudo chmod 777 $BASE/pathfinder
+        postState "Unzip Mainnet"
         tar -xvf /root/mainnet-v0.5.6-64152.tar.xz -C /root/pathfinder
         rm -rf /root/mainnet-v0.5.6-64152.tar.xz
         sudo touch $BASE/pathfinder/tar.lock
     fi
+    postState "Starting"
     sudo docker run \
         --name pathfinder \
         --restart unless-stopped \
@@ -56,7 +59,6 @@ installPathfinder() {
         -v $BASE/$client:/usr/share/pathfinder/data \
         eqlabs/pathfinder > /dev/null
     echo -e "\n\033[34mWaiting for Pathfinder client to start... \033[m"
-    postState "Starting"
    	while ! sudo docker logs pathfinder > /dev/null; do sleep 1; done
     go build -buildvcs=false
     echo -e "\n\033[32mPathfinder full node is running correctly using Pathfinder client!\033[m"
