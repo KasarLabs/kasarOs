@@ -34,10 +34,17 @@ installPathfinder() {
         rm -rf $CLIENT_DIR
     fi
     git clone https://github.com/eqlabs/pathfinder $CLIENT_DIR
-    wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.5.6-64152.tar.xz
-    sudo mkdir -p $BASE/pathfinder
-    sudo chmod 777 $BASE/pathfinder
-    tar -xvf /root/mainnet-v0.5.6-64152.tar.xz -C /root/pathfinder
+    if [ ! -d "/root/pathfinder/tar.lock" ]; then
+        if [ -d "/root/mainnet-v0.5.6-64152.tar.xz" ]; then
+            rm -rf /root/mainnet-v0.5.6-64152.tar.xz
+        fi
+        wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.5.6-64152.tar.xz
+        sudo mkdir -p $BASE/pathfinder
+        sudo chmod 777 $BASE/pathfinder
+        tar -xvf /root/mainnet-v0.5.6-64152.tar.xz -C /root/pathfinder
+        rm -rf /root/mainnet-v0.5.6-64152.tar.xz
+        sudo touch $BASE/pathfinder/tar.lock
+    fi
     sudo docker run \
         --name pathfinder \
         --restart unless-stopped \
