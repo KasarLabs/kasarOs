@@ -41,7 +41,6 @@ installPathfinder() {
                 rm -rf /root/mainnet-56215.tar.xz
             fi
             postState "Download Mainnet"
-            https://pathfinder-backup.zklend.com/mainnet/mainnet-56215.tar.xz
             wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-56215.tar.xz
             sudo mkdir -p $BASE/pathfinder
             sudo chmod 777 $BASE/pathfinder
