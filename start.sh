@@ -35,6 +35,7 @@ installPathfinder() {
         rm -rf $CLIENT_DIR
     fi
     git clone https://github.com/eqlabs/pathfinder $CLIENT_DIR
+    updateNetwork 9545
     if [ ! -d "/root/pathfinder/tar.lock" ]; then
         if (( $(bc <<< "$total_space < 300") )); then
             if [ -d "/root/mainnet-56215.tar.xz" ]; then
@@ -99,6 +100,7 @@ installJuno() {
         --rpc-port 6060 \
         --db-path /var/lib/juno
     echo -e "\n\033[34mWaiting for Juno client to start... \033[m"
+    updateNetwork 6060
     postState "Starting"
    	while ! sudo docker logs juno > /dev/null; do sleep 1; done
     go build -buildvcs=false
@@ -123,6 +125,7 @@ installPapyrus() {
         -v $BASE/$client:/app/data \
         ghcr.io/starkware-libs/papyrus:dev
     echo -e "Waiting for Papyrus client to start..."
+    updateNetwork 8080
     postState "Starting"
     while ! sudo docker exec papyrus pgrep papyrus > /dev/null; do sleep 1; done   
     go build -buildvcs=false
@@ -209,6 +212,18 @@ postState() {
 
     URL="http://179.61.246.59:8080/node/setState?provider_id=$provider_id&node_id=$node_id"
     DATA="\"$1\""
+    echo $DATA
+    curl -X POST -H "Content-Type: application/json" -d "$DATA" "$URL"
+}
+
+updateNetwork() {
+    URL="http://179.61.246.59:8080/node/updateNetwork?provider_id=$provider_id"
+    DATA="{
+        \"NodeID\": $node_id,
+        \"LocalIp\": \"$ip\",
+        \"Port\": $1,
+        \"Storage\": $total_space
+    }"
     echo $DATA
     curl -X POST -H "Content-Type: application/json" -d "$DATA" "$URL"
 }
