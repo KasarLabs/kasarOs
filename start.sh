@@ -39,8 +39,8 @@ installPathfinder() {
     updateNetwork 9545
     if [ ! -d "/root/pathfinder/tar.lock" ]; then
         if (( $(bc <<< "$total_space < 300") )); then
-            if [ -d "/root/mainnet-56215.tar.xz" ]; then
-                rm -rf /root/mainnet-56215.tar.xz
+            if [ -d "/root/mainnet-v0.5.6-64152.tar.xz" ]; then
+                rm -rf /root/mainnet-v0.5.6-64152.tar.xz
             fi
             postState "Download Mainnet"
             wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-56215.tar.xz
