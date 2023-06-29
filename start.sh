@@ -144,6 +144,7 @@ installPapyrus() {
         rm -rf /root/juno
     fi
     git clone https://github.com/starkware-libs/papyrus $CLIENT_DIR
+    sudo docker pull ghcr.io/starkware-libs/papyrus:dev
     sudo docker run -d --rm --name papyrus \
         -p 8080-8081:8080-8081 \
         -v $BASE/$client:/app/data \
