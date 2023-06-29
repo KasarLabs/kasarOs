@@ -11,6 +11,7 @@ TRACK_MODE=true
 provider_id=$(jq -r '.provider_id' $CONFIG_PATH)
 node_id=$(jq -r '.node_id' $CONFIG_PATH)
 total_space=$(df -h --total | awk '/total/{print $2}' | sed 's/[A-Za-z]//g')
+ip="127.0.0.1"
 
 check_track() {
     echo "$@"
