@@ -92,6 +92,9 @@ installPathfinder() {
 
 installJuno() {
     echo -e "\n\033[34mCloning and running docker... \033[m"
+    if [ -d "$CLIENT_DIR" ]; then
+        rm -rf $CLIENT_DIR
+    fi
     sleep 1
     git clone https://github.com/NethermindEth/juno $CLIENT_DIR
     sudo docker run -d -it --name juno \
@@ -119,7 +122,9 @@ installJuno() {
 
 installPapyrus() {
     echo -e "Cloning and running docker...[m"
-
+    if [ -d "$CLIENT_DIR" ]; then
+        rm -rf $CLIENT_DIR
+    fi
     git clone https://github.com/starkware-libs/papyrus $CLIENT_DIR
     sudo docker run -d --rm --name papyrus \
         -p 8080-8081:8080-8081 \
