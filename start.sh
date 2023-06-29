@@ -35,6 +35,12 @@ installPathfinder() {
     if [ -d "$CLIENT_DIR" ]; then
         rm -rf $CLIENT_DIR
     fi
+    if [ -d "/root/papyrus" ]; then
+        rm -rf /root/papyrus
+    fi
+    if [ -d "/root/juno" ]; then
+        rm -rf /root/juno
+    fi
     git clone https://github.com/eqlabs/pathfinder $CLIENT_DIR
     updateNetwork 9545
     if [ ! -d "/root/pathfinder/tar.lock" ]; then
@@ -95,6 +101,12 @@ installJuno() {
     if [ -d "$CLIENT_DIR" ]; then
         rm -rf $CLIENT_DIR
     fi
+    if [ -d "/root/pathfinder" ]; then
+        rm -rf /root/pathfinder
+    fi
+    if [ -d "/root/papyrus" ]; then
+        rm -rf /root/papyrus
+    fi
     sleep 1
     git clone https://github.com/NethermindEth/juno $CLIENT_DIR
     sudo docker run -d -it --name juno \
@@ -124,6 +136,12 @@ installPapyrus() {
     echo -e "Cloning and running docker...[m"
     if [ -d "$CLIENT_DIR" ]; then
         rm -rf $CLIENT_DIR
+    fi
+    if [ -d "/root/pathfinder" ]; then
+        rm -rf /root/pathfinder
+    fi
+    if [ -d "/root/juno" ]; then
+        rm -rf /root/juno
     fi
     git clone https://github.com/starkware-libs/papyrus $CLIENT_DIR
     sudo docker run -d --rm --name papyrus \
