@@ -43,9 +43,9 @@ installPathfinder() {
     fi
     git clone https://github.com/eqlabs/pathfinder $CLIENT_DIR
     updateNetwork 9545
-    if [ ! -d "/root/pathfinder/tar.lock" ]; then
+    if [ ! -e "/root/pathfinder/tar.lock" ]; then
         if (( $(bc <<< "$total_space < 300") )); then
-            if [ -d "/root/mainnet-v0.5.6-64152.tar.xz" ]; then
+            if [ -e "/root/mainnet-v0.5.6-64152.tar.xz" ]; then
                 rm -rf /root/mainnet-v0.5.6-64152.tar.xz
             fi
             postState "Download Mainnet"
@@ -57,7 +57,7 @@ installPathfinder() {
             rm -rf /root/mainnet-56215.tar.xz
             sudo touch $BASE/pathfinder/tar.lock
         else
-            if [ -d "/root/mainnet-v0.5.6-64152.tar.xz" ]; then
+            if [ -e "/root/mainnet-v0.5.6-64152.tar.xz" ]; then
                 rm -rf /root/mainnet-v0.5.6-64152.tar.xz
             fi
             postState "Download Mainnet"
