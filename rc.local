@@ -69,7 +69,7 @@ if [ "$value" = "update" ] || [ "$value" = "autoUpdate" ]; then
 
     if ! cmp -s "./rc.local" "/etc/rc.local"; then
         cp "./rc.local" "/etc/rc.local"
-        /etc/rc.local &
+        sudo reboot
         exit 0
     fi
 fi
