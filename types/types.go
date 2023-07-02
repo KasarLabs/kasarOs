@@ -29,9 +29,9 @@ type L1 struct {
 }
 
 type L2 struct {
-	ID       string
-	Block    L2Block
-	SyncTime SyncTime
+	NodeID   uint
+	Block    uint
+	SyncTime float64
 }
 
 type L1Block struct {

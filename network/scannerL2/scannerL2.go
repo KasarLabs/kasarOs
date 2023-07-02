@@ -19,12 +19,6 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-type L2 struct {
-	NodeID   uint
-	Block    uint
-	SyncTime float64
-}
-
 const (
 	logsFile = "./network/logs.txt"
 )
@@ -88,7 +82,7 @@ func ScannerL2(baseUrl string, nodeId uint) types.L2 {
 					continue
 				}
 				
-				data := L2{
+				data := types.L2{
 					NodeID:   nodeId,
 					Block:    uint(local.Number),
 					SyncTime: syncTime.Last.Seconds(),
