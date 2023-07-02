@@ -123,6 +123,6 @@ func ScannerL2(baseUrl string, nodeId uint) types.L2 {
 			fmt.Println("Error scanning file:", err)
 		}
 		file.Close()
-		time.Sleep(10 * time.Second) // wait for 1 second before checking the file again
+		time.Sleep(1 * time.Second) // wait for 1 second before checking the file again
 	}
 }
