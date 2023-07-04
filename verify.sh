@@ -19,7 +19,7 @@ getAction() {
         \"Command\": \"\",
         \"Response\": \"\"
     }"
-    action=curl -X POST -H "Content-Type: application/json" -d "$DATA" "$URL"
+    action=$(curl -X POST -H "Content-Type: application/json" -d "$DATA" "$URL")
 }
 
 check_script() {
@@ -49,9 +49,9 @@ while true; do
         check_script
     fi
     getAction
-    if [ "$action" = "shutdown" ]; then
+    if [ "$action" = "\"shutdown\"" ]; then
         sudo poweroff
-    elif [ "$action" = "reboot" ]; then
+    elif [ "$action" = "\"reboot\"" ]; then
         sudo reboot
     fi
     sleep 20
