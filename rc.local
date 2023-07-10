@@ -10,6 +10,7 @@
 # bits.
 #
 # By default this script does nothing.
+sleep 30
 
 if ! command -v jq >/dev/null 2>&1
 then
