@@ -25,7 +25,7 @@ getAction() {
 check_script() {
     if ! pgrep -f prog_name >/dev/null; then
         if [ "$step" -eq 1 ]; then
-            sudo reboot
+            sleep 5
         elif [ "$step" -eq 2 ]; then
             ./start.sh > /root/logs 2>&1 &
         else
