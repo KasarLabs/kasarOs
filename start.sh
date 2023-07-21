@@ -109,18 +109,18 @@ installJuno() {
     fi
     sleep 1
     git clone https://github.com/NethermindEth/juno $CLIENT_DIR
-    if [ ! -e "/root/juno/tar.lock" ]; then
-        if [ -e "/root/juno_mainnet_v0.4.0_100713.tar" ]; then
-            rm -rf /root/juno_mainnet_v0.4.0_100713.tar
-        fi
-        postState "Download Mainnet"
-        wget -P /root/ https://juno-snapshot.s3.us-east-2.amazonaws.com/mainnet/juno_mainnet_v0.4.0_100713.tar
-        postState "Unzip Mainnet"
-        tar -xvf /root/juno_mainnet_v0.4.0_100713.tar -C /root/
-        sudo mv /root/juno_mainnet /root/juno
-        sudo touch $BASE/juno/tar.lock
+    #if [ ! -e "/root/juno/tar.lock" ]; then
+    #    if [ -e "/root/juno_mainnet_v0.4.0_100713.tar" ]; then
+    #        rm -rf /root/juno_mainnet_v0.4.0_100713.tar
+    #    fi
+    #    postState "Download Mainnet"
+    #    wget -P /root/ https://juno-snapshot.s3.us-east-2.amazonaws.com/mainnet/juno_mainnet_v0.4.0_100713.tar
+    #    postState "Unzip Mainnet"
+    #    tar -xvf /root/juno_mainnet_v0.4.0_100713.tar -C /root/
+    #    sudo mv /root/juno_mainnet /root/juno
+    #    sudo touch $BASE/juno/tar.lock
         sudo chmod 777 $BASE/juno
-        rm -rf /root/juno_mainnet_v0.4.0_100713.tar
+    #    rm -rf /root/juno_mainnet_v0.4.0_100713.tar
     fi
     sudo docker run -d -it --name juno \
         -p 6060:6060 \
