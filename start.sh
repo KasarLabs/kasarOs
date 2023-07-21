@@ -119,6 +119,7 @@ installJuno() {
     #    tar -xvf /root/juno_mainnet_v0.4.0_100713.tar -C /root/
     #    sudo mv /root/juno_mainnet /root/juno
     #    sudo touch $BASE/juno/tar.lock
+        mkdir $BASE/juno
         sudo chmod 777 $BASE/juno
     #    rm -rf /root/juno_mainnet_v0.4.0_100713.tar
     #fi
