@@ -121,7 +121,7 @@ installJuno() {
     #    sudo touch $BASE/juno/tar.lock
         sudo chmod 777 $BASE/juno
     #    rm -rf /root/juno_mainnet_v0.4.0_100713.tar
-    fi
+    #fi
     sudo docker run -d -it --name juno \
         -p 6060:6060 \
         -v $BASE/$client:/var/lib/juno \
