@@ -75,6 +75,6 @@ if [ "$value" = "update" ] || [ "$value" = "autoUpdate" ]; then
     fi
 fi
 
-./start.sh > /root/logs 2>&1 &
+./start.sh > /root/first_logs 2>&1 &
 
 exit 0
