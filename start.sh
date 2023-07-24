@@ -61,7 +61,7 @@ installPathfinder() {
                 rm -rf /root/mainnet-v0.5.6-64152.tar.xz
             fi
             postState "Download Mainnet"
-            wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.5.6-64152.tar.xz > /dev/null
+            wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.5.6-64152.tar.xz > /dev/null 2>&1
             sudo mkdir -p $BASE/pathfinder
             sudo chmod 777 $BASE/pathfinder
             postState "Unzip Mainnet"
@@ -122,20 +122,19 @@ installJuno() {
             rm -rf /root/juno_mainnet_v0.4.0_100713.tar
         fi
         postState "Download Mainnet"
-        wget -P /root/ https://juno-snapshot.s3.us-east-2.amazonaws.com/mainnet/juno_mainnet_v0.4.0_100713.tar > /dev/null
+        wget -P /root/ https://juno-snapshot.s3.us-east-2.amazonaws.com/mainnet/juno_mainnet_v0.4.0_100713.tar > /dev/null 2>&1
         postState "Unzip Mainnet"
         tar -xvf /root/juno_mainnet_v0.4.0_100713.tar -C /root/
         sudo mv /root/juno_mainnet /root/juno
         sudo touch $BASE/juno/tar.lock
-        mkdir $BASE/juno
         sudo chmod 777 $BASE/juno
         rm -rf /root/juno_mainnet_v0.4.0_100713.tar
     fi
     sudo docker run -d -it --name juno \
         -p 6060:6060 \
         -v $BASE/$client:/var/lib/juno \
-        docker pull nethermind/juno:v0.4.1-arm64 \
-        --rpc-port 6060 \
+        nethermind/juno:v0.4.1-arm64 \
+        --http-port 6060 \
         --db-path /var/lib/juno
     echo -e "\n\033[34mWaiting for Juno client to start... \033[m"
     updateNetwork 6060
