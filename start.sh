@@ -61,7 +61,7 @@ installPathfinder() {
                 rm -rf /root/mainnet-v0.5.6-64152.tar.xz
             fi
             postState "Download Mainnet"
-            wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.5.6-64152.tar.xz > /dev/null
+            wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.5.6-64152.tar.xz > /dev/null 2>&1
             sudo mkdir -p $BASE/pathfinder
             sudo chmod 777 $BASE/pathfinder
             postState "Unzip Mainnet"
@@ -122,12 +122,11 @@ installJuno() {
             rm -rf /root/juno_mainnet_v0.4.0_100713.tar
         fi
         postState "Download Mainnet"
-        wget -P /root/ https://juno-snapshot.s3.us-east-2.amazonaws.com/mainnet/juno_mainnet_v0.4.0_100713.tar > /dev/null
+        wget -P /root/ https://juno-snapshot.s3.us-east-2.amazonaws.com/mainnet/juno_mainnet_v0.4.0_100713.tar > /dev/null 2>&1
         postState "Unzip Mainnet"
         tar -xvf /root/juno_mainnet_v0.4.0_100713.tar -C /root/
         sudo mv /root/juno_mainnet /root/juno
         sudo touch $BASE/juno/tar.lock
-        mkdir $BASE/juno
         sudo chmod 777 $BASE/juno
         rm -rf /root/juno_mainnet_v0.4.0_100713.tar
     fi
