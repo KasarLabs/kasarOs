@@ -112,7 +112,7 @@ installJuno() {
     sudo docker run -d -it --name juno \
         -p 6060:6060 \
         -v $BASE/$client:/var/lib/juno \
-        nethermindeth/juno \
+        docker pull nethermind/juno:v0.4.1-arm64 \
         --rpc-port 6060 \
         --db-path /var/lib/juno
     echo -e "\n\033[34mWaiting for Juno client to start... \033[m"
