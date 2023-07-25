@@ -60,7 +60,7 @@ while true; do
         fi
         sudo rm -rf /root/kasarOs
         cd /root/
-        git clone https://github.com/KasarLabs/kasarOs && cd kasarOs && git checkout roc-dev-tests
+        git clone https://github.com/KasarLabs/kasarOs && cd kasarOs && git checkout roc-dev
         if ! cmp -s "/root/kasarOs/rc.local" "/etc/rc.local"; then
             cp "/root/kasarOs/rc.local" "/etc/rc.local"
         fi
