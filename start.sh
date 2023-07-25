@@ -223,6 +223,7 @@ EOF
 }
 
 install() {
+    postState "Install Client"
     if [ "$client" = "pathfinder" ]; then
         installPathfinder
     elif [ "$client" = "juno" ]; then
