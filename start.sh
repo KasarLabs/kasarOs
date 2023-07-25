@@ -41,7 +41,9 @@ installPathfinder() {
     if [ -d "/root/juno" ]; then
         rm -rf /root/juno
     fi
+    postState "Clone client"
     git clone https://github.com/eqlabs/pathfinder $CLIENT_DIR
+    postState "Client cloned"
     updateNetwork 9545
     if [ ! -e "/root/pathfinder/tar.lock" ]; then
         if (( $(bc <<< "$total_space < 300") )); then
