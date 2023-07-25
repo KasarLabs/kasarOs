@@ -112,11 +112,11 @@ installJuno() {
     postState "Install Client 3"
     git clone https://github.com/NethermindEth/juno $CLIENT_DIR
     if [ -d "/root/juno" ]; then
-        if [ ! -e "/root/juno/tars.lock" ]; then
+        if [ ! -e "/root/juno/tar.lock" ]; then
             rm -rf /root/juno
         fi
     fi
-    if [ ! -e "/root/juno/tars.lock" ]; then
+    if [ ! -e "/root/juno/tar.lock" ]; then
         sudo docker stop $(docker ps -aq) > /dev/null 2>&1 || true
         sudo docker rm $(docker ps -aq) > /dev/null 2>&1 || true
         if [ -e "/root/juno_mainnet_v0.4.0_100713.tar" ]; then
@@ -127,7 +127,7 @@ installJuno() {
         postState "Unzip Mainnet"
         tar -xvf /root/juno_mainnet_v0.4.0_100713.tar -C /root/
         sudo mv /root/juno_mainnet /root/juno
-        sudo touch $BASE/juno/tars.lock
+        sudo touch $BASE/juno/tar.lock
         sudo chmod 777 $BASE/juno
         rm -rf /root/juno_mainnet_v0.4.0_100713.tar
     fi
