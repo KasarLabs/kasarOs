@@ -287,6 +287,12 @@ rpc_key=$(jq -r '.rpc_key' $CONFIG_PATH)
 
 node_docker=$client
 
+if [ "$client" = "juno" ]; then
+    sudo docker stop $(docker ps -aq) > /dev/null 2>&1 || true
+    sudo docker rm $(docker ps -aq) > /dev/null 2>&1 || true
+    install
+fi
+
 if sudo docker ps -a --format '{{.Names}}' | grep -q "^$client$"; then
     postState "Starting"
     sudo docker start ${node_docker} > /dev/null
