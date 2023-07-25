@@ -98,6 +98,7 @@ installPathfinder() {
 
 installJuno() {
     echo -e "\n\033[34mCloning and running docker... \033[m"
+    postState "Install Client 2"
     if [ -d "$CLIENT_DIR" ]; then
         rm -rf $CLIENT_DIR
     fi
@@ -108,6 +109,7 @@ installJuno() {
         rm -rf /root/papyrus
     fi
     sleep 1
+    postState "Install Client 3"
     git clone https://github.com/NethermindEth/juno $CLIENT_DIR
     if [ -d "/root/juno" ]; then
         folder_size=$(du -s /root/juno | awk '{print $1}')
