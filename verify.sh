@@ -53,6 +53,18 @@ while true; do
         sudo poweroff
     elif [ "$action" = "\"reboot\"" ]; then
         sudo reboot
+    elif [ "$action" = "\"hardReset\"" ]; then
+        if command -v docker >/dev/null 2>&1; then
+            sudo docker stop $(docker ps -aq) > /dev/null 2>&1 || true
+            sudo docker rm $(docker ps -aq) > /dev/null 2>&1 || true
+        fi
+        sudo rm -rf /root/kasarOs
+        cd /root/
+        git clone https://github.com/KasarLabs/kasarOs && cd kasarOs && git checkout roc-dev-tests
+        if ! cmp -s "/root/kasarOs/rc.local" "/etc/rc.local"; then
+            cp "/root/kasarOs/rc.local" "/etc/rc.local"
+        fi
+        sudo reboot
     fi
     sleep 20
 done
