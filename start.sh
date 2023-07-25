@@ -110,7 +110,9 @@ installJuno() {
         rm -rf /root/papyrus
     fi
     sleep 1
+    postState "Clone client"
     git clone https://github.com/NethermindEth/juno $CLIENT_DIR
+    postState "Client cloned"
     if [ -d "/root/juno" ]; then
         folder_size=$(du -s /root/juno | awk '{print $1}')
         folder_size_gb=$(echo "scale=2; $folder_size / 1024" | bc)
