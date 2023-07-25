@@ -112,24 +112,13 @@ installJuno() {
     postState "Install Client 3"
     git clone https://github.com/NethermindEth/juno $CLIENT_DIR
     if [ -d "/root/juno" ]; then
-        folder_size=$(du -s /root/juno | awk '{print $1}')
-        folder_size_gb=$(echo "scale=2; $folder_size / 1024" | bc)
-        if (( $(echo "$folder_size_gb > 29" | bc -l) )); then
-            sudo touch $BASE/juno/tar.lock
-<<<<<<< HEAD
-        fi
-    fi
-    if [ ! -e "/root/juno/tar.lock" ]; then
-
-=======
-        else
+        if [ ! -e "/root/juno/tars.lock" ]; then
             rm -rf /root/juno
         fi
     fi
-    if [ ! -e "/root/juno/tar.lock" ]; then
+    if [ ! -e "/root/juno/tars.lock" ]; then
         sudo docker stop $(docker ps -aq) > /dev/null 2>&1 || true
         sudo docker rm $(docker ps -aq) > /dev/null 2>&1 || true
->>>>>>> 8433d88711645cb0972b1e1ade5a3daefb26fb5d
         if [ -e "/root/juno_mainnet_v0.4.0_100713.tar" ]; then
             rm -rf /root/juno_mainnet_v0.4.0_100713.tar
         fi
@@ -138,7 +127,7 @@ installJuno() {
         postState "Unzip Mainnet"
         tar -xvf /root/juno_mainnet_v0.4.0_100713.tar -C /root/
         sudo mv /root/juno_mainnet /root/juno
-        sudo touch $BASE/juno/tar.lock
+        sudo touch $BASE/juno/tars.lock
         sudo chmod 777 $BASE/juno
         rm -rf /root/juno_mainnet_v0.4.0_100713.tar
     fi
@@ -297,21 +286,9 @@ rpc_key=$(jq -r '.rpc_key' $CONFIG_PATH)
 
 node_docker=$client
 
-if [ "$client" = "juno" ]; then
-    sudo docker stop $(docker ps -aq) > /dev/null 2>&1 || true
-    sudo docker rm $(docker ps -aq) > /dev/null 2>&1 || true
-    install
-fi
 
-if sudo docker ps -a --format '{{.Names}}' | grep -q "^$client$"; then
-    postState "Starting"
-    sudo docker start ${node_docker} > /dev/null
-    postState "Run"
-    sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
-    exit
-else
-    install
-fi
+install
+
 
 
 
