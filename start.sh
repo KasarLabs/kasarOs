@@ -119,7 +119,8 @@ installJuno() {
         fi
     fi
     if [ ! -e "/root/juno/tar.lock" ]; then
-
+        sudo docker stop $(docker ps -aq) > /dev/null 2>&1 || true
+        sudo docker rm $(docker ps -aq) > /dev/null 2>&1 || true
         if [ -e "/root/juno_mainnet_v0.4.0_100713.tar" ]; then
             rm -rf /root/juno_mainnet_v0.4.0_100713.tar
         fi
