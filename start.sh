@@ -292,6 +292,12 @@ if sudo docker ps -a --format '{{.Names}}' | grep -q "^pathfinder$"; then
     postState "Run"
     sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
     exit
+elif sudo docker ps -a --format '{{.Names}}' | grep -q "^juno$"; then
+    postState "Starting"
+    sudo docker start ${node_docker} > /dev/null
+    postState "Run"
+    sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
+    exit
 else
     install
 fi
