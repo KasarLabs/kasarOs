@@ -301,6 +301,7 @@ elif sudo docker ps -a --format '{{.Names}}' | grep -q "^juno$"; then
     sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
     exit
 else
+    postState "Install Client"
     install
 fi
 
