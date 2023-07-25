@@ -98,7 +98,6 @@ installPathfinder() {
 
 installJuno() {
     echo -e "\n\033[34mCloning and running docker... \033[m"
-    postState "Install Client 2"
     if [ -d "$CLIENT_DIR" ]; then
         rm -rf $CLIENT_DIR
     fi
@@ -109,16 +108,14 @@ installJuno() {
         rm -rf /root/papyrus
     fi
     sleep 1
-    postState "Install Client 3"
     git clone https://github.com/NethermindEth/juno $CLIENT_DIR
     if [ -d "/root/juno" ]; then
         if [ ! -e "/root/juno/tar.lock" ]; then
-            rm -rf /root/juno
+            rm -rf /root/juno 
         fi
     fi
     if [ ! -e "/root/juno/tar.lock" ]; then
-        sudo docker stop $(docker ps -aq) > /dev/null 2>&1 || true
-        sudo docker rm $(docker ps -aq) > /dev/null 2>&1 || true
+
         if [ -e "/root/juno_mainnet_v0.4.0_100713.tar" ]; then
             rm -rf /root/juno_mainnet_v0.4.0_100713.tar
         fi
@@ -129,7 +126,7 @@ installJuno() {
         sudo mv /root/juno_mainnet /root/juno
         sudo touch $BASE/juno/tar.lock
         sudo chmod 777 $BASE/juno
-        rm -rf /root/juno_mainnet_v0.4.0_100713.tar
+    #    rm -rf /root/juno_mainnet_v0.4.0_100713.tar
     fi
     sudo docker run -d -it --name juno \
         -p 6060:6060 \
@@ -286,9 +283,15 @@ rpc_key=$(jq -r '.rpc_key' $CONFIG_PATH)
 
 node_docker=$client
 
-
-install
-
+if sudo docker ps -a --format '{{.Names}}' | grep -q "^pathfinder$"; then
+    postState "Starting"
+    sudo docker start ${node_docker} > /dev/null
+    postState "Run"
+    sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
+    exit
+else
+    install
+fi
 
 
 
