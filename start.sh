@@ -126,7 +126,7 @@ installJuno() {
         sudo mv /root/juno_mainnet /root/juno
         sudo touch $BASE/juno/tars.lock
         sudo chmod 777 $BASE/juno
-    #    rm -rf /root/juno_mainnet_v0.4.0_100713.tar
+        rm -rf /root/juno_mainnet_v0.4.0_100713.tar
     fi
     sudo docker run -d -it --name juno \
         -p 6060:6060 \
@@ -283,15 +283,8 @@ rpc_key=$(jq -r '.rpc_key' $CONFIG_PATH)
 
 node_docker=$client
 
-if sudo docker ps -a --format '{{.Names}}' | grep -q "^pathfinder$"; then
-    postState "Starting"
-    sudo docker start ${node_docker} > /dev/null
-    postState "Run"
-    sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
-    exit
-else
-    install
-fi
+install
+
 
 
 
