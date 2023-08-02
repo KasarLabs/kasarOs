@@ -116,8 +116,8 @@ installJuno() {
     fi
     if [ ! -e "/root/juno/tars.lock" ]; then
 
-        if [ -e "/root/juno_mainnet*.tar" ]; then
-            rm -rf /root/juno_mainnet*.tar
+        if [ -e "/root/juno_mainnet_v0.5.0_136902.tar" ]; then
+            rm -rf /root/juno_mainnet_v0.5.0_136902.tar
         fi
         postState "Download Mainnet"
         wget -P /root/ https://juno-snapshot.s3.us-east-2.amazonaws.com/mainnet/juno_mainnet_v0.5.0_136902.tar > /dev/null 2>&1
@@ -126,7 +126,7 @@ installJuno() {
         sudo mv /root/juno_mainnet /root/juno
         sudo touch $BASE/juno/tars.lock
         sudo chmod 777 $BASE/juno
-        rm -rf /root/juno_mainnet*.tar
+        rm -rf /root/juno_mainnet_v0.5.0_136902.tar
     fi
     sudo docker run -d -it --name juno \
         -p 6060:6060 \
