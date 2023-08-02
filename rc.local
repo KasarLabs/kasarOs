@@ -77,4 +77,12 @@ fi
 ./verify.sh > /root/Verifylogs 2>&1 &
 ./start.sh > /root/first_logs 2>&1 &
 
+sleep 35
+pgrep "verify" > /dev/null
+
+if [ "$?" -ne 0 ]; then
+    sudo rm -rf /root/kasarOs
+    sudo reboot
+fi
+
 exit 0
