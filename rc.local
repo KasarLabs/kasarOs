@@ -42,7 +42,6 @@ if [ "$value" = "reset" ] || [ "$value" = "hardReset" ] || [ ! -d "/root/kasarOs
 fi
 
 cd /root/kasarOs
-./verify.sh > /root/Verifylogs 2>&1 &
 echo "Version 0.1" > /root/version.log
 cp /boot/efi/src/config.json /root/kasarOs/
 
@@ -75,6 +74,7 @@ if [ "$value" = "update" ] || [ "$value" = "autoUpdate" ]; then
     fi
 fi
 
+./verify.sh > /root/Verifylogs 2>&1 &
 ./start.sh > /root/first_logs 2>&1 &
 
 exit 0
