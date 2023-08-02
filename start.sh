@@ -116,17 +116,17 @@ installJuno() {
     fi
     if [ ! -e "/root/juno/tars.lock" ]; then
 
-        if [ -e "/root/juno_mainnet_v0.4.0_100713.tar" ]; then
-            rm -rf /root/juno_mainnet_v0.4.0_100713.tar
+        if [ -e "/root/juno_mainnet*.tar" ]; then
+            rm -rf /root/juno_mainnet*.tar
         fi
         postState "Download Mainnet"
-        wget -P /root/ https://juno-snapshot.s3.us-east-2.amazonaws.com/mainnet/juno_mainnet_v0.4.0_100713.tar > /dev/null 2>&1
+        wget -P /root/ https://juno-snapshot.s3.us-east-2.amazonaws.com/mainnet/juno_mainnet_v0.5.0_136902.tar > /dev/null 2>&1
         postState "Unzip Mainnet"
-        tar -xvf /root/juno_mainnet_v0.4.0_100713.tar -C /root/
+        tar -xvf /root/juno_mainnet_v0.5.0_136902.tar -C /root/
         sudo mv /root/juno_mainnet /root/juno
         sudo touch $BASE/juno/tars.lock
         sudo chmod 777 $BASE/juno
-        rm -rf /root/juno_mainnet_v0.4.0_100713.tar
+        rm -rf /root/juno_mainnet*.tar
     fi
     sudo docker run -d -it --name juno \
         -p 6060:6060 \
@@ -284,7 +284,3 @@ rpc_key=$(jq -r '.rpc_key' $CONFIG_PATH)
 node_docker=$client
 
 install
-
-
-
-
