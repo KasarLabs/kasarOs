@@ -45,11 +45,11 @@ installPathfinder() {
     updateNetwork 9545
     if [ ! -e "/root/pathfinder/tar.lock" ]; then
         if (( $(bc <<< "$total_space < 300") )); then
-            if [ -e "/root/mainnet-v0.5.6-64152.tar.xz" ]; then
-                rm -rf /root/mainnet-v0.5.6-64152.tar.xz
+            if [ -e "/root/mainnet-v0.7.0-141083.tar.xz" ]; then
+                rm -rf /root/mainnet-v0.7.0-141083.tar.xz
             fi
             postState "Download Mainnet"
-            wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-56215.tar.xz
+            wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.7.0-141083.tar.xz
             sudo mkdir -p $BASE/pathfinder
             sudo chmod 777 $BASE/pathfinder
             postState "Unzip Mainnet"
@@ -57,16 +57,16 @@ installPathfinder() {
             rm -rf /root/mainnet-56215.tar.xz
             sudo touch $BASE/pathfinder/tar.lock
         else
-            if [ -e "/root/mainnet-v0.5.6-64152.tar.xz" ]; then
-                rm -rf /root/mainnet-v0.5.6-64152.tar.xz
+            if [ -e "/root/mainnet-v0.7.0-141083.tar.xz" ]; then
+                rm -rf /root/mainnet-v0.7.0-141083.tar.xz
             fi
             postState "Download Mainnet"
-            wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.5.6-64152.tar.xz > /dev/null 2>&1
+            wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.7.0-141083.tar.xz > /dev/null 2>&1
             sudo mkdir -p $BASE/pathfinder
             sudo chmod 777 $BASE/pathfinder
             postState "Unzip Mainnet"
-            tar -xvf /root/mainnet-v0.5.6-64152.tar.xz -C /root/pathfinder
-            rm -rf /root/mainnet-v0.5.6-64152.tar.xz
+            tar -xvf /root/mainnet-v0.7.0-141083.tar.xz -C /root/pathfinder
+            rm -rf /root/mainnet-v0.7.0-141083.tar.xz
             sudo touch $BASE/pathfinder/tar.lock
         fi
     fi
