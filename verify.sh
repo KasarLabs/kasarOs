@@ -11,6 +11,13 @@ provider_id=$(jq -r '.provider_id' $CONFIG_PATH)
 node_id=$(jq -r '.node_id' $CONFIG_PATH)
 action=""
 
+postState() {
+    URL="http://179.61.246.59:8080/node/setState?provider_id=$provider_id&node_id=$node_id"
+    DATA="\"$1\""
+    echo $DATA
+    curl -X POST -H "Content-Type: application/json" -d "$DATA" "$URL"
+}
+
 getAction() {
     URL="http://179.61.246.59:8080/node/getAction?provider_id=$provider_id"
     DATA="{
@@ -50,8 +57,29 @@ while true; do
     fi
     getAction
     if [ "$action" = "\"shutdown\"" ]; then
+        postState "Shut down"
         sudo poweroff
     elif [ "$action" = "\"reboot\"" ]; then
+        postState "Rebooting"
+        sudo reboot
+    elif [ "$action" = "\"hardReset\"" ] || [ "$action" = "\"reset\"" ]; then
+        if command -v docker >/dev/null 2>&1; then
+            sudo docker stop $(docker ps -aq) > /dev/null 2>&1 || true
+            sudo docker rm $(docker ps -aq) > /dev/null 2>&1 || true
+        fi
+        sudo rm -rf /root/kasarOs
+        if [ -d "/root/juno" ]; then
+            rm -rf /root/juno
+        fi
+        if [ -d "/root/pathfinder" ]; then
+            rm -rf /root/pathfinder
+        fi
+        cd /root/
+        git clone https://github.com/KasarLabs/kasarOs && cd kasarOs && git checkout roc-dev
+        if ! cmp -s "/root/kasarOs/rc.local" "/etc/rc.local"; then
+            cp "/root/kasarOs/rc.local" "/etc/rc.local"
+        fi
+        postState "Rebooting"
         sudo reboot
     fi
     sleep 20

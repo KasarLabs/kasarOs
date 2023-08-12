@@ -45,11 +45,11 @@ installPathfinder() {
     updateNetwork 9545
     if [ ! -e "/root/pathfinder/tar.lock" ]; then
         if (( $(bc <<< "$total_space < 300") )); then
-            if [ -e "/root/mainnet-v0.5.6-64152.tar.xz" ]; then
-                rm -rf /root/mainnet-v0.5.6-64152.tar.xz
+            if [ -e "/root/mainnet-v0.7.0-141083.tar.xz" ]; then
+                rm -rf /root/mainnet-v0.7.0-141083.tar.xz
             fi
             postState "Download Mainnet"
-            wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-56215.tar.xz
+            wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.7.0-141083.tar.xz
             sudo mkdir -p $BASE/pathfinder
             sudo chmod 777 $BASE/pathfinder
             postState "Unzip Mainnet"
@@ -57,16 +57,16 @@ installPathfinder() {
             rm -rf /root/mainnet-56215.tar.xz
             sudo touch $BASE/pathfinder/tar.lock
         else
-            if [ -e "/root/mainnet-v0.5.6-64152.tar.xz" ]; then
-                rm -rf /root/mainnet-v0.5.6-64152.tar.xz
+            if [ -e "/root/mainnet-v0.7.0-141083.tar.xz" ]; then
+                rm -rf /root/mainnet-v0.7.0-141083.tar.xz
             fi
             postState "Download Mainnet"
-            wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.5.6-64152.tar.xz > /dev/null 2>&1
+            wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.7.0-141083.tar.xz > /dev/null 2>&1
             sudo mkdir -p $BASE/pathfinder
             sudo chmod 777 $BASE/pathfinder
             postState "Unzip Mainnet"
-            tar -xvf /root/mainnet-v0.5.6-64152.tar.xz -C /root/pathfinder
-            rm -rf /root/mainnet-v0.5.6-64152.tar.xz
+            tar -xvf /root/mainnet-v0.7.0-141083.tar.xz -C /root/pathfinder
+            rm -rf /root/mainnet-v0.7.0-141083.tar.xz
             sudo touch $BASE/pathfinder/tar.lock
         fi
     fi
@@ -110,30 +110,28 @@ installJuno() {
     sleep 1
     git clone https://github.com/NethermindEth/juno $CLIENT_DIR
     if [ -d "/root/juno" ]; then
-        folder_size=$(du -s /root/juno | awk '{print $1}')
-        folder_size_gb=$(echo "scale=2; $folder_size / 1024" | bc)
-        if (( $(echo "$folder_size_gb > 29" | bc -l) )); then
-            sudo touch $BASE/juno/tar.lock
+        if [ ! -e "/root/juno/tars.lock" ]; then
+            rm -rf /root/juno 
         fi
     fi
-    if [ ! -e "/root/juno/tar.lock" ]; then
+    if [ ! -e "/root/juno/tars.lock" ]; then
 
-        if [ -e "/root/juno_mainnet_v0.4.0_100713.tar" ]; then
-            rm -rf /root/juno_mainnet_v0.4.0_100713.tar
+        if [ -e "/root/juno_mainnet_v0.5.0_136902.tar" ]; then
+            rm -rf /root/juno_mainnet_v0.5.0_136902.tar
         fi
         postState "Download Mainnet"
-        wget -P /root/ https://juno-snapshot.s3.us-east-2.amazonaws.com/mainnet/juno_mainnet_v0.4.0_100713.tar > /dev/null 2>&1
+        wget -P /root/ https://juno-snapshot.s3.us-east-2.amazonaws.com/mainnet/juno_mainnet_v0.5.0_136902.tar > /dev/null 2>&1
         postState "Unzip Mainnet"
-        tar -xvf /root/juno_mainnet_v0.4.0_100713.tar -C /root/
+        tar -xvf /root/juno_mainnet_v0.5.0_136902.tar -C /root/
         sudo mv /root/juno_mainnet /root/juno
-        sudo touch $BASE/juno/tar.lock
+        sudo touch $BASE/juno/tars.lock
         sudo chmod 777 $BASE/juno
-        rm -rf /root/juno_mainnet_v0.4.0_100713.tar
+        rm -rf /root/juno_mainnet_v0.5.0_136902.tar
     fi
     sudo docker run -d -it --name juno \
         -p 6060:6060 \
         -v $BASE/$client:/var/lib/juno \
-        nethermind/juno:v0.4.1-arm64 \
+        nethermind/juno:v0.5.0 \
         --http-port 6060 \
         --db-path /var/lib/juno
     echo -e "\n\033[34mWaiting for Juno client to start... \033[m"
@@ -244,6 +242,7 @@ EOF
 }
 
 install() {
+    postState "Install Client"
     if [ "$client" = "pathfinder" ]; then
         installPathfinder
     elif [ "$client" = "juno" ]; then
@@ -284,15 +283,4 @@ rpc_key=$(jq -r '.rpc_key' $CONFIG_PATH)
 
 node_docker=$client
 
-if sudo docker ps -a --format '{{.Names}}' | grep -q "^pathfinder$"; then
-    postState "Starting"
-    sudo docker start ${node_docker} > /dev/null
-    postState "Run"
-    sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
-    exit
-else
-    install
-fi
-
-
-
+install
