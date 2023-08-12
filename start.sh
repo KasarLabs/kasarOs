@@ -41,7 +41,9 @@ installPathfinder() {
     if [ -d "/root/juno" ]; then
         rm -rf /root/juno
     fi
+    postState "Clone client"
     git clone https://github.com/eqlabs/pathfinder $CLIENT_DIR
+    postState "Client cloned"
     updateNetwork 9545
     if [ ! -e "/root/pathfinder/tar.lock" ]; then
         if (( $(bc <<< "$total_space < 300") )); then
@@ -108,7 +110,9 @@ installJuno() {
         rm -rf /root/papyrus
     fi
     sleep 1
+    postState "Clone client"
     git clone https://github.com/NethermindEth/juno $CLIENT_DIR
+    postState "Client cloned"
     if [ -d "/root/juno" ]; then
         if [ ! -e "/root/juno/tars.lock" ]; then
             rm -rf /root/juno 
@@ -283,4 +287,22 @@ rpc_key=$(jq -r '.rpc_key' $CONFIG_PATH)
 
 node_docker=$client
 
-install
+if sudo docker ps -a --format '{{.Names}}' | grep -q "^pathfinder$"; then
+    postState "Starting"
+    sudo docker start ${node_docker} > /dev/null
+    postState "Run"
+    sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
+    exit
+elif sudo docker ps -a --format '{{.Names}}' | grep -q "^juno$"; then
+    postState "Starting"
+    sudo docker start ${node_docker} > /dev/null
+    postState "Run"
+    sudo docker logs -f $client &>> $LOGS_PATH & nohup $KASAROS_PATH/myOsiris > $KASAROS_PATH/nohup.out 2>&1 &
+    exit
+else
+    postState "Install Client"
+    install
+fi
+
+
+
