@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"time"
 
 	"myOsiris/network/config"
 	"myOsiris/network/scannerL1"
@@ -71,6 +72,7 @@ func main() {
 		// Print an initial line to separate process L1 output
 		// fmt.Println()
 		for {
+			time.Sleep(500 * time.Millisecond)
 			scannerL1.ScannerL1(baseUrl+"node/L1/update?provider_id="+providerId.String(), uint(nodeId))
 		}
 	}()
