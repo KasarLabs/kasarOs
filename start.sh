@@ -116,24 +116,26 @@ installJuno() {
     fi
     if [ ! -e "/root/juno/tars.lock" ]; then
 
-        if [ -e "/root/juno_mainnet_v0.5.0_136902.tar" ]; then
-            rm -rf /root/juno_mainnet_v0.5.0_136902.tar
+        if [ -e "/root/juno_mainnet_v0.6.0_166353.tar" ]; then
+            rm -rf /root/juno_mainnet_v0.6.0_166353.tar
         fi
         postState "Download Mainnet"
-        wget -P /root/ https://juno-snapshot.s3.us-east-2.amazonaws.com/mainnet/juno_mainnet_v0.5.0_136902.tar > /dev/null 2>&1
+        wget -P /root/ https://juno-snapshot.s3.us-east-2.amazonaws.com/mainnet/juno_mainnet_v0.6.0_166353.tar > /dev/null 2>&1
         postState "Unzip Mainnet"
-        tar -xvf /root/juno_mainnet_v0.5.0_136902.tar -C /root/
+        tar -xvf /root/juno_mainnet_v0.6.0_166353.tar -C /root/
         sudo mv /root/juno_mainnet /root/juno
         sudo touch $BASE/juno/tars.lock
         sudo chmod 777 $BASE/juno
-        rm -rf /root/juno_mainnet_v0.5.0_136902.tar
+        rm -rf /root/juno_mainnet_v0.6.0_166353.tar
     fi
+    new_url="${rpc_key/https:/wss:}"
     sudo docker run -d -it --name juno \
         -p 6060:6060 \
         -v $BASE/$client:/var/lib/juno \
-        nethermind/juno:v0.5.0 \
+        nethermind/juno:v0.6.0 \
         --http-port 6060 \
-        --db-path /var/lib/juno
+        --db-path /var/lib/juno \
+        --eth-node $new_url
     echo -e "\n\033[34mWaiting for Juno client to start... \033[m"
     updateNetwork 6060
     postState "Starting"
