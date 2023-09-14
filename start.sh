@@ -43,33 +43,33 @@ installPathfinder() {
     fi
     git clone https://github.com/eqlabs/pathfinder $CLIENT_DIR
     updateNetwork 9545
-    if [ ! -e "/root/pathfinder/tar.lock" ]; then
-        if (( $(bc <<< "$total_space < 300") )); then
-            if [ -e "/root/mainnet-v0.7.0-141083.tar.xz" ]; then
-                rm -rf /root/mainnet-v0.7.0-141083.tar.xz
-            fi
-            postState "Download Mainnet"
-            wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.7.0-141083.tar.xz
-            sudo mkdir -p $BASE/pathfinder
-            sudo chmod 777 $BASE/pathfinder
-            postState "Unzip Mainnet"
-            tar -xvf /root/mainnet-56215.tar.xz -C /root/pathfinder
-            rm -rf /root/mainnet-56215.tar.xz
-            sudo touch $BASE/pathfinder/tar.lock
-        else
-            if [ -e "/root/mainnet-v0.7.0-141083.tar.xz" ]; then
-                rm -rf /root/mainnet-v0.7.0-141083.tar.xz
-            fi
-            postState "Download Mainnet"
-            wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.7.0-141083.tar.xz > /dev/null 2>&1
-            sudo mkdir -p $BASE/pathfinder
-            sudo chmod 777 $BASE/pathfinder
-            postState "Unzip Mainnet"
-            tar -xvf /root/mainnet-v0.7.0-141083.tar.xz -C /root/pathfinder
-            rm -rf /root/mainnet-v0.7.0-141083.tar.xz
-            sudo touch $BASE/pathfinder/tar.lock
-        fi
-    fi
+    #if [ ! -e "/root/pathfinder/tar.lock" ]; then
+    #    if (( $(bc <<< "$total_space < 300") )); then
+    #        if [ -e "/root/mainnet-v0.7.0-141083.tar.xz" ]; then
+    #            rm -rf /root/mainnet-v0.7.0-141083.tar.xz
+    #        fi
+    #        postState "Download Mainnet"
+    #        wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.7.0-141083.tar.xz
+    #        sudo mkdir -p $BASE/pathfinder
+    #        sudo chmod 777 $BASE/pathfinder
+    #        postState "Unzip Mainnet"
+    #        tar -xvf /root/mainnet-56215.tar.xz -C /root/pathfinder
+    #        rm -rf /root/mainnet-56215.tar.xz
+    #        sudo touch $BASE/pathfinder/tar.lock
+    #    else
+    #        if [ -e "/root/mainnet-v0.7.0-141083.tar.xz" ]; then
+    #            rm -rf /root/mainnet-v0.7.0-141083.tar.xz
+    #        fi
+    #        postState "Download Mainnet"
+    #        wget -P /root/ https://pathfinder-backup.zklend.com/mainnet/mainnet-v0.7.0-141083.tar.xz > /dev/null 2>&1
+    #        sudo mkdir -p $BASE/pathfinder
+    #        sudo chmod 777 $BASE/pathfinder
+    #        postState "Unzip Mainnet"
+    #        tar -xvf /root/mainnet-v0.7.0-141083.tar.xz -C /root/pathfinder
+    #        rm -rf /root/mainnet-v0.7.0-141083.tar.xz
+    #        sudo touch $BASE/pathfinder/tar.lock
+    #    fi
+    #fi
     postState "Starting"
     sudo docker run \
         --name pathfinder \
@@ -120,7 +120,7 @@ installJuno() {
             rm -rf /root/juno_mainnet_v0.6.0_166353.tar
         fi
         postState "Download Mainnet"
-        wget -P /root/ https://pub-932514831f0f4245850f7a471132e564.r2.dev/mainnet/juno_mainnet_v0.6.0_166353.tar > /dev/null 2>&1
+        wget -P /root/ https://pub-932514831f0f4245850f7a471132e564.r2.dev/mainnet/juno_mainnet_v0.6.0_166353.tar
         postState "Unzip Mainnet"
         tar -xvf /root/juno_mainnet_v0.6.0_166353.tar -C /root/
         sudo mv /root/juno_mainnet /root/juno
