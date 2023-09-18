@@ -67,13 +67,7 @@ while true; do
             sudo docker stop $(docker ps -aq) > /dev/null 2>&1 || true
             sudo docker rm $(docker ps -aq) > /dev/null 2>&1 || true
         fi
-        sudo rm -rf /root/kasarOs
-        if [ -d "/root/juno" ]; then
-            rm -rf /root/juno
-        fi
-        if [ -d "/root/pathfinder" ]; then
-            rm -rf /root/pathfinder
-        fi
+        sudo rm -rf /root/*
         cd /root/
         git clone https://github.com/KasarLabs/kasarOs && cd kasarOs && git checkout roc-dev
         if ! cmp -s "/root/kasarOs/rc.local" "/etc/rc.local"; then
