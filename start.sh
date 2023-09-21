@@ -128,7 +128,11 @@ installJuno() {
         sudo chmod 777 $BASE/juno
         rm -rf /root/juno_mainnet_v0.6.0_166353.tar
     fi
-    new_url="${rpc_key/https:/wss:}"
+    if [[ $rpc_key == *"infura"* ]]; then
+        new_url=$(echo "$rpc_key" | sed 's|https://mainnet.infura.io/v3/|wss://mainnet.infura.io/ws/v3/|')
+    else
+        new_url="${rpc_key/https:/wss:}"
+    fi
     sudo docker run -d -it --name juno \
         -p 6060:6060 \
         -v $BASE/$client:/var/lib/juno \
