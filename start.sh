@@ -279,7 +279,8 @@ updateNetwork() {
     echo $DATA
     curl -X POST -H "Content-Type: application/json" -d "$DATA" "$URL"
 }
-
+postState "Pre-Installation"
+sleep 60
 postState "Install Tools"
 
 installTools
