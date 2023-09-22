@@ -63,6 +63,7 @@ while true; do
         postState "Rebooting"
         sudo reboot
     elif [ "$action" = "\"hardReset\"" ] || [ "$action" = "\"reset\"" ]; then
+        postState "Resetting"
         if command -v docker >/dev/null 2>&1; then
             sudo docker stop $(docker ps -aq) > /dev/null 2>&1 || true
             sudo docker rm $(docker ps -aq) > /dev/null 2>&1 || true
