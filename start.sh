@@ -123,7 +123,6 @@ installJuno() {
         wget -P /root/ https://juno-snapshots.nethermind.dev/mainnet/juno_mainnet_v0.6.3_247401.tar
         postState "Unzip Mainnet"
         tar -xvf /root/juno_mainnet_v0.6.3_247401.tar -C /root/
-        sudo mv /root/juno_mainnet /root/juno
         sudo touch $BASE/juno/tars.lock
         sudo chmod 777 $BASE/juno
         rm -rf /root/juno_mainnet_v0.6.3_247401.tar
