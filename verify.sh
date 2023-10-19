@@ -1,6 +1,7 @@
 #!/bin/bash
 step=1
 prog_name="rc.local"
+BASE="/root"
 CONFIG_PATH="/boot/efi/src/config.json"
 KASAROS_PATH="/root/kasarOs"
 CLIENT_DIR="$KASAROS_PATH/client"
