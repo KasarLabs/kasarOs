@@ -53,7 +53,7 @@ if [ "$value" = "update" ] || [ "$value" = "autoUpdate" ]; then
     fi
     git config user.email "starknode@kasarlab.io" > /dev/null 2>&1 || true
     git config user.name "starknode" > /dev/null 2>&1 || true
-    git pull > /dev/null 2>&1 || true 
+    git pull > /dev/null 2>&1 || true
 
     if command -v docker >/dev/null 2>&1; then
         sudo docker stop $(docker ps -aq) > /dev/null 2>&1 || true
