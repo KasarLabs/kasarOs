@@ -33,7 +33,7 @@ if [ "$value" = "reset" ] || [ "$value" = "hardReset" ] || [ ! -d "/root/kasarOs
         rm -rf /home/starknode/*
     fi
     cd /root/
-    git clone https://github.com/KasarLabs/kasarOs && cd kasarOs && git checkout roc-dev
+    git clone https://github.com/KasarLabs/kasarOs && cd kasarOs && git checkout roc-dev-tests
     if ! cmp -s "/root/kasarOs/rc.local" "/etc/rc.local"; then
         cp "/root/kasarOs/rc.local" "/etc/rc.local"
         /etc/rc.local &
@@ -53,7 +53,7 @@ if [ "$value" = "update" ] || [ "$value" = "autoUpdate" ]; then
     fi
     git config user.email "starknode@kasarlab.io" > /dev/null 2>&1 || true
     git config user.name "starknode" > /dev/null 2>&1 || true
-    git pull > /dev/null 2>&1 || true 
+    git pull > /dev/null 2>&1 || true
 
     if command -v docker >/dev/null 2>&1; then
         sudo docker stop $(docker ps -aq) > /dev/null 2>&1 || true
