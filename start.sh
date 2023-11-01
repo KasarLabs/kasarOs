@@ -135,9 +135,7 @@ installJuno() {
     sudo docker run -d -it --name juno \
         -p 6060:6060 \
         -v $BASE/$client:/var/lib/juno \
-        nethermind/juno:v0.7.2 \
-        --http-host 0.0.0.0 \ 
-        --http \
+        nethermind/juno:v0.7.2 --http-host 0.0.0.0 --http \
         --http-port 6060 \
         --db-path /var/lib/juno \
         --eth-node wss://eth-mainnet.g.alchemy.com/v2/PLvtzl9NBacueDV0gzs9e4e3kFrj5gBo
