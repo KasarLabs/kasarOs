@@ -116,16 +116,17 @@ installJuno() {
     fi
     if [ ! -e "/root/juno/tars.lock" ]; then
 
-        if [ -e "/root/juno_mainnet_v0.6.3_247401.tar" ]; then
-            rm -rf /root/juno_mainnet_v0.6.3_247401.tar
+        if [ -e "/root/juno_mainnet_v0.6.5_313975.tar" ]; then
+            rm -rf /root/juno_mainnet_v0.6.5_313975.tar
         fi
         postState "Download Mainnet"
-        wget -P /root/ https://juno-snapshots.nethermind.dev/mainnet/juno_mainnet_v0.6.3_247401.tar
+        wget -P /root/ https://juno-snapshots.nethermind.dev/mainnet/juno_mainnet_v0.6.5_313975.tar
         postState "Unzip Mainnet"
-        tar -xvf /root/juno_mainnet_v0.6.3_247401.tar -C /root/
+        tar -xvf /root/juno_mainnet_v0.6.5_313975.tar -C /root/
+        sudo mv $BASE/juno_mainnet $BASE/juno
         sudo touch $BASE/juno/tars.lock
         sudo chmod 777 $BASE/juno
-        rm -rf /root/juno_mainnet_v0.6.3_247401.tar
+        rm -rf /root/juno_mainnet_v0.6.5_313975.tar
     fi
     if [[ $rpc_key == *"infura"* ]]; then
         new_url=$(echo "$rpc_key" | sed 's|https://mainnet.infura.io/v3/|wss://mainnet.infura.io/ws/v3/|')
@@ -135,10 +136,10 @@ installJuno() {
     sudo docker run -d -it --name juno \
         -p 6060:6060 \
         -v $BASE/$client:/var/lib/juno \
-        nethermind/juno:v0.6.0 \
+        nethermind/juno:v0.7.2 --http-host 0.0.0.0 --http \
         --http-port 6060 \
         --db-path /var/lib/juno \
-        --eth-node $new_url
+        --eth-node wss://eth-mainnet.g.alchemy.com/v2/PLvtzl9NBacueDV0gzs9e4e3kFrj5gBo
     echo -e "\n\033[34mWaiting for Juno client to start... \033[m"
     updateNetwork 6060
     postState "Starting"
