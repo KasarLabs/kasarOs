@@ -120,13 +120,23 @@ installJuno() {
             rm -rf /root/juno_mainnet_v0.9.3_519634.tar
         fi
         postState "Download Mainnet"
-        wget -P /root/ https://juno-snapshots.nethermind.dev/mainnet/juno_mainnet_v0.9.3_519634.tar
-        postState "Unzip Mainnet"
-        tar -xvf /root/juno_mainnet_v0.9.3_519634.tar -C /root/
-        sudo mv $BASE/juno_mainnet $BASE/juno
-        sudo touch $BASE/juno/tars.lock
-        sudo chmod 777 $BASE/juno
-        rm -rf /root/juno_mainnet_v0.9.3_519634.tar
+        if (( $(bc <<< "$total_space > 300") )); then
+            wget -P /root/ https://juno-snapshots.nethermind.dev/mainnet/juno_mainnet_v0.9.3_519634.tar
+            postState "Unzip Mainnet"
+            tar -xvf /root/juno_mainnet_v0.9.3_519634.tar -C /root/
+            sudo mv $BASE/juno_mainnet $BASE/juno
+            sudo touch $BASE/juno/tars.lock
+            sudo chmod 777 $BASE/juno
+            rm -rf /root/juno_mainnet_v0.9.3_519634.tar
+        else
+            wget -P /root/ https://juno-snapshots.nethermind.dev/mainnet/juno_mainnet_v0.6.5_313975.tar
+            postState "Unzip Mainnet"
+            tar -xvf /root/juno_mainnet_v0.6.5_313975.tar -C /root/
+            sudo mv $BASE/juno_mainnet $BASE/juno
+            sudo touch $BASE/juno/tars.lock
+            sudo chmod 777 $BASE/juno
+            rm -rf /root/juno_mainnet_v0.6.5_313975.tar
+        fi 
     fi
     if [[ $rpc_key == *"infura"* ]]; then
         new_url=$(echo "$rpc_key" | sed 's|https://mainnet.infura.io/v3/|wss://mainnet.infura.io/ws/v3/|')
