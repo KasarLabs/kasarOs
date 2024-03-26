@@ -121,6 +121,7 @@ installJuno() {
         elif [ -e "/root/juno_mainnet_v0.9.3_519634.tar" ]; then
             rm -rf /root/juno_mainnet_v0.9.3_519634.tar
         fi
+        echo -e "test\n"
         postState "Download Mainnet"
         space=$(df -h / | awk 'NR==2{print $2}' | sed 's/[Gg]//')
         # Définir un seuil d'espace disque disponible (en GB)
@@ -128,13 +129,13 @@ installJuno() {
 
 # Comparer l'espace disponible avec le seuil
         if (( $(echo "$space < $threshold" | bc -l) )); then
-            echo "L'espace disque disponible est inférieur à $threshold GB."
+            echo -e "\nL'espace disque disponible est inférieur à $threshold GB."
             wget -P /root/ https://juno-snapshots.nethermind.dev/mainnet/juno_mainnet_v0.7.5_449406.tar
             postState "Unzip Mainnet"
             tar -xvf /root/juno_mainnet_v0.7.5_449406.tar -C /root/
     # Insérer ici les actions à exécuter si l'espace est insuffisant
         else
-            echo "L'espace disque disponible est supérieur à $threshold GB."
+            echo -e "\nL'espace disque disponible est supérieur à $threshold GB."
             wget -P /root/ https://juno-snapshots.nethermind.dev/mainnet/juno_mainnet_v0.9.3_519634.tar
             postState "Unzip Mainnet"
             tar -xvf /root/juno_mainnet_v0.9.3_519634.tar -C /root/
